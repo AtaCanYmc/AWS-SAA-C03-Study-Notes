@@ -1,0 +1,14 @@
+# Auto detect text files and perform LF normalization
+* text=auto eol=lf
+
+# Explicit text file types
+*.md text
+*.json text
+*.yml text
+*.yaml text
+*.py text
+*.ts text
+*.tsx text
+*.css text
+*.html text
+*.js text
