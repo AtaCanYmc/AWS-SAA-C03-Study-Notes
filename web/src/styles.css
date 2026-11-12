@@ -1,7 +1,8 @@
 /* Hallmark · pre-emit critique: P5 H5 E5 S5 R5 V5 · genre: editorial · workbench */
 /* Design Tokens: Locked OKLCH Palette · No mid-render improvisation */
 
-:root {
+:root,
+[data-theme="dark"] {
   /* Paper & Surface Tones (Deep Blueprint / Warm Charcoal) */
   --color-paper: oklch(0.14 0.02 250);
   --color-paper-subtle: oklch(0.17 0.02 248);
@@ -47,6 +48,37 @@
   --space-md: 1rem;
   --space-lg: 1.5rem;
   --space-xl: 2rem;
+}
+
+[data-theme="light"] {
+  /* Editorial Light: Warm Newsprint / Architectural Paper */
+  --color-paper: oklch(0.985 0.005 85);
+  --color-paper-subtle: oklch(0.955 0.008 85);
+  --color-paper-card: oklch(1 0 0);
+  --color-paper-card-hover: oklch(0.94 0.01 85);
+  
+  /* Hairlines & Structural Borders */
+  --color-rule: oklch(0.86 0.01 85);
+  --color-rule-subtle: oklch(0.91 0.008 85);
+  
+  /* Ink & Typography */
+  --color-ink: oklch(0.18 0.02 250);
+  --color-ink-muted: oklch(0.42 0.02 250);
+  --color-ink-dim: oklch(0.58 0.015 250);
+  
+  /* Brand Accent */
+  --color-accent: oklch(0.62 0.19 50);
+  --color-accent-bg: oklch(0.62 0.19 50 / 0.10);
+  --color-focus: oklch(0.52 0.18 250);
+  
+  /* Semantic Evaluation States */
+  --color-correct: oklch(0.58 0.17 150);
+  --color-correct-bg: oklch(0.58 0.17 150 / 0.10);
+  --color-correct-border: oklch(0.52 0.17 150);
+  
+  --color-wrong: oklch(0.58 0.20 25);
+  --color-wrong-bg: oklch(0.58 0.20 25 / 0.10);
+  --color-wrong-border: oklch(0.52 0.20 25);
 }
 
 * {
@@ -657,6 +689,64 @@ section.scenario-canvas {
   max-width: 42ch;
 }
 
+/* Masthead Navigation Tools */
+.masthead-tools-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.masthead-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  border-left: 1px solid var(--color-rule);
+  padding-left: 0.75rem;
+}
+
+.tool-badge-btn {
+  background: var(--color-paper-card);
+  border: 1px solid var(--color-rule-subtle);
+  color: var(--color-ink-muted);
+  height: 32px;
+  padding: 0 0.6rem;
+  border-radius: var(--radius-xs);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.tool-badge-btn:hover {
+  background: var(--color-paper-card-hover);
+  color: var(--color-ink);
+  border-color: var(--color-rule);
+}
+
+.tool-icon-btn {
+  background: var(--color-paper-card);
+  border: 1px solid var(--color-rule-subtle);
+  color: var(--color-ink-muted);
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.12s ease;
+}
+
+.tool-icon-btn:hover {
+  background: var(--color-paper-card-hover);
+  color: var(--color-ink);
+  border-color: var(--color-rule);
+}
+
 /* Colophon Footer */
 footer.broadsheet-footer {
   border-top: 1px solid var(--color-rule);
@@ -667,3 +757,95 @@ footer.broadsheet-footer {
   color: var(--color-ink-dim);
   text-align: center;
 }
+
+/* Export Modal */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: oklch(0 0 0 / 0.6);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 100;
+}
+
+.export-modal {
+  background: var(--color-paper-subtle);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-md);
+  width: 100%;
+  max-width: 520px;
+  box-shadow: 0 20px 25px -5px oklch(0 0 0 / 0.5);
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--color-rule);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-header h2 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--color-ink);
+  letter-spacing: -0.01em;
+}
+
+.modal-body {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.export-item-card {
+  background: var(--color-paper);
+  border: 1px solid var(--color-rule);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  transition: border-color 0.12s ease;
+}
+
+.export-item-card:hover {
+  border-color: var(--color-ink-muted);
+}
+
+.export-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.export-item-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.export-item-desc {
+  font-size: 0.75rem;
+  color: var(--color-ink-dim);
+  line-height: 1.4;
+}
+
+.modal-footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--color-rule);
+  display: flex;
+  justify-content: flex-end;
+}
+

@@ -12,14 +12,73 @@ import {
   ExternalLink,
   Award,
   Layers,
-  CheckSquare
+  CheckSquare,
+  Sun,
+  Moon,
+  Globe,
+  Download,
+  X,
+  FileText,
+  FileSpreadsheet,
+  FileCode
 } from 'lucide-react';
 import type { Question, FilterStatus } from './types';
 import rawQuestions from './data/questions.json';
+import { translations, Language } from './i18n';
+import {
+  exportQuestionsMarkdown,
+  exportProgressJson,
+  exportProgressCsv
+} from './export';
 
 const questionsData: Question[] = rawQuestions as Question[];
 
 export const App: React.FC = () => {
+  // Theme State
+  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+    try {
+      const saved = localStorage.getItem('aws_quiz_theme');
+      if (saved === 'dark' || saved === 'light') return saved;
+      return window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    } catch {
+      return 'dark';
+    }
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    try {
+      localStorage.setItem('aws_quiz_theme', theme);
+    } catch (e) {
+      console.error(e);
+    }
+  }, [theme]);
+
+  // Language State
+  const [lang, setLang] = useState<Language>(() => {
+    try {
+      const saved = localStorage.getItem('aws_quiz_lang');
+      if (saved === 'en' || saved === 'tr') return saved;
+      return (navigator.language && navigator.language.startsWith('tr')) ? 'tr' : 'en';
+    } catch {
+      return 'en';
+    }
+  });
+
+  useEffect(() => {
+    try {
+      localStorage.setItem('aws_quiz_lang', lang);
+    } catch (e) {
+      console.error(e);
+    }
+  }, [lang]);
+
+  const t = translations[lang];
+
+  // Export Modal State
+  const [isExportOpen, setIsExportOpen] = useState(false);
+  const [exportFeedback, setExportFeedback] = useState<string | null>(null);
+
   // Filters
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedModule, setSelectedModule] = useState('all');
@@ -201,7 +260,9 @@ export const App: React.FC = () => {
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLSelectElement) {
         return;
       }
-      if (e.key === 'ArrowRight') {
+      if (e.key === 'Escape') {
+        if (isExportOpen) setIsExportOpen(false);
+      } else if (e.key === 'ArrowRight') {
         if (currentIndex < filteredQuestions.length - 1) {
           setCurrentIndex(i => i + 1);
         }
@@ -222,7 +283,36 @@ export const App: React.FC = () => {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [currentIndex, filteredQuestions.length, currentQ, userSelections]);
+  }, [currentIndex, filteredQuestions.length, currentQ, userSelections, isExportOpen]);
+
+  // Export actions
+  const onExportBookmarksMd = () => {
+    const bookmarkedList = questionsData.filter(q => bookmarks.has(q.id));
+    if (bookmarkedList.length === 0) {
+      setExportFeedback(t.noBookmarks);
+      setTimeout(() => setExportFeedback(null), 3000);
+      return;
+    }
+    exportQuestionsMarkdown('Bookmarked-Scenarios', bookmarkedList);
+  };
+
+  const onExportIncorrectMd = () => {
+    const incorrectList = questionsData.filter(q => history[q.id] && !history[q.id].isCorrect);
+    if (incorrectList.length === 0) {
+      setExportFeedback(t.noWrongs);
+      setTimeout(() => setExportFeedback(null), 3000);
+      return;
+    }
+    exportQuestionsMarkdown('Incorrect-Questions-Review', incorrectList);
+  };
+
+  const onExportProgressJson = () => {
+    exportProgressJson(history, bookmarks);
+  };
+
+  const onExportProgressCsv = () => {
+    exportProgressCsv(history, questionsData);
+  };
 
   // Overall Statistics
   const totalAnswered = Object.keys(history).length;
@@ -241,22 +331,56 @@ export const App: React.FC = () => {
             <div className="brand-monogram">AWS</div>
             <div className="brand-details">
               <h1>Solutions Architect Associate (SAA-C03)</h1>
-              <span>Curated Examination Workbench &bull; 1,766 Scenarios</span>
+              <span>{t.brandSubtitle}</span>
             </div>
           </div>
 
-          <div className="masthead-hud">
-            <div className="hud-cell">
-              <Award size={14} color="var(--color-focus)" />
-              <span>Progress: <strong>{totalAnswered}</strong> / {questionsData.length}</span>
+          <div className="masthead-tools-group">
+            <div className="masthead-hud">
+              <div className="hud-cell">
+                <Award size={14} color="var(--color-focus)" />
+                <span>{t.progress}: <strong>{totalAnswered}</strong> / {questionsData.length}</span>
+              </div>
+              <div className="hud-cell">
+                <CheckCircle2 size={14} color="var(--color-correct)" />
+                <span>{t.accuracy}: <strong>{accuracy}%</strong></span>
+              </div>
+              <div className="hud-cell">
+                <Bookmark size={14} color="oklch(0.78 0.18 70)" />
+                <span>{t.saved}: <strong>{bookmarks.size}</strong></span>
+              </div>
             </div>
-            <div className="hud-cell">
-              <CheckCircle2 size={14} color="var(--color-correct)" />
-              <span>Accuracy: <strong>{accuracy}%</strong></span>
-            </div>
-            <div className="hud-cell">
-              <Bookmark size={14} color="oklch(0.78 0.18 70)" />
-              <span>Saved: <strong>{bookmarks.size}</strong></span>
+
+            {/* Quick Controls: Export, Theme, Language */}
+            <div className="masthead-controls">
+              <button
+                className="tool-badge-btn"
+                onClick={() => setIsExportOpen(true)}
+                title={t.exportBtn}
+                aria-label={t.exportBtn}
+              >
+                <Download size={13} />
+                <span>{t.exportBtn}</span>
+              </button>
+
+              <button
+                className="tool-badge-btn"
+                onClick={() => setLang(l => (l === 'en' ? 'tr' : 'en'))}
+                title={t.langToggle}
+                aria-label={t.langToggle}
+              >
+                <Globe size={13} />
+                <span>{lang.toUpperCase()}</span>
+              </button>
+
+              <button
+                className="tool-icon-btn"
+                onClick={() => setTheme(curr => (curr === 'dark' ? 'light' : 'dark'))}
+                title={theme === 'dark' ? t.themeLight : t.themeDark}
+                aria-label={theme === 'dark' ? t.themeLight : t.themeDark}
+              >
+                {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
+              </button>
             </div>
           </div>
         </div>
@@ -268,14 +392,14 @@ export const App: React.FC = () => {
         <aside className="filter-rail">
           {/* Quick Search */}
           <div className="rail-section">
-            <label className="rail-label" htmlFor="workbench-search">Search Scenarios</label>
+            <label className="rail-label" htmlFor="workbench-search">{t.searchLabel}</label>
             <div className="rail-input-wrapper">
               <Search size={14} className="rail-search-icon" />
               <input
                 id="workbench-search"
                 type="text"
                 className="rail-input"
-                placeholder="Keywords, services, topics..."
+                placeholder={t.searchPlaceholder}
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
               />
@@ -284,30 +408,30 @@ export const App: React.FC = () => {
 
           {/* Module Selector */}
           <div className="rail-section">
-            <label className="rail-label" htmlFor="module-select">Target Module</label>
+            <label className="rail-label" htmlFor="module-select">{t.targetModule}</label>
             <select
               id="module-select"
               className="rail-select"
               value={selectedModule}
               onChange={e => setSelectedModule(e.target.value)}
             >
-              <option value="all">All Modules (1,766 Questions)</option>
-              <option value="01">Module 01: Scenarios &amp; Callouts (684 Q)</option>
-              <option value="02">Module 02: Comprehensive Bank (1,019 Q)</option>
-              <option value="03">Module 03: Annotated Practice (63 Q)</option>
+              <option value="all">{t.allModules}</option>
+              <option value="01">{t.mod01}</option>
+              <option value="02">{t.mod02}</option>
+              <option value="03">{t.mod03}</option>
             </select>
           </div>
 
           {/* Service Filter */}
           <div className="rail-section">
-            <label className="rail-label" htmlFor="service-select">AWS Service Filter</label>
+            <label className="rail-label" htmlFor="service-select">{t.serviceFilter}</label>
             <select
               id="service-select"
               className="rail-select"
               value={selectedService}
               onChange={e => setSelectedService(e.target.value)}
             >
-              <option value="all">All AWS Services</option>
+              <option value="all">{t.allServices}</option>
               {availableServices.map(svc => (
                 <option key={svc} value={svc}>{svc}</option>
               ))}
@@ -316,47 +440,46 @@ export const App: React.FC = () => {
 
           {/* Status Filter */}
           <div className="rail-section">
-            <div className="rail-label">Record Status</div>
+            <div className="rail-label">{t.recordStatus}</div>
             <div className="tab-filter-strip">
               <button
                 className={`tab-filter-btn ${filterStatus === 'all' ? 'active' : ''}`}
                 onClick={() => setFilterStatus('all')}
               >
-                All
+                {t.statusAll}
               </button>
               <button
                 className={`tab-filter-btn ${filterStatus === 'unanswered' ? 'active' : ''}`}
                 onClick={() => setFilterStatus('unanswered')}
               >
-                Unanswered
+                {t.statusUnanswered}
               </button>
               <button
                 className={`tab-filter-btn ${filterStatus === 'correct' ? 'active' : ''}`}
                 onClick={() => setFilterStatus('correct')}
               >
-                Correct ({correctCount})
+                {t.statusCorrect} ({correctCount})
               </button>
               <button
                 className={`tab-filter-btn ${filterStatus === 'incorrect' ? 'active' : ''}`}
                 onClick={() => setFilterStatus('incorrect')}
               >
-                Wrong ({totalAnswered - correctCount})
+                {t.statusIncorrect} ({totalAnswered - correctCount})
               </button>
               <button
                 className={`tab-filter-btn ${filterStatus === 'bookmarked' ? 'active' : ''}`}
                 onClick={() => setFilterStatus('bookmarked')}
               >
-                Saved ({bookmarks.size})
+                {t.statusSaved} ({bookmarks.size})
               </button>
             </div>
           </div>
 
           {/* Keyboard Cheatsheet */}
           <div className="cheatsheet-box">
-            <div><kbd>1-5</kbd> Select option</div>
-            <div><kbd>Enter</kbd> Verify answer</div>
-            <div><kbd>&larr;</kbd> <kbd>&rarr;</kbd> Previous / Next</div>
-            <div><kbd>S</kbd> Bookmark scenario</div>
+            {t.keyCheatsheet.map(item => (
+              <div key={item.key}><kbd>{item.key}</kbd> {item.desc}</div>
+            ))}
           </div>
         </aside>
 
@@ -365,10 +488,8 @@ export const App: React.FC = () => {
           {filteredQuestions.length === 0 ? (
             <div className="empty-canvas">
               <Layers size={36} color="var(--color-ink-dim)" />
-              <h3>No matching scenarios found</h3>
-              <p>
-                No questions match your current combination of keyword, module, and service filters.
-              </p>
+              <h3>{t.emptyTitle}</h3>
+              <p>{t.emptyDesc}</p>
               <button
                 className="nav-tool-btn btn-primary-action"
                 style={{ marginTop: '0.5rem' }}
@@ -379,7 +500,7 @@ export const App: React.FC = () => {
                   setFilterStatus('all');
                 }}
               >
-                <RotateCcw size={14} /> Clear All Filters
+                <RotateCcw size={14} /> {t.clearFilters}
               </button>
             </div>
           ) : currentQ ? (
@@ -387,7 +508,7 @@ export const App: React.FC = () => {
               {/* Toolbar */}
               <div className="canvas-toolbar">
                 <div className="question-counter-label">
-                  Scenario <strong>{currentIndex + 1}</strong> of {filteredQuestions.length}
+                  {t.scenario} <strong>{currentIndex + 1}</strong> {t.of} {filteredQuestions.length}
                   <span className="counter-id-tag">[{currentQ.id}]</span>
                 </div>
 
@@ -398,7 +519,7 @@ export const App: React.FC = () => {
                     onClick={() => setCurrentIndex(i => i - 1)}
                     title="Previous Question (Left Arrow)"
                   >
-                    <ChevronLeft size={15} /> Prev
+                    <ChevronLeft size={15} /> {t.prev}
                   </button>
                   <button
                     className="nav-tool-btn"
@@ -406,7 +527,7 @@ export const App: React.FC = () => {
                     onClick={() => setCurrentIndex(i => i + 1)}
                     title="Next Question (Right Arrow)"
                   >
-                    Next <ChevronRight size={15} />
+                    {t.next} <ChevronRight size={15} />
                   </button>
                 </div>
               </div>
@@ -415,7 +536,7 @@ export const App: React.FC = () => {
               <article className="examination-sheet">
                 <header className="sheet-meta-bar">
                   <div className="meta-tags-row">
-                    <span className="meta-code-tag">Module {currentQ.module}</span>
+                    <span className="meta-code-tag">{t.moduleLabel} {currentQ.module}</span>
                     <span className="meta-code-tag domain-tag">{currentQ.domain}</span>
                     {currentQ.services.map(svc => (
                       <span key={svc} className="meta-code-tag">
@@ -428,7 +549,7 @@ export const App: React.FC = () => {
                     <button
                       className={`icon-tool-btn ${bookmarks.has(currentQ.id) ? 'bookmarked' : ''}`}
                       onClick={() => toggleBookmark(currentQ.id)}
-                      title={bookmarks.has(currentQ.id) ? 'Remove Bookmark (S)' : 'Bookmark Scenario (S)'}
+                      title={bookmarks.has(currentQ.id) ? t.bookmarkRemove : t.bookmarkAdd}
                       aria-label="Bookmark scenario"
                     >
                       {bookmarks.has(currentQ.id) ? <BookmarkCheck size={16} /> : <Bookmark size={16} />}
@@ -437,7 +558,7 @@ export const App: React.FC = () => {
                       <button
                         className="icon-tool-btn"
                         onClick={handleResetCurrent}
-                        title="Reset this question"
+                        title={t.resetQuestion}
                         aria-label="Reset question state"
                       >
                         <RotateCcw size={15} />
@@ -454,7 +575,7 @@ export const App: React.FC = () => {
                 {/* Multiple choice note */}
                 {currentQ.correctAnswers.length > 1 && (
                   <div className="multi-select-callout">
-                    <CheckSquare size={14} /> Multiple choices required ({currentQ.correctAnswers.length} correct keys).
+                    <CheckSquare size={14} /> {t.multipleChoiceNotice(currentQ.correctAnswers.length)}
                   </div>
                 )}
 
@@ -512,7 +633,7 @@ export const App: React.FC = () => {
                       disabled={activeSelected.length === 0}
                       onClick={handleReveal}
                     >
-                      <CheckCircle2 size={15} /> Verify Answer [Enter]
+                      <CheckCircle2 size={15} /> {t.verifyAnswer}
                     </button>
                   ) : (
                     <button
@@ -523,7 +644,7 @@ export const App: React.FC = () => {
                         }
                       }}
                     >
-                      Next Scenario <ChevronRight size={15} />
+                      {t.nextScenario} <ChevronRight size={15} />
                     </button>
                   )}
                 </div>
@@ -534,10 +655,10 @@ export const App: React.FC = () => {
                     <div className="proof-header">
                       <div className="proof-title">
                         <BookOpen size={15} color="var(--color-accent)" />
-                        <span>Architectural Analysis &amp; Rationale</span>
+                        <span>{t.analysisTitle}</span>
                       </div>
                       <span className="verified-key-badge">
-                        Key: {currentQ.correctAnswers.join(', ')}
+                        {t.verifiedKey}: {currentQ.correctAnswers.join(', ')}
                       </span>
                     </div>
 
@@ -548,7 +669,7 @@ export const App: React.FC = () => {
                     {currentQ.officialDocs.length > 0 && (
                       <div className="proof-reference-links">
                         <div style={{ fontSize: '0.72rem', color: 'var(--color-ink-dim)', fontFamily: 'var(--font-mono)', textTransform: 'uppercase' }}>
-                          Official AWS Reference Architecture:
+                          {t.officialDocsLabel}
                         </div>
                         {currentQ.officialDocs.map(url => (
                           <a
@@ -573,8 +694,96 @@ export const App: React.FC = () => {
 
       {/* Broadsheet Footer */}
       <footer className="broadsheet-footer">
-        AWS Certified Solutions Architect &mdash; Associate (SAA-C03) &bull; Editorial Workbench PWA &bull; Pure Client-Side Offline Engine
+        {t.footer}
       </footer>
+
+      {/* Export Modal Dialog */}
+      {isExportOpen && (
+        <div className="modal-backdrop" onClick={() => setIsExportOpen(false)}>
+          <div className="export-modal" onClick={e => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2>{t.exportModalTitle}</h2>
+              <button
+                className="icon-tool-btn"
+                onClick={() => setIsExportOpen(false)}
+                aria-label={t.close}
+              >
+                <X size={16} />
+              </button>
+            </div>
+
+            <div className="modal-body">
+              {exportFeedback && (
+                <div style={{ padding: '0.65rem 0.85rem', background: 'var(--color-wrong-bg)', border: '1px solid var(--color-wrong-border)', color: 'var(--color-wrong)', fontSize: '0.8rem', borderRadius: 'var(--radius-xs)', fontFamily: 'var(--font-mono)' }}>
+                  {exportFeedback}
+                </div>
+              )}
+
+              {/* Option 1: Bookmarks Markdown */}
+              <div className="export-item-card">
+                <div className="export-item-info">
+                  <div className="export-item-title">
+                    <FileText size={15} color="var(--color-focus)" />
+                    <span>{t.exportBookmarksMdTitle}</span>
+                  </div>
+                  <p className="export-item-desc">{t.exportBookmarksMdDesc}</p>
+                </div>
+                <button className="nav-tool-btn" onClick={onExportBookmarksMd}>
+                  <Download size={13} /> .md ({bookmarks.size})
+                </button>
+              </div>
+
+              {/* Option 2: Incorrect Questions Markdown */}
+              <div className="export-item-card">
+                <div className="export-item-info">
+                  <div className="export-item-title">
+                    <FileText size={15} color="var(--color-wrong)" />
+                    <span>{t.exportWrongMdTitle}</span>
+                  </div>
+                  <p className="export-item-desc">{t.exportWrongMdDesc}</p>
+                </div>
+                <button className="nav-tool-btn" onClick={onExportIncorrectMd}>
+                  <Download size={13} /> .md ({totalAnswered - correctCount})
+                </button>
+              </div>
+
+              {/* Option 3: Full JSON Progress Backup */}
+              <div className="export-item-card">
+                <div className="export-item-info">
+                  <div className="export-item-title">
+                    <FileCode size={15} color="var(--color-accent)" />
+                    <span>{t.exportProgressJsonTitle}</span>
+                  </div>
+                  <p className="export-item-desc">{t.exportProgressJsonDesc}</p>
+                </div>
+                <button className="nav-tool-btn" onClick={onExportProgressJson}>
+                  <Download size={13} /> .json
+                </button>
+              </div>
+
+              {/* Option 4: Study Log CSV */}
+              <div className="export-item-card">
+                <div className="export-item-info">
+                  <div className="export-item-title">
+                    <FileSpreadsheet size={15} color="var(--color-correct)" />
+                    <span>{t.exportProgressCsvTitle}</span>
+                  </div>
+                  <p className="export-item-desc">{t.exportProgressCsvDesc}</p>
+                </div>
+                <button className="nav-tool-btn" onClick={onExportProgressCsv}>
+                  <Download size={13} /> .csv
+                </button>
+              </div>
+            </div>
+
+            <div className="modal-footer">
+              <button className="nav-tool-btn" onClick={() => setIsExportOpen(false)}>
+                {t.close}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
