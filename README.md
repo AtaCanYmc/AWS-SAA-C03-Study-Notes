@@ -5,6 +5,7 @@ Structured study repository for the AWS Certified Solutions Architect - Associat
 [![CI](https://github.com/AtaCanYmc/AWS-SAA-C03-Study-Notes/actions/workflows/ci.yml/badge.svg)](https://github.com/AtaCanYmc/AWS-SAA-C03-Study-Notes/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Total Questions](https://img.shields.io/badge/Questions-1%2C766%20Total-orange.svg)](#study-modules-matrix)
+[![Live Quiz PWA](https://img.shields.io/badge/Live%20App-Quiz%20PWA-22c55e?logo=githubpages&logoColor=white)](https://atacanymc.github.io/AWS-SAA-C03-Study-Notes/)
 [![Last Commit](https://img.shields.io/github/last-commit/AtaCanYmc/AWS-SAA-C03-Study-Notes)](https://github.com/AtaCanYmc/AWS-SAA-C03-Study-Notes/commits/main)
 [![Exam Guide](https://img.shields.io/badge/AWS-SAA--C03-232F3E?logo=amazon-aws&logoColor=white)](https://aws.amazon.com/certification/certified-solutions-architect-associate/)
 
@@ -137,7 +138,9 @@ The 1,766 questions across the three modules cover the core AWS services as foll
 
 ## Interactive Quiz PWA
 
-For active recall practice and real-time AWS service filtering, this repository includes an offline-first **Progressive Web App (PWA)** built with Vite, React, and TypeScript located under `web/`.
+> 🌐 **Live Web Application:** [https://atacanymc.github.io/AWS-SAA-C03-Study-Notes/](https://atacanymc.github.io/AWS-SAA-C03-Study-Notes/)
+
+For active recall practice and real-time AWS service filtering, this repository includes an offline-first **Progressive Web App (PWA)** built with Vite, React, and TypeScript located under `web/`. Automatically built and deployed to GitHub Pages on every push to `main`.
 
 ### Key Capabilities
 

@@ -2,8 +2,10 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
+const basePath = process.env.BASE_PATH || '/AWS-SAA-C03-Study-Notes/';
+
 export default defineConfig({
-  base: './',
+  base: basePath,
   build: {
     chunkSizeWarningLimit: 5000
   },
@@ -20,6 +22,8 @@ export default defineConfig({
         background_color: '#0f172a',
         display: 'standalone',
         orientation: 'portrait',
+        start_url: basePath,
+        scope: basePath,
         icons: [
           {
             src: 'pwa-192x192.png',
@@ -40,3 +44,4 @@ export default defineConfig({
     })
   ]
 });
+
