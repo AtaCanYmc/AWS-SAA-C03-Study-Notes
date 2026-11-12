@@ -1,0 +1,32 @@
+name: "Feature Request / Suggestion"
+description: "Suggest a new study resource, quiz PWA enhancement, or automation idea."
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        We welcome ideas and feature suggestions to improve this study repository!
+  - type: input
+    id: summary
+    attributes:
+      label: "Proposal Summary"
+      placeholder: "Short, descriptive title"
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: "Detailed Proposal"
+      description: "What problem does this solve, or what new capability does it introduce?"
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: "Category"
+      options:
+        - "Interactive Quiz PWA"
+        - "Study Notes & Question Content"
+        - "CI/CD & Automation"
+        - "Documentation & Standards"

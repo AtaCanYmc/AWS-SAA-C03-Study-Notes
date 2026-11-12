@@ -1,5 +1,5 @@
 blank_issues_enabled: false
 contact_links:
-  - name: AWS Certified Solutions Architect - Associate SAA-C03 Resmi Rehberi
+  - name: AWS Certified Solutions Architect - Associate SAA-C03 Official Guide
     url: https://aws.amazon.com/certification/certified-solutions-architect-associate/
-    about: Resmi AWS SAA-C03 sınav kılavuzu ve güncel alan ağırlıkları.
+    about: Official AWS SAA-C03 exam guide, blueprints, and up-to-date domain weightings.

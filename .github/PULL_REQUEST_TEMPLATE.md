@@ -1,22 +1,22 @@
-## 📌 Değişiklik Özeti
+## 📌 Change Summary
 
-Bu Pull Request hangi sorunu çözüyor veya ne tür bir katkı sağlıyor?
+What problem does this Pull Request address, or what capability does it add?
 
-- [ ] Soru / Cevap / Açıklama düzeltmesi
-- [ ] Yeni özellik / script / web geliştirmesi
-- [ ] Dokümantasyon / Tipografi iyileştirmesi
-- [ ] CI/CD & Otomasyon
+- [ ] Question / Answer / Explanation correction
+- [ ] New feature / Script / Web enhancement
+- [ ] Documentation / Typography improvements
+- [ ] CI/CD & Automation
 
-## 🔍 Yapılan Değişiklikler
+## 🔍 Detailed Changes
 
 - 
 
-## 🧪 Kontrol Listesi
+## 🧪 Contributor Checklist
 
-Lütfen PR göndermeden önce aşağıdaki maddeleri kontrol edin:
+Please verify the following before submitting your pull request:
 
-- [ ] [CONTRIBUTING.md](CONTRIBUTING.md) rehberine uygun başlık ve commit formatı kullanıldı (`fix:`, `feat:`, `docs:` vb.).
-- [ ] Python kodları sözdizimi hatası içermiyor (`python3 -m py_compile ...`).
-- [ ] Markdown dosyaları linter'dan temiz geçti (`npx markdownlint-cli "**/*.md"`).
-- [ ] Dış linkler (özellikle AWS docs) doğrulanabilir ve güncel.
-- [ ] Hassas bilgi (API anahtarları, credentials vb.) kesinlikle eklenmedi.
+- [ ] Follows branch naming and commit conventions outlined in [CONTRIBUTING.md](CONTRIBUTING.md) (`feat:`, `fix:`, `docs:`, etc.).
+- [ ] Python scripts compile without syntax errors (`python3 -m py_compile scripts/*.py`).
+- [ ] Markdown files pass formatting checks cleanly (`npx markdownlint-cli "**/*.md"`).
+- [ ] External links (especially official AWS documentation) are verified and reachable.
+- [ ] No sensitive credentials, private tokens, or proprietary materials are committed.

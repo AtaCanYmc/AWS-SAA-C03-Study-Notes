@@ -21,8 +21,8 @@ jobs:
           test -f SECURITY.md
           test -f LICENSE
           test -f .github/PULL_REQUEST_TEMPLATE.md
-          test -f .github/ISSUE_TEMPLATE/soru_duzeltme.yml
-          test -f .github/ISSUE_TEMPLATE/oneri_talep.yml
+          test -f .github/ISSUE_TEMPLATE/question_correction.yml
+          test -f .github/ISSUE_TEMPLATE/feature_request.yml
 
       - name: Validate notes directory structure
         run: |

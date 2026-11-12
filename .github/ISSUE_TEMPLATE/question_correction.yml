@@ -1,0 +1,51 @@
+name: "Question Correction / Bug Report"
+description: "Report a wrong answer key, outdated AWS service naming, or missing solution explanation."
+title: "[Correction]: Module <X> - Question #<Y>"
+labels: ["triage", "question-correction"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for helping maintain high quality and accuracy for the AWS SAA-C03 study materials!
+  - type: dropdown
+    id: module
+    attributes:
+      label: "Target Study Module"
+      description: "Select which module contains the question in need of correction."
+      options:
+        - "01 - AWS Certified Solutions Architect Associate (684 Questions)"
+        - "02 - AWS SAA-C03 Question Bank (1019 Questions)"
+        - "03 - CAA Exam Questions Explained (63 Annotated Questions)"
+        - "General / README / Scripts"
+    validations:
+      required: true
+  - type: input
+    id: question_ref
+    attributes:
+      label: "Question Number / File Path"
+      description: "e.g., Question #128 or `notes/01-aws-certified-solutions-architect-associate-saa-c03/sections/section-01-questions-0001-0100.md`"
+      placeholder: "e.g., Question #128"
+    validations:
+      required: true
+  - type: textarea
+    id: current_state
+    attributes:
+      label: "Current Issue / Defect"
+      description: "Explain what is incorrect in the current question text, options, or explanation."
+      placeholder: "The current answer shows A, but the scenario specifies lowest cost and multi-AZ fault tolerance..."
+    validations:
+      required: true
+  - type: textarea
+    id: suggested_correction
+    attributes:
+      label: "Proposed Correction & Architectural Justification"
+      description: "What should the correct answer or explanation be, and why?"
+      placeholder: "The correct option should be C because S3 Transfer Acceleration only speeds up uploads, whereas..."
+    validations:
+      required: true
+  - type: input
+    id: aws_reference
+    attributes:
+      label: "Official AWS Documentation Link"
+      description: "Reference link from docs.aws.amazon.com supporting your correction."
+      placeholder: "https://docs.aws.amazon.com/..."

@@ -229,8 +229,8 @@ Navigate to any module folder (such as [`notes/02-aws-saa-c03-question-bank-1019
 Review [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines, branch standards, and pull request expectations. For security disclosure policies, refer to [SECURITY.md](SECURITY.md).
 
 External contributions and corrections are welcome:
-- To report a wrong answer key or clarify a solution, use the [Soru Düzeltme / Hata Bildirimi](https://github.com/AtaCanYmc/AWS-SAA-C03-Study-Notes/issues/new?template=soru_duzeltme.yml) template.
-- To suggest features, PWA improvements, or new resources, use the [Öneri ve Talep](https://github.com/AtaCanYmc/AWS-SAA-C03-Study-Notes/issues/new?template=oneri_talep.yml) template.
+- To report a wrong answer key or clarify a solution, use the [Question Correction / Bug Report](https://github.com/AtaCanYmc/AWS-SAA-C03-Study-Notes/issues/new?template=question_correction.yml) template.
+- To suggest features, PWA improvements, or new resources, use the [Feature Request / Suggestion](https://github.com/AtaCanYmc/AWS-SAA-C03-Study-Notes/issues/new?template=feature_request.yml) template.
 - Standard checklist enforcement is automated via our [.github/PULL_REQUEST_TEMPLATE.md](.github/PULL_REQUEST_TEMPLATE.md).
 
 

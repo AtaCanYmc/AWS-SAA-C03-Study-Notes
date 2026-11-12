@@ -247,15 +247,15 @@ export const App: React.FC = () => {
           <div className="stats-bar">
             <div className="stat-pill">
               <Award size={15} color="#38bdf8" />
-              <span>Çözülen: <strong>{totalAnswered}</strong> / {questionsData.length}</span>
+              <span>Answered: <strong>{totalAnswered}</strong> / {questionsData.length}</span>
             </div>
             <div className="stat-pill">
               <CheckCircle2 size={15} color="#10b981" />
-              <span>Başarı: <strong>{accuracy}%</strong></span>
+              <span>Accuracy: <strong>{accuracy}%</strong></span>
             </div>
             <div className="stat-pill">
               <Bookmark size={15} color="#f59e0b" />
-              <span>Kayıtlı: <strong>{bookmarks.size}</strong></span>
+              <span>Saved: <strong>{bookmarks.size}</strong></span>
             </div>
           </div>
         </div>
@@ -267,13 +267,13 @@ export const App: React.FC = () => {
         <aside className="filters-sidebar">
           {/* Search */}
           <div className="filter-section">
-            <div className="filter-title">Hızlı Arama</div>
+            <div className="filter-title">Quick Search</div>
             <div className="search-input-wrapper">
               <Search size={15} className="search-icon" />
               <input
                 type="text"
                 className="search-input"
-                placeholder="Soru, terim veya servis ara..."
+                placeholder="Search questions, services, or concepts..."
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
               />
@@ -282,28 +282,28 @@ export const App: React.FC = () => {
 
           {/* Module Selector */}
           <div className="filter-section">
-            <div className="filter-title">Çalışma Modülü</div>
+            <div className="filter-title">Study Module</div>
             <select
               className="select-filter"
               value={selectedModule}
               onChange={e => setSelectedModule(e.target.value)}
             >
-              <option value="all">Tüm Modüller (1,766 Soru)</option>
-              <option value="01">Modül 01: Senaryo Analizleri (684 Q)</option>
-              <option value="02">Modül 02: Kapsamlı Soru Bankası (1019 Q)</option>
-              <option value="03">Modül 03: Türkçe Detaylı Açıklamalar (63 Q)</option>
+              <option value="all">All Modules (1,766 Questions)</option>
+              <option value="01">Module 01: Architectural Scenarios (684 Q)</option>
+              <option value="02">Module 02: Comprehensive Bank (1,019 Q)</option>
+              <option value="03">Module 03: Annotated Practice (63 Q)</option>
             </select>
           </div>
 
           {/* AWS Service Filter */}
           <div className="filter-section">
-            <div className="filter-title">AWS Servisine Göre Filtrele</div>
+            <div className="filter-title">Filter by AWS Service</div>
             <select
               className="select-filter"
               value={selectedService}
               onChange={e => setSelectedService(e.target.value)}
             >
-              <option value="all">Tüm AWS Servisleri</option>
+              <option value="all">All AWS Services</option>
               {availableServices.map(svc => (
                 <option key={svc} value={svc}>{svc}</option>
               ))}
@@ -312,37 +312,37 @@ export const App: React.FC = () => {
 
           {/* Status Filter */}
           <div className="filter-section">
-            <div className="filter-title">Durum Filtresi</div>
+            <div className="filter-title">Question Status</div>
             <div className="pill-group">
               <button
                 className={`pill-btn ${filterStatus === 'all' ? 'active' : ''}`}
                 onClick={() => setFilterStatus('all')}
               >
-                Tümü
+                All
               </button>
               <button
                 className={`pill-btn ${filterStatus === 'unanswered' ? 'active' : ''}`}
                 onClick={() => setFilterStatus('unanswered')}
               >
-                Çözülmemiş
+                Unanswered
               </button>
               <button
                 className={`pill-btn ${filterStatus === 'correct' ? 'active' : ''}`}
                 onClick={() => setFilterStatus('correct')}
               >
-                Doğru ({correctCount})
+                Correct ({correctCount})
               </button>
               <button
                 className={`pill-btn ${filterStatus === 'incorrect' ? 'active' : ''}`}
                 onClick={() => setFilterStatus('incorrect')}
               >
-                Yanlış ({totalAnswered - correctCount})
+                Incorrect ({totalAnswered - correctCount})
               </button>
               <button
                 className={`pill-btn ${filterStatus === 'bookmarked' ? 'active' : ''}`}
                 onClick={() => setFilterStatus('bookmarked')}
               >
-                Yıldızlı ({bookmarks.size})
+                Bookmarked ({bookmarks.size})
               </button>
             </div>
           </div>
@@ -353,9 +353,9 @@ export const App: React.FC = () => {
           {filteredQuestions.length === 0 ? (
             <div className="question-card" style={{ textAlign: 'center', padding: '3rem' }}>
               <Layers size={40} color="#64748b" style={{ margin: '0 auto 1rem' }} />
-              <h3>Arama kriterine uygun soru bulunamadı</h3>
+              <h3>No matching questions found</h3>
               <p style={{ color: 'var(--text-muted)', marginTop: '0.5rem' }}>
-                Filtreleri sıfırlayarak tüm soruları yeniden görüntüleyebilirsiniz.
+                Try resetting or broadening your search criteria.
               </p>
               <button
                 className="action-btn primary-btn"
@@ -367,7 +367,7 @@ export const App: React.FC = () => {
                   setFilterStatus('all');
                 }}
               >
-                <RotateCcw size={16} /> Filtreleri Sıfırla
+                <RotateCcw size={16} /> Reset Filters
               </button>
             </div>
           ) : currentQ ? (
@@ -376,7 +376,7 @@ export const App: React.FC = () => {
               <div className="quiz-header-bar">
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-                    Soru <strong>{currentIndex + 1}</strong> / {filteredQuestions.length}
+                    Question <strong>{currentIndex + 1}</strong> of {filteredQuestions.length}
                   </span>
                   <span style={{ fontSize: '0.8rem', color: 'var(--text-dim)' }}>
                     ({currentQ.id})
@@ -388,17 +388,17 @@ export const App: React.FC = () => {
                     className="action-btn"
                     disabled={currentIndex === 0}
                     onClick={() => setCurrentIndex(i => i - 1)}
-                    title="Önceki Soru (Sol Ok)"
+                    title="Previous Question (Left Arrow)"
                   >
-                    <ChevronLeft size={16} /> Önceki
+                    <ChevronLeft size={16} /> Previous
                   </button>
                   <button
                     className="action-btn"
                     disabled={currentIndex === filteredQuestions.length - 1}
                     onClick={() => setCurrentIndex(i => i + 1)}
-                    title="Sonraki Soru (Sağ Ok)"
+                    title="Next Question (Right Arrow)"
                   >
-                    Sonraki <ChevronRight size={16} />
+                    Next <ChevronRight size={16} />
                   </button>
                 </div>
               </div>
@@ -407,7 +407,7 @@ export const App: React.FC = () => {
               <div className="question-card">
                 <div className="question-meta">
                   <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', alignItems: 'center' }}>
-                    <span className="badge-tag">Modül {currentQ.module}</span>
+                    <span className="badge-tag">Module {currentQ.module}</span>
                     <span className="badge-domain">{currentQ.domain}</span>
                     {currentQ.services.map(svc => (
                       <span key={svc} className="badge-tag" style={{ background: '#0f2c44', borderColor: '#0284c7', color: '#7dd3fc' }}>
@@ -420,7 +420,7 @@ export const App: React.FC = () => {
                     <button
                       className={`icon-btn ${bookmarks.has(currentQ.id) ? 'bookmarked' : ''}`}
                       onClick={() => toggleBookmark(currentQ.id)}
-                      title={bookmarks.has(currentQ.id) ? 'Yıldızı Kaldır' : 'Yıldızla / Kaydet'}
+                      title={bookmarks.has(currentQ.id) ? 'Remove Bookmark' : 'Bookmark Question'}
                     >
                       {bookmarks.has(currentQ.id) ? <BookmarkCheck size={18} /> : <Bookmark size={18} />}
                     </button>
@@ -428,7 +428,7 @@ export const App: React.FC = () => {
                       <button
                         className="icon-btn"
                         onClick={handleResetCurrent}
-                        title="Bu Soruyu Sıfırla"
+                        title="Reset Question State"
                       >
                         <RotateCcw size={16} />
                       </button>
@@ -444,7 +444,7 @@ export const App: React.FC = () => {
                 {/* Multiple choice alert */}
                 {currentQ.correctAnswers.length > 1 && (
                   <div style={{ fontSize: '0.82rem', color: '#fbbf24', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                    <Sparkles size={14} /> Birden fazla seçenek işaretleyin ({currentQ.correctAnswers.length} doğru yanıt).
+                    <Sparkles size={14} /> Select multiple options ({currentQ.correctAnswers.length} correct answers).
                   </div>
                 )}
 
@@ -493,7 +493,7 @@ export const App: React.FC = () => {
                       disabled={activeSelected.length === 0}
                       onClick={handleReveal}
                     >
-                      <CheckCircle2 size={16} /> Cevabı Kontrol Et (Enter)
+                      <CheckCircle2 size={16} /> Check Answer (Enter)
                     </button>
                   ) : (
                     <button
@@ -504,7 +504,7 @@ export const App: React.FC = () => {
                         }
                       }}
                     >
-                      Sonraki Soruya Geç <ChevronRight size={16} />
+                      Next Question <ChevronRight size={16} />
                     </button>
                   )}
                 </div>
@@ -514,7 +514,7 @@ export const App: React.FC = () => {
                   <div className="explanation-box">
                     <div className="explanation-title">
                       <BookOpen size={16} />
-                      <span>Mimari Çözüm &amp; Konu Özeti (Doğru Yanıt: {currentQ.correctAnswers.join(', ')})</span>
+                      <span>Architectural Solution &amp; Key Concepts (Correct Answer: {currentQ.correctAnswers.join(', ')})</span>
                     </div>
                     <div className="explanation-content">
                       {currentQ.explanation}
@@ -523,7 +523,7 @@ export const App: React.FC = () => {
                     {currentQ.officialDocs.length > 0 && (
                       <div className="doc-links">
                         <strong style={{ fontSize: '0.75rem', color: 'var(--text-dim)', textTransform: 'uppercase' }}>
-                          Resmi AWS Dokümantasyonu:
+                          Official AWS Documentation:
                         </strong>
                         {currentQ.officialDocs.map(url => (
                           <a
