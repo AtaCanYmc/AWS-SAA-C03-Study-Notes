@@ -12,7 +12,7 @@ import {
   ExternalLink,
   Award,
   Layers,
-  Sparkles
+  CheckSquare
 } from 'lucide-react';
 import type { Question, FilterStatus } from './types';
 import rawQuestions from './data/questions.json';
@@ -245,15 +245,15 @@ export const App: React.FC = () => {
           </div>
 
           <div className="stats-bar">
-            <div className="stat-pill">
+            <div className="stat-cell">
               <Award size={15} color="#38bdf8" />
               <span>Answered: <strong>{totalAnswered}</strong> / {questionsData.length}</span>
             </div>
-            <div className="stat-pill">
+            <div className="stat-cell">
               <CheckCircle2 size={15} color="#10b981" />
               <span>Accuracy: <strong>{accuracy}%</strong></span>
             </div>
-            <div className="stat-pill">
+            <div className="stat-cell">
               <Bookmark size={15} color="#f59e0b" />
               <span>Saved: <strong>{bookmarks.size}</strong></span>
             </div>
@@ -313,33 +313,33 @@ export const App: React.FC = () => {
           {/* Status Filter */}
           <div className="filter-section">
             <div className="filter-title">Question Status</div>
-            <div className="pill-group">
+            <div className="filter-btn-group">
               <button
-                className={`pill-btn ${filterStatus === 'all' ? 'active' : ''}`}
+                className={`filter-btn ${filterStatus === 'all' ? 'active' : ''}`}
                 onClick={() => setFilterStatus('all')}
               >
                 All
               </button>
               <button
-                className={`pill-btn ${filterStatus === 'unanswered' ? 'active' : ''}`}
+                className={`filter-btn ${filterStatus === 'unanswered' ? 'active' : ''}`}
                 onClick={() => setFilterStatus('unanswered')}
               >
                 Unanswered
               </button>
               <button
-                className={`pill-btn ${filterStatus === 'correct' ? 'active' : ''}`}
+                className={`filter-btn ${filterStatus === 'correct' ? 'active' : ''}`}
                 onClick={() => setFilterStatus('correct')}
               >
                 Correct ({correctCount})
               </button>
               <button
-                className={`pill-btn ${filterStatus === 'incorrect' ? 'active' : ''}`}
+                className={`filter-btn ${filterStatus === 'incorrect' ? 'active' : ''}`}
                 onClick={() => setFilterStatus('incorrect')}
               >
                 Incorrect ({totalAnswered - correctCount})
               </button>
               <button
-                className={`pill-btn ${filterStatus === 'bookmarked' ? 'active' : ''}`}
+                className={`filter-btn ${filterStatus === 'bookmarked' ? 'active' : ''}`}
                 onClick={() => setFilterStatus('bookmarked')}
               >
                 Bookmarked ({bookmarks.size})
@@ -406,11 +406,11 @@ export const App: React.FC = () => {
               {/* Main Question Card */}
               <div className="question-card">
                 <div className="question-meta">
-                  <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', alignItems: 'center' }}>
+                  <div className="tag-list">
                     <span className="badge-tag">Module {currentQ.module}</span>
                     <span className="badge-domain">{currentQ.domain}</span>
                     {currentQ.services.map(svc => (
-                      <span key={svc} className="badge-tag" style={{ background: '#0f2c44', borderColor: '#0284c7', color: '#7dd3fc' }}>
+                      <span key={svc} className="badge-tag">
                         {svc}
                       </span>
                     ))}
@@ -421,6 +421,7 @@ export const App: React.FC = () => {
                       className={`icon-btn ${bookmarks.has(currentQ.id) ? 'bookmarked' : ''}`}
                       onClick={() => toggleBookmark(currentQ.id)}
                       title={bookmarks.has(currentQ.id) ? 'Remove Bookmark' : 'Bookmark Question'}
+                      aria-label="Bookmark Question"
                     >
                       {bookmarks.has(currentQ.id) ? <BookmarkCheck size={18} /> : <Bookmark size={18} />}
                     </button>
@@ -429,6 +430,7 @@ export const App: React.FC = () => {
                         className="icon-btn"
                         onClick={handleResetCurrent}
                         title="Reset Question State"
+                        aria-label="Reset Question"
                       >
                         <RotateCcw size={16} />
                       </button>
@@ -441,10 +443,10 @@ export const App: React.FC = () => {
                   {currentQ.questionText}
                 </div>
 
-                {/* Multiple choice alert */}
+                {/* Multiple choice note */}
                 {currentQ.correctAnswers.length > 1 && (
-                  <div style={{ fontSize: '0.82rem', color: '#fbbf24', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                    <Sparkles size={14} /> Select multiple options ({currentQ.correctAnswers.length} correct answers).
+                  <div style={{ fontSize: '0.82rem', color: '#f59e0b', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                    <CheckSquare size={14} /> Multiple choices required ({currentQ.correctAnswers.length} correct answers).
                   </div>
                 )}
 
@@ -471,6 +473,15 @@ export const App: React.FC = () => {
                         key={opt.key}
                         className={`option-item ${statusClass}`}
                         onClick={() => handleSelectOption(opt.key)}
+                        onKeyDown={e => {
+                          if (e.key === ' ' || e.key === 'Enter') {
+                            e.preventDefault();
+                            handleSelectOption(opt.key);
+                          }
+                        }}
+                        role="button"
+                        tabIndex={0}
+                        aria-pressed={isSelected}
                       >
                         <div className="option-key">{opt.key}</div>
                         <div className="option-text">{opt.text}</div>
@@ -512,9 +523,10 @@ export const App: React.FC = () => {
                 {/* Explanation Block */}
                 {isCurrentRevealed && currentQ.explanation && (
                   <div className="explanation-box">
-                    <div className="explanation-title">
+                    <div className="explanation-header">
                       <BookOpen size={16} />
-                      <span>Architectural Solution &amp; Key Concepts (Correct Answer: {currentQ.correctAnswers.join(', ')})</span>
+                      <span>Architectural Solution &amp; Key Concepts</span>
+                      <span className="answer-pill">Correct Answer: {currentQ.correctAnswers.join(', ')}</span>
                     </div>
                     <div className="explanation-content">
                       {currentQ.explanation}
