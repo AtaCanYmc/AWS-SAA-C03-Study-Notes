@@ -1,0 +1,18 @@
+### Example user template
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+
+# Content of raw original PDFs (optional/large binary files)
+content/
+convert.py
