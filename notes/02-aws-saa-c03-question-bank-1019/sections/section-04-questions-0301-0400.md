@@ -24,7 +24,16 @@ layer to Amazon Aurora Reserved Instances.
 D. Migrate the application layer to Amazon EC2 On-Demand Instances. Migrate the data storage
 layer to Amazon RDS Reserved Instances.
 
-Correct Answer: C
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `C`
+> - **Recommended Solution:** Migrate the application layer to Amazon EC2 Reserved Instances. Migrate the data storage layer to Amazon Aurora Reserved Instances.
+>
+> **Exam Concept Summary:**
+> - **Amazon EC2 Spot Instances:** Offers up to 90% discount on spare EC2 capacity. Ideal for stateless, fault-tolerant, batch, and flexible workloads that can withstand instance termination with a 2-minute notice.
+> - **Amazon Aurora High Availability & Global DB:** Replicates 6 copies of data across 3 Availability Zones natively. Aurora Global Database provides dedicated multi-region relational clustering with storage-level replication latency under 1 second.
+
+---
 
 ---
 
@@ -46,7 +55,16 @@ C. AWS DataSync
 
 D. AWS Transfer Family
 
-Correct Answer: C
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `C`
+> - **Recommended Solution:** AWS DataSync
+>
+> **Exam Concept Summary:**
+> - **Amazon FSx Managed File Systems:** FSx for Windows provides fully managed native SMB file shares with Active Directory integration. FSx for Lustre delivers ultra-high-throughput sub-millisecond storage for compute-intensive HPC and machine learning.
+> - **AWS Storage Gateway:** Connects on-premises environments to cloud storage. S3 File Gateway exposes S3 via NFS/SMB caching; Volume Gateway provides iSCSI block storage backed by EBS snapshots.
+
+---
 
 ---
 
@@ -72,7 +90,16 @@ and caching.
 E. Deploy an Auto Scaling group of Amazon EC2 instances to convert the video files to more
 appropriate formats.
 
-Correct Answer: A
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Deploy Amazon CloudFront for content delivery and caching.
+>
+> **Exam Concept Summary:**
+> - **EC2 Auto Scaling & Target Tracking:** Target Tracking scaling policies dynamically adjust ASG capacity to maintain a specific metric (e.g. 50% average CPU utilization or request count per target) with minimal manual tuning.
+> - **Amazon CloudFront & Origin Access Control:** Global Content Delivery Network (CDN) caching content at edge locations. Origin Access Control (OAC) restricts direct public access to S3 origins so users must traverse CloudFront.
+
+---
 
 ---
 
@@ -94,7 +121,16 @@ trigger an Amazon CloudWatch alarm.
 D. Use AWS Application Auto Scaling with target tracking policies to scale when ECS metric
 breaches trigger an Amazon CloudWatch alarm.
 
-Correct Answer: D
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `D`
+> - **Recommended Solution:** Use AWS Application Auto Scaling with target tracking policies to scale when ECS metric breaches trigger an Amazon CloudWatch alarm.
+>
+> **Exam Concept Summary:**
+> - **EC2 Auto Scaling & Target Tracking:** Target Tracking scaling policies dynamically adjust ASG capacity to maintain a specific metric (e.g. 50% average CPU utilization or request count per target) with minimal manual tuning.
+> - **AWS Lambda Serverless Execution:** Runs stateless event-driven code scaling automatically from zero with sub-second billing. Maximum execution duration is 15 minutes.
+
+---
 
 ---
 
@@ -112,7 +148,15 @@ C. Set up an SFTP server on Amazon EC2.
 
 D. Use AWS Database Migration Service (AWS DMS).
 
-Correct Answer: A
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Use AWS DataSync.
+>
+> **Exam Concept Summary:**
+> - **AWS DataSync Accelerated Migration:** Automated, hardware-accelerated data transfer service between on-premises storage systems (NFS, SMB, object) and AWS storage (S3, EFS, FSx) with end-to-end data integrity validation.
+
+---
 
 ---
 
@@ -134,7 +178,16 @@ server. Connect the application server to the file system.
 D. Create an Amazon S3 bucket. Assign an IAM role to the application to grant access to the S3
 bucket. Mount the S3 bucket to the application server.
 
-Correct Answer: C
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `C`
+> - **Recommended Solution:** Create an Amazon FSx for Windows File Server file system. Attach the file system to the origin server. Connect the application server to the file system.
+>
+> **Exam Concept Summary:**
+> - **Amazon FSx Managed File Systems:** FSx for Windows provides fully managed native SMB file shares with Active Directory integration. FSx for Lustre delivers ultra-high-throughput sub-millisecond storage for compute-intensive HPC and machine learning.
+> - **AWS DataSync Accelerated Migration:** Automated, hardware-accelerated data transfer service between on-premises storage systems (NFS, SMB, object) and AWS storage (S3, EFS, FSx) with end-to-end data integrity validation.
+
+---
 
 ---
 
@@ -157,7 +210,16 @@ a network utilization target.
 D. Deploy an Auto Scaling group with a step scaling policy to launch EC2 instances in different
 Availability Zones.
 
-Correct Answer: A
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Launch all EC2 instances in the same Availability Zone within the same AWS Region. Specify a placement group with cluster strategy when launching EC2 instances.
+>
+> **Exam Concept Summary:**
+> - **EC2 Auto Scaling & Target Tracking:** Target Tracking scaling policies dynamically adjust ASG capacity to maintain a specific metric (e.g. 50% average CPU utilization or request count per target) with minimal manual tuning.
+> - **EC2 Placement Groups:** Cluster groups pack instances close together inside a single AZ for low-latency 10 Gbps networking; Spread groups strictly isolate instances on distinct hardware racks across AZs for high availability.
+
+---
 
 ---
 
@@ -176,7 +238,15 @@ C. AWS Storage Gateway Volume Gateway stored volumes
 
 D. AWS Storage Gateway Volume Gateway cached volumes
 
-Correct Answer: D
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `D`
+> - **Recommended Solution:** AWS Storage Gateway Volume Gateway cached volumes
+>
+> **Exam Concept Summary:**
+> - **AWS Storage Gateway:** Connects on-premises environments to cloud storage. S3 File Gateway exposes S3 via NFS/SMB caching; Volume Gateway provides iSCSI block storage backed by EBS snapshots.
+
+---
 
 ---
 
@@ -203,7 +273,15 @@ D. Review the Trusted Advisor check for Amazon RDS Idle DB Instances.
 
 E. Review the Trusted Advisor check for Amazon Redshift Reserved Node Optimization.
 
-Correct Answer: B, D
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `B, D`
+> - **Recommended Solution:** Use the Trusted Advisor recommendations from the consolidated billing account to see all RDS instance checks at the same time. Review the Trusted Advisor check for Amazon RDS Idle DB Instances.
+>
+> **Exam Concept Summary:**
+> - **AWS Architecture Best Practice:** Prioritize fully managed, serverless, and native services that minimize operational overhead while fulfilling high-availability and security requirements.
+
+---
 
 ---
 
@@ -223,7 +301,15 @@ patterns by using the metrics data with Amazon Athena.
 D. Turn on AWS CloudTrail for S3 object monitoring. Analyze bucket access patterns by using
 CloudTrail logs that are integrated with Amazon CloudWatch Logs.
 
-Correct Answer: A
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Analyze bucket access patterns by using the S3 Storage Lens dashboard for advanced activity metrics.
+>
+> **Exam Concept Summary:**
+> - **Amazon Athena Serverless Analytics:** Enables serverless, interactive SQL querying directly on unstructured and semi-structured data stored in Amazon S3 with zero infrastructure overhead.
+
+---
 
 ---
 
@@ -252,7 +338,16 @@ D. Modify the web application to enable streaming of the datasets to end users. 
 application to read the data from the existing S3 bucket. Implement access control directly in the
 application.
 
-Correct Answer: B
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `B`
+> - **Recommended Solution:** Deploy an Amazon CloudFront distribution with the existing S3 bucket as the origin. Direct customer requests to the CloudFront URL. Switch to CloudFront signed URLs for access control.
+>
+> **Exam Concept Summary:**
+> - **Amazon S3 Transfer Acceleration:** Uses Amazon CloudFront's globally distributed Edge Locations to route uploads over the optimized AWS private network backbone, dramatically reducing geographic transfer latency.
+> - **S3 Cross-Region Replication (CRR):** Provides asynchronous automatic replication of objects across buckets in different AWS Regions for disaster recovery and low-latency global access (requires S3 Versioning).
+
+---
 
 ---
 
@@ -282,7 +377,16 @@ deliver data streams to an Amazon OpenSearch Service cluster. Configure the appl
 messages to the proper delivery stream. Configure each backend group of application servers to
 search for the messages from OpenSearch Service and process them accordingly.
 
-Correct Answer: C
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `C`
+> - **Recommended Solution:** Create a single Amazon Simple Notification Service (Amazon SNS) topic. Subscribe Amazon Simple Queue Service (Amazon SQS) queues to the SNS topic. Configure SNS message filtering to publish messages to the proper SQS queue based on the quote type. Configure each backend application server to use its own SQS queue.
+>
+> **Exam Concept Summary:**
+> - **AWS Lambda Serverless Execution:** Runs stateless event-driven code scaling automatically from zero with sub-second billing. Maximum execution duration is 15 minutes.
+> - **Amazon SQS Queuing Architecture:** Decouples application components. Standard queues provide virtually unlimited throughput with at-least-once delivery; FIFO queues guarantee strict ordering and exactly-once processing (up to 3,000 msgs/sec with batching).
+
+---
 
 ---
 
@@ -305,7 +409,15 @@ another Region. Add the application’s EBS volumes as resources.
 D. Write an AWS Lambda function that schedules nightly snapshots of the application's EBS
 volumes and copies the snapshots to a different Availability Zone.
 
-Correct Answer: B
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `B`
+> - **Recommended Solution:** Create a backup plan by using AWS Backup to perform nightly backups. Copy the backups to another Region. Add the application’s EC2 instances as resources.
+>
+> **Exam Concept Summary:**
+> - **AWS Lambda Serverless Execution:** Runs stateless event-driven code scaling automatically from zero with sub-second billing. Maximum execution duration is 15 minutes.
+
+---
 
 ---
 
@@ -324,7 +436,16 @@ C. Use Amazon CloudFront. Provide signed URLs to stream content.
 
 D. Set up AWS Client VPN between the mobile app and the AWS environment to stream content.
 
-Correct Answer: C
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `C`
+> - **Recommended Solution:** Use Amazon CloudFront. Provide signed URLs to stream content.
+>
+> **Exam Concept Summary:**
+> - **Amazon CloudFront & Origin Access Control:** Global Content Delivery Network (CDN) caching content at edge locations. Origin Access Control (OAC) restricts direct public access to S3 origins so users must traverse CloudFront.
+> - **CloudFront Signed URLs vs Signed Cookies:** Signed URLs provide time-limited access to individual protected files or streaming manifests. Signed Cookies provide access to multiple premium files without altering application URLs.
+
+---
 
 ---
 
@@ -343,7 +464,15 @@ C. Amazon Redshift Spectrum
 
 D. Amazon RDS for MySQL
 
-Correct Answer: B
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `B`
+> - **Recommended Solution:** Amazon Aurora Serverless for MySQL
+>
+> **Exam Concept Summary:**
+> - **Amazon Aurora High Availability & Global DB:** Replicates 6 copies of data across 3 Availability Zones natively. Aurora Global Database provides dedicated multi-region relational clustering with storage-level replication latency under 1 second.
+
+---
 
 ---
 
@@ -369,7 +498,15 @@ D. Turn on Amazon Inspector. Deploy the Amazon Inspector agent to the EC2 instan
 Configure an AWS Lambda function to automate the generation and distribution of reports that
 detail the findings.
 
-Correct Answer: D
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `D`
+> - **Recommended Solution:** Turn on Amazon Inspector. Deploy the Amazon Inspector agent to the EC2 instances. Configure an AWS Lambda function to automate the generation and distribution of reports that detail the findings.
+>
+> **Exam Concept Summary:**
+> - **AWS Lambda Serverless Execution:** Runs stateless event-driven code scaling automatically from zero with sub-second billing. Maximum execution duration is 15 minutes.
+
+---
 
 ---
 
@@ -389,7 +526,16 @@ runtime.
 
 D. Use AWS Systems Manager Run Command to run the script on demand.
 
-Correct Answer: C
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `C`
+> - **Recommended Solution:** Migrate the script on the EC2 instance to an AWS Lambda function with the appropriate runtime.
+>
+> **Exam Concept Summary:**
+> - **AWS Lambda Serverless Execution:** Runs stateless event-driven code scaling automatically from zero with sub-second billing. Maximum execution duration is 15 minutes.
+> - **Amazon SQS Queuing Architecture:** Decouples application components. Standard queues provide virtually unlimited throughput with at-least-once delivery; FIFO queues guarantee strict ordering and exactly-once processing (up to 3,000 msgs/sec with batching).
+
+---
 
 ---
 
@@ -418,7 +564,16 @@ D. Use Amazon EventBridge to launch an Amazon EMR cluster on a weekly schedule. 
 the EMR cluster to perform an extract, transform, and load (ETL) job to process the .csv files and
 store the processed data in an Amazon Redshift table.
 
-Correct Answer: A
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Create an AWS Glue extract, transform, and load (ETL) job that runs on a schedule. Configure the ETL job to process the .csv files and store the processed data in Amazon Redshift.
+>
+> **Exam Concept Summary:**
+> - **AWS Lambda Serverless Execution:** Runs stateless event-driven code scaling automatically from zero with sub-second billing. Maximum execution duration is 15 minutes.
+> - **Amazon DynamoDB NoSQL:** Fully managed NoSQL database providing single-digit millisecond response times at any scale with options for On-Demand capacity and automated global multi-region replication via Global Tables.
+
+---
 
 ---
 
@@ -439,7 +594,15 @@ D. Enable AWS Config and create rules for auditing and compliance purposes.
 
 E. Restore previous resource configurations with an AWS CloudFormation template.
 
-Correct Answer: A, D
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A, D`
+> - **Recommended Solution:** Enable AWS CloudTrail and use it for auditing. Enable AWS Config and create rules for auditing and compliance purposes.
+>
+> **Exam Concept Summary:**
+> - **AWS Architecture Best Practice:** Prioritize fully managed, serverless, and native services that minimize operational overhead while fulfilling high-availability and security requirements.
+
+---
 
 ---
 
@@ -460,7 +623,15 @@ only SSH access from the bastion instances.
 D. Use an Amazon Cognito custom authorizer to authenticate users. Invoke an AWS Lambda
 function to generate a temporary SSH key.
 
-Correct Answer: A
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Use AWS Systems Manager Session Manager to connect to the EC2 instances.
+>
+> **Exam Concept Summary:**
+> - **AWS Lambda Serverless Execution:** Runs stateless event-driven code scaling automatically from zero with sub-second billing. Maximum execution duration is 15 minutes.
+
+---
 
 ---
 
@@ -482,7 +653,16 @@ with Amazon S3 as the destination. Use Amazon Athena to query the data.
 D. Store ingested data in an Amazon Elastic Block Store (Amazon EBS) volume. Publish data to
 Amazon ElastiCache for Redis. Subscribe to the Redis channel to query the data.
 
-Correct Answer: A
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Publish data to Amazon Kinesis Data Streams, Use Kinesis Data Analytics to query the data.
+>
+> **Exam Concept Summary:**
+> - **Amazon Athena Serverless Analytics:** Enables serverless, interactive SQL querying directly on unstructured and semi-structured data stored in Amazon S3 with zero infrastructure overhead.
+> - **Amazon ElastiCache In-Memory Caching:** ElastiCache Redis delivers high-performance in-memory caching with data persistence, replication, and multi-AZ failover; Memcached provides simple multi-threaded object caching.
+
+---
 
 ---
 
@@ -501,7 +681,15 @@ header set to true.
 D. Update the bucket policy to deny if the PutObject does not have an
 x-amz-server-side-encryption header set.
 
-Correct Answer: D
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `D`
+> - **Recommended Solution:** Update the bucket policy to deny if the PutObject does not have an x-amz-server-side-encryption header set.
+>
+> **Exam Concept Summary:**
+> - **AWS Architecture Best Practice:** Prioritize fully managed, serverless, and native services that minimize operational overhead while fulfilling high-availability and security requirements.
+
+---
 
 ---
 
@@ -530,7 +718,16 @@ subscriptions. Use one subscription with the application to generate the thumbna
 upload is complete. Use a second subscription to message the user's mobile app by way of a push
 notification after thumbnail generation is complete.
 
-Correct Answer: C
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `C`
+> - **Recommended Solution:** Create an Amazon Simple Queue Service (Amazon SQS) message queue. As images are uploaded, place a message on the SQS queue for thumbnail generation. Alert the user through an application message that the image was received.
+>
+> **Exam Concept Summary:**
+> - **AWS Lambda Serverless Execution:** Runs stateless event-driven code scaling automatically from zero with sub-second billing. Maximum execution duration is 15 minutes.
+> - **Amazon SQS Queuing Architecture:** Decouples application components. Standard queues provide virtually unlimited throughput with at-least-once delivery; FIFO queues guarantee strict ordering and exactly-once processing (up to 3,000 msgs/sec with batching).
+
+---
 
 ---
 
@@ -558,7 +755,16 @@ D. Create a gateway VPC endpoint for Amazon S3. Configure a Site-to-Site VPN con
 the facility network to the VPC so that sensor data can be written directly to an S3 bucket by way
 of the VPC endpoint.
 
-Correct Answer: B
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `B`
+> - **Recommended Solution:** Create an HTTPS endpoint in Amazon API Gateway. Configure the API Gateway endpoint to invoke an AWS Lambda function to process the messages and save the results to an Amazon DynamoDB table.
+>
+> **Exam Concept Summary:**
+> - **AWS Lambda Serverless Execution:** Runs stateless event-driven code scaling automatically from zero with sub-second billing. Maximum execution duration is 15 minutes.
+> - **Amazon DynamoDB NoSQL:** Fully managed NoSQL database providing single-digit millisecond response times at any scale with options for On-Demand capacity and automated global multi-region replication via Global Tables.
+
+---
 
 ---
 
@@ -596,7 +802,15 @@ snapshots of the storage volume. To recover from a disaster, restore a snapshot 
 Elastic Block Store (Amazon EBS) volume and attach the EBS volume to an Amazon EC2
 instance.
 
-Correct Answer: D
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `D`
+> - **Recommended Solution:** Provision an AWS Storage Gateway Volume Gateway stored volume with the same amount of disk space as the existing file storage volume. Mount the Volume Gateway stored volume to the existing file server by using iSCSI, and copy all files to the storage volume. Configure scheduled snapshots of the storage volume. To recover from a disaster, restore a snapshot to an Amazon Elastic Block Store (Amazon EBS) volume and attach the EBS volume to an Amazon EC2 instance.
+>
+> **Exam Concept Summary:**
+> - **AWS Storage Gateway:** Connects on-premises environments to cloud storage. S3 File Gateway exposes S3 via NFS/SMB caching; Volume Gateway provides iSCSI block storage backed by EBS snapshots.
+
+---
 
 ---
 
@@ -620,7 +834,15 @@ from affecting the ability of users to access the protected content.
 D. Update the Amazon Cognito pool to use custom attribute mappings within the identity pool and
 grant users the proper permissions to access the protected content.
 
-Correct Answer: A
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Update the Amazon Cognito identity pool to assume the proper IAM role for access to the protected content.
+>
+> **Exam Concept Summary:**
+> - **AWS Architecture Best Practice:** Prioritize fully managed, serverless, and native services that minimize operational overhead while fulfilling high-availability and security requirements.
+
+---
 
 ---
 
@@ -644,7 +866,16 @@ D. Move assets to S3 Standard-Infrequent Access (S3 Standard-IA) after 30 days.
 
 E. Move assets to S3 One Zone-Infrequent Access (S3 One Zone-IA) after 30 days.
 
-Correct Answer: A, B
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A, B`
+> - **Recommended Solution:** Move assets to S3 Intelligent-Tiering after 30 days. Configure an S3 Lifecycle policy to clean up incomplete multipart uploads.
+>
+> **Exam Concept Summary:**
+> - **S3 Multipart Upload:** Parallelizes large file uploads, recommended for objects > 100 MB and required for objects > 5 GB. Improves throughput and failure recovery.
+> - **S3 Lifecycle Management:** Automatically transitions objects across storage tiers based on age or access patterns to minimize storage costs without operational overhead.
+
+---
 
 ---
 
@@ -669,7 +900,16 @@ D. Configure an Application Load Balancer (ALB) in front of the EC2 instances. D
 traffic to the ALB. Use a URL-based rule listener in the ALB’s target group for outbound access to
 the internet.
 
-Correct Answer: A
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Update the route table for the private subnet to route the outbound traffic to an AWS Network Firewall firewall. Configure domain list rule groups.
+>
+> **Exam Concept Summary:**
+> - **Application Load Balancer (ALB Layer 7):** Distributes HTTP/HTTPS traffic using Layer 7 advanced routing (URL host/path, query parameters, HTTP headers), integrated with AWS WAF, SSL offloading, and container target groups.
+> - **AWS WAF Web Application Protection:** Inspects web traffic at Layer 7 to block common exploits such as SQL injection, Cross-Site Scripting (XSS), bot scrapers, and rate-based DDoS attacks on CloudFront, ALB, and API Gateway.
+
+---
 
 ---
 
@@ -697,7 +937,16 @@ D. Add an Amazon CloudFront distribution for the static content. Add an Amazon S
 Service (Amazon SQS) queue to receive requests from the website for later processing by the
 EC2 instances.
 
-Correct Answer: D
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `D`
+> - **Recommended Solution:** Add an Amazon CloudFront distribution for the static content. Add an Amazon Simple Queue Service (Amazon SQS) queue to receive requests from the website for later processing by the EC2 instances.
+>
+> **Exam Concept Summary:**
+> - **EC2 Auto Scaling & Target Tracking:** Target Tracking scaling policies dynamically adjust ASG capacity to maintain a specific metric (e.g. 50% average CPU utilization or request count per target) with minimal manual tuning.
+> - **Amazon ElastiCache In-Memory Caching:** ElastiCache Redis delivers high-performance in-memory caching with data persistence, replication, and multi-AZ failover; Memcached provides simple multi-threaded object caching.
+
+---
 
 ---
 
@@ -722,7 +971,15 @@ D. Turn on Amazon Inspector in the account. Configure Amazon Inspector to scan t
 instances for software vulnerabilities. Set up AWS Systems Manager Patch Manager to patch the
 EC2 instances on a regular schedule.
 
-Correct Answer: D
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `D`
+> - **Recommended Solution:** Turn on Amazon Inspector in the account. Configure Amazon Inspector to scan the EC2 instances for software vulnerabilities. Set up AWS Systems Manager Patch Manager to patch the EC2 instances on a regular schedule.
+>
+> **Exam Concept Summary:**
+> - **AWS Architecture Best Practice:** Prioritize fully managed, serverless, and native services that minimize operational overhead while fulfilling high-availability and security requirements.
+
+---
 
 ---
 
@@ -743,7 +1000,16 @@ instances by using the certificate.
 D. Generate a certificate in AWS Identity and Access Management (IAM). Enable SSL/TLS on the
 DB instances by using the certificate.
 
-Correct Answer: A
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Create a key in AWS Key Management Service (AWS KMS). Enable encryption for the DB instances.
+>
+> **Exam Concept Summary:**
+> - **AWS Key Management Service (KMS):** Provides centralized envelope encryption, automated annual key rotation, and granular auditability via AWS CloudTrail.
+> - **AWS Secrets Manager:** Enables secure storage and automated rotation of database credentials, API keys, and sensitive tokens with native Amazon RDS integration.
+
+---
 
 ---
 
@@ -760,7 +1026,16 @@ C. Use a secure VPN connection.
 
 D. Use Amazon S3 Transfer Acceleration.
 
-Correct Answer: A
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Use AWS Snowball.
+>
+> **Exam Concept Summary:**
+> - **Amazon S3 Transfer Acceleration:** Uses Amazon CloudFront's globally distributed Edge Locations to route uploads over the optimized AWS private network backbone, dramatically reducing geographic transfer latency.
+> - **AWS DataSync Accelerated Migration:** Automated, hardware-accelerated data transfer service between on-premises storage systems (NFS, SMB, object) and AWS storage (S3, EFS, FSx) with end-to-end data integrity validation.
+
+---
 
 ---
 
@@ -785,7 +1060,16 @@ allow download.
 D. Migrate the files to Amazon S3, and create a public VPC endpoint. Allow employees to sign on
 with AWS IAM Identity Center (AWS Single Sign-On).
 
-Correct Answer: B
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `B`
+> - **Recommended Solution:** Migrate the files to an Amazon FSx for Windows File Server file system. Integrate the Amazon FSx file system with the on-premises Active Directory. Configure AWS Client VPN.
+>
+> **Exam Concept Summary:**
+> - **Amazon FSx Managed File Systems:** FSx for Windows provides fully managed native SMB file shares with Active Directory integration. FSx for Lustre delivers ultra-high-throughput sub-millisecond storage for compute-intensive HPC and machine learning.
+> - **CloudFront Signed URLs vs Signed Cookies:** Signed URLs provide time-limited access to individual protected files or streaming manifests. Signed Cookies provide access to multiple premium files without altering application URLs.
+
+---
 
 ---
 
@@ -806,7 +1090,16 @@ C. Configure an EC2 Auto Scaling scheduled scaling policy based on the monthly s
 
 D. Configure Amazon ElastiCache to remove some of the workload from the EC2 instances.
 
-Correct Answer: C
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `C`
+> - **Recommended Solution:** Configure an EC2 Auto Scaling scheduled scaling policy based on the monthly schedule.
+>
+> **Exam Concept Summary:**
+> - **EC2 Auto Scaling & Target Tracking:** Target Tracking scaling policies dynamically adjust ASG capacity to maintain a specific metric (e.g. 50% average CPU utilization or request count per target) with minimal manual tuning.
+> - **Amazon ElastiCache In-Memory Caching:** ElastiCache Redis delivers high-performance in-memory caching with data persistence, replication, and multi-AZ failover; Memcached provides simple multi-threaded object caching.
+
+---
 
 ---
 
@@ -829,7 +1122,15 @@ using AWS IAM Identity Center (AWS Single Sign-On).
 D. Set up a Windows Amazon EC2 instance with SFTP to connect the on-premises client with
 Amazon S3. Integrate AWS Identity and Access Management (IAM).
 
-Correct Answer: A
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Set up AWS Transfer Family with SFTP for Amazon S3. Configure integrated Active Directory authentication.
+>
+> **Exam Concept Summary:**
+> - **AWS DataSync Accelerated Migration:** Automated, hardware-accelerated data transfer service between on-premises storage systems (NFS, SMB, object) and AWS storage (S3, EFS, FSx) with end-to-end data integrity validation.
+
+---
 
 ---
 
@@ -853,7 +1154,16 @@ DLM). Create an AWS Lambda function that modifies the AMI in the Auto Scaling gr
 D. Use Amazon EventBridge to invoke AWS Backup lifecycle policies that provision AMIs.
 Configure Auto Scaling group capacity limits as an event source in EventBridge.
 
-Correct Answer: B
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `B`
+> - **Recommended Solution:** Enable Amazon Elastic Block Store (Amazon EBS) fast snapshot restore on a snapshot. Provision an AMI by using the snapshot. Replace the AMI in the Auto Scaling group with the new AMI.
+>
+> **Exam Concept Summary:**
+> - **S3 Lifecycle Management:** Automatically transitions objects across storage tiers based on age or access patterns to minimize storage costs without operational overhead.
+> - **EC2 Auto Scaling & Target Tracking:** Target Tracking scaling policies dynamically adjust ASG capacity to maintain a specific metric (e.g. 50% average CPU utilization or request count per target) with minimal manual tuning.
+
+---
 
 ---
 
@@ -886,7 +1196,16 @@ the application regularly to ensure that the correct credentials are used. Imple
 Lambda function that rotates the Aurora credentials every 14 days and uploads these credentials
 to the file in the S3 bucket.
 
-Correct Answer: A
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Create a new AWS Key Management Service (AWS KMS) encryption key. Use AWS Secrets Manager to create a new secret that uses the KMS key with the appropriate credentials. Associate the secret with the Aurora DB cluster. Configure a custom rotation period of 14 days.
+>
+> **Exam Concept Summary:**
+> - **Amazon EFS Shared File Storage:** Provides a serverless, multi-AZ POSIX-compliant shared file system concurrently mountable by hundreds of Linux EC2 instances across multiple Availability Zones.
+> - **AWS Lambda Serverless Execution:** Runs stateless event-driven code scaling automatically from zero with sub-second billing. Maximum execution duration is 15 minutes.
+
+---
 
 ---
 
@@ -917,7 +1236,16 @@ D. Migrate the database to Amazon DynamoDB. Provision a large number of read cap
 (RCUs) to support the required throughput, and configure on-demand capacity scaling. Replace
 the stored procedures with DynamoDB streams.
 
-Correct Answer: A
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Migrate the database to Amazon Aurora MySQL. Replace the read replicas with Aurora Replicas, and configure Aurora Auto Scaling. Replace the stored procedures with Aurora MySQL native functions.
+>
+> **Exam Concept Summary:**
+> - **EC2 Auto Scaling & Target Tracking:** Target Tracking scaling policies dynamically adjust ASG capacity to maintain a specific metric (e.g. 50% average CPU utilization or request count per target) with minimal manual tuning.
+> - **AWS Lambda Serverless Execution:** Runs stateless event-driven code scaling automatically from zero with sub-second billing. Maximum execution duration is 15 minutes.
+
+---
 
 ---
 
@@ -940,7 +1268,15 @@ cluster in the secondary Region. Remove the DB instance from the secondary Regio
 D. Set up an Aurora global database for the DB cluster. Specify a minimum of one DB instance in
 the secondary Region.
 
-Correct Answer: D
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `D`
+> - **Recommended Solution:** Set up an Aurora global database for the DB cluster. Specify a minimum of one DB instance in the secondary Region.
+>
+> **Exam Concept Summary:**
+> - **Amazon Aurora High Availability & Global DB:** Replicates 6 copies of data across 3 Availability Zones natively. Aurora Global Database provides dedicated multi-region relational clustering with storage-level replication latency under 1 second.
+
+---
 
 ---
 
@@ -968,7 +1304,16 @@ credentials in AWS Systems Manager Parameter Store. Configure the application to
 database credentials from Parameter Store. Set up a credentials rotation schedule for the
 application user in the RDS for MySQL database using Parameter Store.
 
-Correct Answer: C
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `C`
+> - **Recommended Solution:** Create credentials on the RDS for MySQL database for the application user and store the credentials in AWS Secrets Manager. Configure the application to load the database credentials from Secrets Manager. Set up a credentials rotation schedule for the application user in the RDS for MySQL database using Secrets Manager.
+>
+> **Exam Concept Summary:**
+> - **AWS Lambda Serverless Execution:** Runs stateless event-driven code scaling automatically from zero with sub-second billing. Maximum execution duration is 15 minutes.
+> - **AWS Key Management Service (KMS):** Provides centralized envelope encryption, automated annual key rotation, and granular auditability via AWS CloudTrail.
+
+---
 
 ---
 
@@ -987,7 +1332,16 @@ C. Subscribe to AWS Shield Advanced to block all SQL injection attempts automati
 
 D. Set up Amazon Inspector to block all SQL injection attempts automatically.
 
-Correct Answer: A
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Use AWS WAF in front of the ALB. Associate the appropriate web ACLs with AWS WAF.
+>
+> **Exam Concept Summary:**
+> - **Amazon Aurora High Availability & Global DB:** Replicates 6 copies of data across 3 Availability Zones natively. Aurora Global Database provides dedicated multi-region relational clustering with storage-level replication latency under 1 second.
+> - **Application Load Balancer (ALB Layer 7):** Distributes HTTP/HTTPS traffic using Layer 7 advanced routing (URL host/path, query parameters, HTTP headers), integrated with AWS WAF, SSL offloading, and container target groups.
+
+---
 
 ---
 
@@ -1014,7 +1368,16 @@ D. Use a Lake Formation blueprint to ingest the data from the database to the S3
 Lake Formation to enforce column-level access control for the QuickSight users. Use Amazon
 Athena as the data source in QuickSight.
 
-Correct Answer: D
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `D`
+> - **Recommended Solution:** Use a Lake Formation blueprint to ingest the data from the database to the S3 data lake. Use Lake Formation to enforce column-level access control for the QuickSight users. Use Amazon Athena as the data source in QuickSight.
+>
+> **Exam Concept Summary:**
+> - **Amazon Athena Serverless Analytics:** Enables serverless, interactive SQL querying directly on unstructured and semi-structured data stored in Amazon S3 with zero infrastructure overhead.
+> - **Amazon Aurora High Availability & Global DB:** Replicates 6 copies of data across 3 Availability Zones natively. Aurora Global Database provides dedicated multi-region relational clustering with storage-level replication latency under 1 second.
+
+---
 
 ---
 
@@ -1044,7 +1407,16 @@ D. Create an Amazon EventBridge event to invoke an AWS Lambda function when the 
 utilization metric value for the Auto Scaling group reaches 60%. Configure the Lambda function to
 increase the Auto Scaling group’s desired capacity and maximum capacity by 20%.
 
-Correct Answer: C
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `C`
+> - **Recommended Solution:** Create a predictive scaling policy for the Auto Scaling group. Configure the policy to scale based on forecast. Set the scaling metric to CPU utilization. Set the target value for the metric to 60%. In the policy, set the instances to pre-launch 30 minutes before the jobs run.
+>
+> **Exam Concept Summary:**
+> - **EC2 Auto Scaling & Target Tracking:** Target Tracking scaling policies dynamically adjust ASG capacity to maintain a specific metric (e.g. 50% average CPU utilization or request count per target) with minimal manual tuning.
+> - **AWS Lambda Serverless Execution:** Runs stateless event-driven code scaling automatically from zero with sub-second billing. Maximum execution duration is 15 minutes.
+
+---
 
 ---
 
@@ -1067,7 +1439,16 @@ D. Store the scheduled backup of the MySQL database in an Amazon S3 bucket that 
 for S3 Cross-Region Replication (CRR). Use the data backup to restore the database in the DR
 Region.
 
-Correct Answer: C
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `C`
+> - **Recommended Solution:** Migrate the MySQL database to an Amazon Aurora global database. Host the primary DB cluster in the primary Region. Host the secondary DB cluster in the DR Region.
+>
+> **Exam Concept Summary:**
+> - **S3 Cross-Region Replication (CRR):** Provides asynchronous automatic replication of objects across buckets in different AWS Regions for disaster recovery and low-latency global access (requires S3 Versioning).
+> - **Amazon RDS Multi-AZ High Availability:** Synchronously replicates data to a standby DB instance in another Availability Zone for automated failover. Crucially, the standby instance cannot serve active read queries.
+
+---
 
 ---
 
@@ -1088,7 +1469,16 @@ C. Change the limit in Amazon SQS to handle messages that are larger than 256 KB
 D. Store messages that are larger than 256 KB in Amazon Elastic File System (Amazon EFS).
 Configure Amazon SQS to reference this location in the messages.
 
-Correct Answer: A
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Use the Amazon SQS Extended Client Library for Java to host messages that are larger than 256 KB in Amazon S3.
+>
+> **Exam Concept Summary:**
+> - **Amazon EFS Shared File Storage:** Provides a serverless, multi-AZ POSIX-compliant shared file system concurrently mountable by hundreds of Linux EC2 instances across multiple Availability Zones.
+> - **Amazon SQS Queuing Architecture:** Decouples application components. Standard queues provide virtually unlimited throughput with at-least-once delivery; FIFO queues guarantee strict ordering and exactly-once processing (up to 3,000 msgs/sec with batching).
+
+---
 
 ---
 
@@ -1114,7 +1504,16 @@ D. Use AWS Directory Service for Microsoft Active Directory for authentication. 
 Lambda@Edge for authorization. Use AWS Elastic Beanstalk to serve the web application
 globally.
 
-Correct Answer: A
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Use Amazon Cognito for authentication. Use Lambda@Edge for authorization. Use Amazon CloudFront to serve the web application globally.
+>
+> **Exam Concept Summary:**
+> - **Amazon S3 Transfer Acceleration:** Uses Amazon CloudFront's globally distributed Edge Locations to route uploads over the optimized AWS private network backbone, dramatically reducing geographic transfer latency.
+> - **AWS Lambda Serverless Execution:** Runs stateless event-driven code scaling automatically from zero with sub-second billing. Maximum execution duration is 15 minutes.
+
+---
 
 ---
 
@@ -1138,7 +1537,16 @@ C. Amazon FSx File Gateway
 
 D. Amazon S3 File Gateway
 
-Correct Answer: D
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `D`
+> - **Recommended Solution:** Amazon S3 File Gateway
+>
+> **Exam Concept Summary:**
+> - **Amazon FSx Managed File Systems:** FSx for Windows provides fully managed native SMB file shares with Active Directory integration. FSx for Lustre delivers ultra-high-throughput sub-millisecond storage for compute-intensive HPC and machine learning.
+> - **AWS Storage Gateway:** Connects on-premises environments to cloud storage. S3 File Gateway exposes S3 via NFS/SMB caching; Volume Gateway provides iSCSI block storage backed by EBS snapshots.
+
+---
 
 ---
 
@@ -1159,7 +1567,15 @@ C. Zonal Reserved Instances
 
 D. Standard Reserved Instances
 
-Correct Answer: A
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Compute Savings Plan
+>
+> **Exam Concept Summary:**
+> - **AWS Architecture Best Practice:** Prioritize fully managed, serverless, and native services that minimize operational overhead while fulfilling high-availability and security requirements.
+
+---
 
 ---
 
@@ -1182,7 +1598,15 @@ high enough to accommodate changes in the workload.
 D. Use on-demand mode. Specify the read capacity units (RCUs) and write capacity units (WCUs)
 with reserved capacity.
 
-Correct Answer: B
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `B`
+> - **Recommended Solution:** Use provisioned mode. Specify the read capacity units (RCUs) and write capacity units (WCUs).
+>
+> **Exam Concept Summary:**
+> - **Amazon DynamoDB NoSQL:** Fully managed NoSQL database providing single-digit millisecond response times at any scale with options for On-Demand capacity and automated global multi-region replication via Global Tables.
+
+---
 
 ---
 
@@ -1207,7 +1631,16 @@ D. Create a database snapshot. Download the database snapshot. Upload the databa
 to an Amazon S3 bucket. Update the S3 bucket policy to allow access from the acquiring
 company’s AWS account.
 
-Correct Answer: B
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `B`
+> - **Recommended Solution:** Create a database snapshot. Add the acquiring company’s AWS account to the KMS key policy. Share the snapshot with the acquiring company’s AWS account.
+>
+> **Exam Concept Summary:**
+> - **Amazon Aurora High Availability & Global DB:** Replicates 6 copies of data across 3 Availability Zones natively. Aurora Global Database provides dedicated multi-region relational clustering with storage-level replication latency under 1 second.
+> - **AWS Key Management Service (KMS):** Provides centralized envelope encryption, automated annual key rotation, and granular auditability via AWS CloudTrail.
+
+---
 
 ---
 
@@ -1232,7 +1665,16 @@ D. Migrate the database to RDS Custom.
 
 E. Use RDS Proxy to limit reporting requests to the maintenance window.
 
-Correct Answer: A, C
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A, C`
+> - **Recommended Solution:** Modify the DB instance from a Single-AZ DB instance to a Multi-AZ deployment. Create a read replica of the DB instance in a different Availability Zone. Point all requests for reports to the read replica.
+>
+> **Exam Concept Summary:**
+> - **Amazon RDS Multi-AZ High Availability:** Synchronously replicates data to a standby DB instance in another Availability Zone for automated failover. Crucially, the standby instance cannot serve active read queries.
+> - **Amazon RDS Read Replicas:** Asynchronously replicates primary database transactions to offload read-heavy reporting and analytics workloads across local AZs or remote AWS Regions.
+
+---
 
 ---
 
@@ -1255,7 +1697,16 @@ functions on a schedule to process the workflow steps.
 D. Build out the workflow in AWS Step Functions. Use Step Functions to create a state machine.
 Use the state machine to invoke AWS Lambda functions to process the workflow steps.
 
-Correct Answer: D
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `D`
+> - **Recommended Solution:** Build out the workflow in AWS Step Functions. Use Step Functions to create a state machine. Use the state machine to invoke AWS Lambda functions to process the workflow steps.
+>
+> **Exam Concept Summary:**
+> - **AWS Lambda Serverless Execution:** Runs stateless event-driven code scaling automatically from zero with sub-second billing. Maximum execution duration is 15 minutes.
+> - **AWS Step Functions Distributed Orchestration:** Visual workflow orchestrator coordinating distributed microservices, Lambda functions, and long-running batch jobs with automated retry logic and state persistence.
+
+---
 
 ---
 
@@ -1274,7 +1725,16 @@ C. Set up Amazon CloudFront with UDP turned on. Configure an origin in each Regi
 
 D. Set up a VPC peering mesh between each Region. Turn on UDP for each VPC.
 
-Correct Answer: B
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `B`
+> - **Recommended Solution:** Set up AWS Global Accelerator with UDP listeners and endpoint groups in each Region.
+>
+> **Exam Concept Summary:**
+> - **AWS Transit Gateway Hub-and-Spoke:** Serves as a centralized network transit hub interconnecting thousands of VPCs and on-premises networks, eliminating complex full-mesh VPC peering topologies and supporting transitive routing.
+> - **Amazon CloudFront & Origin Access Control:** Global Content Delivery Network (CDN) caching content at edge locations. Origin Access Control (OAC) restricts direct public access to S3 origins so users must traverse CloudFront.
+
+---
 
 ---
 
@@ -1299,7 +1759,15 @@ C. Use Amazon S3 Intelligent-Tiering access tiers.
 
 D. Use two large EC2 instances to host the database in active-passive mode.
 
-Correct Answer: B
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `B`
+> - **Recommended Solution:** Use a Multi-AZ deployment of an Amazon RDS for MySQL DB instance with a General Purpose SSD (gp2) EBS volume.
+>
+> **Exam Concept Summary:**
+> - **Amazon RDS Multi-AZ High Availability:** Synchronously replicates data to a standby DB instance in another Availability Zone for automated failover. Crucially, the standby instance cannot serve active read queries.
+
+---
 
 ---
 
@@ -1319,7 +1787,16 @@ C. Resize the RDS DB instance class to accept more connections.
 
 D. Migrate the database to Amazon DynamoDB with on-demand scaling.
 
-Correct Answer: B
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `B`
+> - **Recommended Solution:** Enable RDS Proxy on the RDS DB instance.
+>
+> **Exam Concept Summary:**
+> - **AWS Lambda Serverless Execution:** Runs stateless event-driven code scaling automatically from zero with sub-second billing. Maximum execution duration is 15 minutes.
+> - **Amazon DynamoDB NoSQL:** Fully managed NoSQL database providing single-digit millisecond response times at any scale with options for On-Demand capacity and automated global multi-region replication via Global Tables.
+
+---
 
 ---
 
@@ -1337,7 +1814,16 @@ C. Use Amazon Lightsail with AWS Auto Scaling.
 
 D. Use AWS Batch on Amazon EC2.
 
-Correct Answer: D
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `D`
+> - **Recommended Solution:** Use AWS Batch on Amazon EC2.
+>
+> **Exam Concept Summary:**
+> - **EC2 Auto Scaling & Target Tracking:** Target Tracking scaling policies dynamically adjust ASG capacity to maintain a specific metric (e.g. 50% average CPU utilization or request count per target) with minimal manual tuning.
+> - **AWS Lambda Serverless Execution:** Runs stateless event-driven code scaling automatically from zero with sub-second billing. Maximum execution duration is 15 minutes.
+
+---
 
 ---
 
@@ -1356,7 +1842,15 @@ C. Move the data objects to S3 One Zone-Infrequent Access (S3 One Zone-IA) after
 
 D. Move the data objects to S3 One Zone-Infrequent Access (S3 One Zone-IA) immediately.
 
-Correct Answer: B
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `B`
+> - **Recommended Solution:** Move the data objects to S3 Standard-Infrequent Access (S3 Standard-IA) after 30 days.
+>
+> **Exam Concept Summary:**
+> - **Amazon S3 Glacier Storage Classes:** Glacier Instant Retrieval delivers millisecond access for rare access; Flexible Retrieval provides 1-5 minute expedited or 3-5 hour standard access; Deep Archive offers lowest cost for long-term retention with 12-hour retrieval.
+
+---
 
 ---
 
@@ -1381,7 +1875,16 @@ Windows File Server volume on each EC2 instance to share the files.
 E. Store the server-side code on a General Purpose SSD (gp2) Amazon Elastic Block Store
 (Amazon EBS) volume. Mount the EBS volume on each EC2 instance to share the files.
 
-Correct Answer: A, D
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A, D`
+> - **Recommended Solution:** Store the static files on Amazon S3. Use Amazon CloudFront to cache objects at the edge. Store the server-side code on Amazon FSx for Windows File Server. Mount the FSx for Windows File Server volume on each EC2 instance to share the files.
+>
+> **Exam Concept Summary:**
+> - **Amazon EFS Shared File Storage:** Provides a serverless, multi-AZ POSIX-compliant shared file system concurrently mountable by hundreds of Linux EC2 instances across multiple Availability Zones.
+> - **Amazon FSx Managed File Systems:** FSx for Windows provides fully managed native SMB file shares with Active Directory integration. FSx for Lustre delivers ultra-high-throughput sub-millisecond storage for compute-intensive HPC and machine learning.
+
+---
 
 ---
 
@@ -1405,7 +1908,16 @@ Lambda@Edge function with the CloudFront behaviors that serve the images.
 D. Create a CloudFront response headers policy. Use the policy to automatically resize images
 and to serve the appropriate format based on the User-Agent HTTP header in the request.
 
-Correct Answer: C
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `C`
+> - **Recommended Solution:** Use a Lambda@Edge function with an external image management library. Associate the Lambda@Edge function with the CloudFront behaviors that serve the images.
+>
+> **Exam Concept Summary:**
+> - **Amazon CloudFront & Origin Access Control:** Global Content Delivery Network (CDN) caching content at edge locations. Origin Access Control (OAC) restricts direct public access to S3 origins so users must traverse CloudFront.
+> - **Application Load Balancer (ALB Layer 7):** Distributes HTTP/HTTPS traffic using Layer 7 advanced routing (URL host/path, query parameters, HTTP headers), integrated with AWS WAF, SSL offloading, and container target groups.
+
+---
 
 ---
 
@@ -1434,7 +1946,15 @@ D. Use the aws:SecureTransport condition on S3 bucket policies to allow only enc
 connections over HTTPS (TLS). Use Amazon Macie to protect the sensitive data that is stored in
 Amazon S3. Assign the compliance team to manage Macie.
 
-Correct Answer: C
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `C`
+> - **Recommended Solution:** Use the aws:SecureTransport condition on S3 bucket policies to allow only encrypted connections over HTTPS (TLS). Configure default encryption for each S3 bucket to use server-side encryption with AWS KMS keys (SSE-KMS). Assign the compliance team to manage the KMS keys.
+>
+> **Exam Concept Summary:**
+> - **AWS Key Management Service (KMS):** Provides centralized envelope encryption, automated annual key rotation, and granular auditability via AWS CloudTrail.
+
+---
 
 ---
 
@@ -1455,7 +1975,16 @@ C. Use a gateway endpoint.
 
 D. Add an Amazon Simple Queue Service (Amazon SQS) queue between the two REST APIs.
 
-Correct Answer: B
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `B`
+> - **Recommended Solution:** Use an interface endpoint.
+>
+> **Exam Concept Summary:**
+> - **VPC Gateway Endpoints:** Configured directly in VPC route tables to provide private, high-bandwidth, and completely free network routing from EC2 to Amazon S3 and DynamoDB without needing a NAT Gateway or Internet Gateway.
+> - **AWS PrivateLink & Interface Endpoints:** Provisions private IP Elastic Network Interfaces (ENIs) inside subnets to privately connect VPC workloads to AWS services or SaaS partner solutions over private backbone networking.
+
+---
 
 ---
 
@@ -1479,7 +2008,16 @@ D. Use Amazon DynamoDB for data that is frequently accessed. Turn on streaming t
 Kinesis Data Streams. Use Amazon Kinesis Data Firehose to read the data from Kinesis Data
 Streams. Store the records in an Amazon S3 bucket.
 
-Correct Answer: C
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `C`
+> - **Recommended Solution:** Use Amazon DynamoDB with DynamoDB Accelerator (DAX) for data that is frequently accessed. Export the data to an Amazon S3 bucket by using DynamoDB table export. Run one-time queries on the data in Amazon S3 by using Amazon Athena.
+>
+> **Exam Concept Summary:**
+> - **Amazon S3 Glacier Storage Classes:** Glacier Instant Retrieval delivers millisecond access for rare access; Flexible Retrieval provides 1-5 minute expedited or 3-5 hour standard access; Deep Archive offers lowest cost for long-term retention with 12-hour retrieval.
+> - **S3 Lifecycle Management:** Automatically transitions objects across storage tiers based on age or access patterns to minimize storage costs without operational overhead.
+
+---
 
 ---
 
@@ -1503,7 +2041,16 @@ message attribute to use the payment ID.
 E. Write the messages to an Amazon Simple Queue Service (Amazon SQS) FIFO queue. Set the
 message group to use the payment ID.
 
-Correct Answer: B, E
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `B, E`
+> - **Recommended Solution:** Write the messages to an Amazon Kinesis data stream with the payment ID as the partition key. Write the messages to an Amazon Simple Queue Service (Amazon SQS) FIFO queue. Set the message group to use the payment ID.
+>
+> **Exam Concept Summary:**
+> - **Amazon DynamoDB NoSQL:** Fully managed NoSQL database providing single-digit millisecond response times at any scale with options for On-Demand capacity and automated global multi-region replication via Global Tables.
+> - **Amazon ElastiCache In-Memory Caching:** ElastiCache Redis delivers high-performance in-memory caching with data persistence, replication, and multi-AZ failover; Memcached provides simple multi-threaded object caching.
+
+---
 
 ---
 
@@ -1521,7 +2068,16 @@ C. Amazon Simple Notification Service (Amazon SNS) standard topics
 
 D. Amazon Simple Queue Service (Amazon SQS) FIFO queues
 
-Correct Answer: B
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `B`
+> - **Recommended Solution:** Amazon Simple Notification Service (Amazon SNS) FIFO topics
+>
+> **Exam Concept Summary:**
+> - **Amazon SQS Queuing Architecture:** Decouples application components. Standard queues provide virtually unlimited throughput with at-least-once delivery; FIFO queues guarantee strict ordering and exactly-once processing (up to 3,000 msgs/sec with batching).
+> - **Amazon SNS Pub/Sub & Fanout Pattern:** High-throughput pub/sub messaging. The fanout pattern publishes messages to an SNS topic that synchronously distributes them to multiple subscribed SQS queues for parallel, asynchronous processing.
+
+---
 
 ---
 
@@ -1555,7 +2111,16 @@ Service (AWS KMS) customer managed key. Apply an IAM policy to restrict key usag
 authorized principals. Set a condition in the queue policy to allow only encrypted connections over
 TLS.
 
-Correct Answer: B, D
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `B, D`
+> - **Recommended Solution:** Turn on server-side encryption on the SNS components by using an AWS Key Management Service (AWS KMS) customer managed key. Apply a key policy to restrict key usage to a set of authorized principals. Turn on server-side encryption on the SQS components by using an AWS Key Management Service (AWS KMS) customer managed key. Apply a key policy to restrict key usage to a set of authorized principals. Set a condition in the queue policy to allow only encrypted connections over TLS.
+>
+> **Exam Concept Summary:**
+> - **AWS Key Management Service (KMS):** Provides centralized envelope encryption, automated annual key rotation, and granular auditability via AWS CloudTrail.
+> - **Amazon SQS Queuing Architecture:** Decouples application components. Standard queues provide virtually unlimited throughput with at-least-once delivery; FIFO queues guarantee strict ordering and exactly-once processing (up to 3,000 msgs/sec with batching).
+
+---
 
 ---
 
@@ -1574,7 +2139,16 @@ C. Automated backups
 
 D. Multi-AZ deployments
 
-Correct Answer: C
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `C`
+> - **Recommended Solution:** Automated backups
+>
+> **Exam Concept Summary:**
+> - **Amazon RDS Multi-AZ High Availability:** Synchronously replicates data to a standby DB instance in another Availability Zone for automated failover. Crucially, the standby instance cannot serve active read queries.
+> - **Amazon RDS Read Replicas:** Asynchronously replicates primary database transactions to offload read-heavy reporting and analytics workloads across local AZs or remote AWS Regions.
+
+---
 
 ---
 
@@ -1596,7 +2170,16 @@ C. Apply fine-grained IAM permissions to the premium content in the DynamoDB tab
 D. Implement API usage plans and API keys to limit the access of users who do not have a
 subscription.
 
-Correct Answer: D
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `D`
+> - **Recommended Solution:** Implement API usage plans and API keys to limit the access of users who do not have a subscription.
+>
+> **Exam Concept Summary:**
+> - **AWS Lambda Serverless Execution:** Runs stateless event-driven code scaling automatically from zero with sub-second billing. Maximum execution duration is 15 minutes.
+> - **Amazon DynamoDB NoSQL:** Fully managed NoSQL database providing single-digit millisecond response times at any scale with options for On-Demand capacity and automated global multi-region replication via Global Tables.
+
+---
 
 ---
 
@@ -1628,7 +2211,16 @@ on-premises endpoints. In Route 53, create a latency-based record that points to
 and use it as an origin for an Amazon CloudFront distribution. Provide access to the application by
 using a CNAME that points to the CloudFront DNS.
 
-Correct Answer: A
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Configure three Network Load Balancers (NLBs) in the three AWS Regions to address the on-premises endpoints. Create an accelerator by using AWS Global Accelerator, and register the NLBs as its endpoints. Provide access to the application by using a CNAME that points to the accelerator DNS.
+>
+> **Exam Concept Summary:**
+> - **Amazon Route 53 Intelligent Routing:** Offers advanced DNS routing policies: Geolocation routes by user location/region, Latency-based routes to the AWS Region with the lowest latency, and Failover provides active-passive health-checked disaster recovery.
+> - **Amazon CloudFront & Origin Access Control:** Global Content Delivery Network (CDN) caching content at edge locations. Origin Access Control (OAC) restricts direct public access to S3 origins so users must traverse CloudFront.
+
+---
 
 ---
 
@@ -1646,7 +2238,15 @@ C. Use third-party vendor software to set password requirements.
 D. Attach an Amazon CloudWatch rule to the Create_newuser event to set the password with the
 appropriate requirements.
 
-Correct Answer: A
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Set an overall password policy for the entire AWS account.
+>
+> **Exam Concept Summary:**
+> - **AWS Architecture Best Practice:** Prioritize fully managed, serverless, and native services that minimize operational overhead while fulfilling high-availability and security requirements.
+
+---
 
 ---
 
@@ -1670,7 +2270,16 @@ EventBridge (Amazon CloudWatch Events).
 D. Create an Amazon Machine Image (AMI) of the EC2 instance that runs the tasks. Create an
 Auto Scaling group with the AMI to run multiple copies of the instance.
 
-Correct Answer: A
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Use AWS Batch to run the tasks as jobs. Schedule the jobs by using Amazon EventBridge (Amazon CloudWatch Events).
+>
+> **Exam Concept Summary:**
+> - **EC2 Auto Scaling & Target Tracking:** Target Tracking scaling policies dynamically adjust ASG capacity to maintain a specific metric (e.g. 50% average CPU utilization or request count per target) with minimal manual tuning.
+> - **AWS Lambda Serverless Execution:** Runs stateless event-driven code scaling automatically from zero with sub-second billing. Maximum execution duration is 15 minutes.
+
+---
 
 ---
 
@@ -1693,7 +2302,15 @@ default route that points to the NAT gateway.
 D. Provision a NAT gateway in a private subnet. Modify each private subnet's route table with a
 default route that points to the NAT gateway.
 
-Correct Answer: C
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `C`
+> - **Recommended Solution:** Provision a NAT gateway in a public subnet. Modify each private subnet's route table with a default route that points to the NAT gateway.
+>
+> **Exam Concept Summary:**
+> - **AWS Architecture Best Practice:** Prioritize fully managed, serverless, and native services that minimize operational overhead while fulfilling high-availability and security requirements.
+
+---
 
 ---
 
@@ -1720,7 +2337,15 @@ customer managed key. Associate the role with the EKS cluster.
 E. Store the customer managed key as a Kubernetes secret in the EKS cluster. Use the customer
 managed key to encrypt the EBS volumes.
 
-Correct Answer: C, D
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `C, D`
+> - **Recommended Solution:** Enable EBS encryption by default in the AWS Region where the EKS cluster will be created. Select the customer managed key as the default key. Create the EKS cluster. Create an IAM role that has a policy that grants permission to the customer managed key. Associate the role with the EKS cluster.
+>
+> **Exam Concept Summary:**
+> - **AWS Key Management Service (KMS):** Provides centralized envelope encryption, automated annual key rotation, and granular auditability via AWS CloudTrail.
+
+---
 
 ---
 
@@ -1745,7 +2370,16 @@ Accelerator (DAX) during times of high load.
 D. Store the images in Amazon S3 buckets. Store geographic codes and image S3 URLs in a
 database table. Use Oracle running on an Amazon RDS Multi-AZ DB instance.
 
-Correct Answer: B
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `B`
+> - **Recommended Solution:** Store the images in Amazon S3 buckets. Use Amazon DynamoDB with the geographic code as the key and the image S3 URL as the value.
+>
+> **Exam Concept Summary:**
+> - **Amazon RDS Multi-AZ High Availability:** Synchronously replicates data to a standby DB instance in another Availability Zone for automated failover. Crucially, the standby instance cannot serve active read queries.
+> - **Amazon DynamoDB NoSQL:** Fully managed NoSQL database providing single-digit millisecond response times at any scale with options for On-Demand capacity and automated global multi-region replication via Global Tables.
+
+---
 
 ---
 
@@ -1772,7 +2406,16 @@ D. Use the S3 Standard storage class. Create an S3 Lifecycle policy to transitio
 Standard-Infrequent Access (S3 Standard-IA) after 30 days, and then to S3 Glacier Deep Archive
 after 1 year.
 
-Correct Answer: D
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `D`
+> - **Recommended Solution:** Use the S3 Standard storage class. Create an S3 Lifecycle policy to transition objects to S3 Standard-Infrequent Access (S3 Standard-IA) after 30 days, and then to S3 Glacier Deep Archive after 1 year.
+>
+> **Exam Concept Summary:**
+> - **Amazon S3 Glacier Storage Classes:** Glacier Instant Retrieval delivers millisecond access for rare access; Flexible Retrieval provides 1-5 minute expedited or 3-5 hour standard access; Deep Archive offers lowest cost for long-term retention with 12-hour retrieval.
+> - **S3 Lifecycle Management:** Automatically transitions objects across storage tiers based on age or access patterns to minimize storage costs without operational overhead.
+
+---
 
 ---
 
@@ -1799,7 +2442,16 @@ D. Set up one AWS Direct Connect connection from the data center to AWS. Create 
 gateway, and attach each VPC to the transit gateway. Establish connectivity between the Direct
 Connect connection and the transit gateway.
 
-Correct Answer: D
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `D`
+> - **Recommended Solution:** Set up one AWS Direct Connect connection from the data center to AWS. Create a transit gateway, and attach each VPC to the transit gateway. Establish connectivity between the Direct Connect connection and the transit gateway.
+>
+> **Exam Concept Summary:**
+> - **AWS Transit Gateway Hub-and-Spoke:** Serves as a centralized network transit hub interconnecting thousands of VPCs and on-premises networks, eliminating complex full-mesh VPC peering topologies and supporting transitive routing.
+> - **AWS Direct Connect (DX):** Establishes a dedicated, private physical fiber-optic connection from an on-premises data center to AWS, bypassing the public internet for consistent network performance and lower egress costs.
+
+---
 
 ---
 
@@ -1820,7 +2472,16 @@ C. Use Amazon Simple Queue Service (Amazon SQS) to build the application.
 
 D. Use AWS Lambda functions and Amazon EventBridge events to build the application.
 
-Correct Answer: A
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Use AWS Step Functions to build the application.
+>
+> **Exam Concept Summary:**
+> - **AWS Lambda Serverless Execution:** Runs stateless event-driven code scaling automatically from zero with sub-second billing. Maximum execution duration is 15 minutes.
+> - **Amazon SQS Queuing Architecture:** Decouples application components. Standard queues provide virtually unlimited throughput with at-least-once delivery; FIFO queues guarantee strict ordering and exactly-once processing (up to 3,000 msgs/sec with batching).
+
+---
 
 ---
 
@@ -1843,7 +2504,15 @@ users’ applications to use the new DB instance.
 D. Configure Multi-AZ for the DB instance. Configure the users’ applications to switch between the
 DB instances.
 
-Correct Answer: A
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Create a proxy in RDS Proxy. Configure the users’ applications to use the DB instance through RDS Proxy.
+>
+> **Exam Concept Summary:**
+> - **Amazon ElastiCache In-Memory Caching:** ElastiCache Redis delivers high-performance in-memory caching with data persistence, replication, and multi-AZ failover; Memcached provides simple multi-threaded object caching.
+
+---
 
 ---
 
@@ -1867,7 +2536,16 @@ D. Run a custom script on the instance operating system to send data to the audi
 Configure the script to be invoked by the EC2 Auto Scaling group when the instance starts and is
 terminated.
 
-Correct Answer: B
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `B`
+> - **Recommended Solution:** Use EC2 Auto Scaling lifecycle hooks to run a custom script to send data to the audit system when instances are launched and terminated.
+>
+> **Exam Concept Summary:**
+> - **EC2 Auto Scaling & Target Tracking:** Target Tracking scaling policies dynamically adjust ASG capacity to maintain a specific metric (e.g. 50% average CPU utilization or request count per target) with minimal manual tuning.
+> - **AWS Lambda Serverless Execution:** Runs stateless event-driven code scaling automatically from zero with sub-second billing. Maximum execution duration is 15 minutes.
+
+---
 
 ---
 
@@ -1890,7 +2568,16 @@ data storage.
 D. Use an Application Load Balancer for traffic distribution and Amazon DynamoDB global tables
 for data storage.
 
-Correct Answer: B
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `B`
+> - **Recommended Solution:** Use a Network Load Balancer for traffic distribution and Amazon DynamoDB on-demand for data storage.
+>
+> **Exam Concept Summary:**
+> - **EC2 Auto Scaling & Target Tracking:** Target Tracking scaling policies dynamically adjust ASG capacity to maintain a specific metric (e.g. 50% average CPU utilization or request count per target) with minimal manual tuning.
+> - **Amazon Aurora High Availability & Global DB:** Replicates 6 copies of data across 3 Availability Zones natively. Aurora Global Database provides dedicated multi-region relational clustering with storage-level replication latency under 1 second.
+
+---
 
 ---
 
@@ -1913,7 +2600,15 @@ C. Cache the results of the queries in Amazon S3 for faster retrieval of similar
 D. Increase the size of the database to increase the number of connections Lambda can establish
 at one time.
 
-Correct Answer: B
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `B`
+> - **Recommended Solution:** Configure provisioned concurrency for the Lambda function that handles the requests.
+>
+> **Exam Concept Summary:**
+> - **AWS Lambda Serverless Execution:** Runs stateless event-driven code scaling automatically from zero with sub-second billing. Maximum execution duration is 15 minutes.
+
+---
 
 ---
 
@@ -1936,7 +2631,15 @@ and stop the existing EC2 instances and DB instances on a schedule.
 D. Create an AWS Lambda function that will start and stop the EC2 instances and DB instances.
 Configure Amazon EventBridge to invoke the Lambda function on a schedule.
 
-Correct Answer: D
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `D`
+> - **Recommended Solution:** Create an AWS Lambda function that will start and stop the EC2 instances and DB instances. Configure Amazon EventBridge to invoke the Lambda function on a schedule.
+>
+> **Exam Concept Summary:**
+> - **AWS Lambda Serverless Execution:** Runs stateless event-driven code scaling automatically from zero with sub-second billing. Maximum execution duration is 15 minutes.
+
+---
 
 ---
 
@@ -1965,7 +2668,16 @@ node.
 D. Set up a new Amazon DynamoDB table to store the documents. Use a fixed write capacity to
 support new document entries. Automatically scale the read capacity to support the reports.
 
-Correct Answer: B
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `B`
+> - **Recommended Solution:** Set up a new Amazon Aurora PostgreSQL DB cluster that includes an Aurora Replica. Issue queries to the Aurora Replica to generate the reports.
+>
+> **Exam Concept Summary:**
+> - **Amazon RDS Multi-AZ High Availability:** Synchronously replicates data to a standby DB instance in another Availability Zone for automated failover. Crucially, the standby instance cannot serve active read queries.
+> - **Amazon RDS Read Replicas:** Asynchronously replicates primary database transactions to offload read-heavy reporting and analytics workloads across local AZs or remote AWS Regions.
+
+---
 
 ---
 
@@ -1986,7 +2698,16 @@ ALB.
 D. Encrypt the Amazon Elastic Block Store (Amazon EBS) volume on the EC2 instances by using
 AWS Key Management Service (AWS KMS).
 
-Correct Answer: A
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Configure a TLS listener. Deploy the server certificate on the NLB.
+>
+> **Exam Concept Summary:**
+> - **Application Load Balancer (ALB Layer 7):** Distributes HTTP/HTTPS traffic using Layer 7 advanced routing (URL host/path, query parameters, HTTP headers), integrated with AWS WAF, SSL offloading, and container target groups.
+> - **Network Load Balancer (NLB Layer 4):** Ultra-high-performance Layer 4 load balancer handling millions of requests per second with ultra-low latency and dedicated static/Elastic IP support.
+
+---
 
 ---
 
@@ -2005,7 +2726,15 @@ C. Dedicated Reserved Instances
 
 D. Dedicated On-Demand Instances
 
-Correct Answer: A
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Dedicated Reserved Hosts
+>
+> **Exam Concept Summary:**
+> - **AWS Architecture Best Practice:** Prioritize fully managed, serverless, and native services that minimize operational overhead while fulfilling high-availability and security requirements.
+
+---
 
 ---
 
@@ -2031,7 +2760,16 @@ D. Use the Amazon Elastic File System (Amazon EFS) One Zone storage class. Creat
 management policy to move infrequently accessed data to EFS One Zone-Infrequent Access
 (EFS One Zone-IA).
 
-Correct Answer: C
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `C`
+> - **Recommended Solution:** Use the Amazon Elastic File System (Amazon EFS) Standard storage class. Create a lifecycle management policy to move infrequently accessed data to EFS Standard-Infrequent Access (EFS Standard-IA).
+>
+> **Exam Concept Summary:**
+> - **S3 Lifecycle Management:** Automatically transitions objects across storage tiers based on age or access patterns to minimize storage costs without operational overhead.
+> - **Amazon EFS Shared File Storage:** Provides a serverless, multi-AZ POSIX-compliant shared file system concurrently mountable by hundreds of Linux EC2 instances across multiple Availability Zones.
+
+---
 
 ---
 
@@ -2056,7 +2794,15 @@ security group for the MySQL servers and allow port 3306 from the web servers se
 D. Create a network ACL for the web servers and allow port 443 from the load balancer. Create a
 network ACL for the MySQL servers and allow port 3306 from the web servers security group.
 
-Correct Answer: C
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `C`
+> - **Recommended Solution:** Create a security group for the web servers and allow port 443 from the load balancer. Create a security group for the MySQL servers and allow port 3306 from the web servers security group.
+>
+> **Exam Concept Summary:**
+> - **AWS Architecture Best Practice:** Prioritize fully managed, serverless, and native services that minimize operational overhead while fulfilling high-availability and security requirements.
+
+---
 
 ---
 
@@ -2075,7 +2821,16 @@ C. Implement an RDS for MySQL read replica to cache database calls.
 
 D. Implement Amazon Kinesis Data Firehose to stream the calls to the database.
 
-Correct Answer: B
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `B`
+> - **Recommended Solution:** Implement Amazon ElastiCache to cache the large datasets.
+>
+> **Exam Concept Summary:**
+> - **Amazon RDS Read Replicas:** Asynchronously replicates primary database transactions to offload read-heavy reporting and analytics workloads across local AZs or remote AWS Regions.
+> - **Amazon ElastiCache In-Memory Caching:** ElastiCache Redis delivers high-performance in-memory caching with data persistence, replication, and multi-AZ failover; Memcached provides simple multi-threaded object caching.
+
+---
 
 ---
 
@@ -2102,7 +2857,15 @@ an IAM policy that allows AWS CloudFormation actions only.
 E. Create an IAM role for the deployment engineer to explicitly define the permissions specific to
 the AWS CloudFormation stack and launch stacks using that IAM role.
 
-Correct Answer: D, E
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `D, E`
+> - **Recommended Solution:** Create a new IAM user for the deployment engineer and add the IAM user to a group that has an IAM policy that allows AWS CloudFormation actions only. Create an IAM role for the deployment engineer to explicitly define the permissions specific to the AWS CloudFormation stack and launch stacks using that IAM role.
+>
+> **Exam Concept Summary:**
+> - **AWS Architecture Best Practice:** Prioritize fully managed, serverless, and native services that minimize operational overhead while fulfilling high-availability and security requirements.
+
+---
 
 ---
 
@@ -2128,7 +2891,15 @@ VPCs, and configure VPC peering.
 D. Add an inbound rule to the security group of the database tier’s RDS instance to allow traffic
 from the web tiers security group.
 
-Correct Answer: D
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `D`
+> - **Recommended Solution:** Add an inbound rule to the security group of the database tier’s RDS instance to allow traffic from the web tiers security group.
+>
+> **Exam Concept Summary:**
+> - **EC2 Auto Scaling & Target Tracking:** Target Tracking scaling policies dynamically adjust ASG capacity to maintain a specific metric (e.g. 50% average CPU utilization or request count per target) with minimal manual tuning.
+
+---
 
 ---
 
@@ -2146,7 +2917,15 @@ C. Scale up the DB instance to a larger instance type to handle write operations
 
 D. Deploy the DB instance in multiple Availability Zones to process the business reporting queries.
 
-Correct Answer: A
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Deploy RDS read replicas to process the business reporting queries.
+>
+> **Exam Concept Summary:**
+> - **Amazon RDS Read Replicas:** Asynchronously replicates primary database transactions to offload read-heavy reporting and analytics workloads across local AZs or remote AWS Regions.
+
+---
 
 ---
 
@@ -2169,7 +2948,16 @@ D. Deploy an Amazon ElastiCache for Redis cluster to store customer session info
 E. Use AWS Systems Manager Application Manager in the application to manage user session
 information.
 
-Correct Answer: A, D
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A, D`
+> - **Recommended Solution:** Turn on the sticky sessions feature (session affinity) on the ALB. Deploy an Amazon ElastiCache for Redis cluster to store customer session information.
+>
+> **Exam Concept Summary:**
+> - **EC2 Auto Scaling & Target Tracking:** Target Tracking scaling policies dynamically adjust ASG capacity to maintain a specific metric (e.g. 50% average CPU utilization or request count per target) with minimal manual tuning.
+> - **Amazon RDS Multi-AZ High Availability:** Synchronously replicates data to a standby DB instance in another Availability Zone for automated failover. Crucially, the standby instance cannot serve active read queries.
+
+---
 
 ---
 
@@ -2196,7 +2984,16 @@ D. Take snapshots of Amazon Elastic Block Store (Amazon EBS) volumes of the EC2 
 every 2 hours. Enable automated backups in Amazon RDS and use point-in-time recovery to meet
 the RPO.
 
-Correct Answer: C
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `C`
+> - **Recommended Solution:** Retain the latest Amazon Machine Images (AMIs) of the web and application tiers. Enable automated backups in Amazon RDS and use point-in-time recovery to meet the RPO.
+>
+> **Exam Concept Summary:**
+> - **S3 Lifecycle Management:** Automatically transitions objects across storage tiers based on age or access patterns to minimize storage costs without operational overhead.
+> - **EC2 Auto Scaling & Target Tracking:** Target Tracking scaling policies dynamically adjust ASG capacity to maintain a specific metric (e.g. 50% average CPU utilization or request count per target) with minimal manual tuning.
+
+---
 
 ---
 
@@ -2224,7 +3021,15 @@ D. Configure the security group for the web servers to allow inbound traffic on 
 0.0.0.0/0. Configure the security group for the DB instance to allow inbound traffic on port 3306
 from 0.0.0.0/0.
 
-Correct Answer: A
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Configure the security group for the web servers to allow inbound traffic on port 443 from 0.0.0.0/0. Configure the security group for the DB instance to allow inbound traffic on port 3306 from the security group of the web servers.
+>
+> **Exam Concept Summary:**
+> - **AWS Architecture Best Practice:** Prioritize fully managed, serverless, and native services that minimize operational overhead while fulfilling high-availability and security requirements.
+
+---
 
 ---
 
@@ -2249,7 +3054,15 @@ D. Create an Amazon Connect contact flow that ingests the audio files with trans
 Embed an AWS Lambda function to scan for known PII patterns. Use Amazon EventBridge to
 start the contact flow when an audio file is uploaded to the S3 bucket.
 
-Correct Answer: C
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `C`
+> - **Recommended Solution:** Configure an Amazon Transcribe transcription job with PII redaction turned on. When an audio file is uploaded to the S3 bucket, invoke an AWS Lambda function to start the transcription job. Store the output in a separate S3 bucket.
+>
+> **Exam Concept Summary:**
+> - **AWS Lambda Serverless Execution:** Runs stateless event-driven code scaling automatically from zero with sub-second billing. Maximum execution duration is 15 minutes.
+
+---
 
 ---
 
@@ -2272,7 +3085,15 @@ C. Replace the volume with a Provisioned IOPS SSD (io2) volume.
 
 D. Replace the 2,000 GB gp3 volume with two 1,000 GB gp3 volumes.
 
-Correct Answer: C
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `C`
+> - **Recommended Solution:** Replace the volume with a Provisioned IOPS SSD (io2) volume.
+>
+> **Exam Concept Summary:**
+> - **Amazon RDS Multi-AZ High Availability:** Synchronously replicates data to a standby DB instance in another Availability Zone for automated failover. Crucially, the standby instance cannot serve active read queries.
+
+---
 
 ---
 
@@ -2291,7 +3112,15 @@ C. AWS CloudTrail
 
 D. AWS Config
 
-Correct Answer: C
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `C`
+> - **Recommended Solution:** AWS CloudTrail
+>
+> **Exam Concept Summary:**
+> - **AWS Architecture Best Practice:** Prioritize fully managed, serverless, and native services that minimize operational overhead while fulfilling high-availability and security requirements.
+
+---
 
 ---
 
@@ -2313,7 +3142,15 @@ accelerator.
 D. Create an AWS WAF web ACL that includes a rate-based rule. Associate the web ACL with the
 EC2 instances.
 
-Correct Answer: A
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Subscribe to AWS Shield Advanced. Add the accelerator as a resource to protect.
+>
+> **Exam Concept Summary:**
+> - **AWS WAF Web Application Protection:** Inspects web traffic at Layer 7 to block common exploits such as SQL injection, Cross-Site Scripting (XSS), bot scrapers, and rate-based DDoS attacks on CloudFront, ALB, and API Gateway.
+
+---
 
 ---
 
@@ -2341,7 +3178,16 @@ D. Create an Amazon Elastic Container Service (Amazon ECS) cluster with an Amazo
 launch type and an Auto Scaling group with at least one EC2 instance. Create an Amazon
 EventBridge scheduled event that launches an ECS task on the cluster to run the job.
 
-Correct Answer: C
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `C`
+> - **Recommended Solution:** Create an Amazon Elastic Container Service (Amazon ECS) cluster with an AWS Fargate launch type. Create an Amazon EventBridge scheduled event that launches an ECS task on the cluster to run the job.
+>
+> **Exam Concept Summary:**
+> - **EC2 Auto Scaling & Target Tracking:** Target Tracking scaling policies dynamically adjust ASG capacity to maintain a specific metric (e.g. 50% average CPU utilization or request count per target) with minimal manual tuning.
+> - **AWS Lambda Serverless Execution:** Runs stateless event-driven code scaling automatically from zero with sub-second billing. Maximum execution duration is 15 minutes.
+
+---
 
 ---
 
@@ -2364,7 +3210,15 @@ D. Set up a 10 Gbps AWS Direct Connect connection between the company location a
 nearest AWS Region. Transfer the data over a VPN connection into the Region to store the data in
 Amazon S3.
 
-Correct Answer: C
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `C`
+> - **Recommended Solution:** Use the AWS Snow Family console to order several AWS Snowball Edge Storage Optimized devices. Use the devices to transfer the data to Amazon S3.
+>
+> **Exam Concept Summary:**
+> - **AWS Direct Connect (DX):** Establishes a dedicated, private physical fiber-optic connection from an on-premises data center to AWS, bypassing the public internet for consistent network performance and lower egress costs.
+
+---
 
 ---
 
@@ -2389,4 +3243,13 @@ D. Create an Amazon CloudFront distribution with Lambda@Edge in front of the API
 Regional API endpoint. Create an AWS Lambda function to block requests from IP addresses that
 exceed the predefined rate.
 
-Correct Answer: B
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `B`
+> - **Recommended Solution:** Create a Regional AWS WAF web ACL with a rate-based rule. Associate the web ACL with the API Gateway stage.
+>
+> **Exam Concept Summary:**
+> - **AWS Lambda Serverless Execution:** Runs stateless event-driven code scaling automatically from zero with sub-second billing. Maximum execution duration is 15 minutes.
+> - **Amazon CloudFront & Origin Access Control:** Global Content Delivery Network (CDN) caching content at edge locations. Origin Access Control (OAC) restricts direct public access to S3 origins so users must traverse CloudFront.
+
+---

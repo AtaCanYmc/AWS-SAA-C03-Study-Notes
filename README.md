@@ -1,21 +1,21 @@
-# AWS SAA-C03 Study Repository
+# AWS SAA-C03 Study Notes
 
-A structured study repository and automated document conversion pipeline for the AWS Certified Solutions Architect - Associate (SAA-C03) examination. Raw source documents placed in `content/` are parsed by Microsoft MarkItDown into clean, modular Markdown files stored under `notes/`.
+Structured study repository for the AWS Certified Solutions Architect - Associate (SAA-C03) examination. Contains curated scenario reviews, comprehensive question banks with verified answer keys, and architectural concept callouts formatted in GitHub Flavored Markdown.
 
 [![CI](https://github.com/AtaCanYmc/aws-saa-c03-notlari/actions/workflows/ci.yml/badge.svg)](https://github.com/AtaCanYmc/aws-saa-c03-notlari/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Python: 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
+[![Format: Markdown](https://img.shields.io/badge/Format-Markdown-lightgrey.svg)](https://www.markdownguide.org/)
 
 ---
 
 ## Table of Contents
 
 - [Overview](#overview)
-- [System Architecture](#system-architecture)
-- [Directory Structure](#directory-structure)
-- [Study Modules](#study-modules)
-- [Quick Start](#quick-start)
-- [Converter Configuration](#converter-configuration)
+- [Repository Structure](#repository-structure)
+- [Study Modules Matrix](#study-modules-matrix)
+- [Study Workflow & Features](#study-workflow--features)
+- [Exam Domains Covered](#exam-domains-covered)
+- [Architectural Concept Callouts](#architectural-concept-callouts)
 - [Technical FAQ](#technical-faq)
 - [Governance and Contributing](#governance-and-contributing)
 - [License](#license)
@@ -24,29 +24,35 @@ A structured study repository and automated document conversion pipeline for the
 
 ## Overview
 
-This repository organizes preparation materials for the AWS SAA-C03 certification. To prevent rendering latency and truncated document previews on GitHub and mobile Markdown viewers, large files are divided into numbered section blocks alongside complete consolidated reference files.
+This repository is a pure Markdown study resource designed for engineers preparing for the AWS Solutions Architect Associate (SAA-C03) exam. All notes are fully self-contained without runtime dependencies.
+
+To prevent document truncation and rendering lag on mobile clients and GitHub web viewers, materials are provided in two formats:
+1. **Consolidated Files (`notes.md`)**: Full-text reference files for desktop study and global regex search.
+2. **Modular Sections (`sections/`)**: 25 to 100 question blocks equipped with task checkboxes for iterative study sessions.
 
 ---
 
-## System Architecture
+## Repository Structure
 
-The following diagram illustrates how source documents are ingested, transformed, and indexed across the repository:
+The study materials are partitioned into three dedicated modules under `notes/`:
 
 ```mermaid
-flowchart LR
-    A["Raw Input: content/*.pdf"] --> B["MarkItDown Engine"]
-    B --> C["convert.py Pipeline"]
-    C --> D["notes/01-aws-certified-solutions-architect-associate-saa-c03/"]
-    C --> E["notes/02-aws-saa-c03-question-bank-1019/"]
-    C --> F["notes/03-caa-exam-questions-explained/"]
-    D --> D1["Consolidated notes.md + Section Sets"]
-    E --> E1["Consolidated notes.md + Section Sets"]
-    F --> F1["Consolidated notes.md + Section Sets"]
+flowchart TD
+    Root["notes/"] --> M1["01-aws-certified-solutions-architect-associate-saa-c03/"]
+    Root --> M2["02-aws-saa-c03-question-bank-1019/"]
+    Root --> M3["03-caa-exam-questions-explained/"]
+
+    M1 --> M1_Full["notes.md (684 items)"]
+    M1 --> M1_Sec["sections/ (7 section files)"]
+
+    M2 --> M2_Full["notes.md (1,019 items)"]
+    M2 --> M2_Sec["sections/ (11 section files)"]
+
+    M3 --> M3_Full["notes.md (63 items)"]
+    M3 --> M3_Sec["sections/ (3 section files)"]
 ```
 
----
-
-## Directory Structure
+### File Tree
 
 ```text
 aws-saa-c03-notlari/
@@ -59,79 +65,96 @@ aws-saa-c03-notlari/
 ├── LICENSE
 ├── README.md
 ├── SECURITY.md
-├── convert.py
-├── content/                                                    # Raw input PDFs (git-ignored)
-└── notes/                                                      # Converted documentation
+└── notes/
     ├── 01-aws-certified-solutions-architect-associate-saa-c03/
     │   ├── README.md
     │   ├── notes.md
     │   └── sections/
+    │       ├── section-01-questions-0001-0100.md
+    │       ├── section-02-questions-0101-0200.md
+    │       ├── section-03-questions-0201-0300.md
+    │       ├── section-04-questions-0301-0400.md
+    │       ├── section-05-questions-0401-0500.md
+    │       ├── section-06-questions-0501-0600.md
+    │       └── section-07-questions-0601-0684.md
+    │
     ├── 02-aws-saa-c03-question-bank-1019/
     │   ├── README.md
     │   ├── notes.md
     │   └── sections/
+    │       ├── section-01-questions-0001-0100.md
+    │       ├── section-02-questions-0101-0200.md
+    │       ├── section-03-questions-0201-0300.md
+    │       ├── section-04-questions-0301-0400.md
+    │       ├── section-05-questions-0401-0500.md
+    │       ├── section-06-questions-0501-0600.md
+    │       ├── section-07-questions-0601-0700.md
+    │       ├── section-08-questions-0701-0800.md
+    │       ├── section-09-questions-0801-0900.md
+    │       ├── section-10-questions-0901-1000.md
+    │       └── section-11-questions-1001-1020.md
+    │
     └── 03-caa-exam-questions-explained/
         ├── README.md
         ├── notes.md
         └── sections/
+            ├── section-01-questions-0001-0025.md
+            ├── section-02-questions-0026-0050.md
+            └── section-03-questions-0051-0063.md
 ```
 
 ---
 
-## Study Modules
+## Study Modules Matrix
 
-| Module ID | Directory Path | Description | Scope |
-| :--- | :--- | :--- | :--- |
-| **01** | [`notes/01-aws-certified-solutions-architect-associate-saa-c03/`](./notes/01-aws-certified-solutions-architect-associate-saa-c03/) | Scenario reviews and practice questions | 684 questions |
-| **02** | [`notes/02-aws-saa-c03-question-bank-1019/`](./notes/02-aws-saa-c03-question-bank-1019/) | Full practice question bank with answer keys | 1,019 questions |
-| **03** | [`notes/03-caa-exam-questions-explained/`](./notes/03-caa-exam-questions-explained/) | Questions with detailed explanations and AWS documentation references | 63 questions |
-
----
-
-## Quick Start
-
-### Prerequisites
-
-- Python 3.10 or newer
-- Virtual environment (`venv`)
-
-### 1. Set Up Environment
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r <(echo "markitdown[all]")
-```
-
-### 2. Execute Document Conversion
-
-Place raw source PDF files into the `content/` folder, then run the pipeline:
-
-```bash
-python convert.py
-```
-
-### 3. Direct CLI Usage
-
-To convert any individual file directly with MarkItDown:
-
-```bash
-markitdown content/caasinav_sorular.pdf -o output.md
-```
+| Module ID | Folder Path | Focus & Content | Scope | Consolidated File |
+| :--- | :--- | :--- | :---: | :---: |
+| **01** | [`notes/01-aws-certified-solutions-architect-associate-saa-c03/`](./notes/01-aws-certified-solutions-architect-associate-saa-c03/) | Architectural scenario breakdowns and practice items with concept notes | 684 Items | [`notes.md`](./notes/01-aws-certified-solutions-architect-associate-saa-c03/notes.md) |
+| **02** | [`notes/02-aws-saa-c03-question-bank-1019/`](./notes/02-aws-saa-c03-question-bank-1019/) | Full question bank with verified answer keys and architectural explanations | 1,019 Items | [`notes.md`](./notes/02-aws-saa-c03-question-bank-1019/notes.md) |
+| **03** | [`notes/03-caa-exam-questions-explained/`](./notes/03-caa-exam-questions-explained/) | Exam scenarios with detailed Turkish explanations and official AWS doc links | 63 Items | [`notes.md`](./notes/03-caa-exam-questions-explained/notes.md) |
 
 ---
 
-## Converter Configuration
+## Study Workflow & Features
 
-The `convert.py` script maps known document patterns to configured target folders and chunking thresholds:
+1. **Iterative Learning**: Open the target module folder and select a section under `sections/`. Sections take approximately 30 to 60 minutes to complete.
+2. **Progress Checkboxes**: Each module `README.md` contains markdown task boxes (`- [ ]`) to track completed question batches.
+3. **Offline & Mobile Ready**: The markdown files contain no external JavaScript or heavy web assets. They render cleanly in Obsidian, GitHub Mobile, VS Code, and any standard Markdown reader.
 
-| Source Filename | Output Folder | Chunk Size |
-| :--- | :--- | :--- |
-| `AWS Certified Solutions Architect Associate SAA-C03.pdf` | `notes/01-aws-certified-solutions-architect-associate-saa-c03` | 100 questions per section |
-| `AWS-SAA-C03.pdf` | `notes/02-aws-saa-c03-question-bank-1019` | 100 questions per section |
-| `caasinav_sorular.pdf` | `notes/03-caa-exam-questions-explained` | 25 questions per section |
+---
 
-Unmatched PDF files in `content/` are automatically sanitized and converted to standalone directories under `notes/` with a default 50-item chunk size.
+## Exam Domains Covered
+
+The notes span all four official AWS SAA-C03 domains:
+
+| Domain | Weight | Core Focus Areas |
+| :--- | :---: | :--- |
+| **Domain 1: Design Secure Architectures** | 30% | IAM Policies, AWS Organizations SCPs, KMS encryption, Secrets Manager, VPC security groups, Network ACLs, AWS WAF, Shield. |
+| **Domain 2: Design Resilient Architectures** | 26% | Multi-AZ deployments, Aurora Global Databases, Auto Scaling Groups, ALB/NLB, SQS decoupling, SNS fanout, Route 53 failover. |
+| **Domain 3: Design High-Performing Architectures** | 24% | ElastiCache Redis, DynamoDB DAX, CloudFront edge caching, S3 Transfer Acceleration, EBS gp3/io2, EFS, FSx for Lustre. |
+| **Domain 4: Design Cost-Optimized Architectures** | 20% | S3 Lifecycle transitions, Glacier Deep Archive, EC2 Spot instances, Savings Plans, VPC Gateway Endpoints, Athena serverless analytics. |
+
+---
+
+## Architectural Concept Callouts
+
+Every question features a structured GitHub callout block (`> [!NOTE]`) outlining:
+- The verified correct option.
+- The recommended solution summary.
+- The fundamental AWS architectural principles governing why that specific option satisfies the scenario requirements.
+
+### Example Callout
+
+```markdown
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Turn on S3 Transfer Acceleration on the destination S3 bucket. Use multipart uploads to directly upload site data to the destination S3 bucket.
+>
+> **Exam Concept Summary:**
+> - **Amazon S3 Transfer Acceleration:** Uses Amazon CloudFront globally distributed Edge Locations to route uploads over the optimized AWS private network backbone, reducing geographic transfer latency.
+> - **S3 Multipart Upload:** Parallelizes large file uploads, recommended for objects > 100 MB and required for objects > 5 GB. Improves throughput and failure recovery.
+```
 
 ---
 
@@ -139,24 +162,24 @@ Unmatched PDF files in `content/` are automatically sanitized and converted to s
 
 ### Why are large documents split into multiple files?
 
-GitHub restricts web rendering for Markdown documents exceeding 512 KB, and mobile clients experience frame drops when rendering extensive DOM trees. Providing segmented files in `sections/` alongside the complete `notes.md` enables smooth browsing on all devices while preserving single-file full-text search capability.
+GitHub restricts web rendering for Markdown documents exceeding 512 KB, and mobile clients experience lag when parsing thousands of DOM elements. The chunked files under `sections/` keep file sizes manageable while `notes.md` remains available for full-text searches.
 
-### Are source PDF documents committed to Git?
+### Can I clone and use this repository offline?
 
-No. The `content/` folder is explicitly excluded in `.gitignore` to avoid bloating repository size and distributing raw binary assets. Generated Markdown notes and conversion scripts remain strictly tracked.
+Yes. The repository consists entirely of Markdown files and image-free diagrams. You can clone it locally and browse with any Markdown editor (Obsidian, VS Code, Typora) without an active internet connection.
 
-### Does conversion require an active Internet connection?
+### How do I track my study progress?
 
-No. The conversion pipeline operates entirely offline using local PDF parsing dependencies.
+Navigate to any module folder (such as [`notes/02-aws-saa-c03-question-bank-1019/`](./notes/02-aws-saa-c03-question-bank-1019/)) and view its `README.md`. Mark completed sections by checking the interactive boxes.
 
 ---
 
 ## Governance and Contributing
 
-Review [CONTRIBUTING.md](CONTRIBUTING.md) for branch naming conventions, pull request expectations, and commit standards. For vulnerability disclosures and security policies, refer to [SECURITY.md](SECURITY.md).
+Review [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines, branch standards, and pull request expectations. For security disclosure policies, refer to [SECURITY.md](SECURITY.md).
 
 ---
 
 ## License
 
-This project is licensed under the terms of the MIT License. See [LICENSE](LICENSE) for details.
+This repository is distributed under the terms of the MIT License. See [LICENSE](LICENSE) for details.

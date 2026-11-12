@@ -32,20 +32,15 @@ Region.
 
 Birden fazla şık seçilecek.
 
-CEVAP: C, D
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `C`
+> - **Kısa Konu Anlatımı & Gerekçe:** C ve D dogrudur. S3 Cross-Region Replication (D), kaynak bucket'a replikasyon yapilandirmasi eklendiginde yeni nesneleri ikinci Region'a otomatik kopyalar; S3 Batch Replication (C) ise replikasyon yapilandirmasi varken mevcut nesneleri de kopyalar, boylece hem mevcut hem gelecekteki belgeler coklu Region'da tutulur. A, B ve E ozel kod, zamanlanmis isler veya elle senkronizasyon gerektirdigi icin daha fazla operasyonel cabayi gerektirir.
+> - **Resmi AWS Dokümantasyonu:**
+>   - [https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-batch-replication-batch.html](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-batch-replication-batch.html)
+>   - [https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html](https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html)
 
-Açıklama: C ve D dogrudur. S3 Cross-Region Replication (D), kaynak bucket'a replikasyon
-yapilandirmasi eklendiginde yeni nesneleri ikinci Region'a otomatik kopyalar; S3 Batch Replication
-(C) ise replikasyon yapilandirmasi varken mevcut nesneleri de kopyalar, boylece hem mevcut hem
-gelecekteki belgeler coklu Region'da tutulur. A, B ve E ozel kod, zamanlanmis isler veya elle
-senkronizasyon gerektirdigi icin daha fazla operasyonel cabayi gerektirir.
-
-Kaynak: web: https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-batch-replication-batch.html ; web:
-https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html
-Doğrulama: web
-Not: Not in /tmp/saa.txt (searched the 500 documents, S3 Batch Replication and Cross-Region Replication phrases). The
-Batch Replication page confirms it replicates existing objects but needs an existing replication configuration; the
-Replication page confirms live replication copies new objects. Screen label is a blurry overlay, read as Question 53 of 65.
+---
 
 ---
 
@@ -66,19 +61,14 @@ D)  Create an Amazon EventBridge rule that invokes an AWS Lambda function. Confi
 the Lambda function to create EFS backups and to store the backups in an Amazon S3
 bucket. Set an S3 Lifecycle configuration for the S3 bucket.
 
-CEVAP: B
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `B`
+> - **Kısa Konu Anlatımı & Gerekçe:** B dogrudur: AWS Backup ile yedekleme plani olusturup her yedek icin saklama suresini tanimlamak, yonetilen bir cozumle yedekleme ve saklama yonetimi saglar. A'daki EFS otomatik yedeklemeleri varsayilan olarak 35 gun saklanir, bu nedenle 7 yillik saklama gereksinimini karsilamaz. C ve D, Lambda kodu, zamanlama ve S3 yasam dongusu kurallari gibi ek bilesenler gerektirdigi icin daha fazla operasyonel yuk getirir.
+> - **Resmi AWS Dokümantasyonu:**
+>   - [https://docs.aws.amazon.com/efs/latest/ug/awsbackup.html](https://docs.aws.amazon.com/efs/latest/ug/awsbackup.html)
 
-Açıklama: B dogrudur: AWS Backup ile yedekleme plani olusturup her yedek icin saklama suresini
-tanimlamak, yonetilen bir cozumle yedekleme ve saklama yonetimi saglar. A'daki EFS otomatik
-yedeklemeleri varsayilan olarak 35 gun saklanir, bu nedenle 7 yillik saklama gereksinimini
-karsilamaz. C ve D, Lambda kodu, zamanlama ve S3 yasam dongusu kurallari gibi ek bilesenler
-gerektirdigi icin daha fazla operasyonel yuk getirir.
-
-Kaynak: web: https://docs.aws.amazon.com/efs/latest/ug/awsbackup.html
-Doğrulama: web
-Not: Not in /tmp/saa.txt (searched the law firm, client case files, EFS backup and 7 years phrases). The EFS page confirms
-the 35-day default for EFS automatic backups and that retention is set through AWS Backup backup plans. The 7-year
-maximum retention in AWS Backup was not checked. Screen label is a blurry overlay, read as Question 54 of 65.
+---
 
 ---
 
@@ -107,21 +97,14 @@ D)  Use Amazon Data Firehose to load the clickstream data from Kinesis Data Stre
 Amazon S3. Use AWS Glue crawlers to infer the schema and populate the AWS Glue Data
 Catalog. Use Amazon Athena to query the raw data in Amazon S3.
 
-CEVAP: A
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `A`
+> - **Kısa Konu Anlatımı & Gerekçe:** A dogrudur: AWS Lambda sunucusuz oldugu icin gereksinimle uyumludur; Lambda veriyi zenginlestirip S3'e yazar ve Amazon Redshift Spectrum, zenginlestirilmis veriyi S3 uzerinde yukleme yapmadan sorgular. B ve C, EC2 Spot veya Fargate Spot gibi sunucu tabanli bilesenler ve EC2 instance'ina atifla COPY komutu kullandigi icin sunucusuz sartini karsilamaz. D, Redshift kullanmaz ve Aurora'daki musteri profili verileriyle birlestirme yapmaz; yalnizca Athena ile ham veriyi sorgular.
+> - **Resmi AWS Dokümantasyonu:**
+>   - [https://docs.aws.amazon.com/redshift/latest/dg/c-using-spectrum.html](https://docs.aws.amazon.com/redshift/latest/dg/c-using-spectrum.html)
 
-Açıklama: A dogrudur: AWS Lambda sunucusuz oldugu icin gereksinimle uyumludur; Lambda
-veriyi zenginlestirip S3'e yazar ve Amazon Redshift Spectrum, zenginlestirilmis veriyi S3 uzerinde
-yukleme yapmadan sorgular. B ve C, EC2 Spot veya Fargate Spot gibi sunucu tabanli bilesenler ve
-EC2 instance'ina atifla COPY komutu kullandigi icin sunucusuz sartini karsilamaz. D, Redshift
-kullanmaz ve Aurora'daki musteri profili verileriyle birlestirme yapmaz; yalnizca Athena ile ham
-veriyi sorgular.
-
-Kaynak: web: https://docs.aws.amazon.com/redshift/latest/dg/c-using-spectrum.html
-Doğrulama: web
-Not: Not in /tmp/saa.txt (searched the clickstream, Kinesis, Aurora Multi-AZ and customer profile phrases). The Redshift
-Spectrum page confirms it queries S3 data without loading it into Redshift. The Aurora join inside Lambda and the
-high-availability claim were not separately checked against docs. Options were read from a zoomed crop. Screen label is a
-blurry overlay, read as Question 55 of 65.
+---
 
 ---
 
@@ -153,20 +136,12 @@ that targets an Amazon ECS service that runs AWS Fargate tasks for the PHP appli
 Configure the PHP application to use an Amazon ElastiCache (Redis OSS) cluster that runs
 in multiple Availability Zones.
 
-CEVAP: D
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `D`
+> - **Kısa Konu Anlatımı & Gerekçe:** D dogrudur: statik icerik CloudFront ve S3 uzerinden sunulur, PHP uygulamasi ALB arkasinda Fargate uzerinde calisan bir ECS servisine dagitilir ve oturum verileri birden fazla AZ'de calisan ElastiCache (Redis OSS) kumesinde tutulur. A tek bir public subnet ve public IP'li EC2 orneğine bagli kalir, yuksek erisilebilirlik saglamaz. B, PHP uygulamasinin Lambda'ya tasinmasini gerektirir ve kapsamli bir mimari degisiklik getirir; C ise backend'i tek bir EC2 orneginde birakir ve yuksek erisilebilirligi karsilamaz.
 
-Açıklama: D dogrudur: statik icerik CloudFront ve S3 uzerinden sunulur, PHP uygulamasi ALB
-arkasinda Fargate uzerinde calisan bir ECS servisine dagitilir ve oturum verileri birden fazla AZ'de
-calisan ElastiCache (Redis OSS) kumesinde tutulur. A tek bir public subnet ve public IP'li EC2
-orneğine bagli kalir, yuksek erisilebilirlik saglamaz. B, PHP uygulamasinin Lambda'ya tasinmasini
-gerektirir ve kapsamli bir mimari degisiklik getirir; C ise backend'i tek bir EC2 orneginde birakir ve
-yuksek erisilebilirligi karsilamaz.
-
-Kaynak: file: /tmp/saa.txt lines 11116-11139
-Doğrulama: file
-Not: Matched file Question 654 (lines 11116-11139) on stem and all four options. Photo options B, C and D say
-ElastiCache (Redis OSS); the file says ElastiCache for Redis, a naming difference only. Screen label is a blurry overlay,
-read as Question 56 of 65.
+---
 
 ---
 
@@ -185,20 +160,12 @@ C)  Use an AWS Lambda function to route the requests to Amazon EKS.
 
 D)  Use Amazon API Gateway to route the requests to Amazon EKS.
 
-CEVAP: B
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `B`
+> - **Kısa Konu Anlatımı & Gerekçe:** B dogrudur: AWS Load Balancer Controller ile olusturulan Application Load Balancer, HTTP isteklerini URL yolu ve host kurallarina gore farkli EKS servislerine yonlendirir ve tek bir load balancer ile maliyeti dusuk tutar. A'daki Network Load Balancer 4. katmanda calisir ve URL'ye gore yonlendirme yapamaz. C ve D, istekleri EKS'e ulastirmak icin Lambda veya API Gateway gibi ek bir bilesen ekler; bu da gereksiz maliyet getirir.
 
-Açıklama: B dogrudur: AWS Load Balancer Controller ile olusturulan Application Load Balancer,
-HTTP isteklerini URL yolu ve host kurallarina gore farkli EKS servislerine yonlendirir ve tek bir load
-balancer ile maliyeti dusuk tutar. A'daki Network Load Balancer 4. katmanda calisir ve URL'ye gore
-yonlendirme yapamaz. C ve D, istekleri EKS'e ulastirmak icin Lambda veya API Gateway gibi ek bir
-bilesen ekler; bu da gereksiz maliyet getirir.
-
-Kaynak: file: /tmp/saa.txt lines 10114-10124
-Doğrulama: file
-Not: Options A and B match file Question 591 (lines 10114-10124). The photo stem differs from the file stem (the file says
-a container application that needs to route requests), and photo options C and D say route where the file says connect.
-Same answer key used, since it covers the same routing question. Screen label is a blurry overlay, read as Question 57 of
-65.
+---
 
 ---
 
@@ -222,21 +189,15 @@ D)  Create an Amazon S3 Express One Zone bucket to store the files. Deploy an AW
 Lambda function from a container image. Process files from the S3 Express One Zone
 bucket.
 
-CEVAP: C
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `C`
+> - **Kısa Konu Anlatımı & Gerekçe:** C dogrudur: Fargate uzerindeki ECS gorevleri 1 saate kadar suren isleme icin uygundur ve merkezi depodaki dosyalara paylasilan, yuksek performansli erisim icin Amazon EFS baglanabilir; EFS, Fargate gorevlerinde Linux platform surum 1.4.0 ve sonrasinda desteklenir. A ve D, Lambda'nin en fazla 15 dakika (900 saniye) calisabilmesi nedeniyle 1 saatlik isleme suresini karsilayamaz. B, EC2 instance store kullanir; bu, instance'a yerel ve gecici depolamadir ve merkezi depoya paylasilan erisim saglamaz.
+> - **Resmi AWS Dokümantasyonu:**
+>   - [https://docs.aws.amazon.com/lambda/latest/dg/configuration-timeout.html](https://docs.aws.amazon.com/lambda/latest/dg/configuration-timeout.html)
+>   - [https://docs.aws.amazon.com/AmazonECS/latest/developerguide/efs-volumes.html](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/efs-volumes.html)
 
-Açıklama: C dogrudur: Fargate uzerindeki ECS gorevleri 1 saate kadar suren isleme icin uygundur
-ve merkezi depodaki dosyalara paylasilan, yuksek performansli erisim icin Amazon EFS
-baglanabilir; EFS, Fargate gorevlerinde Linux platform surum 1.4.0 ve sonrasinda desteklenir. A ve
-D, Lambda'nin en fazla 15 dakika (900 saniye) calisabilmesi nedeniyle 1 saatlik isleme suresini
-karsilayamaz. B, EC2 instance store kullanir; bu, instance'a yerel ve gecici depolamadir ve merkezi
-depoya paylasilan erisim saglamaz.
-
-Kaynak: web: https://docs.aws.amazon.com/lambda/latest/dg/configuration-timeout.html ; web:
-https://docs.aws.amazon.com/AmazonECS/latest/developerguide/efs-volumes.html
-Doğrulama: web
-Not: Not in /tmp/saa.txt (searched the ETL, containerized, EFS and 1 hour phrases). The Lambda page confirms the
-900-second maximum and the ECS EFS page confirms Fargate support. The rejection of B as instance-local storage is
-reasoning; the instance store page was not fetched. Screen label is a blurry overlay, read as Question 58 of 65.
+---
 
 ---
 
@@ -262,21 +223,14 @@ a shared route table for the private subnets.
 D)  Deploy an egress-only internet gateway in public subnets in both Availability Zones.
 Create and configure one route table for each private subnet.
 
-CEVAP: A
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `A`
+> - **Kısa Konu Anlatımı & Gerekçe:** A dogrudur: her Availability Zone'da public subnet'e yerlestirilen bir NAT gateway, private subnet'lerdeki EC2 orneklerinin giden IPv4 istekleri yapmasini saglar ve internetten gelen baglantiyi engeller. Her private subnet'in kendi AZ'sindeki NAT gateway'e yonlendiren ayri bir route table'i olmasi, bir AZ arizasinda da erisilebilirligi korur. B internet gateway kullanir ve genel IPv4 erisimine izin verir; C tek bir paylasilan route table ile tek NAT gateway'e bagimlilik yaratir; D egress-only internet gateway yalnizca IPv6 icindir.
+> - **Resmi AWS Dokümantasyonu:**
+>   - [https://docs.aws.amazon.com/vpc/latest/userguide/nat-gateway-scenarios.html](https://docs.aws.amazon.com/vpc/latest/userguide/nat-gateway-scenarios.html)
 
-Açıklama: A dogrudur: her Availability Zone'da public subnet'e yerlestirilen bir NAT gateway,
-private subnet'lerdeki EC2 orneklerinin giden IPv4 istekleri yapmasini saglar ve internetten gelen
-baglantiyi engeller. Her private subnet'in kendi AZ'sindeki NAT gateway'e yonlendiren ayri bir route
-table'i olmasi, bir AZ arizasinda da erisilebilirligi korur. B internet gateway kullanir ve genel IPv4
-erisimine izin verir; C tek bir paylasilan route table ile tek NAT gateway'e bagimlilik yaratir; D
-egress-only internet gateway yalnizca IPv6 icindir.
-
-Kaynak: web: https://docs.aws.amazon.com/vpc/latest/userguide/nat-gateway-scenarios.html
-Doğrulama: web
-Not: Not in /tmp/saa.txt (searched the public IPv4, NAT and two private subnets phrases; the NAT matches found are
-different questions). The NAT scenarios page recommends a NAT gateway in each AZ for resiliency. One route table per
-AZ is inferred from its per-subnet route table example, not stated outright. The egress-only internet gateway being IPv6
-only is general knowledge and was not fetched. Screen label is a blurry overlay, read as Question 59 of 65.
+---
 
 ---
 
@@ -304,19 +258,15 @@ between the VPCs. Use an EC2-based VPN solution in the first VPC and a virtual p
 gateway in the new VPC. Update the route tables to direct traffic through the VPN tunnel.
 Launch the new EC2 instances in the new VPC.
 
-CEVAP: A
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `A`
+> - **Kısa Konu Anlatımı & Gerekçe:** Doğru cevap A: Mevcut VPC'ye ikincil bir IPv4 CIDR bloğu eklenebilir ve bu blok üzerinde oluşturulan yeni subnet'lere EC2 örnekleri aynı VPC içinde başlatılabilir. B ve C yeni bir VPC ile peering veya transit gateway gibi ek bağlantı katmanları gerektirir. D ise gereksiz bir VPN altyapısı ekler; bu nedenle yalnızca A en az operasyonel yükle kapasiteyi sağlar.
+> - **Resmi AWS Dokümantasyonu:**
+>   - [https://docs.aws.amazon.com/vpc/latest/userguide/vpc-cidr-blocks.html](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-cidr-blocks.html)
+>   - [https://docs.aws.amazon.com/vpc/latest/userguide/add-ipv4-cidr.html](https://docs.aws.amazon.com/vpc/latest/userguide/add-ipv4-cidr.html)
 
-Açıklama: Doğru cevap A: Mevcut VPC'ye ikincil bir IPv4 CIDR bloğu eklenebilir ve bu blok
-üzerinde oluşturulan yeni subnet'lere EC2 örnekleri aynı VPC içinde başlatılabilir. B ve C yeni bir
-VPC ile peering veya transit gateway gibi ek bağlantı katmanları gerektirir. D ise gereksiz bir VPN
-altyapısı ekler; bu nedenle yalnızca A en az operasyonel yükle kapasiteyi sağlar.
-
-Kaynak: web: https://docs.aws.amazon.com/vpc/latest/userguide/vpc-cidr-blocks.html ;
-https://docs.aws.amazon.com/vpc/latest/userguide/add-ipv4-cidr.html
-Doğrulama: web
-Not: Not in /tmp/saa.txt (stem phrases searched, no match). The screen label is small in the photo and was read as
-'Question 60 of 65', consistent with the neighbouring screens. The docs confirm secondary CIDR blocks and subnets in the
-new range; 'least overhead' is reasoned from the other options adding a VPC plus peering, transit gateway or VPN.
+---
 
 ---
 
@@ -341,24 +291,16 @@ C)  The developer does not have multi-factor authentication (MFA) enabled.
 D)  The new repository was created from an ECR repository policy that denies pushing
 images.
 
-CEVAP: D
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `D`
+> - **Kısa Konu Anlatımı & Gerekçe:** Doğru cevap D: Yeni depo, mevcut bir deponun repository policy'si kopyalanarak oluşturulmuş ve bu politika push işlemini reddediyor. IAM politikası ile kaynak politikası arasında bir taraf açıkça reddederse işlem engellenir; bu yüzden rolde AmazonEC2ContainerRegistryFullAccess bulunsa bile push başarısız olur. A yanlıştır çünkü ECR giriş token'ı 12 saat geçerlidir; B yanlıştır çünkü hata push sırasında oluşur ve rol zaten tam erişime sahiptir; C yanlıştır çünkü ECR kimlik doğrulaması MFA'ya bağlı değildir.
+> - **Resmi AWS Dokümantasyonu:**
+>   - [https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html)
+>   - [https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-policies.html](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-policies.html)
+>   - [https://docs.aws.amazon.com/AmazonECR/latest/userguide/registry_auth.html](https://docs.aws.amazon.com/AmazonECR/latest/userguide/registry_auth.html)
 
-Açıklama: Doğru cevap D: Yeni depo, mevcut bir deponun repository policy'si kopyalanarak
-oluşturulmuş ve bu politika push işlemini reddediyor. IAM politikası ile kaynak politikası arasında bir
-taraf açıkça reddederse işlem engellenir; bu yüzden rolde AmazonEC2ContainerRegistryFullAccess
-bulunsa bile push başarısız olur. A yanlıştır çünkü ECR giriş token'ı 12 saat geçerlidir; B yanlıştır
-çünkü hata push sırasında oluşur ve rol zaten tam erişime sahiptir; C yanlıştır çünkü ECR kimlik
-doğrulaması MFA'ya bağlı değildir.
-
-Kaynak: web: https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html ;
-https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-policies.html ;
-https://docs.aws.amazon.com/AmazonECR/latest/userguide/registry_auth.html
-Doğrulama: web
-Not: Not in /tmp/saa.txt (no match for the ECR stem). The photo is tilted and the stem's last sentence breaks after 'The' in
-the photo; the unreadable continuation is marked [?]. The options were read from an enlarged crop. The 12-hour token
-validity is from the registry_auth page. The screen label was read as 'Question 61 of 65'. The docs state that an explicit
-deny in a resource or identity policy overrides an allow; they do not describe the 'copy from template' scenario, which is
-taken from the question text.
+---
 
 ---
 
@@ -380,22 +322,15 @@ queue.
 
 D)  Configure VPC Flow Logs to detect SQS traffic that leaves the VPC.
 
-CEVAP: A
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `A`
+> - **Kısa Konu Anlatımı & Gerekçe:** Doğru cevap A: SQS için bir arayüz VPC endpoint'i kullanıldığında trafik public internete çıkmadan AWS ağı üzerinden gider. Kuyruk politikasında aws:SourceVpce koşulu ile erişim yalnızca bu endpoint'e kısıtlanabilir. B yalnızca veriyi depolamadayken şifreler, ağ yolunu değiştirmez; C geçici kimlik bilgisi üretir ama trafiğin public IP üzerinden gitmesini engellemez; D trafiği yalnızca izler, engellemez.
+> - **Resmi AWS Dokümantasyonu:**
+>   - [https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-internetwork-traffic-privacy.html](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-internetwork-traffic-privacy.html)
+>   - [https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-creating-custom-policies-access-p](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-creating-custom-policies-access-p)
 
-Açıklama: Doğru cevap A: SQS için bir arayüz VPC endpoint'i kullanıldığında trafik public internete
-çıkmadan AWS ağı üzerinden gider. Kuyruk politikasında aws:SourceVpce koşulu ile erişim yalnızca
-bu endpoint'e kısıtlanabilir. B yalnızca veriyi depolamadayken şifreler, ağ yolunu değiştirmez; C
-geçici kimlik bilgisi üretir ama trafiğin public IP üzerinden gitmesini engellemez; D trafiği yalnızca
-izler, engellemez.
-
-Kaynak: web:
-https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-internetwork-traffic-privacy.html ;
-https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-creating-custom-policies-access-p
-olicy-examples.html
-Doğrulama: web
-Not: Not in /tmp/saa.txt. A nearby file question (Question 555, around line 9555, interface VPC endpoint for SQS, key A)
-has a different stem and options, so its key was not used. The 'without public IP' wording is paraphrased from the
-interface-endpoint page; the deny-unless-VPC-endpoint condition is Example 5 on the SQS access-policy examples page.
+---
 
 ---
 
@@ -419,23 +354,16 @@ Configure an S3 Lifecycle policy to remove records after 10 years.
 D)  Store the records in Amazon S3 Intelligent-Tiering. Configure automatic archiving to the
 Archive Access tier.
 
-CEVAP: B
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `B`
+> - **Kısa Konu Anlatımı & Gerekçe:** Doğru cevap B: S3 Glacier Flexible Retrieval düşük saklama maliyeti sunar ve Standard geri getirme 3-5 saat sürer, bu da 'birkaç saat içinde' gereksinimini karşılar. S3 Object Lock, compliance modunda 10 yıllık saklama süresi boyunca kayıtların silinmesini veya üzerine yazılmasını engelleyerek değişmezlik sağlar. A pahalı S3 Standard kullanır ve sürümleme değişmezlik sağlamaz; C tek AZ'de tutar ve süre sonunda kayıt silen bir kurala dayanır; D'de Object Lock olmadığı için değişmezlik gereksinimi karşılanmaz.
+> - **Resmi AWS Dokümantasyonu:**
+>   - [https://docs.aws.amazon.com/AmazonS3/latest/userguide/glacier-storage-classes.html](https://docs.aws.amazon.com/AmazonS3/latest/userguide/glacier-storage-classes.html)
+>   - [https://docs.aws.amazon.com/AmazonS3/latest/userguide/restoring-objects-retrieval-options.html](https://docs.aws.amazon.com/AmazonS3/latest/userguide/restoring-objects-retrieval-options.html)
+>   - [https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html)
 
-Açıklama: Doğru cevap B: S3 Glacier Flexible Retrieval düşük saklama maliyeti sunar ve Standard
-geri getirme 3-5 saat sürer, bu da 'birkaç saat içinde' gereksinimini karşılar. S3 Object Lock,
-compliance modunda 10 yıllık saklama süresi boyunca kayıtların silinmesini veya üzerine
-yazılmasını engelleyerek değişmezlik sağlar. A pahalı S3 Standard kullanır ve sürümleme
-değişmezlik sağlamaz; C tek AZ'de tutar ve süre sonunda kayıt silen bir kurala dayanır; D'de Object
-Lock olmadığı için değişmezlik gereksinimi karşılanmaz.
-
-Kaynak: web: https://docs.aws.amazon.com/AmazonS3/latest/userguide/glacier-storage-classes.html ;
-https://docs.aws.amazon.com/AmazonS3/latest/userguide/restoring-objects-retrieval-options.html ;
-https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html
-Doğrulama: web
-Not: Not in /tmp/saa.txt. A similar accounting-records question (around line 944) is a different question and was not used
-as the key. The storage-classes page says Glacier classes have lower storage costs than S3 Standard, but gives no exact
-price comparison, so 'most cost-effective' is reasoned from that. The Object Lock compliance-mode behaviour is from the
-object-lock page.
+---
 
 ---
 
@@ -461,23 +389,17 @@ a Gateway Load Balancer.
 D)  Create an Amazon FSx for Windows File Server Multi-AZ file system with HDD storage.
 Enable shadow copies. Mount the file system on the EC2 instances by using SMB protocol.
 
-CEVAP: B
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `B`
+> - **Kısa Konu Anlatımı & Gerekçe:** Doğru cevap B: FSx for Lustre'ün persistent SSD seçeneği alt milisaniye gecikme sunar, Linux EC2 örnekleri Lustre istemcisiyle bağlanabilir ve S3 bağlantısı ham verinin içe aktarılmasını ve sonuçların dışa aktarılmasını sağlar. A yanlıştır çünkü ALL tiering politikası verinin çoğunu kapasite havuzuna taşır ve performansı düşürür; C'deki HDD tek haneli milisaniye gecikme sunar; D Windows ve SMB içindir, HDD kullanır ve Linux iş yükü için uygun değildir.
+> - **Resmi AWS Dokümantasyonu:**
+>   - [https://docs.aws.amazon.com/fsx/latest/LustreGuide/ssd-storage.html](https://docs.aws.amazon.com/fsx/latest/LustreGuide/ssd-storage.html)
+>   - [https://docs.aws.amazon.com/fsx/latest/LustreGuide/create-dra-linked-data-repo.html](https://docs.aws.amazon.com/fsx/latest/LustreGuide/create-dra-linked-data-repo.html)
+>   - [https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html](https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html)
+>   - [https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/volume-storage-capacity.html](https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/volume-storage-capacity.html)
 
-Açıklama: Doğru cevap B: FSx for Lustre'ün persistent SSD seçeneği alt milisaniye gecikme sunar,
-Linux EC2 örnekleri Lustre istemcisiyle bağlanabilir ve S3 bağlantısı ham verinin içe aktarılmasını
-ve sonuçların dışa aktarılmasını sağlar. A yanlıştır çünkü ALL tiering politikası verinin çoğunu
-kapasite havuzuna taşır ve performansı düşürür; C'deki HDD tek haneli milisaniye gecikme sunar;
-D Windows ve SMB içindir, HDD kullanır ve Linux iş yükü için uygun değildir.
-
-Kaynak: web: https://docs.aws.amazon.com/fsx/latest/LustreGuide/ssd-storage.html ;
-https://docs.aws.amazon.com/fsx/latest/LustreGuide/create-dra-linked-data-repo.html ;
-https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html ;
-https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/volume-storage-capacity.html
-Doğrulama: web
-Not: Not an exact match in /tmp/saa.txt: a similar question (Question 299, around lines 5158-5170, key B) uses 8 TB and
-6 GBps wording and different options, so no file key is applied; its key also points to B. Options B and C were read from an
-enlarged crop, and C's last clause ('using a Gateway Load Balancer') is low-resolution. The screen label was read as
-'Question 64 of 65'.
+---
 
 ---
 
@@ -495,19 +417,10 @@ C)  Use Amazon CloudFront with the EC2 instances configured as the source.
 
 D)  Use EC2 instances in the same edge location and the same AWS Region.
 
-CEVAP: C
-
-Açıklama: Doğru cevap C: CloudFront içeriği dünya genelindeki kenar konumlarında önbelleğe alır
-ve kullanıcılara daha yakın yerden sunar; EC2 örneği de HTTP(S) orijin olarak kullanılabilir. A tek
-AZ'de olduğu için hem dayanıklılığı hem de uzak kullanıcılar için gecikmeyi kötüleştirir; B aynı
-bölgede birden fazla AZ kullanır ama global kullanıcılar için gecikmeyi azaltmaz; D geçersizdir
-çünkü kenar konumları EC2 örneği barındırmak için kullanılmaz.
-
-Kaynak: web:
-https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/DownloadDistS3AndCustomOrigins.html ;
-https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/ConfiguringCaching.html
-Doğrulama: web
-Not: Not in /tmp/saa.txt. The stem word 'minimize' is read from the photo, where that line is blurred; the rest of the stem
-is legible. The screen label was read as 'Question 65 of 65'. The docs confirm EC2 as a custom origin and edge caching for
-lower latency; the statement that edge locations do not host EC2 instances is general AWS knowledge, not from the
-fetched pages.
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `C`
+> - **Kısa Konu Anlatımı & Gerekçe:** Doğru cevap C: CloudFront içeriği dünya genelindeki kenar konumlarında önbelleğe alır ve kullanıcılara daha yakın yerden sunar; EC2 örneği de HTTP(S) orijin olarak kullanılabilir. A tek AZ'de olduğu için hem dayanıklılığı hem de uzak kullanıcılar için gecikmeyi kötüleştirir; B aynı bölgede birden fazla AZ kullanır ama global kullanıcılar için gecikmeyi azaltmaz; D geçersizdir çünkü kenar konumları EC2 örneği barındırmak için kullanılmaz.
+> - **Resmi AWS Dokümantasyonu:**
+>   - [https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/DownloadDistS3AndCustomOrigins.html](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/DownloadDistS3AndCustomOrigins.html)
+>   - [https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/ConfiguringCaching.html](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/ConfiguringCaching.html)

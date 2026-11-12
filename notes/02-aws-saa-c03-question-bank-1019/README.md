@@ -2,7 +2,7 @@
 
 # AWS SAA-C03 Comprehensive Question Bank (1019 Questions with Answers)
 
-Extensive collection of 1019 practice questions with correct answer keys for the AWS SAA-C03 examination.
+Extensive collection of 1019 practice questions with correct answers and architectural concept callouts.
 
 ## Metadata
 

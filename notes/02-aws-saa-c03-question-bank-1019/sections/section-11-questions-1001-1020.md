@@ -23,7 +23,15 @@ C. Use an AWS Storage Gateway Volume Gateway with stored volumes as iSCSI target
 D. Use an AWS Storage Gateway Tape Gateway. Integrate Tape Gateway with the on-premises
 applications to store virtual tapes in Amazon S3.
 
-Correct Answer: B
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `B`
+> - **Recommended Solution:** Use an AWS Storage Gateway Volume Gateway with cached volumes as iSCSI targets.
+>
+> **Exam Concept Summary:**
+> - **AWS Storage Gateway:** Connects on-premises environments to cloud storage. S3 File Gateway exposes S3 via NFS/SMB caching; Volume Gateway provides iSCSI block storage backed by EBS snapshots.
+
+---
 
 ---
 
@@ -56,7 +64,16 @@ order collection. Use the second SQS queue for order fulfillment. Configure the 
 poll their respective queues. Scale the Auto Scaling groups based on the number of messages in
 each queue.
 
-Correct Answer: D
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `D`
+> - **Recommended Solution:** Provision two Amazon Simple Queue Service (Amazon SQS) queues. Use one SQS queue for order collection. Use the second SQS queue for order fulfillment. Configure the EC2 instances to poll their respective queues. Scale the Auto Scaling groups based on the number of messages in each queue.
+>
+> **Exam Concept Summary:**
+> - **EC2 Auto Scaling & Target Tracking:** Target Tracking scaling policies dynamically adjust ASG capacity to maintain a specific metric (e.g. 50% average CPU utilization or request count per target) with minimal manual tuning.
+> - **Amazon SQS Queuing Architecture:** Decouples application components. Standard queues provide virtually unlimited throughput with at-least-once delivery; FIFO queues guarantee strict ordering and exactly-once processing (up to 3,000 msgs/sec with batching).
+
+---
 
 ---
 
@@ -81,7 +98,16 @@ DynamoDB Streams for Cross-Region Replication between Regions.
 D. Use DynamoDB global tables for automatic multi-Region replication. Deploy tables in multiple
 AWS Regions. Use provisioned capacity mode. Enable auto scaling.
 
-Correct Answer: D
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `D`
+> - **Recommended Solution:** Use DynamoDB global tables for automatic multi-Region replication. Deploy tables in multiple AWS Regions. Use provisioned capacity mode. Enable auto scaling.
+>
+> **Exam Concept Summary:**
+> - **S3 Cross-Region Replication (CRR):** Provides asynchronous automatic replication of objects across buckets in different AWS Regions for disaster recovery and low-latency global access (requires S3 Versioning).
+> - **EC2 Auto Scaling & Target Tracking:** Target Tracking scaling policies dynamically adjust ASG capacity to maintain a specific metric (e.g. 50% average CPU utilization or request count per target) with minimal manual tuning.
+
+---
 
 ---
 
@@ -104,7 +130,16 @@ FSx File Gateway to provide storage for the on-premises application.
 D. Configure an on-premises file server. Use the Amazon S3 API to connect to S3 storage.
 Configure the application to access the storage from the on-premises file server.
 
-Correct Answer: B
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `B`
+> - **Recommended Solution:** Configure an Amazon S3 File Gateway to provide storage for the on-premises application.
+>
+> **Exam Concept Summary:**
+> - **Amazon FSx Managed File Systems:** FSx for Windows provides fully managed native SMB file shares with Active Directory integration. FSx for Lustre delivers ultra-high-throughput sub-millisecond storage for compute-intensive HPC and machine learning.
+> - **AWS Storage Gateway:** Connects on-premises environments to cloud storage. S3 File Gateway exposes S3 via NFS/SMB caching; Volume Gateway provides iSCSI block storage backed by EBS snapshots.
+
+---
 
 ---
 
@@ -129,7 +164,16 @@ groups for the appropriate Regions to distribute traffic. Create an endpoint in 
 D. Use AWS Site-to-Site VPN to establish dedicated VPN tunnels between Regions and customer
 networks. Route traffic to the API over the VPN connections.
 
-Correct Answer: C
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `C`
+> - **Recommended Solution:** Set up AWS Global Accelerator. Configure listeners for the necessary ports. Configure endpoint groups for the appropriate Regions to distribute traffic. Create an endpoint in the group for the API.
+>
+> **Exam Concept Summary:**
+> - **AWS Direct Connect (DX):** Establishes a dedicated, private physical fiber-optic connection from an on-premises data center to AWS, bypassing the public internet for consistent network performance and lower egress costs.
+> - **Amazon CloudFront & Origin Access Control:** Global Content Delivery Network (CDN) caching content at edge locations. Origin Access Control (OAC) restricts direct public access to S3 origins so users must traverse CloudFront.
+
+---
 
 ---
 
@@ -162,7 +206,16 @@ Amazon Simple Queue Service (Amazon SQS) queue. Configure the SQS queue to invok
 AWS Lambda function that calls Amazon Lex for sentiment analysis and saves the results to an
 Amazon DynamoDB table. Set the TTL for all records to 365 days in the future.
 
-Correct Answer: A
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Send the survey results data to an Amazon API Gateway endpoint that is connected to an Amazon Simple Queue Service (Amazon SQS) queue. Create an AWS Lambda function to poll the SQS queue, call Amazon Comprehend for sentiment analysis, and save the results to an Amazon DynamoDB table. Set the TTL for all records to 365 days in the future.
+>
+> **Exam Concept Summary:**
+> - **AWS Lambda Serverless Execution:** Runs stateless event-driven code scaling automatically from zero with sub-second billing. Maximum execution duration is 15 minutes.
+> - **Amazon DynamoDB NoSQL:** Fully managed NoSQL database providing single-digit millisecond response times at any scale with options for On-Demand capacity and automated global multi-region replication via Global Tables.
+
+---
 
 ---
 
@@ -189,7 +242,15 @@ service to patch the instances.
 E. Configure Systems Manager State Manager to remove the instances from service and manage
 the patching schedule. Use ALB health checks to re-route traffic.
 
-Correct Answer: C, D
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `C, D`
+> - **Recommended Solution:** Implement the AWSEC2-PatchLoadBalanacerInstance Systems Manager Automation document to manage the patching process. Use Systems Manager Maintenance Windows to automatically remove the instances from service to patch the instances.
+>
+> **Exam Concept Summary:**
+> - **Application Load Balancer (ALB Layer 7):** Distributes HTTP/HTTPS traffic using Layer 7 advanced routing (URL host/path, query parameters, HTTP headers), integrated with AWS WAF, SSL offloading, and container target groups.
+
+---
 
 ---
 
@@ -216,7 +277,15 @@ uses client-side encryption with AWS KMS managed keys (CSE-KMS) to encrypt the d
 D. Create one Amazon EMR cluster for each customer. Attach a security configuration to each
 cluster that uses server-side encryption with AWS KMS keys (SSE-KMS) to encrypt the data.
 
-Correct Answer: C
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `C`
+> - **Recommended Solution:** Create one AWS Glue job for each customer. Attach a security configuration to each job that uses client-side encryption with AWS KMS managed keys (CSE-KMS) to encrypt the data.
+>
+> **Exam Concept Summary:**
+> - **AWS Key Management Service (KMS):** Provides centralized envelope encryption, automated annual key rotation, and granular auditability via AWS CloudTrail.
+
+---
 
 ---
 
@@ -244,7 +313,16 @@ D. Create an Amazon Machine Image (AMI) of the web application. Apply the AMI to
 template. Create an Auto Scaling group that includes the launch template. Configure the launch
 template to use a Spot Fleet. Attach an Application Load Balancer to the Auto Scaling group.
 
-Correct Answer: D
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `D`
+> - **Recommended Solution:** Create an Amazon Machine Image (AMI) of the web application. Apply the AMI to a launch template. Create an Auto Scaling group that includes the launch template. Configure the launch template to use a Spot Fleet. Attach an Application Load Balancer to the Auto Scaling group.
+>
+> **Exam Concept Summary:**
+> - **EC2 Auto Scaling & Target Tracking:** Target Tracking scaling policies dynamically adjust ASG capacity to maintain a specific metric (e.g. 50% average CPU utilization or request count per target) with minimal manual tuning.
+> - **Amazon EC2 Spot Instances:** Offers up to 90% discount on spare EC2 capacity. Ideal for stateless, fault-tolerant, batch, and flexible workloads that can withstand instance termination with a 2-minute notice.
+
+---
 
 ---
 
@@ -266,7 +344,15 @@ C. Use client-side encryption with AWS KMS customer managed keys.
 
 D. Use server-side encryption with customer-provided keys (SSE-C) stored in AWS KMS.
 
-Correct Answer: B
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `B`
+> - **Recommended Solution:** Use an S3 Bucket Key for server-side encryption with AWS KMS keys (SSE-KMS) on the new objects.
+>
+> **Exam Concept Summary:**
+> - **AWS Key Management Service (KMS):** Provides centralized envelope encryption, automated annual key rotation, and granular auditability via AWS CloudTrail.
+
+---
 
 ---
 
@@ -291,7 +377,15 @@ E. Use AWS App2Container (A2C) to collect data about the VMs.
 
 F. Use AWS Database Migration Service (AWS DMS) to migrate the VMs.
 
-Correct Answer: B, C, D
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `B, C, D`
+> - **Recommended Solution:** Use AWS Application Migration Service. Install the AWS Replication Agent on the VMs. Complete the initial replication of the VMs. Launch test instances to perform acceptance tests on the VMs. Stop all operations on the VMs. Launch a cutover instance.
+>
+> **Exam Concept Summary:**
+> - **AWS Architecture Best Practice:** Prioritize fully managed, serverless, and native services that minimize operational overhead while fulfilling high-availability and security requirements.
+
+---
 
 ---
 
@@ -318,7 +412,15 @@ the S3 bucket to deny any request that is not initiated from Amazon Cognito.
 
 E. Attach a policy to the S3 bucket that allows access only from the users' IP addresses.
 
-Correct Answer: A, C
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A, C`
+> - **Recommended Solution:** Create an Amazon Cognito identity pool to generate secure Amazon S3 access tokens for users when they successfully log in. Create an Amazon S3 VPC endpoint in the same VPC where the company hosts the application.
+>
+> **Exam Concept Summary:**
+> - **AWS Architecture Best Practice:** Prioritize fully managed, serverless, and native services that minimize operational overhead while fulfilling high-availability and security requirements.
+
+---
 
 ---
 
@@ -345,7 +447,16 @@ latency as a metric to determine when to scale.
 D. Use an Amazon EC2 Auto Scaling target tracking policy to scale out the processing tier
 instances. Use the ApproximateNumberOfMessages attribute to determine when to scale.
 
-Correct Answer: D
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `D`
+> - **Recommended Solution:** Use an Amazon EC2 Auto Scaling target tracking policy to scale out the processing tier instances. Use the ApproximateNumberOfMessages attribute to determine when to scale.
+>
+> **Exam Concept Summary:**
+> - **EC2 Auto Scaling & Target Tracking:** Target Tracking scaling policies dynamically adjust ASG capacity to maintain a specific metric (e.g. 50% average CPU utilization or request count per target) with minimal manual tuning.
+> - **Amazon DynamoDB NoSQL:** Fully managed NoSQL database providing single-digit millisecond response times at any scale with options for On-Demand capacity and automated global multi-region replication via Global Tables.
+
+---
 
 ---
 
@@ -372,7 +483,15 @@ D. Use Spot Instances for the EC2 instances that run for only 12 hours on Sunday
 Convertible Reserved Instances for the EC2 instances that run constantly between Monday and
 Saturday.
 
-Correct Answer: A
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Purchase Scheduled Reserved Instances for the EC2 instances that run for only 12 hours on Sunday. Purchase Standard Reserved Instances for the EC2 instances that run constantly between Monday and Saturday.
+>
+> **Exam Concept Summary:**
+> - **Amazon EC2 Spot Instances:** Offers up to 90% discount on spare EC2 capacity. Ideal for stateless, fault-tolerant, batch, and flexible workloads that can withstand instance termination with a 2-minute notice.
+
+---
 
 ---
 
@@ -399,7 +518,16 @@ D. Deploy a group of Amazon EC2 instances to process the images. Use AWS Step Fu
 orchestrate the workflow. Store the processed files in an Amazon Elastic Block Store (Amazon
 EBS) volume.
 
-Correct Answer: B
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `B`
+> - **Recommended Solution:** Use AWS Batch jobs to process the images. Use AWS Step Functions to orchestrate the workflow. Store the processed files in an Amazon S3 bucket.
+>
+> **Exam Concept Summary:**
+> - **Amazon EFS Shared File Storage:** Provides a serverless, multi-AZ POSIX-compliant shared file system concurrently mountable by hundreds of Linux EC2 instances across multiple Availability Zones.
+> - **Amazon FSx Managed File Systems:** FSx for Windows provides fully managed native SMB file shares with Active Directory integration. FSx for Lustre delivers ultra-high-throughput sub-millisecond storage for compute-intensive HPC and machine learning.
+
+---
 
 ---
 
@@ -429,7 +557,16 @@ downloads to the S3 bucket that is closest to each user's location.
 D. Configure AWS Global Accelerator for the S3 bucket to improve network performance. Create
 an endpoint for the application to use Global Accelerator instead of the S3 bucket.
 
-Correct Answer: A
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `A`
+> - **Recommended Solution:** Configure an Amazon CloudFront distribution for the S3 bucket to improve the download performance. Enable S3 Transfer Acceleration to improve the upload performance.
+>
+> **Exam Concept Summary:**
+> - **Amazon S3 Transfer Acceleration:** Uses Amazon CloudFront's globally distributed Edge Locations to route uploads over the optimized AWS private network backbone, dramatically reducing geographic transfer latency.
+> - **Amazon CloudFront & Origin Access Control:** Global Content Delivery Network (CDN) caching content at edge locations. Origin Access Control (OAC) restricts direct public access to S3 origins so users must traverse CloudFront.
+
+---
 
 ---
 
@@ -452,7 +589,16 @@ NAT gateway.
 D. Create a second NAT gateway in the same subnet where the legacy application is deployed.
 Update the VPC route table to use the second NAT gateway.
 
-Correct Answer: B
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `B`
+> - **Recommended Solution:** Configure an S3 gateway endpoint. Update the VPC route table to use the endpoint.
+>
+> **Exam Concept Summary:**
+> - **VPC Gateway Endpoints:** Configured directly in VPC route tables to provide private, high-bandwidth, and completely free network routing from EC2 to Amazon S3 and DynamoDB without needing a NAT Gateway or Internet Gateway.
+> - **AWS PrivateLink & Interface Endpoints:** Provisions private IP Elastic Network Interfaces (ENIs) inside subnets to privately connect VPC workloads to AWS services or SaaS partner solutions over private backbone networking.
+
+---
 
 ---
 
@@ -481,7 +627,15 @@ D. Create separate Kubernetes service accounts for the UI and data services to a
 role. Use IAM Role for Service Accounts (IRSA) to provide access to the EKS Pods for the UI to
 Amazon S3 and the EKS Pods for the data services to DynamoDB.
 
-Correct Answer: C
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `C`
+> - **Recommended Solution:** Create separate Kubernetes service accounts for the UI and data services to assume an IAM role. Attach the AmazonS3FullAccess policy to the data services account and the AmazonDynamoDBFullAccess policy to the UI service account.
+>
+> **Exam Concept Summary:**
+> - **Amazon DynamoDB NoSQL:** Fully managed NoSQL database providing single-digit millisecond response times at any scale with options for On-Demand capacity and automated global multi-region replication via Global Tables.
+
+---
 
 ---
 
@@ -512,7 +666,15 @@ D. Use Amazon Cognito to deploy an identity federation solution. Integrate the i
 solution with the on-premises Active Directory. Use Amazon Cognito to provide access tokens for
 developers to access AWS accounts and resources.
 
-Correct Answer: C
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `C`
+> - **Recommended Solution:** Use AD Connector in AWS Directory Service to connect to the on-premises Active Directory. Integrate AD Connector with AWS IAM Identity Center. Configure permissions sets to give each AD group access to specific AWS accounts and resources.
+>
+> **Exam Concept Summary:**
+> - **AWS Organizations & Service Control Policies (SCPs):** Centralizes account management, consolidated billing, and governance. SCPs establish maximum permission boundaries across accounts and Organizational Units (OUs) without directly granting permissions.
+
+---
 
 ---
 
@@ -535,10 +697,16 @@ traffic from specific IP addresses.
 D. Modify the security group that is attached to API Gateway to allow inbound traffic from only the
 trusted IP addresses.
 
-Correct Answer: B
+> [!NOTE]
+> ### 💡 Key AWS Concept & Architectural Explanation
+> - **Correct Answer:** `B
 
 
-Answer Key
+A`
+> - **Recommended Solution:** Create a resource policy for the API that denies access to any IP address that is not specifically allowed. Set up an API Gateway private integration to restrict access to a predefined set of IP addresses.
+>
+> **Exam Concept Summary:**
+> - **AWS Architecture Best Practice:** Prioritize fully managed, serverless, and native services that minimize operational overhead while fulfilling high-availability and security requirements.nswer Key
 
 1. A   256. B, D   511. C   766. D
 2. C   257. A   512. A   767. C

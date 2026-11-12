@@ -2,7 +2,7 @@
 
 # AWS Certified Solutions Architect Associate (SAA-C03) - Scenario and Practice Notes
 
-Practice questions and architectural scenarios for the AWS SAA-C03 examination.
+Practice questions and architectural scenarios for the AWS SAA-C03 examination, annotated with concept notes.
 
 ## Metadata
 

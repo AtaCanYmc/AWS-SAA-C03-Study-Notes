@@ -2,7 +2,7 @@
 
 # CAA Exam Questions - Annotated with Official References
 
-63 exam questions accompanied by detailed explanations and official AWS documentation references.
+63 exam questions accompanied by detailed Turkish explanations, concept summaries, and official AWS documentation references.
 
 ## Metadata
 

@@ -23,22 +23,15 @@ C)  Direct the queries to the standby DB instance endpoint
 
 D)  Add a read replica. Direct the queries to the read replica endpoint
 
-CEVAP: D
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `D`
+> - **Kısa Konu Anlatımı & Gerekçe:** Doğru cevap D: Okuma replikası birincil örnekten asenkron olarak güncellenir ve yalnızca okuma erişimi sağlar; raporlar bu replikaya yönlendirilirse ana örneğin yükü azalır ve birincil örnek çevrimdışıyken de raporlar üretilebilir. A seçeneğindeki snapshot belirli bir andaki kopya olduğu için gerçek zamana yakın tutarlılık sağlamaz. B seçeneği yalnızca sunucuyu büyütür, raporların ana örnekten bağımsız çalışmasını sağlamaz. C seçeneği yanlıştır çünkü Multi-AZ bekleme örneği okuma trafiğine hizmet edemez.
+> - **Resmi AWS Dokümantasyonu:**
+>   - [https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html)
+>   - [https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html)
 
-Açıklama: Doğru cevap D: Okuma replikası birincil örnekten asenkron olarak güncellenir ve
-yalnızca okuma erişimi sağlar; raporlar bu replikaya yönlendirilirse ana örneğin yükü azalır ve
-birincil örnek çevrimdışıyken de raporlar üretilebilir. A seçeneğindeki snapshot belirli bir andaki
-kopya olduğu için gerçek zamana yakın tutarlılık sağlamaz. B seçeneği yalnızca sunucuyu büyütür,
-raporların ana örnekten bağımsız çalışmasını sağlamaz. C seçeneği yanlıştır çünkü Multi-AZ
-bekleme örneği okuma trafiğine hizmet edemez.
-
-Kaynak: web: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html,
-https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html
-Doğrulama: web
-Not: Not in the key as the same question. Nearest key items (Question 93 at line 1647, Question 536 at line 9246,
-Question 633 at line 10782) have different scenarios and were not used. The label total is partly blurred and is read as 65
-by comparison with the other photos. The docs confirm the standby cannot serve reads and that read replicas are
-asynchronous and read-only. The point that a snapshot is not near real-time is general reasoning, not from the docs.
+---
 
 ---
 
@@ -57,20 +50,14 @@ C)  Use a cron job to stop the EC2 instances when the traffic demand is low
 
 D)  Use a script to vertically scale the EC2 instances during peak traffic demand
 
-CEVAP: A
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `A`
+> - **Kısa Konu Anlatımı & Gerekçe:** Doğru cevap A: Auto Scaling grubu talebe göre kapasiteyi artırıp azaltır, böylece iki yoğun saat dışında fazla örnek için ödeme yapılmaz; sağlıksız örnekleri değiştirerek hata toleransını da korur. B seçeneği yıl boyunca tepe kapasitesi için boşta kalan kapasiteye para öder. C seçeneği yoğun saatlerde örneklerin tekrar açılmasını ve sağlıklı kalmasını otomatik olarak yönetmez. D seçeneği tek bir örneğin boyutunu değiştirir; bu hata toleransı sağlamaz ve yeniden başlatma gerektirebilir.
+> - **Resmi AWS Dokümantasyonu:**
+>   - [https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html](https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html)
 
-Açıklama: Doğru cevap A: Auto Scaling grubu talebe göre kapasiteyi artırıp azaltır, böylece iki
-yoğun saat dışında fazla örnek için ödeme yapılmaz; sağlıksız örnekleri değiştirerek hata toleransını
-da korur. B seçeneği yıl boyunca tepe kapasitesi için boşta kalan kapasiteye para öder. C seçeneği
-yoğun saatlerde örneklerin tekrar açılmasını ve sağlıklı kalmasını otomatik olarak yönetmez. D
-seçeneği tek bir örneğin boyutunu değiştirir; bu hata toleransı sağlamaz ve yeniden başlatma
-gerektirebilir.
-
-Kaynak: web: https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html
-Doğrulama: web
-Not: Not in the key (nearest items Question 923 at line 15818 and Question 1008 at line 17389 are different scenarios).
-The docs confirm Auto Scaling fault tolerance (replacing unhealthy instances) and cost behavior (scaling in when demand
-drops). The scheduled scaling page appeared in search but was not fetched. Option text is as read from the photo.
+---
 
 ---
 
@@ -100,24 +87,15 @@ to calculate costs for each prefix
 
 Birden fazla şık seçilecek.
 
-CEVAP: A, C
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `A`
+> - **Kısa Konu Anlatımı & Gerekçe:** Doğru cevaplar A ve C: Storage Lens gelişmiş metrikleri, önek bazlı toplama ile bucket ve önek düzeyinde etkinlik (istek) metriklerini sağlar. Cost and Usage Reports, kaynak kimliklerini (resource IDs) dahil ederek maliyeti kaynak düzeyinde, yani her bucket için kullanım türüne göre ayrıştırır. B seçeneği ücretsiz katmanda önek düzeyi ve istek metriklerinin bulunmadığı için yetersizdir. D seçeneği her bucket'a etiket uygulanmasını gerektirir ve önek düzeyinde maliyet vermez; E seçeneği erişim günlüklerinden doğrudan dolar maliyeti üretmez.
+> - **Resmi AWS Dokümantasyonu:**
+>   - [https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_basics_metrics_recommendations.html](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_basics_metrics_recommendations.html)
+>   - [https://docs.aws.amazon.com/cur/latest/userguide/cur-create.html](https://docs.aws.amazon.com/cur/latest/userguide/cur-create.html)
 
-Açıklama: Doğru cevaplar A ve C: Storage Lens gelişmiş metrikleri, önek bazlı toplama ile bucket
-ve önek düzeyinde etkinlik (istek) metriklerini sağlar. Cost and Usage Reports, kaynak kimliklerini
-(resource IDs) dahil ederek maliyeti kaynak düzeyinde, yani her bucket için kullanım türüne göre
-ayrıştırır. B seçeneği ücretsiz katmanda önek düzeyi ve istek metriklerinin bulunmadığı için
-yetersizdir. D seçeneği her bucket'a etiket uygulanmasını gerektirir ve önek düzeyinde maliyet
-vermez; E seçeneği erişim günlüklerinden doğrudan dolar maliyeti üretmez.
-
-Kaynak: web:
-https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_basics_metrics_recommendations.html,
-https://docs.aws.amazon.com/cur/latest/userguide/cur-create.html
-Doğrulama: web
-Not: Not in the key (nearest item Question 238 at line 4126 is a different scenario). The Storage Lens docs confirm that
-activity metrics and prefix-level aggregation are advanced-tier features and are not in the free tier. The CUR page
-confirms the Include resource IDs option but does not say S3 buckets produce per-bucket line items, so option C is only
-partly verified. The rejection of D (Cost Explorer needs tags on each bucket and gives no prefix-level cost) is general
-knowledge, not from the docs.
+---
 
 ---
 
@@ -142,22 +120,12 @@ query CloudTrail
 D)  Configure Amazon CloudWatch Container Insights in the existing EKS cluster. Use a
 CloudWatch dashboard to view the metrics and logs.
 
-CEVAP: D
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `D`
+> - **Kısa Konu Anlatımı & Gerekçe:** Doğru cevap D: CloudWatch Container Insights, EKS kümelerindeki metrik ve günlükleri toplar, özetler ve CloudWatch panosunda merkezi olarak sunar; bu nedenle en düşük işletme yüküyle sonuç verir. A seçeneği genel bir CloudWatch ajanı kurar, ancak EKS için hazır metrik ve günlük özetleme sunan Container Insights'a göre daha fazla yapılandırma gerektirir. B seçeneği Kinesis, Firehose, S3 ve Athena'dan oluşan karmaşık bir boru hattı kurar ve işletme yükünü artırır. C seçeneği CloudTrail'i yalnızca API çağrıları için kullanır; uygulama metriklerini ve günlüklerini toplamaz.
 
-Açıklama: Doğru cevap D: CloudWatch Container Insights, EKS kümelerindeki metrik ve günlükleri
-toplar, özetler ve CloudWatch panosunda merkezi olarak sunar; bu nedenle en düşük işletme
-yüküyle sonuç verir. A seçeneği genel bir CloudWatch ajanı kurar, ancak EKS için hazır metrik ve
-günlük özetleme sunan Container Insights'a göre daha fazla yapılandırma gerektirir. B seçeneği
-Kinesis, Firehose, S3 ve Athena'dan oluşan karmaşık bir boru hattı kurar ve işletme yükünü artırır.
-C seçeneği CloudTrail'i yalnızca API çağrıları için kullanır; uygulama metriklerini ve günlüklerini
-toplamaz.
-
-Kaynak: file: lines 10497-10512 (Question 615, near-match variant)
-Doğrulama: file
-Not: Variant match. File Question 615 (line 10497, key at line 10512) has the same core stem but says 'critical,
-customer-facing application' and lacks the 'in the MOST operationally efficient way' clause. Options A, B and C also differ
-in wording. The key letter D maps to the same option in both versions (Container Insights), so the file key is applied. Web
-not used because the file key was found.
+---
 
 ---
 
@@ -177,19 +145,14 @@ C)  Amazon Route 53
 
 D)  AWS Secrets Manager
 
-CEVAP: B
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `B`
+> - **Kısa Konu Anlatımı & Gerekçe:** Doğru cevap B: AWS Transit Gateway, birçok VPC'yi ve şirket içi ağları tek bir merkezi yönlendirici üzerinden bağlar ve Direct Connect bağlantılarını da bu merkeze bağlayabilir; VPC sayısı arttıkça ağ yönetimini sadeleştirir. A seçeneği (VPC endpoints) yalnızca belirli hizmetlere özel erişim sağlar, ağ merkezi değildir. C seçeneği (Amazon Route 53) bir DNS hizmetidir. D seçeneği (AWS Secrets Manager) gizli bilgi yönetimi içindir.
+> - **Resmi AWS Dokümantasyonu:**
+>   - [https://docs.aws.amazon.com/vpc/latest/userguide/extend-tgw.html](https://docs.aws.amazon.com/vpc/latest/userguide/extend-tgw.html)
 
-Açıklama: Doğru cevap B: AWS Transit Gateway, birçok VPC'yi ve şirket içi ağları tek bir merkezi
-yönlendirici üzerinden bağlar ve Direct Connect bağlantılarını da bu merkeze bağlayabilir; VPC
-sayısı arttıkça ağ yönetimini sadeleştirir. A seçeneği (VPC endpoints) yalnızca belirli hizmetlere özel
-erişim sağlar, ağ merkezi değildir. C seçeneği (Amazon Route 53) bir DNS hizmetidir. D seçeneği
-(AWS Secrets Manager) gizli bilgi yönetimi içindir.
-
-Kaynak: web: https://docs.aws.amazon.com/vpc/latest/userguide/extend-tgw.html
-Doğrulama: web
-Not: Not in the key (nearest item Question 374 at line 6458 is a different scenario). The docs confirm a transit gateway
-acts as a central router for VPCs, VPN and Direct Connect connections. The page does not mention Direct Connect
-gateways. The rejection of A, C and D rests on the general function of each service, not on the docs.
+---
 
 ---
 
@@ -210,19 +173,14 @@ C)  Configure UDP connectivity between the EC2 instance and the RDS instance.
 
 D)  Configure IPv6 connectivity between the EC2 instance and the RDS instance.
 
-CEVAP: A
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `A`
+> - **Kısa Konu Anlatımı & Gerekçe:** Doğru cevap A: EC2 ve RDS aynı Availability Zone içinde olursa aralarındaki trafik AZ'ler arası veri transferi ücretine tabi olmaz ve maliyet düşer. B seçeneği bileşenleri farklı AZ'lere ayırarak AZ'ler arası veri transferi ücretini artırır. C (UDP) ve D (IPv6) seçenekleri bağlantı protokolünü değiştirir; veri transferi maliyetini düşürmez.
+> - **Resmi AWS Dokümantasyonu:**
+>   - [https://docs.aws.amazon.com/eks/latest/best-practices/cost-opt-networking.html](https://docs.aws.amazon.com/eks/latest/best-practices/cost-opt-networking.html)
 
-Açıklama: Doğru cevap A: EC2 ve RDS aynı Availability Zone içinde olursa aralarındaki trafik AZ'ler
-arası veri transferi ücretine tabi olmaz ve maliyet düşer. B seçeneği bileşenleri farklı AZ'lere
-ayırarak AZ'ler arası veri transferi ücretini artırır. C (UDP) ve D (IPv6) seçenekleri bağlantı
-protokolünü değiştirir; veri transferi maliyetini düşürmez.
-
-Kaynak: web: https://docs.aws.amazon.com/eks/latest/best-practices/cost-opt-networking.html
-Doğrulama: web
-Not: Not in the key as the same question. Nearest item Question 993 (line 17092, key C) is a similar data-transfer
-question with a different scenario. The cited page is an EKS cost best-practices page, used only for the principle that
-cross-AZ traffic incurs inter-AZ data transfer charges and same-AZ traffic does not; a direct EC2/RDS pricing page was not
-fetched. The rationale for C and D is general reasoning.
+---
 
 ---
 
@@ -247,21 +205,14 @@ D)  Modify the user data script to change the instance type at instance launch. 
 terminate instances so that the Auto Scaling group launches replacements that use the new
 instance type
 
-CEVAP: B
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `B`
+> - **Kısa Konu Anlatımı & Gerekçe:** Doğru cevap B: Launch template'i m6i large türüne güncellemek ve Auto Scaling grubunda instance refresh başlatmak, örnekleri kademeli olarak yenileyerek kesintisiz geçiş sağlar ve ek altyapı yönetimi gerektirmez. A seçeneği yeni bir Auto Scaling grubu ve ağırlıklı hedef grupları gerektirir, bu da daha fazla işletme yükü getirir. C seçeneği yama yönetimi içindir ve instance türünü değiştirmez. D seçeneği user data değişikliğini mevcut örneklere uygulamaz ve örnekleri elle sonlandırmak kesinti riski taşır.
+> - **Resmi AWS Dokümantasyonu:**
+>   - [https://docs.aws.amazon.com/autoscaling/ec2/userguide/instance-refresh-overview.html](https://docs.aws.amazon.com/autoscaling/ec2/userguide/instance-refresh-overview.html)
 
-Açıklama: Doğru cevap B: Launch template'i m6i large türüne güncellemek ve Auto Scaling
-grubunda instance refresh başlatmak, örnekleri kademeli olarak yenileyerek kesintisiz geçiş sağlar
-ve ek altyapı yönetimi gerektirmez. A seçeneği yeni bir Auto Scaling grubu ve ağırlıklı hedef
-grupları gerektirir, bu da daha fazla işletme yükü getirir. C seçeneği yama yönetimi içindir ve
-instance türünü değiştirmez. D seçeneği user data değişikliğini mevcut örneklere uygulamaz ve
-örnekleri elle sonlandırmak kesinti riski taşır.
-
-Kaynak: web: https://docs.aws.amazon.com/autoscaling/ec2/userguide/instance-refresh-overview.html
-Doğrulama: web
-Not: Not in the key (no matching instance-type migration question; the 'LEAST operational overhead' phrase appears only
-in unrelated items). The docs confirm that an instance refresh replaces instances in batches using the updated launch
-template. The instance type names are written as displayed ('m5 large', 'm6i large'); a dot between family and size is not
-clearly visible in the photo.
+---
 
 ---
 
@@ -283,24 +234,16 @@ second Region.
 D)  Create an RDS cross-Region read replica in a second Region. Use AWS Backup to take
 an automated snapshot of the read replica every 6 hours.
 
-CEVAP: C
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `C`
+> - **Kısa Konu Anlatımı & Gerekçe:** Doğru cevap C: AWS Backup ile her 6 saatte bir RDS snapshot alınıp ikinci Region'a kopyalanması 6 saatlik RPO'yu karşılar ve yönetilen yedekleme planıyla düşük maliyet ve işletme yüküyle çalışır. A seçeneği RDS otomatik snapshot'larına dayanır; bu snapshot'lar 6 saatlik RPO için yeterli sıklıkta alınmaz. B seçeneğinde RDS snapshot'ları S3 Cross-Region Replication ile kopyalanamaz. D seçeneği de çalışır ama ikinci Region'da sürekli çalışan bir okuma replikası gerektirdiği için daha pahalıdır.
+> - **Resmi AWS Dokümantasyonu:**
+>   - [https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReplicateBackups.html](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReplicateBackups.html)
+>   - [https://docs.aws.amazon.com/aws-backup/latest/devguide/cross-region-backup.html](https://docs.aws.amazon.com/aws-backup/latest/devguide/cross-region-backup.html)
+>   - [https://docs.aws.amazon.com/aws-backup/latest/devguide/creating-a-backup-plan.html](https://docs.aws.amazon.com/aws-backup/latest/devguide/creating-a-backup-plan.html)
 
-Açıklama: Doğru cevap C: AWS Backup ile her 6 saatte bir RDS snapshot alınıp ikinci Region'a
-kopyalanması 6 saatlik RPO'yu karşılar ve yönetilen yedekleme planıyla düşük maliyet ve işletme
-yüküyle çalışır. A seçeneği RDS otomatik snapshot'larına dayanır; bu snapshot'lar 6 saatlik RPO için
-yeterli sıklıkta alınmaz. B seçeneğinde RDS snapshot'ları S3 Cross-Region Replication ile
-kopyalanamaz. D seçeneği de çalışır ama ikinci Region'da sürekli çalışan bir okuma replikası
-gerektirdiği için daha pahalıdır.
-
-Kaynak: web: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReplicateBackups.html,
-https://docs.aws.amazon.com/aws-backup/latest/devguide/cross-region-backup.html,
-https://docs.aws.amazon.com/aws-backup/latest/devguide/creating-a-backup-plan.html
-Doğrulama: web
-Not: Not in the key (nearest items Question 588 at line 10071 and Question 178 at line 3075 are different scenarios).
-Partly verified: the docs confirm AWS Backup scheduled plans can copy to another Region and that RDS automated
-backups can replicate to another Region. The fetched pages did not state how often RDS automated snapshots are taken
-(basis for rejecting A), and did not list a 6-hour option for AWS Backup (cron-based schedules are documented). The
-rejection of B (S3 CRR does not apply to RDS snapshots) is general knowledge.
+---
 
 ---
 
@@ -319,19 +262,12 @@ C)  Deploy an S3 interface endpoint to access the S3 buckets
 
 D)  Deploy an S3 gateway endpoint to access the S3 buckets
 
-CEVAP: D
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `D`
+> - **Kısa Konu Anlatımı & Gerekçe:** Doğru cevap D: S3 gateway endpoint, private subnet'teki EC2 örneklerinin S3'e erişimini VPC içinde AWS ağı üzerinden sağlar; veri genel internete çıkmaz ve gateway endpoint için ek ücret alınmaz. A seçeneği NAT gateway üzerinden internete çıkar ve ücretlidir. B seçeneği bu ihtiyaç için gereksiz bir hibrit depolama hizmetidir. C seçeneği S3 interface endpoint'tir; özel IP üzerinden çalışır ancak saatlik ve veri işleme ücreti getirir, bu nedenle en uygun maliyetli seçenek değildir.
 
-Açıklama: Doğru cevap D: S3 gateway endpoint, private subnet'teki EC2 örneklerinin S3'e
-erişimini VPC içinde AWS ağı üzerinden sağlar; veri genel internete çıkmaz ve gateway endpoint
-için ek ücret alınmaz. A seçeneği NAT gateway üzerinden internete çıkar ve ücretlidir. B seçeneği
-bu ihtiyaç için gereksiz bir hibrit depolama hizmetidir. C seçeneği S3 interface endpoint'tir; özel IP
-üzerinden çalışır ancak saatlik ve veri işleme ücreti getirir, bu nedenle en uygun maliyetli seçenek
-değildir.
-
-Kaynak: file: lines 14944-14954 (Question 875)
-Doğrulama: file
-Not: Exact match in substance: stem and all four options agree with the photo. Web not used because the file key was
-found.
+---
 
 ---
 
@@ -359,23 +295,15 @@ D)  Use Amazon Kinesis Data Streams to ingest all order requests from the fronte
 Configure the Amazon EC2 instances to continuously poll the stream and process orders in
 near real time
 
-CEVAP: B
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `B`
+> - **Kısa Konu Anlatımı & Gerekçe:** Doğru cevap B: SQS kuyruğu ön uç ile sipariş işleme mikro hizmetini birbirinden ayırır; mesajlar işlenene kadar dayanıklı biçimde kuyrukta kalır ve trafik dalgalanmaları kuyrukta tamponlanır. İşlenemeyen mesajlar dead-letter queue'ya taşınarak incelenebilir ve yeniden işlenebilir. A seçeneği yük dengeleme ve CPU tabanlı ölçekleme sağlar ama bileşenleri ayırmaz ve başarısız işlemleri yeniden işlemez. C seçeneği ön uç ile mikro hizmet arasında sıkı bağlantı kurar. D seçeneği Kinesis ile akış tabanlı bir yapı önerir, ancak istenen ayrıştırma ve başarısız siparişleri yeniden işleme gereksinimini standart SQS ve DLQ yapısı kadar doğrudan karşılamaz.
+> - **Resmi AWS Dokümantasyonu:**
+>   - [https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html)
+>   - [https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
 
-Açıklama: Doğru cevap B: SQS kuyruğu ön uç ile sipariş işleme mikro hizmetini birbirinden ayırır;
-mesajlar işlenene kadar dayanıklı biçimde kuyrukta kalır ve trafik dalgalanmaları kuyrukta
-tamponlanır. İşlenemeyen mesajlar dead-letter queue'ya taşınarak incelenebilir ve yeniden
-işlenebilir. A seçeneği yük dengeleme ve CPU tabanlı ölçekleme sağlar ama bileşenleri ayırmaz ve
-başarısız işlemleri yeniden işlemez. C seçeneği ön uç ile mikro hizmet arasında sıkı bağlantı kurar.
-D seçeneği Kinesis ile akış tabanlı bir yapı önerir, ancak istenen ayrıştırma ve başarısız siparişleri
-yeniden işleme gereksinimini standart SQS ve DLQ yapısı kadar doğrudan karşılamaz.
-
-Kaynak: web: https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html,
-https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html
-Doğrulama: web
-Not: Not in the key as the same question. Nearest item Question 195 (line 3367, key C) has a similar goal (decoupling,
-reprocessing failed orders) but a different scenario and options, so its key was not used. The docs confirm that SQS
-decouples components and buffers messages, and that a dead-letter queue holds messages that failed processing and
-can be redriven for another attempt. Rejections of A, C and D rest on general reasoning.
+---
 
 ---
 
@@ -409,24 +337,15 @@ configurations of the existing database.
 
 Birden fazla şık seçilecek.
 
-CEVAP: A, D
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `A`
+> - **Kısa Konu Anlatımı & Gerekçe:** A ve D doğrudur. A, AWS Config kuralıyla şifrelenmemiş RDS veritabanlarını tespit edip uyumluluk durumu değişikliğini EventBridge ve SNS üzerinden bildirir; D, anlık görüntünün şifreli kopyasıyla yeni bir örnek geri yükleyerek mevcut veritabanını şifreler. C yanlıştır, çünkü şifrelenmemiş bir DB örneğinden şifreli okuma kopyası oluşturulamaz. E yanlıştır, çünkü mevcut bir RDS örneğinin şifrelemesi sonradan değiştirilemez; B ise State Manager ile RDS şifreleme sapmasını izlemek için uygun bir yöntem değildir.
+> - **Resmi AWS Dokümantasyonu:**
+>   - [https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html)
+>   - [https://docs.aws.amazon.com/config/latest/developerguide/monitor-config-with-cloudwatchevents.html](https://docs.aws.amazon.com/config/latest/developerguide/monitor-config-with-cloudwatchevents.html)
 
-Açıklama: A ve D doğrudur. A, AWS Config kuralıyla şifrelenmemiş RDS veritabanlarını tespit edip
-uyumluluk durumu değişikliğini EventBridge ve SNS üzerinden bildirir; D, anlık görüntünün şifreli
-kopyasıyla yeni bir örnek geri yükleyerek mevcut veritabanını şifreler. C yanlıştır, çünkü
-şifrelenmemiş bir DB örneğinden şifreli okuma kopyası oluşturulamaz. E yanlıştır, çünkü mevcut bir
-RDS örneğinin şifrelemesi sonradan değiştirilemez; B ise State Manager ile RDS şifreleme
-sapmasını izlemek için uygun bir yöntem değildir.
-
-Kaynak: web: https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html ;
-https://docs.aws.amazon.com/config/latest/developerguide/monitor-config-with-cloudwatchevents.html
-Doğrulama: web
-Not: Not in /tmp/saa.txt (the file's nearest RDS encryption question, Question 121 at lines 2136-2151, is single-answer
-with different options). RDS docs: encryption can only be set at creation; an encrypted snapshot is made by copying; 'You
-can't have an encrypted read replica of an unencrypted DB instance', so C is excluded. The Config Rules Compliance
-Change EventBridge event is documented; the SNS step is not on the cited page. Option B's reasoning (State Manager is
-not an RDS encryption drift detector) is an inference, not from a cited page. Option text read from the photo; the header
-digits were legible.
+---
 
 ---
 
@@ -456,24 +375,16 @@ when Redshift cluster security configurations are modified. Provide the complian
 each Redshift cluster to AWS Config. Configure AWS Config to notify the company of any
 violations of the security policies.
 
-CEVAP: D
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `D`
+> - **Kısa Konu Anlatımı & Gerekçe:** D doğrudur: AWS Config özel kuralı, Redshift küme güvenlik yapılandırması değiştiğinde Lambda fonksiyonunu tetikler; fonksiyon uyumluluk sonucunu Config'e bildirir ve Config ihlallerde bildirim gönderir. A ve B, kümelerin yalnızca belirli olaylarda (örneğin oluşturulma) izlenmesine dayanır ve sürekli yapılandırma uyumluluğunu kapsamaz. C yanlıştır, çünkü Redshift Advisor performans ve maliyet önerileri sunar; güvenlik ihlali bildirimi için tasarlanmamıştır.
+> - **Resmi AWS Dokümantasyonu:**
+>   - [https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_develop-rules_lambda-functions.html](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_develop-rules_lambda-functions.html)
+>   - [https://docs.aws.amazon.com/redshift/latest/dg/advisor-recommendations.html](https://docs.aws.amazon.com/redshift/latest/dg/advisor-recommendations.html)
+>   - [https://docs.aws.amazon.com/config/latest/developerguide/monitor-config-with-cloudwatchevents.html](https://docs.aws.amazon.com/config/latest/developerguide/monitor-config-with-cloudwatchevents.html)
 
-Açıklama: D doğrudur: AWS Config özel kuralı, Redshift küme güvenlik yapılandırması değiştiğinde
-Lambda fonksiyonunu tetikler; fonksiyon uyumluluk sonucunu Config'e bildirir ve Config ihlallerde
-bildirim gönderir. A ve B, kümelerin yalnızca belirli olaylarda (örneğin oluşturulma) izlenmesine
-dayanır ve sürekli yapılandırma uyumluluğunu kapsamaz. C yanlıştır, çünkü Redshift Advisor
-performans ve maliyet önerileri sunar; güvenlik ihlali bildirimi için tasarlanmamıştır.
-
-Kaynak: web:
-https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_develop-rules_lambda-functions.html ;
-https://docs.aws.amazon.com/redshift/latest/dg/advisor-recommendations.html ;
-https://docs.aws.amazon.com/config/latest/developerguide/monitor-config-with-cloudwatchevents.html
-Doğrulama: web
-Not: Not in /tmp/saa.txt (no Redshift security-configuration or Advisor question with this stem). The Redshift Advisor page
-covers performance and cost only; it does not explicitly say Advisor never sends security notices, so C is a doc-based
-judgment. A and B are judged from documented triggers (creation or specific events) and the lack of Config compliance
-evaluation; no cited page compares them directly. Two options were read from a blurred photo and are verified only at the
-level of wording shown in the photo.
+---
 
 ---
 
@@ -498,20 +409,12 @@ health check with the EC2 instances.
 D)  Create an Application Load Balancer (ALB) with a health check in front of the EC2
 instances. Route to the ALB from Route 53.
 
-CEVAP: D
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `D`
+> - **Kısa Konu Anlatımı & Gerekçe:** D doğrudur: Application Load Balancer, sağlık kontrolleriyle yanıt vermeyen EC2 örneklerini trafik dışı bırakır ve Route 53 yalnızca ALB'yi gösterir; böylece istekler yalnızca sağlıklı örneklere gider. A ve B, her EC2 örneği için ayrı DNS kaydı yönetmeyi gerektirir ve uygulamanın yanıt verebilirliğini yük dengeleme katmanında doğrulamaz. C, CloudFront'un EC2 kökenine sağlık kontrolüyle yönlendirme yapması bu senaryoda uygun bir çözüm değildir.
 
-Açıklama: D doğrudur: Application Load Balancer, sağlık kontrolleriyle yanıt vermeyen EC2
-örneklerini trafik dışı bırakır ve Route 53 yalnızca ALB'yi gösterir; böylece istekler yalnızca sağlıklı
-örneklere gider. A ve B, her EC2 örneği için ayrı DNS kaydı yönetmeyi gerektirir ve uygulamanın
-yanıt verebilirliğini yük dengeleme katmanında doğrulamaz. C, CloudFront'un EC2 kökenine sağlık
-kontrolüyle yönlendirme yapması bu senaryoda uygun bir çözüm değildir.
-
-Kaynak: file: lines 4557-4572 (Question 264)
-Doğrulama: file
-Not: The stem is a rewritten version: the file describes a web application on 10 EC2 instances with timeout errors, while
-the photo describes a healthcare patient portal. The four option texts match the file exactly and the underlying problem
-(Route 53 returning IPs of unhealthy instances) is the same, so the file key D is used. Treated as the same question; the
-file key was not overridden.
+---
 
 ---
 
@@ -534,18 +437,12 @@ E)  Allow the Lambda resource policy in the AWS KMS key policy.
 
 Birden fazla şık seçilecek.
 
-CEVAP: B, D
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `B`
+> - **Kısa Konu Anlatımı & Gerekçe:** B ve D doğrudur: Lambda execution role'üne KMS anahtarını kullanma izni eklenir ve KMS anahtar politikasında bu execution role yetkilendirilir; böylece fonksiyon ortam değişkenlerini çözebilir. A ve C, KMS izinlerini Lambda resource/function policy'ye eklemeyi önerir; bu, KMS anahtarını çözme yetkisinin verildiği yer değildir. E yanlıştır, çünkü KMS anahtar politikasında resource policy değil execution role principal olarak yetkilendirilir.
 
-Açıklama: B ve D doğrudur: Lambda execution role'üne KMS anahtarını kullanma izni eklenir ve
-KMS anahtar politikasında bu execution role yetkilendirilir; böylece fonksiyon ortam değişkenlerini
-çözebilir. A ve C, KMS izinlerini Lambda resource/function policy'ye eklemeyi önerir; bu, KMS
-anahtarını çözme yetkisinin verildiği yer değildir. E yanlıştır, çünkü KMS anahtar politikasında
-resource policy değil execution role principal olarak yetkilendirilir.
-
-Kaynak: file: lines 9495-9507 (Question 550)
-Doğrulama: file
-Not: Stem and options match the file closely. The file says '(Choose two.)' and the photo says '(Select TWO.)'; this is
-wording only, not a conflict.
+---
 
 ---
 
@@ -565,22 +462,15 @@ C)  Keep the existing cache. Use scripts to resize clusters before and after pea
 
 D)  Replatform the cache to ElastiCache (Memcached).
 
-CEVAP: A
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `A`
+> - **Kısa Konu Anlatımı & Gerekçe:** A doğrudur: ElastiCache Serverless for Valkey, kapasiteyi talebe göre otomatik ölçekler ve yalnızca kullanılan veri ve istekler için ödeme yapılmasını sağlar; Valkey 7.2 Redis OSS 7.2 özelliklerini içerdiğinden uygulama değişikliği de sınırlı kalır. B ve D, Memcached'e geçişi gerektirir; bu veri modeli ve istemci değişikliği demektir ve talebe göre otomatik ölçekleme sağlamaz. C, betiklerle elle boyutlandırmayı önerir; bu operasyonel yük getirir ve otomatik uyum sağlamaz.
+> - **Resmi AWS Dokümantasyonu:**
+>   - [https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/WhatIs.deployment.html](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/WhatIs.deployment.html)
+>   - [https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/engine-versions.html](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/engine-versions.html)
 
-Açıklama: A doğrudur: ElastiCache Serverless for Valkey, kapasiteyi talebe göre otomatik ölçekler
-ve yalnızca kullanılan veri ve istekler için ödeme yapılmasını sağlar; Valkey 7.2 Redis OSS 7.2
-özelliklerini içerdiğinden uygulama değişikliği de sınırlı kalır. B ve D, Memcached'e geçişi gerektirir;
-bu veri modeli ve istemci değişikliği demektir ve talebe göre otomatik ölçekleme sağlamaz. C,
-betiklerle elle boyutlandırmayı önerir; bu operasyonel yük getirir ve otomatik uyum sağlamaz.
-
-Kaynak: web: https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/WhatIs.deployment.html ;
-https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/engine-versions.html
-Doğrulama: web
-Not: Not in /tmp/saa.txt (no ElastiCache question with this Redis OSS / Node.js / business-hours stem). Docs confirm
-Serverless scales automatically, is pay-per-use, supports Valkey 7.2, and that Valkey 7.2 includes all Redis OSS 7.2
-features. The Serverless page also says clients must support cluster mode enabled and TLS, so 'minimizing application
-changes' may still need client changes; the page does not state this for every case. Photo details read with some blur:
-'Node.js' (dot), 'cache.m7g.large' (dots hard to see), and the header digits (partly blurred, read as 17 by sequence).
+---
 
 ---
 
@@ -603,21 +493,12 @@ Region. Configure the transit gateway to route requests.
 D)  Create an Application Load Balancer in the primary Region. Create a target group that
 includes the REST API endpoint hostnames for each Region.
 
-CEVAP: A
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `A`
+> - **Kısa Konu Anlatımı & Gerekçe:** A doğrudur: Route 53 DNS kaydında failover politikası, her uygulama uç noktası için sağlık kontrolü ve aktif-aktif yapılandırma ile trafik sağlıklı Region'lara dağıtılır. B, Resolver outbound endpoint'i VPC'lerden DNS çözümlemesi için kullanılır; Region'lar arası uygulama trafiğini yönlendirmez. C, transit gateway ağ bağlantısı içindir ve API Gateway uç noktalarına çok Region yönlendirme sağlamaz. D, ALB tek Region'da çalışır ve API hostname'lerini Region'lar arası aktif-aktif yönlendirme için uygun biçimde yönetmez.
 
-Açıklama: A doğrudur: Route 53 DNS kaydında failover politikası, her uygulama uç noktası için
-sağlık kontrolü ve aktif-aktif yapılandırma ile trafik sağlıklı Region'lara dağıtılır. B, Resolver
-outbound endpoint'i VPC'lerden DNS çözümlemesi için kullanılır; Region'lar arası uygulama trafiğini
-yönlendirmez. C, transit gateway ağ bağlantısı içindir ve API Gateway uç noktalarına çok Region
-yönlendirme sağlamaz. D, ALB tek Region'da çalışır ve API hostname'lerini Region'lar arası
-aktif-aktif yönlendirme için uygun biçimde yönetmez.
-
-Kaynak: file: lines 7735-7749 (Question 447)
-Doğrulama: file
-Not: Same scenario and same answer as the file (Route 53 active-active failover). The photo's option B (Route 53
-Resolver outbound endpoint) differs from the file's option B (CloudFront distribution), and the wording of options C and D
-is more detailed in the photo. The photo's stem says 'this requirement' (singular). The header digits are partly blurred;
-read as 18 by sequence.
+---
 
 ---
 
@@ -639,20 +520,12 @@ instances.
 D)  Create an IAM user that grants access to the S3 bucket. Attach the user account to the
 EC2 instances.
 
-CEVAP: A
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `A`
+> - **Kısa Konu Anlatımı & Gerekçe:** A doğrudur: IAM rolü S3 erişim izinlerini taşır, güven politikası EC2 servisinin rolü üstlenmesine izin verir ve instance profile ile EC2 örneklerine bağlanır. B, bir IAM politikası EC2 örneğine doğrudan eklenemez; güven politikası yalnızca roller için geçerlidir. C ve D, IAM gruplarının ve kullanıcılarının EC2 örneklerine atanamaması nedeniyle yanlıştır ve uzun süreli erişim anahtarı yönetimi gerektirir.
 
-Açıklama: A doğrudur: IAM rolü S3 erişim izinlerini taşır, güven politikası EC2 servisinin rolü
-üstlenmesine izin verir ve instance profile ile EC2 örneklerine bağlanır. B, bir IAM politikası EC2
-örneğine doğrudan eklenemez; güven politikası yalnızca roller için geçerlidir. C ve D, IAM
-gruplarının ve kullanıcılarının EC2 örneklerine atanamaması nedeniyle yanlıştır ve uzun süreli
-erişim anahtarı yönetimi gerektirir.
-
-Kaynak: file: lines 304-317 (Question 17)
-Doğrulama: file
-Not: Same scenario and same answer as the file. The photo's options A and B add trust-policy and instance-profile
-wording that the file's options lack, and the file's stem says 'two Amazon EC2 instances' and 'business application', which
-the photo's stem does not. The file's option A says 'attach the role to the EC2 instances'; the key is the same. Header
-digits partly blurred; read as 19 by sequence.
+---
 
 ---
 
@@ -672,20 +545,14 @@ C)  Use EC2 Instance Connect.
 
 D)  Use Systems Manager Session Manager.
 
-CEVAP: D
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `D`
+> - **Kısa Konu Anlatımı & Gerekçe:** D doğrudur: Session Manager, açık gelen port, bastion host veya SSH anahtarı gerektirmeden IAM izinleriyle yönetilen düğümlere erişim sağlar ve özel alt ağdaki örneklerle de çalışır. A, genel alt ağdaki bir bastion host'u ve dolayısıyla SSH erişim yolunu gerektirir. B, şifrelenmemiş Telnet protokolünü kullanır. C, EC2 Instance Connect SSH üzerinden bağlandığı için politikanın yasakladığı SSH erişim yolunu kullanır.
+> - **Resmi AWS Dokümantasyonu:**
+>   - [https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html)
 
-Açıklama: D doğrudur: Session Manager, açık gelen port, bastion host veya SSH anahtarı
-gerektirmeden IAM izinleriyle yönetilen düğümlere erişim sağlar ve özel alt ağdaki örneklerle de
-çalışır. A, genel alt ağdaki bir bastion host'u ve dolayısıyla SSH erişim yolunu gerektirir. B,
-şifrelenmemiş Telnet protokolünü kullanır. C, EC2 Instance Connect SSH üzerinden bağlandığı için
-politikanın yasakladığı SSH erişim yolunu kullanır.
-
-Kaynak: web: https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html
-Doğrulama: web
-Not: Not in /tmp/saa.txt (the only Default Host Management hit is Question 723, which asks about patching with IAM
-roles). The Session Manager page supports D: no inbound ports, bastion hosts, or SSH keys, and nodes without public IPs
-can be managed. Option C's exclusion is an inference: EC2 Instance Connect uses SSH, and the cited page does not
-discuss it. Header digits partly blurred; read as 20 by sequence.
+---
 
 ---
 
@@ -706,17 +573,12 @@ C)  Amazon SNS standard topics
 
 D)  Amazon SQS FIFO queues
 
-CEVAP: B
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `B`
+> - **Kısa Konu Anlatımı & Gerekçe:** B doğrudur: SNS FIFO konuları, mesajları sıra korunarak yayınlar ve birden çok aboneye (liderlik tablosu, eşleştirme, kimlik doğrulama) iletir. A, EventBridge event bus'ın sıralama garantisi vermez. C, standart SNS konuları sırayı garanti etmez. D, SQS FIFO kuyruğu noktadan noktaya tüketim modeline dayanır ve birden çok aboneye yayın için tek başına uygun değildir.
 
-Açıklama: B doğrudur: SNS FIFO konuları, mesajları sıra korunarak yayınlar ve birden çok aboneye
-(liderlik tablosu, eşleştirme, kimlik doğrulama) iletir. A, EventBridge event bus'ın sıralama garantisi
-vermez. C, standart SNS konuları sırayı garanti etmez. D, SQS FIFO kuyruğu noktadan noktaya
-tüketim modeline dayanır ve birden çok aboneye yayın için tek başına uygun değildir.
-
-Kaynak: file: lines 6262-6272 (Question 363)
-Doğrulama: file
-Not: Same four options and same answer as the file. The file's stem is shorter ('game system', 'guarantees the order of
-the events') and lacks the publisher/subscriber sentence that the photo has. Header read as 21 of 65 (legible).
+---
 
 ---
 
@@ -740,23 +602,16 @@ the tags as cost allocation tags. Use AWS Cost Explorer to group costs by tag.
 D)  Enforce the required tags at creation time by using service control policies (SCPs).
 Activate the tags as cost allocation tags. Use AWS Cost Explorer to group costs by tag.
 
-CEVAP: D
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `D`
+> - **Kısa Konu Anlatımı & Gerekçe:** D doğrudur: Organizations tag politikaları tag değerlerini denetler ancak eksik tag anahtarı içeren kaynağın oluşturulmasını engellemez; bunu SCP'de aws:RequestTag koşullarıyla sağlamak gerekir. Tag'lerin faturalama raporlarında görünmesi için etkinleştirilmeleri gerekir ve Cost Explorer'da tag'e göre gruplanabilir. A tag'leri etkinleştirir ama oluşturmayı engellemez; B, bütçeler kaynak oluşturmayı kısıtlamaz; C, AWS Config yalnızca oluşturma sonrasında tespit eder.
+> - **Resmi AWS Dokümantasyonu:**
+>   - [https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies-enforcement.html](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies-enforcement.html)
+>   - [https://docs.aws.amazon.com/whitepapers/latest/tagging-best-practices/implementing-and-enforcing-tagging.html](https://docs.aws.amazon.com/whitepapers/latest/tagging-best-practices/implementing-and-enforcing-tagging.html)
+>   - [https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/activating-tags.html](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/activating-tags.html)
 
-Açıklama: D doğrudur: Organizations tag politikaları tag değerlerini denetler ancak eksik tag
-anahtarı içeren kaynağın oluşturulmasını engellemez; bunu SCP'de aws:RequestTag koşullarıyla
-sağlamak gerekir. Tag'lerin faturalama raporlarında görünmesi için etkinleştirilmeleri gerekir ve
-Cost Explorer'da tag'e göre gruplanabilir. A tag'leri etkinleştirir ama oluşturmayı engellemez; B,
-bütçeler kaynak oluşturmayı kısıtlamaz; C, AWS Config yalnızca oluşturma sonrasında tespit eder.
-
-Kaynak: web:
-https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies-enforcement.html ;
-https://docs.aws.amazon.com/whitepapers/latest/tagging-best-practices/implementing-and-enforcing-tagging.html ;
-https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/activating-tags.html
-Doğrulama: web
-Not: Not in /tmp/saa.txt (the file's tag-policy questions have different stems). The tag-policy enforcement page says tag
-policies do not enforce missing tag keys at creation and points to SCPs for that; the whitepaper shows an SCP with an
-aws:RequestTag condition. The billing page says tags must be activated to appear on billing reports; the cited pages do
-not name Cost Explorer, so the Cost Explorer grouping step is general knowledge. Header read as 22 (legible).
+---
 
 ---
 
@@ -780,18 +635,12 @@ D)  Use Amazon Managed Service for Apache Flink (previously known as Amazon Kine
 Data Analytics) to capture the clickstream data. Use AWS Lambda to process the data in
 real time.
 
-CEVAP: A
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `A`
+> - **Kısa Konu Anlatımı & Gerekçe:** Doğru cevap A: Kinesis Data Streams on-demand modu trafik değişimine göre kapasiteyi otomatik ölçeklendirir ve Lambda ile veri gerçek zamanlı işlenebilir. B'deki Firehose tamponlayarak teslim eden bir servistir ve Glue toplu ETL içindir, gerçek zamanlı işleme için uygun değildir. C'deki Kinesis Video Streams video ve medya akışları içindir. D'deki Managed Service for Apache Flink bir işleme motorudur, veri yakalama servisi değildir.
 
-Açıklama: Doğru cevap A: Kinesis Data Streams on-demand modu trafik değişimine göre
-kapasiteyi otomatik ölçeklendirir ve Lambda ile veri gerçek zamanlı işlenebilir. B'deki Firehose
-tamponlayarak teslim eden bir servistir ve Glue toplu ETL içindir, gerçek zamanlı işleme için uygun
-değildir. C'deki Kinesis Video Streams video ve medya akışları içindir. D'deki Managed Service for
-Apache Flink bir işleme motorudur, veri yakalama servisi değildir.
-
-Kaynak: file: lines 15182-15196
-Doğrulama: file
-Not: Option B says Amazon Data Firehose in the photo; the file says Amazon Kinesis Data Firehose. Option text was read
-from a zoomed crop and matches the file otherwise.
+---
 
 ---
 
@@ -822,21 +671,15 @@ D)  Enable TTL in DynamoDB. Create an AWS Lambda function to delete user informa
 Configure AWS Config to detect the DynamoDB stage change when TTL expires and to
 invoke the Lambda function.
 
-CEVAP: C
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `C`
+> - **Kısa Konu Anlatımı & Gerekçe:** Doğru cevap C: TTL özniteliği kullanıcı silme talebi geldiğinde Lambda ile ayarlanır ve DynamoDB süresi dolan kayıtları birkaç gün içinde otomatik siler; bu, bir aylık süre sınırını karşılar ve en az operasyonel yük getirir. A ve B, ek EventBridge kuralı ya da Stream ve ikinci bir Lambda tüketicisi gibi fazladan bileşen ekler. D'deki AWS Config, DynamoDB TTL süre dolumunu algılamak için uygun bir mekanizma değildir.
+> - **Resmi AWS Dokümantasyonu:**
+>   - [https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/time-to-live-ttl-streams.html](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/time-to-live-ttl-streams.html)
+>   - [https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html)
 
-Açıklama: Doğru cevap C: TTL özniteliği kullanıcı silme talebi geldiğinde Lambda ile ayarlanır ve
-DynamoDB süresi dolan kayıtları birkaç gün içinde otomatik siler; bu, bir aylık süre sınırını karşılar
-ve en az operasyonel yük getirir. A ve B, ek EventBridge kuralı ya da Stream ve ikinci bir Lambda
-tüketicisi gibi fazladan bileşen ekler. D'deki AWS Config, DynamoDB TTL süre dolumunu algılamak
-için uygun bir mekanizma değildir.
-
-Kaynak: web: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/time-to-live-ttl-streams.html ;
-https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html
-Doğrulama: web
-Not: Not in the reference file (searched by stem and option phrases). The TTL docs say expired items are deleted within a
-few days, not 48 hours, which still meets the one-month limit. TTL-deleted items are identifiable in DynamoDB Streams by
-their userIdentity. Option B wording is a zoomed-crop reading and may contain small errors; the answer letter rests on C,
-which is clearly legible.
+---
 
 ---
 
@@ -862,18 +705,15 @@ Schedule the function to run daily.
 D)  Use AWS Config and AWS Backup Audit Manager to ensure compliance. Review
 generated reports daily.
 
-CEVAP: D
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `D`
+> - **Kısa Konu Anlatımı & Gerekçe:** Doğru cevap D: AWS Backup Audit Manager, 'Recovery points are encrypted' gibi kontrolleri içeren çerçevelerle günlük uyumluluk raporları üretir ve en az çaba gerektirir. A ve C, kendi Lambda kodunu yazmayı ve bakımını yapmayı gerektirir. B ise her gün elle inceleme yapılmasını istediği için en fazla çabayı gerektirir.
+> - **Resmi AWS Dokümantasyonu:**
+>   - [https://docs.aws.amazon.com/aws-backup/latest/devguide/controls-and-remediation.html](https://docs.aws.amazon.com/aws-backup/latest/devguide/controls-and-remediation.html)
+>   - [https://docs.aws.amazon.com/aws-backup/latest/devguide/choosing-report-template.html](https://docs.aws.amazon.com/aws-backup/latest/devguide/choosing-report-template.html)
 
-Açıklama: Doğru cevap D: AWS Backup Audit Manager, 'Recovery points are encrypted' gibi
-kontrolleri içeren çerçevelerle günlük uyumluluk raporları üretir ve en az çaba gerektirir. A ve C,
-kendi Lambda kodunu yazmayı ve bakımını yapmayı gerektirir. B ise her gün elle inceleme
-yapılmasını istediği için en fazla çabayı gerektirir.
-
-Kaynak: web: https://docs.aws.amazon.com/aws-backup/latest/devguide/controls-and-remediation.html ;
-https://docs.aws.amazon.com/aws-backup/latest/devguide/choosing-report-template.html
-Doğrulama: web
-Not: Not in the reference file. The docs confirm the 'Recovery points are encrypted' control and daily compliance report
-templates. They do not say where reports are delivered and do not explain the AWS Config part of option D.
+---
 
 ---
 
@@ -894,21 +734,14 @@ C)  Use the ReceiveMessage API call to configure long polling behavior.
 
 D)  Use the ChangeMessageVisibility API call to extend the visibility timeout.
 
-CEVAP: D
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `D`
+> - **Kısa Konu Anlatımı & Gerekçe:** Doğru cevap D: SQS'te işlenmekte olan bir mesaj görünürlük zaman aşımı dolmadan silinmezse yeniden kullanıma açılır ve tekrar alınıp işlenebilir. ChangeMessageVisibility ile zaman aşımı işlem bitene kadar uzatılırsa aynı sipariş ikinci kez işlenmez ve RDS'te çift kayıt oluşmaz. A yeni kuyruk oluşturur, B izin verir, C ise uzun yoklama davranışını ayarlar; hiçbiri çift işlemeyi önlemez.
+> - **Resmi AWS Dokümantasyonu:**
+>   - [https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
 
-Açıklama: Doğru cevap D: SQS'te işlenmekte olan bir mesaj görünürlük zaman aşımı dolmadan
-silinmezse yeniden kullanıma açılır ve tekrar alınıp işlenebilir. ChangeMessageVisibility ile zaman
-aşımı işlem bitene kadar uzatılırsa aynı sipariş ikinci kez işlenmez ve RDS'te çift kayıt oluşmaz. A
-yeni kuyruk oluşturur, B izin verir, C ise uzun yoklama davranışını ayarlar; hiçbiri çift işlemeyi
-önlemez.
-
-Kaynak: web:
-https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html ; file (near
-match, not used as key): lines 1198-1209
-Doğrulama: web
-Not: Not in the reference file. The file's Question 67 (lines 1198-1209) has the same four options and its key is D, which
-agrees, but its stem is about a different SQS scenario, so its key was not used. Photo option D says 'extend'; the file's
-version says 'increase'.
+---
 
 ---
 
@@ -935,15 +768,11 @@ D)  Create an IAM role in account B that has the necessary S3 permissions and a 
 relationship with account A. Create an IAM user in account A that has permission to assume
 this IAM role. Configure the Lambda function to use this IAM user.
 
-CEVAP: A
+> [!NOTE]
+> ### 💡 Sınav Konusu & Detaylı Çözüm Açıklaması
+> - **Doğru Seçenek:** `A`
+> - **Kısa Konu Anlatımı & Gerekçe:** Doğru cevap A: S3 bucket'ın bulunduğu hesap B'de, hesap A'ya güvenen ve gerekli S3 izinlerine sahip bir IAM rolü oluşturulur; Lambda fonksiyonu bu rolü üstlenerek yalnızca gerekli erişimi kullanır. B, C ve D'de IAM kullanıcıları ve uzun ömürlü erişim anahtarları kullanılır, bu da en az ayrıcalık ilkesine ve güvenli kimlik yönetimine daha az uygundur.
+> - **Resmi AWS Dokümantasyonu:**
+>   - [https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)
 
-Açıklama: Doğru cevap A: S3 bucket'ın bulunduğu hesap B'de, hesap A'ya güvenen ve gerekli S3
-izinlerine sahip bir IAM rolü oluşturulur; Lambda fonksiyonu bu rolü üstlenerek yalnızca gerekli
-erişimi kullanır. B, C ve D'de IAM kullanıcıları ve uzun ömürlü erişim anahtarları kullanılır, bu da en
-az ayrıcalık ilkesine ve güvenli kimlik yönetimine daha az uygundur.
-
-Kaynak: web: https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html
-Doğrulama: web
-Not: Not in the reference file. Options B, C and D were read from a zoomed photo and may contain small wording errors,
-especially in C. The answer letter rests on option A, which is clearly legible. The docs confirm the role-in-owner-account
-plus trust-the-other-account pattern.
+---
