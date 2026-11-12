@@ -31,7 +31,7 @@ export const App: React.FC = () => {
   const [userSelections, setUserSelections] = useState<Record<string, string[]>>({});
   const [revealedQuestions, setRevealedQuestions] = useState<Record<string, boolean>>({});
 
-  // Persistence in LocalStorage
+  // LocalStorage Persistence
   const [bookmarks, setBookmarks] = useState<Set<string>>(() => {
     try {
       const saved = localStorage.getItem('aws_quiz_bookmarks');
@@ -122,7 +122,7 @@ export const App: React.FC = () => {
   const handleSelectOption = (key: string) => {
     if (!currentQ) return;
     const isRevealed = revealedQuestions[currentQ.id] || !!history[currentQ.id];
-    if (isRevealed) return; // Prevent changing after reveal
+    if (isRevealed) return;
 
     const currentSelected = userSelections[currentQ.id] || [];
     const isMultiSelect = currentQ.correctAnswers.length > 1;
@@ -149,7 +149,6 @@ export const App: React.FC = () => {
     const selected = userSelections[currentQ.id] || [];
     if (selected.length === 0) return;
 
-    // Check correctness
     const correctSorted = [...currentQ.correctAnswers].sort().join(',');
     const selectedSorted = [...selected].sort().join(',');
     const isCorrect = correctSorted === selectedSorted;
@@ -217,6 +216,8 @@ export const App: React.FC = () => {
         }
       } else if (e.key === 'Enter') {
         handleReveal();
+      } else if (e.key.toLowerCase() === 's' && currentQ) {
+        toggleBookmark(currentQ.id);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
@@ -233,47 +234,48 @@ export const App: React.FC = () => {
 
   return (
     <div className="app-container">
-      {/* App Header */}
-      <header className="app-header">
-        <div className="header-inner">
-          <div className="brand">
-            <div className="brand-icon">AWS</div>
-            <div className="brand-title">
-              <h1>SAA-C03 Interactive Quiz PWA</h1>
-              <p>1,766 Questions &bull; Offline Ready &bull; Instant Service Filtering</p>
+      {/* Broadsheet Masthead */}
+      <header className="broadsheet-masthead">
+        <div className="masthead-inner">
+          <div className="masthead-brand">
+            <div className="brand-monogram">AWS</div>
+            <div className="brand-details">
+              <h1>Solutions Architect Associate (SAA-C03)</h1>
+              <span>Curated Examination Workbench &bull; 1,766 Scenarios</span>
             </div>
           </div>
 
-          <div className="stats-bar">
-            <div className="stat-cell">
-              <Award size={15} color="#38bdf8" />
-              <span>Answered: <strong>{totalAnswered}</strong> / {questionsData.length}</span>
+          <div className="masthead-hud">
+            <div className="hud-cell">
+              <Award size={14} color="var(--color-focus)" />
+              <span>Progress: <strong>{totalAnswered}</strong> / {questionsData.length}</span>
             </div>
-            <div className="stat-cell">
-              <CheckCircle2 size={15} color="#10b981" />
+            <div className="hud-cell">
+              <CheckCircle2 size={14} color="var(--color-correct)" />
               <span>Accuracy: <strong>{accuracy}%</strong></span>
             </div>
-            <div className="stat-cell">
-              <Bookmark size={15} color="#f59e0b" />
+            <div className="hud-cell">
+              <Bookmark size={14} color="oklch(0.78 0.18 70)" />
               <span>Saved: <strong>{bookmarks.size}</strong></span>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Main Container */}
-      <main className="main-content">
-        {/* Sidebar Filters */}
-        <aside className="filters-sidebar">
-          {/* Search */}
-          <div className="filter-section">
-            <div className="filter-title">Quick Search</div>
-            <div className="search-input-wrapper">
-              <Search size={15} className="search-icon" />
+      {/* Main Workbench Body */}
+      <main className="workbench-body">
+        {/* Left Filter Rail */}
+        <aside className="filter-rail">
+          {/* Quick Search */}
+          <div className="rail-section">
+            <label className="rail-label" htmlFor="workbench-search">Search Scenarios</label>
+            <div className="rail-input-wrapper">
+              <Search size={14} className="rail-search-icon" />
               <input
+                id="workbench-search"
                 type="text"
-                className="search-input"
-                placeholder="Search questions, services, or concepts..."
+                className="rail-input"
+                placeholder="Keywords, services, topics..."
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
               />
@@ -281,25 +283,27 @@ export const App: React.FC = () => {
           </div>
 
           {/* Module Selector */}
-          <div className="filter-section">
-            <div className="filter-title">Study Module</div>
+          <div className="rail-section">
+            <label className="rail-label" htmlFor="module-select">Target Module</label>
             <select
-              className="select-filter"
+              id="module-select"
+              className="rail-select"
               value={selectedModule}
               onChange={e => setSelectedModule(e.target.value)}
             >
               <option value="all">All Modules (1,766 Questions)</option>
-              <option value="01">Module 01: Architectural Scenarios (684 Q)</option>
+              <option value="01">Module 01: Scenarios &amp; Callouts (684 Q)</option>
               <option value="02">Module 02: Comprehensive Bank (1,019 Q)</option>
               <option value="03">Module 03: Annotated Practice (63 Q)</option>
             </select>
           </div>
 
-          {/* AWS Service Filter */}
-          <div className="filter-section">
-            <div className="filter-title">Filter by AWS Service</div>
+          {/* Service Filter */}
+          <div className="rail-section">
+            <label className="rail-label" htmlFor="service-select">AWS Service Filter</label>
             <select
-              className="select-filter"
+              id="service-select"
+              className="rail-select"
               value={selectedService}
               onChange={e => setSelectedService(e.target.value)}
             >
@@ -311,55 +315,63 @@ export const App: React.FC = () => {
           </div>
 
           {/* Status Filter */}
-          <div className="filter-section">
-            <div className="filter-title">Question Status</div>
-            <div className="filter-btn-group">
+          <div className="rail-section">
+            <div className="rail-label">Record Status</div>
+            <div className="tab-filter-strip">
               <button
-                className={`filter-btn ${filterStatus === 'all' ? 'active' : ''}`}
+                className={`tab-filter-btn ${filterStatus === 'all' ? 'active' : ''}`}
                 onClick={() => setFilterStatus('all')}
               >
                 All
               </button>
               <button
-                className={`filter-btn ${filterStatus === 'unanswered' ? 'active' : ''}`}
+                className={`tab-filter-btn ${filterStatus === 'unanswered' ? 'active' : ''}`}
                 onClick={() => setFilterStatus('unanswered')}
               >
                 Unanswered
               </button>
               <button
-                className={`filter-btn ${filterStatus === 'correct' ? 'active' : ''}`}
+                className={`tab-filter-btn ${filterStatus === 'correct' ? 'active' : ''}`}
                 onClick={() => setFilterStatus('correct')}
               >
                 Correct ({correctCount})
               </button>
               <button
-                className={`filter-btn ${filterStatus === 'incorrect' ? 'active' : ''}`}
+                className={`tab-filter-btn ${filterStatus === 'incorrect' ? 'active' : ''}`}
                 onClick={() => setFilterStatus('incorrect')}
               >
-                Incorrect ({totalAnswered - correctCount})
+                Wrong ({totalAnswered - correctCount})
               </button>
               <button
-                className={`filter-btn ${filterStatus === 'bookmarked' ? 'active' : ''}`}
+                className={`tab-filter-btn ${filterStatus === 'bookmarked' ? 'active' : ''}`}
                 onClick={() => setFilterStatus('bookmarked')}
               >
-                Bookmarked ({bookmarks.size})
+                Saved ({bookmarks.size})
               </button>
             </div>
           </div>
+
+          {/* Keyboard Cheatsheet */}
+          <div className="cheatsheet-box">
+            <div><kbd>1-5</kbd> Select option</div>
+            <div><kbd>Enter</kbd> Verify answer</div>
+            <div><kbd>&larr;</kbd> <kbd>&rarr;</kbd> Previous / Next</div>
+            <div><kbd>S</kbd> Bookmark scenario</div>
+          </div>
         </aside>
 
-        {/* Quiz Body */}
-        <section className="quiz-area">
+        {/* Workbench Scenario Canvas */}
+        <section className="scenario-canvas">
           {filteredQuestions.length === 0 ? (
-            <div className="question-card" style={{ textAlign: 'center', padding: '3rem' }}>
-              <Layers size={40} color="#64748b" style={{ margin: '0 auto 1rem' }} />
-              <h3>No matching questions found</h3>
-              <p style={{ color: 'var(--text-muted)', marginTop: '0.5rem' }}>
-                Try resetting or broadening your search criteria.
+            <div className="empty-canvas">
+              <Layers size={36} color="var(--color-ink-dim)" />
+              <h3>No matching scenarios found</h3>
+              <p>
+                No questions match your current combination of keyword, module, and service filters.
               </p>
               <button
-                className="action-btn primary-btn"
-                style={{ margin: '1rem auto 0', display: 'inline-flex' }}
+                className="nav-tool-btn btn-primary-action"
+                style={{ marginTop: '0.5rem' }}
                 onClick={() => {
                   setSearchQuery('');
                   setSelectedModule('all');
@@ -367,91 +379,87 @@ export const App: React.FC = () => {
                   setFilterStatus('all');
                 }}
               >
-                <RotateCcw size={16} /> Reset Filters
+                <RotateCcw size={14} /> Clear All Filters
               </button>
             </div>
           ) : currentQ ? (
             <>
-              {/* Question Navigation Bar */}
-              <div className="quiz-header-bar">
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                  <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>
-                    Question <strong>{currentIndex + 1}</strong> of {filteredQuestions.length}
-                  </span>
-                  <span style={{ fontSize: '0.8rem', color: 'var(--text-dim)' }}>
-                    ({currentQ.id})
-                  </span>
+              {/* Toolbar */}
+              <div className="canvas-toolbar">
+                <div className="question-counter-label">
+                  Scenario <strong>{currentIndex + 1}</strong> of {filteredQuestions.length}
+                  <span className="counter-id-tag">[{currentQ.id}]</span>
                 </div>
 
-                <div className="quiz-nav-btns">
+                <div className="canvas-nav-actions">
                   <button
-                    className="action-btn"
+                    className="nav-tool-btn"
                     disabled={currentIndex === 0}
                     onClick={() => setCurrentIndex(i => i - 1)}
                     title="Previous Question (Left Arrow)"
                   >
-                    <ChevronLeft size={16} /> Previous
+                    <ChevronLeft size={15} /> Prev
                   </button>
                   <button
-                    className="action-btn"
+                    className="nav-tool-btn"
                     disabled={currentIndex === filteredQuestions.length - 1}
                     onClick={() => setCurrentIndex(i => i + 1)}
                     title="Next Question (Right Arrow)"
                   >
-                    Next <ChevronRight size={16} />
+                    Next <ChevronRight size={15} />
                   </button>
                 </div>
               </div>
 
-              {/* Main Question Card */}
-              <div className="question-card">
-                <div className="question-meta">
-                  <div className="tag-list">
-                    <span className="badge-tag">Module {currentQ.module}</span>
-                    <span className="badge-domain">{currentQ.domain}</span>
+              {/* Main Examination Sheet */}
+              <article className="examination-sheet">
+                <header className="sheet-meta-bar">
+                  <div className="meta-tags-row">
+                    <span className="meta-code-tag">Module {currentQ.module}</span>
+                    <span className="meta-code-tag domain-tag">{currentQ.domain}</span>
                     {currentQ.services.map(svc => (
-                      <span key={svc} className="badge-tag">
+                      <span key={svc} className="meta-code-tag">
                         {svc}
                       </span>
                     ))}
                   </div>
 
-                  <div className="meta-right">
+                  <div className="meta-right-tools">
                     <button
-                      className={`icon-btn ${bookmarks.has(currentQ.id) ? 'bookmarked' : ''}`}
+                      className={`icon-tool-btn ${bookmarks.has(currentQ.id) ? 'bookmarked' : ''}`}
                       onClick={() => toggleBookmark(currentQ.id)}
-                      title={bookmarks.has(currentQ.id) ? 'Remove Bookmark' : 'Bookmark Question'}
-                      aria-label="Bookmark Question"
+                      title={bookmarks.has(currentQ.id) ? 'Remove Bookmark (S)' : 'Bookmark Scenario (S)'}
+                      aria-label="Bookmark scenario"
                     >
-                      {bookmarks.has(currentQ.id) ? <BookmarkCheck size={18} /> : <Bookmark size={18} />}
+                      {bookmarks.has(currentQ.id) ? <BookmarkCheck size={16} /> : <Bookmark size={16} />}
                     </button>
                     {isCurrentRevealed && (
                       <button
-                        className="icon-btn"
+                        className="icon-tool-btn"
                         onClick={handleResetCurrent}
-                        title="Reset Question State"
-                        aria-label="Reset Question"
+                        title="Reset this question"
+                        aria-label="Reset question state"
                       >
-                        <RotateCcw size={16} />
+                        <RotateCcw size={15} />
                       </button>
                     )}
                   </div>
-                </div>
+                </header>
 
-                {/* Question Text */}
-                <div className="question-text">
+                {/* Scenario Prompt */}
+                <div className="scenario-prompt">
                   {currentQ.questionText}
                 </div>
 
                 {/* Multiple choice note */}
                 {currentQ.correctAnswers.length > 1 && (
-                  <div style={{ fontSize: '0.82rem', color: '#f59e0b', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-                    <CheckSquare size={14} /> Multiple choices required ({currentQ.correctAnswers.length} correct answers).
+                  <div className="multi-select-callout">
+                    <CheckSquare size={14} /> Multiple choices required ({currentQ.correctAnswers.length} correct keys).
                   </div>
                 )}
 
-                {/* Options */}
-                <div className="options-list">
+                {/* Examination Options */}
+                <div className="examination-options">
                   {currentQ.options.map(opt => {
                     const isSelected = activeSelected.includes(opt.key);
                     const isCorrect = currentQ.correctAnswers.includes(opt.key);
@@ -471,7 +479,7 @@ export const App: React.FC = () => {
                     return (
                       <div
                         key={opt.key}
-                        className={`option-item ${statusClass}`}
+                        className={`option-row ${statusClass}`}
                         onClick={() => handleSelectOption(opt.key)}
                         onKeyDown={e => {
                           if (e.key === ' ' || e.key === 'Enter') {
@@ -483,13 +491,13 @@ export const App: React.FC = () => {
                         tabIndex={0}
                         aria-pressed={isSelected}
                       >
-                        <div className="option-key">{opt.key}</div>
-                        <div className="option-text">{opt.text}</div>
+                        <div className="option-accelerator">{opt.key}</div>
+                        <div className="option-body-text">{opt.text}</div>
                         {isCurrentRevealed && isCorrect && (
-                          <CheckCircle2 size={18} color="#10b981" style={{ flexShrink: 0, marginTop: '2px' }} />
+                          <CheckCircle2 size={18} color="var(--color-correct)" style={{ flexShrink: 0, marginTop: '2px' }} />
                         )}
                         {isCurrentRevealed && isSelected && !isCorrect && (
-                          <XCircle size={18} color="#ef4444" style={{ flexShrink: 0, marginTop: '2px' }} />
+                          <XCircle size={18} color="var(--color-wrong)" style={{ flexShrink: 0, marginTop: '2px' }} />
                         )}
                       </div>
                     );
@@ -497,70 +505,75 @@ export const App: React.FC = () => {
                 </div>
 
                 {/* Action Controls */}
-                <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '0.5rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '0.25rem' }}>
                   {!isCurrentRevealed ? (
                     <button
-                      className="action-btn primary-btn"
+                      className="nav-tool-btn btn-primary-action"
                       disabled={activeSelected.length === 0}
                       onClick={handleReveal}
                     >
-                      <CheckCircle2 size={16} /> Check Answer (Enter)
+                      <CheckCircle2 size={15} /> Verify Answer [Enter]
                     </button>
                   ) : (
                     <button
-                      className="action-btn primary-btn"
+                      className="nav-tool-btn btn-primary-action"
                       onClick={() => {
                         if (currentIndex < filteredQuestions.length - 1) {
                           setCurrentIndex(i => i + 1);
                         }
                       }}
                     >
-                      Next Question <ChevronRight size={16} />
+                      Next Scenario <ChevronRight size={15} />
                     </button>
                   )}
                 </div>
 
-                {/* Explanation Block */}
+                {/* Architectural Proof & Solution Drawer */}
                 {isCurrentRevealed && currentQ.explanation && (
-                  <div className="explanation-box">
-                    <div className="explanation-header">
-                      <BookOpen size={16} />
-                      <span>Architectural Solution &amp; Key Concepts</span>
-                      <span className="answer-pill">Correct Answer: {currentQ.correctAnswers.join(', ')}</span>
+                  <section className="architectural-proof-box">
+                    <div className="proof-header">
+                      <div className="proof-title">
+                        <BookOpen size={15} color="var(--color-accent)" />
+                        <span>Architectural Analysis &amp; Rationale</span>
+                      </div>
+                      <span className="verified-key-badge">
+                        Key: {currentQ.correctAnswers.join(', ')}
+                      </span>
                     </div>
-                    <div className="explanation-content">
+
+                    <div className="proof-explanation-body">
                       {currentQ.explanation}
                     </div>
 
                     {currentQ.officialDocs.length > 0 && (
-                      <div className="doc-links">
-                        <strong style={{ fontSize: '0.75rem', color: 'var(--text-dim)', textTransform: 'uppercase' }}>
-                          Official AWS Documentation:
-                        </strong>
+                      <div className="proof-reference-links">
+                        <div style={{ fontSize: '0.72rem', color: 'var(--color-ink-dim)', fontFamily: 'var(--font-mono)', textTransform: 'uppercase' }}>
+                          Official AWS Reference Architecture:
+                        </div>
                         {currentQ.officialDocs.map(url => (
                           <a
                             key={url}
                             href={url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="doc-link"
+                            className="proof-link"
                           >
-                            <ExternalLink size={13} /> {url}
+                            <ExternalLink size={12} /> {url}
                           </a>
                         ))}
                       </div>
                     )}
-                  </div>
+                  </section>
                 )}
-              </div>
+              </article>
             </>
           ) : null}
         </section>
       </main>
 
-      {/* Footer */}
-      <footer className="app-footer">
-        AWS Certified Solutions Architect - Associate (SAA-C03) Interactive Quiz Engine &bull; Pure Client-side PWA
+      {/* Broadsheet Footer */}
+      <footer className="broadsheet-footer">
+        AWS Certified Solutions Architect &mdash; Associate (SAA-C03) &bull; Editorial Workbench PWA &bull; Pure Client-Side Offline Engine
       </footer>
     </div>
   );
