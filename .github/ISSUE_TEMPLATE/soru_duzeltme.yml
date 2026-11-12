@@ -1,0 +1,51 @@
+name: "Soru Düzeltme / Hata Bildirimi"
+description: "Soru bankasında veya çözümlerde hatalı cevap, açıklama eksikliği veya güncellenmesi gereken AWS servisi bildirin."
+title: "[Düzeltme]: Modül <X> - Soru #<Y>"
+labels: ["triage", "soru-duzeltme"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        AWS SAA-C03 soru bankasının kalitesini ve doğruluğunu artırmaya katkıda bulunduğunuz için teşekkür ederiz.
+  - type: dropdown
+    id: module
+    attributes:
+      label: "Hangi Çalışma Modülü?"
+      description: "Hatanın veya düzeltmenin bulunduğu modülü seçin."
+      options:
+        - "01 - AWS Certified Solutions Architect Associate (684 Soru)"
+        - "02 - AWS SAA-C03 Question Bank (1019 Soru)"
+        - "03 - CAA Exam Questions Explained (63 Açıklamalı Soru)"
+        - "Genel / README / Scriptler"
+    validations:
+      required: true
+  - type: input
+    id: question_ref
+    attributes:
+      label: "Soru Numarası / Dosya Yolu"
+      description: "Örn: Soru 42 veya `notes/01-aws-certified-solutions-architect-associate-saa-c03/sections/section-01-questions-0001-0100.md`"
+      placeholder: "Örn: Question #128"
+    validations:
+      required: true
+  - type: textarea
+    id: current_state
+    attributes:
+      label: "Mevcut Durum / Hata Nedir?"
+      description: "Mevcut şık, soru metni veya açıklamadaki hatayı açıklayın."
+      placeholder: "Mevcut cevap A olarak gösterilmiş fakat senaryoda en düşük maliyetli ve yüksek erişilebilirlik isteniyor..."
+    validations:
+      required: true
+  - type: textarea
+    id: suggested_correction
+    attributes:
+      label: "Önerilen Düzeltme ve Gerekçe"
+      description: "Doğru olması gereken cevap ve mimari gerekçesi nedir?"
+      placeholder: "Doğru şık C olmalı çünkü S3 Transfer Acceleration sadece bucket yüklemelerini hızlandırır, cross-region replication için..."
+    validations:
+      required: true
+  - type: input
+    id: aws_reference
+    attributes:
+      label: "Resmi AWS Dokümantasyon Linki (Varsa)"
+      description: "Önerinizi destekleyen docs.aws.amazon.com referansı."
+      placeholder: "https://docs.aws.amazon.com/..."

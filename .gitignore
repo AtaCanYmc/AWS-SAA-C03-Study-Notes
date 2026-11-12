@@ -15,4 +15,15 @@ __pycache__/
 
 # Content of raw original PDFs (optional/large binary files)
 content/
-convert.py
+
+
+# Node.js & Web PWA
+node_modules/
+web/node_modules/
+web/dist/
+dist/
+*.tsbuildinfo
+
+
+# CI Caches
+.lycheecache/

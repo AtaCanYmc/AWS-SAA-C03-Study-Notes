@@ -17,6 +17,7 @@ This repository follows the [Conventional Commits](https://www.conventionalcommi
 - `chore:` Maintenance tasks, dependency updates, or gitignore adjustments.
 
 Example:
+
 ```text
 feat(converter): add chunking support for sub-module notes
 fix(docs): resolve broken relative links in section index
@@ -35,8 +36,12 @@ fix(docs): resolve broken relative links in section index
 Before submitting a pull request, verify that:
 
 1. Python scripts execute without syntax or runtime errors:
+
    ```bash
-   python3 -m py_compile convert.py
+   python3 -m py_compile scripts/*.py
    ```
+
+
 2. Markdown links and table formatting render correctly in a local viewer or linter.
 3. No raw proprietary binaries or personal credentials are committed.
+

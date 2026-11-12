@@ -1,0 +1,10 @@
+# Lychee link ignore file
+# Ignore localhost and internal templates
+http://localhost.*
+http://127.0.0.1.*
+
+# Ignore rate-limited or transient external services in CI
+https://img.shields.io/.*
+https://github.com/AtaCanYmc/AWS-SAA-C03-Study-Notes/actions/.*
+https://twitter.com/.*
+https://linkedin.com/.*

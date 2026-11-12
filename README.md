@@ -2,9 +2,11 @@
 
 Structured study repository for the AWS Certified Solutions Architect - Associate (SAA-C03) examination. Contains curated scenario reviews, comprehensive question banks with verified answer keys, and architectural concept callouts formatted in GitHub Flavored Markdown.
 
-[![CI](https://github.com/AtaCanYmc/aws-saa-c03-notlari/actions/workflows/ci.yml/badge.svg)](https://github.com/AtaCanYmc/aws-saa-c03-notlari/actions/workflows/ci.yml)
+[![CI](https://github.com/AtaCanYmc/AWS-SAA-C03-Study-Notes/actions/workflows/ci.yml/badge.svg)](https://github.com/AtaCanYmc/AWS-SAA-C03-Study-Notes/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Format: Markdown](https://img.shields.io/badge/Format-Markdown-lightgrey.svg)](https://www.markdownguide.org/)
+[![Total Questions](https://img.shields.io/badge/Questions-1%2C766%20Total-orange.svg)](#study-modules-matrix)
+[![Last Commit](https://img.shields.io/github/last-commit/AtaCanYmc/AWS-SAA-C03-Study-Notes)](https://github.com/AtaCanYmc/AWS-SAA-C03-Study-Notes/commits/main)
+[![Exam Guide](https://img.shields.io/badge/AWS-SAA--C03-232F3E?logo=amazon-aws&logoColor=white)](https://aws.amazon.com/certification/certified-solutions-architect-associate/)
 
 ---
 
@@ -13,8 +15,10 @@ Structured study repository for the AWS Certified Solutions Architect - Associat
 - [Overview](#overview)
 - [Repository Structure](#repository-structure)
 - [Study Modules Matrix](#study-modules-matrix)
-- [Study Workflow & Features](#study-workflow--features)
+- [Topic & AWS Service Distribution](#topic--aws-service-distribution)
+- [Interactive Quiz PWA](#interactive-quiz-pwa)
 - [Exam Domains Covered](#exam-domains-covered)
+- [Study Workflow & Features](#study-workflow--features)
 - [Architectural Concept Callouts](#architectural-concept-callouts)
 - [Technical FAQ](#technical-faq)
 - [Governance and Contributing](#governance-and-contributing)
@@ -115,6 +119,52 @@ aws-saa-c03-notlari/
 
 ---
 
+## Topic & AWS Service Distribution
+
+The 1,766 questions across the three modules cover the core AWS services as follows:
+
+| AWS Service Category | Key Services & Topics Included | Estimated Scenarios | SAA-C03 Primary Domain |
+| :--- | :--- | :---: | :--- |
+| **Compute & Serverless** | EC2, Lambda, ECS, Fargate, Auto Scaling Groups, Spot Instances, Batch | ~493 items | Domain 2 (Resilient) & Domain 3 (High-Performing) |
+| **Storage & Data Transfer** | S3 (Standard, Glacier, Deep Archive), EBS (gp3, io2), EFS, FSx, Storage Gateway, DataSync | ~359 items | Domain 3 (High-Performing) & Domain 4 (Cost-Optimized) |
+| **Databases & In-Memory** | Aurora (Serverless/Global), RDS Multi-AZ & Read Replicas, DynamoDB & DAX, ElastiCache (Redis/Memcached) | ~274 items | Domain 2 (Resilient) & Domain 3 (High-Performing) |
+| **Networking & Content Delivery** | VPC, Subnets, NAT Gateway, Transit Gateway, Route 53, CloudFront, Direct Connect, Global Accelerator | ~205 items | Domain 1 (Secure) & Domain 2 (Resilient) |
+| **Security, Identity & Governance** | IAM Policies & Roles, AWS Organizations SCPs, KMS, AWS WAF, Shield, Secrets Manager, Cognito | ~179 items | Domain 1 (Secure Architectures) |
+| **Application Integration & Messaging** | SQS (Standard/FIFO), SNS (Fanout), EventBridge, Step Functions, Amazon Kinesis | ~141 items | Domain 2 (Resilient Architectures) |
+| **Management, Monitoring & Governance** | CloudWatch (Alarms/Logs), CloudTrail, Systems Manager, AWS Config, Cost & Usage Reports | ~141 items | Domain 1 (Secure) & Domain 4 (Cost-Optimized) |
+
+---
+
+## Interactive Quiz PWA
+
+For active recall practice and real-time AWS service filtering, this repository includes an offline-first **Progressive Web App (PWA)** built with Vite, React, and TypeScript located under `web/`.
+
+### Key Capabilities
+
+- **1,766 Parsed Questions**: Seamlessly navigates across all three study modules.
+- **Instant Service & Domain Filtering**: Filter instantly by AWS service (e.g. EC2, S3, RDS, VPC, IAM, KMS) or certification domain.
+- **Interactive Practice**: Select options with keyboard shortcuts (`1-5`, `Enter`, Arrow keys), check answers instantly, review architectural explanations and official documentation links.
+- **Offline & Local Progress**: Full Service Worker caching and `localStorage` persistence for bookmarks, answered questions, and accuracy rates.
+
+### Running the App Locally
+
+```bash
+# 1. Export or update structured questions JSON
+python3 scripts/export_questions.py
+
+# 2. Launch interactive development server
+cd web
+npm install
+npm run dev
+
+# 3. Or build static production bundle
+npm run build
+```
+
+
+
+---
+
 ## Study Workflow & Features
 
 1. **Iterative Learning**: Open the target module folder and select a section under `sections/`. Sections take approximately 30 to 60 minutes to complete.
@@ -177,6 +227,12 @@ Navigate to any module folder (such as [`notes/02-aws-saa-c03-question-bank-1019
 ## Governance and Contributing
 
 Review [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines, branch standards, and pull request expectations. For security disclosure policies, refer to [SECURITY.md](SECURITY.md).
+
+External contributions and corrections are welcome:
+- To report a wrong answer key or clarify a solution, use the [Soru Düzeltme / Hata Bildirimi](https://github.com/AtaCanYmc/AWS-SAA-C03-Study-Notes/issues/new?template=soru_duzeltme.yml) template.
+- To suggest features, PWA improvements, or new resources, use the [Öneri ve Talep](https://github.com/AtaCanYmc/AWS-SAA-C03-Study-Notes/issues/new?template=oneri_talep.yml) template.
+- Standard checklist enforcement is automated via our [.github/PULL_REQUEST_TEMPLATE.md](.github/PULL_REQUEST_TEMPLATE.md).
+
 
 ---
 

@@ -8,6 +8,7 @@ on:
 
 jobs:
   validate:
+    name: Validate Content & Code Quality
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
@@ -19,6 +20,9 @@ jobs:
           test -f CONTRIBUTING.md
           test -f SECURITY.md
           test -f LICENSE
+          test -f .github/PULL_REQUEST_TEMPLATE.md
+          test -f .github/ISSUE_TEMPLATE/soru_duzeltme.yml
+          test -f .github/ISSUE_TEMPLATE/oneri_talep.yml
 
       - name: Validate notes directory structure
         run: |
@@ -28,3 +32,50 @@ jobs:
           test -f notes/01-aws-certified-solutions-architect-associate-saa-c03/notes.md
           test -f notes/02-aws-saa-c03-question-bank-1019/notes.md
           test -f notes/03-caa-exam-questions-explained/notes.md
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Verify Python Scripts Syntax
+        run: |
+          if [ -d "scripts" ]; then
+            python3 -m py_compile scripts/*.py
+          fi
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run markdownlint
+        run: |
+          npx --yes markdownlint-cli "**/*.md" --ignore node_modules --ignore web/node_modules
+
+      - name: Build Web Quiz PWA
+        run: |
+          cd web
+          npm install
+          npm run build
+
+
+  link-check:
+    name: Check External Documentation Links
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Restore lychee cache
+        uses: actions/cache@v4
+        with:
+          path: .lycheecache
+          key: lychee-cache-${{ github.sha }}
+          restore-keys: lychee-cache-
+
+      - name: Lychee Link Checker
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --cache --max-cache-age 1d --exclude-file .lycheeignore --accept 200,204,403 --timeout 20 "**/*.md"
+          fail: false
