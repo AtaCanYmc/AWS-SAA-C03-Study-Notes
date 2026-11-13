@@ -1223,21 +1223,21 @@ D. Amazon RDS for PostgreSQL veritabanı bulut sunucusunu isteğe bağlı verita
 
 ---
 
-Question 437
-A company operates an ecommerce website on Amazon EC2 instances behind an Application
-Load Balancer (ALB) in an Auto Scaling group. The site is experiencing performance issues
-related to a high request rate from illegitimate external systems with changing IP addresses. The
-security team is worried about potential DDoS attacks against the website. The company must
-block the illegitimate incoming requests in a way that has a minimal impact on legitimate users.
-What should a solutions architect recommend?
+Soru 437
+Bir şirket, bir Uygulamanın arkasında Amazon EC2 bulut sunucularında bir e-ticaret web sitesi işletiyor
+Otomatik Ölçeklendirme grubunda Yük Dengeleyici (ALB). Sitede performans sorunları yaşanıyor
+değişen IP adreslerine sahip gayri meşru harici sistemlerden gelen yüksek talep oranıyla ilgilidir.
+güvenlik ekibi web sitesine yönelik olası DDoS saldırılarından endişe duymaktadır. Şirket şunları yapmalıdır:
+Yasadışı gelen istekleri, meşru kullanıcılar üzerinde minimum etki yaratacak şekilde engelleyin.
+Bir çözüm mimarı ne tavsiye etmelidir?
 
-A. Deploy Amazon Inspector and associate it with the ALB.
+A. Amazon Inspector'ı dağıtın ve ALB ile ilişkilendirin.
 
-B. Deploy AWS WAF, associate it with the ALB, and configure a rate-limiting rule.
+B. AWS WAF'ı dağıtın, ALB ile ilişkilendirin ve bir hız sınırlama kuralı yapılandırın.
 
-C. Deploy rules to the network ACLs associated with the ALB to block the incomingtraffic.
+C. Gelen trafiği engellemek için ALB ile ilişkili ağ ACL'lerine kurallar dağıtın.
 
-D. Deploy Amazon GuardDuty and enable rate-limiting protection when configuring GuardDuty.
+D. Amazon GuardDuty'yi dağıtın ve GuardDuty'yi yapılandırırken hız sınırlayıcı korumayı etkinleştirin.
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -1928,30 +1928,30 @@ E. Amazon Elastic Kubernetes Hizmetleri (Amazon EKS)
 
 ---
 
-Question 459
-A company uses AWS Organizations to run workloads within multiple AWS accounts. A tagging
-policy adds department tags to AWS resources when the company creates tags.
-An accounting team needs to determine spending on Amazon EC2 consumption. The
-accounting team must determine which departments are responsible for the costs regardless
-ofAWS account. The accounting team has access to AWS Cost Explorer for all AWS accounts
-within the organization and needs to access all reports from Cost Explorer.
-Which solution meets these requirements in the MOST operationally efficient way?
+Soru 459
+Bir şirket, birden fazla AWS hesabındaki iş yüklerini çalıştırmak için AWS Organizasyonlarını kullanıyor. Bir etiketleme
+politika, şirket etiketler oluşturduğunda AWS kaynaklarına departman etiketleri ekler.
+Bir muhasebe ekibinin Amazon EC2 tüketimine ilişkin harcamaları belirlemesi gerekir.
+muhasebe ekibi, maliyetlerden hangi departmanların sorumlu olduğunu belirlemelidir.
+AWS hesabının. Muhasebe ekibinin tüm AWS hesapları için AWS Cost Explorer'a erişimi var
+kuruluş içinde ve Cost Explorer'dan tüm raporlara erişmesi gerekiyor.
+Hangi çözüm bu gereksinimleri operasyonel açıdan EN verimli şekilde karşılıyor?
 
-A. From the Organizations management account billing console, activate a user-defined cost
-allocation tag named department. Create one cost report in Cost Explorer grouping by tag name,
-and filter by EC2.
+A. Kuruluş yönetim hesabı faturalandırma konsolundan kullanıcı tanımlı bir maliyeti etkinleştirin
+departman adlı tahsis etiketi. Maliyet Gezgini'nde etiket adına göre gruplandırarak bir maliyet raporu oluşturun,
+ve EC2'ye göre filtreleyin.
 
-B. From the Organizations management account billing console, activate an AWS-defined cost
-allocation tag named department. Create one cost report in Cost Explorer grouping by tag name,
-and filter by EC2.
+B. Kuruluşun yönetim hesabı faturalandırma konsolundan AWS tanımlı bir maliyeti etkinleştirin
+departman adlı tahsis etiketi. Maliyet Gezgini'nde etiket adına göre gruplandırarak bir maliyet raporu oluşturun,
+ve EC2'ye göre filtreleyin.
 
-C. From the Organizations member account billing console, activate a user-defined cost allocation
-tag named department. Create one cost report in Cost Explorer grouping by the tag name, and
-filter by EC2.
+C. Kuruluşun üye hesabı faturalandırma konsolundan kullanıcı tanımlı bir maliyet tahsisini etkinleştirin
+departman adı verilen etiket. Maliyet Gezgini'nde etiket adına göre gruplandırılan bir maliyet raporu oluşturun ve
+EC2'ye göre filtreleyin.
 
-D. From the Organizations member account billing console, activate an AWS-defined cost
-allocation tag named department. Create one cost report in Cost Explorer grouping by tag name,
-and filter by EC2.
+D. Kuruluşun üye hesabı faturalandırma konsolundan AWS tanımlı bir maliyeti etkinleştirin
+departman adlı tahsis etiketi. Maliyet Gezgini'nde etiket adına göre gruplandırarak bir maliyet raporu oluşturun,
+ve EC2'ye göre filtreleyin.
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -2098,25 +2098,25 @@ D. AWS Glue'yu bir PySpark işiyle kullanın
 
 ---
 
-Question 464
-A company hosts an online shopping application that stores all orders in an Amazon RDS for
-PostgreSQL Single-AZ DB instance. Management wants to eliminate single points of failure and
-has asked a solutions architect to recommend an approach to minimize database downtime
-without requiring any changes to the application code.
-Which solution meets these requirements?
+Soru 464
+Bir şirket, tüm siparişleri Amazon RDS'de saklayan bir çevrimiçi alışveriş uygulamasına ev sahipliği yapıyor.
+PostgreSQL Single-AZ Veritabanı örneği. Yönetim tek başarısızlık noktalarını ortadan kaldırmak istiyor ve
+bir çözüm mimarından veritabanı kesinti süresini en aza indirecek bir yaklaşım önermesini istedi
+uygulama kodunda herhangi bir değişiklik yapılmasına gerek kalmadan.
+Hangi çözüm bu gereksinimleri karşılıyor?
 
-A. Convert the existing database instance to a Multi-AZ deployment by modifying the database
-instance and specifying the Multi-AZ option.
+A. Veritabanını değiştirerek mevcut veritabanı örneğini Multi-AZ dağıtımına dönüştürün
+örneği ve Multi-AZ seçeneğinin belirtilmesi.
 
-B. Create a new RDS Multi-AZ deployment. Take a snapshot of the current RDS instance and
-restore the new Multi-AZ deployment with the snapshot.
+B. Yeni bir RDS Multi-AZ dağıtımı oluşturun. Geçerli RDS örneğinin anlık görüntüsünü alın ve
+anlık görüntüyle yeni Multi-AZ dağıtımını geri yükleyin.
 
-C. Create a read-only replica of the PostgreSQL database in another Availability Zone. Use
-Amazon Route 53 weighted record sets to distribute requests across the databases.
+C. Başka bir Erişilebilirlik Alanında PostgreSQL veritabanının salt okunur bir kopyasını oluşturun. Kullanım
+İstekleri veritabanları arasında dağıtmak için Amazon Route 53 ağırlıklı kayıt kümeleri.
 
-D. Place the RDS for PostgreSQL database in an Amazon EC2 Auto Scaling group with a
-minimum group size of two. Use Amazon Route 53 weighted record sets to distribute requests
-across instances.
+D. RDS for PostgreSQL veritabanını bir Amazon EC2 Auto Scaling grubuna yerleştirin.
+minimum grup büyüklüğü iki kişiliktir. İstekleri dağıtmak için Amazon Route 53 ağırlıklı kayıt kümelerini kullanın
+örnekler arasında.
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -2194,22 +2194,22 @@ Uygulama Yük Dengeleyici
 
 ---
 
-Question 467
-A company uses AWS Organizations. A member account has purchased a Compute Savings
-Plan. Because of changes in the workloads inside the member account, the account no longer
-receives the full benefit of the Compute Savings Plan commitment. The company uses less than
-50% of its purchased compute power.
+Soru 467
+Bir şirket AWS Organizasyonlarını kullanıyor. Bir üye hesabı Hesaplama Tasarrufu satın aldı
+Planla. Üye hesabındaki iş yüklerindeki değişiklikler nedeniyle hesap artık
+Bilgi İşlem Tasarruf Planı taahhüdünün tüm avantajlarından yararlanır. Şirket şundan daha azını kullanıyor:
+Satın alınan bilgi işlem gücünün %50'si.
 
-A. Turn on discount sharing from the Billing Preferences section of the account console in the
-member account that purchased the Compute Savings Plan.
+A. Hesap konsolunun Faturalandırma Tercihleri bölümünden indirim paylaşımını açın.
+Hesaplama Tasarruf Planı'nı satın alan üye hesabı.
 
-B. Turn on discount sharing from the Billing Preferences section of the account console in the
-company's Organizations management account.
+B. Hesap konsolunun Faturalandırma Tercihleri bölümünden indirim paylaşımını açın.
+Şirketin Organizasyon yönetimi hesabı.
 
-C. Migrate additional compute workloads from another AWS account to the account that has the
-Compute Savings Plan.
+C. Ek bilgi işlem iş yüklerini başka bir AWS hesabından aşağıdaki özelliklere sahip hesaba taşıyın:
+Tasarruf Planını Hesaplayın.
 
-D. Sell the excess Savings Plan commitment in the Reserved Instance Marketplace.
+D. Fazla Tasarruf Planı taahhüdünü Rezerve Edilmiş Bulut Sunucusu Pazarında satabilirsiniz.
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -2223,28 +2223,28 @@ D. Sell the excess Savings Plan commitment in the Reserved Instance Marketplace.
 
 ---
 
-Question 468
-A company is developing a microservices application that will provide a search catalog for
-customers. The company must use REST APIs to present the frontend of the application to
-users. The REST APIs must access the backend services that the company hosts in containers
-in private VPC subnets.
-Which solution will meet these requirements?
+Soru 468
+Bir şirket, arama kataloğu sağlayacak bir mikro hizmet uygulaması geliştiriyor
+müşteriler. Şirket, uygulamanın ön ucunu sunmak için REST API'lerini kullanmalıdır.
+kullanıcılar. REST API'leri, şirketin kapsayıcılarda barındırdığı arka uç hizmetlerine erişmelidir
+özel VPC alt ağlarında.
+Bu gereksinimleri hangi çözüm karşılayacak?
 
-A. Design a WebSocket API by using Amazon API Gateway. Host the application in Amazon
-Elastic Container Service (Amazon ECS) in a private subnet. Create a private VPC link for API
-Gateway to access Amazon ECS.
+A. Amazon API Gateway'i kullanarak bir WebSocket API tasarlayın. Uygulamayı Amazon'da barındırın
+Özel bir alt ağda Elastic Container Service (Amazon ECS). API için özel bir VPC bağlantısı oluşturun
+Amazon ECS'ye erişim için ağ geçidi.
 
-B. Design a REST API by using Amazon API Gateway. Host the application in Amazon Elastic
-Container Service (Amazon ECS) in a private subnet. Create a private VPC link for API Gateway
-to access Amazon ECS.
+B. Amazon API Gateway'i kullanarak bir REST API tasarlayın. Uygulamayı Amazon Elastic'te barındırın
+Özel bir alt ağda Konteyner Hizmeti (Amazon ECS). API Ağ Geçidi için özel bir VPC bağlantısı oluşturun
+Amazon ECS'ye erişmek için.
 
-C. Design a WebSocket API by using Amazon API Gateway. Host the application in Amazon
-Elastic Container Service (Amazon ECS) in a private subnet. Create a security group for API
-Gateway to access Amazon ECS.
+C. Amazon API Gateway'i kullanarak bir WebSocket API tasarlayın. Uygulamayı Amazon'da barındırın
+Özel bir alt ağda Elastic Container Service (Amazon ECS). API için bir güvenlik grubu oluşturun
+Amazon ECS'ye erişim için ağ geçidi.
 
-D. Design a REST API by using Amazon API Gateway. Host the application in Amazon Elastic
-Container Service (Amazon ECS) in a private subnet. Create a security group for API Gateway to
-access Amazon ECS.
+D. Amazon API Gateway'i kullanarak bir REST API tasarlayın. Uygulamayı Amazon Elastic'te barındırın
+Özel bir alt ağda Konteyner Hizmeti (Amazon ECS). API Ağ Geçidi için bir güvenlik grubu oluşturun
+Amazon ECS'ye erişin.
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -2258,24 +2258,24 @@ access Amazon ECS.
 
 ---
 
-Question 469
-A company stores raw collected data in an Amazon S3 bucket. The data is used for several
-types of analytics on behalf of the company's customers. The type of analytics requested
-determines the access pattern on the S3 objects.
-The company cannot predict or control the access pattern. The company wants to reduce its S3
-costs.
-Which solution will meet these requirements?
+Soru 469
+Bir şirket, toplanan ham verileri bir Amazon S3 klasöründe saklıyor. Veriler birkaç amaçla kullanılıyor
+Şirketin müşterileri adına analiz türleri. Talep edilen analiz türü
+S3 nesnelerindeki erişim modelini belirler.
+Şirket erişim modelini tahmin edemez veya kontrol edemez. Şirket S3'ü azaltmak istiyor
+maliyetler.
+Bu gereksinimleri hangi çözüm karşılayacak?
 
-A. Use S3 replication to transition infrequently accessed objects to S3 Standard-Infrequent Access
-(S3 Standard-IA)
+A. Sık erişilmeyen nesneleri S3 Standart-Nadir Erişime geçirmek için S3 çoğaltmayı kullanın
+(S3 Standardı-IA)
 
-B. Use S3 Lifecycle rules to transition objects from S3 Standard to Standard-Infrequent Access
-(S3 Standard-IA)
+B. Nesneleri S3 Standart'tan Standart Seyrek Erişime geçirmek için S3 Yaşam Döngüsü kurallarını kullanın
+(S3 Standardı-IA)
 
-C. Use S3 Lifecycle rules to transition objects from S3 Standard to S3 Intelligent-Tiering
+C. Nesneleri S3 Standard'tan S3 Intelligent-Tiering'e geçirmek için S3 Yaşam Döngüsü kurallarını kullanın
 
-D. Use S3 Inventory to identify and transition objects that have not been accessed from S3
-Standard to S3 Intelligent-Tiering
+D. S3'ten erişilmeyen nesneleri tanımlamak ve geçiş yapmak için S3 Envanterini kullanın
+Standarttan S3'e Akıllı Katmanlama
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -2289,20 +2289,20 @@ Standard to S3 Intelligent-Tiering
 
 ---
 
-Question 470
-A company has applications hosted on Amazon EC2 instances with IPv6 addresses. The
-applications must initiate communications with other external applications using the internet.
-However the company’s security policy states that any external service cannot initiate a
-connection to the EC2 instances.
-What should a solutions architect recommend to resolve this issue?
+Soru 470
+Bir şirketin Amazon EC2 bulut sunucularında IPv6 adresleriyle barındırılan uygulamaları var.
+uygulamaların interneti kullanarak diğer harici uygulamalarla iletişim başlatması gerekir.
+Ancak şirketin güvenlik politikası, herhangi bir harici hizmetin bir sorun başlatamayacağını belirtiyor.
+EC2 bulut sunucularına bağlantı.
+Bir çözüm mimarı bu sorunu çözmek için ne önermelidir?
 
-A. Create a NAT gateway and make it the destination of the subnet's route table
+A. Bir NAT ağ geçidi oluşturun ve bunu alt ağın rota tablosunun hedefi yapın
 
-B. Create an internet gateway and make it the destination of the subnet's route table
+B. Bir internet ağ geçidi oluşturun ve bunu alt ağın rota tablosunun hedefi yapın
 
-C. Create a virtual private gateway and make it the destination of the subnet's route table
+C. Sanal bir özel ağ geçidi oluşturun ve bunu alt ağın rota tablosunun hedefi yapın
 
-D. Create an egress-only internet gateway and make it the destination of the subnet's route table
+D. Yalnızca çıkışa yönelik bir internet ağ geçidi oluşturun ve bunu alt ağın rota tablosunun hedefi yapın
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -2316,22 +2316,22 @@ D. Create an egress-only internet gateway and make it the destination of the sub
 
 ---
 
-Question 471
-A company is creating an application that runs on containers in a VPC. The application stores
-and accesses data in an Amazon S3 bucket. During the development phase, the application will
-store and access 1 TB of data in Amazon S3 each day. The company wants to minimize costs
-and wants to prevent traffic from traversing the internet whenever possible.
-Which solution will meet these requirements?
+Soru 471
+Bir şirket, VPC'deki konteynerler üzerinde çalışan bir uygulama oluşturuyor. Uygulama depoları
+ve bir Amazon S3 klasöründeki verilere erişir. Uygulama geliştirme aşamasında,
+Amazon S3'te her gün 1 TB veri depolayın ve bu verilere erişin. Şirket maliyetleri en aza indirmek istiyor
+ve mümkün olduğunca trafiğin internet üzerinden geçmesini engellemek istiyor.
+Bu gereksinimleri hangi çözüm karşılayacak?
 
-A. Enable S3 Intelligent-Tiering for the S3 bucket
+A. S3 grubu için S3 Akıllı Katmanlamayı etkinleştirin
 
-B. Enable S3 Transfer Acceleration for the S3 bucket
+B. S3 grubu için S3 Aktarım Hızlandırmasını etkinleştirin
 
-C. Create a gateway VPC endpoint for Amazon S3. Associate this endpoint with all route tables in
-the VPC
+C. Amazon S3 için bir ağ geçidi VPC uç noktası oluşturun. Bu uç noktayı içindeki tüm rota tablolarıyla ilişkilendirin
+VPC
 
-D. Create an interface endpoint for Amazon S3 in the VPC. Associate this endpoint with all route
-tables in the VPC
+D. VPC'de Amazon S3 için bir arayüz uç noktası oluşturun. Bu uç noktayı tüm rotayla ilişkilendirin
+VPC'deki tablolar
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -2346,23 +2346,23 @@ tables in the VPC
 
 ---
 
-Question 472
-A company has a mobile chat application with a data store based in Amazon DynamoDB. Users
-would like new messages to be read with as little latency as possible. A solutions architect needs
-to design an optimal solution that requires minimal application changes.
-Which method should the solutions architect select?
+Soru 472
+Bir şirketin Amazon DynamoDB tabanlı veri deposuna sahip bir mobil sohbet uygulaması vardır. Kullanıcılar
+yeni mesajların mümkün olduğunca az gecikmeyle okunmasını istiyor. Bir çözüm mimarının ihtiyacı var
+Minimum uygulama değişikliği gerektiren en uygun çözümü tasarlamak.
+Çözüm mimarı hangi yöntemi seçmelidir?
 
-A. Configure Amazon DynamoDB Accelerator (DAX) for the new messages table. Update the
-code to use the DAX endpoint.
+A. Yeni mesajlar tablosu için Amazon DynamoDB Accelerator'ı (DAX) yapılandırın. Güncelleme
+DAX uç noktasını kullanmak için kod.
 
-B. Add DynamoDB read replicas to handle the increased read load. Update the application to
-point to the read endpoint for the read replicas.
+B. Artan okuma yükünü karşılamak için DynamoDB okuma replikalarını ekleyin. Uygulamayı şu şekilde güncelleyin:
+okuma kopyaları için okuma uç noktasını işaret edin.
 
-C. Double the number of read capacity units for the new messages table in DynamoDB. Continue
-to use the existing DynamoDB endpoint.
+C. DynamoDB'deki yeni mesajlar tablosu için okuma kapasitesi birimlerinin sayısını iki katına çıkarın. Devam et
+Mevcut DynamoDB uç noktasını kullanmak için.
 
-D. Add an Amazon ElastiCache for Redis cache to the application stack. Update the application to
-point to the Redis cache endpoint instead of DynamoDB.
+D. Uygulama yığınına bir Amazon ElastiCache for Redis önbelleği ekleyin. Uygulamayı şu şekilde güncelleyin:
+DynamoDB yerine Redis önbellek uç noktasını işaretleyin.
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -2378,21 +2378,21 @@ point to the Redis cache endpoint instead of DynamoDB.
 
 ---
 
-Question 473
-A company hosts a website on Amazon EC2 instances behind an Application Load Balancer
-(ALB). The website serves static content. Website traffic is increasing, and the company is
-concerned about a potential increase in cost.
+Soru 473
+Bir şirket, Application Load Balancer'ın arkasında Amazon EC2 bulut sunucularında bir web sitesi barındırıyor
+(ALB). Web sitesi statik içerik sunmaktadır. Web sitesi trafiği artıyor ve şirket
+maliyette olası bir artıştan endişe duyuyor.
 
-A. Create an Amazon CloudFront distribution to cache state files at edge locations
+A. Durum dosyalarını uç konumlarda önbelleğe almak için bir Amazon CloudFront dağıtımı oluşturun
 
-B. Create an Amazon ElastiCache cluster. Connect the ALB to the ElastiCache cluster to serve
-cached files
+B. Bir Amazon ElastiCache kümesi oluşturun. Hizmet vermek için ALB'yi ElastiCache kümesine bağlayın
+önbelleğe alınmış dosyalar
 
-C. Create an AWS WAF web ACL and associate it with the ALB. Add a rule to the web ACL to
-cache static files
+C. Bir AWS WAF web ACL'si oluşturun ve bunu ALB ile ilişkilendirin. Web ACL'sine bir kural ekleyin
+statik dosyaları önbelleğe al
 
-D. Create a second ALB in an alternative AWS Region. Route user traffic to the closest Region to
-minimize data transfer costs
+D. Alternatif bir AWS Bölgesinde ikinci bir ALB oluşturun. Kullanıcı trafiğini en yakın Bölgeye yönlendirin
+veri aktarım maliyetlerini en aza indirin
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -2407,23 +2407,23 @@ minimize data transfer costs
 
 ---
 
-Question 474
-A company has multiple VPCs across AWS Regions to support and run workloads that are
-isolated from workloads in other Regions. Because of a recent application launch requirement,
-the company’s VPCs must communicate with all other VPCs across all Regions.
-Which solution will meet these requirements with the LEAST amount of administrative effort?
+Soru 474
+Bir şirketin AWS Bölgelerinde aşağıdaki iş yüklerini desteklemek ve çalıştırmak için birden fazla VPC'si vardır:
+diğer Bölgelerdeki iş yüklerinden izole edilmiştir. Yakın zamanda ortaya çıkan bir uygulama başlatma gereksinimi nedeniyle,
+şirketin VPC'leri tüm Bölgelerdeki diğer tüm VPC'lerle iletişim kurmalıdır.
+Hangi çözüm bu gereksinimleri EN AZ miktarda idari çabayla karşılayacak?
 
-A. Use VPC peering to manage VPC communication in a single Region. Use VPC peering across
-Regions to manage VPC communications.
+A. Tek bir Bölgede VPC iletişimini yönetmek için VPC eşlemeyi kullanın. Karşılıklı VPC eşlemeyi kullanın
+VPC iletişimlerini yönetecek bölgeler.
 
-B. Use AWS Direct Connect gateways across all Regions to connect VPCs across regions and
-manage VPC communications.
+B. VPC'leri bölgeler arasında bağlamak için tüm Bölgelerde AWS Direct Connect ağ geçitlerini kullanın ve
+VPC iletişimlerini yönetin.
 
-C. Use AWS Transit Gateway to manage VPC communication in a single Region and Transit
-Gateway peering across Regions to manage VPC communications.
+C. Tek bir Bölge ve Transit'te VPC iletişimini yönetmek için AWS Transit Gateway'i kullanın
+VPC iletişimlerini yönetmek için Bölgeler arasında ağ geçidi eşlemesi.
 
-D. Use AWS PrivateLink across all Regions to connect VPCs across Regions and manage VPC
-communications
+D. VPC'leri Bölgeler arasında bağlamak ve VPC'yi yönetmek için tüm Bölgelerde AWS PrivateLink'i kullanın
+iletişim
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -2438,21 +2438,21 @@ communications
 
 ---
 
-Question 475
-A company is designing a containerized application that will use Amazon Elastic Container
-Service (Amazon ECS). The application needs to access a shared file system that is highly
-durable and can recover data to another AWS Region with a recovery point objective (RPO) of 8
-hours. The file system needs to provide a mount target m each Availability Zone within a Region.
-A solutions architect wants to use AWS Backup to manage the replication to another Region.
-Which solution will meet these requirements?
+Soru 475
+Bir şirket, Amazon Elastic Container'ı kullanacak konteynerli bir uygulama tasarlıyor
+Hizmet (Amazon ECS). Uygulamanın yüksek düzeyde paylaşılan bir dosya sistemine erişmesi gerekiyor.
+dayanıklıdır ve 8 kurtarma noktası hedefi (RPO) ile verileri başka bir AWS Bölgesine kurtarabilir
+saatler. Dosya sisteminin bir Bölge içindeki her Erişilebilirlik Alanı için bir bağlama hedefi sağlaması gerekir.
+Bir çözüm mimarı, başka bir Bölgeye kopyalamayı yönetmek için AWS Backup'ı kullanmak istiyor.
+Bu gereksinimleri hangi çözüm karşılayacak?
 
-A. Amazon FSx for Windows File Server with a Multi-AZ deployment
+A. Multi-AZ dağıtımıyla Windows Dosya Sunucusu için Amazon FSx
 
-B. Amazon FSx for NetApp ONTAP with a Multi-AZ deployment
+B. Multi-AZ dağıtımıyla NetApp ONTAP için Amazon FSx
 
-C. Amazon Elastic File System (Amazon EFS) with the Standard storage class
+C. Standart depolama sınıfına sahip Amazon Elastic File System (Amazon EFS)
 
-D. Amazon FSx for OpenZFS
+D. OpenZFS için Amazon FSx
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -2467,21 +2467,21 @@ D. Amazon FSx for OpenZFS
 
 ---
 
-Question 476
-A company is expecting rapid growth in the near future. A solutions architect needs to configure
-existing users and grant permissions to new users on AWS. The solutions architect has decided
-to create IAM groups. The solutions architect will add the new users to IAM groups based on
-department.
-Which additional action is the MOST secure way to grant permissions to the new users?
+Soru 476
+Bir şirket yakın gelecekte hızlı bir büyüme bekliyor. Bir çözüm mimarının yapılandırması gerekiyor
+AWS'de mevcut kullanıcılara izin verin ve yeni kullanıcılara izin verin. Çözüm mimarı karar verdi
+IAM grupları oluşturmak için. Çözüm mimarı, yeni kullanıcıları IAM gruplarına ekleyecektir.
+departman.
+Yeni kullanıcılara izin vermenin EN güvenli yolu hangi ek eylemdir?
 
-A. Apply service control policies (SCPs) to manage access permissions
+A. Erişim izinlerini yönetmek için hizmet kontrol politikalarını (SCP'ler) uygulayın
 
-B. Create IAM roles that have least privilege permission. Attach the roles to the IAM groups
+B. En az ayrıcalık iznine sahip IAM rolleri oluşturun. Rolleri IAM gruplarına ekleyin
 
-C. Create an IAM policy that grants least privilege permission. Attach the policy to the IAM groups
+C. En az ayrıcalık izni veren bir IAM politikası oluşturun. Politikayı IAM gruplarına ekleyin
 
-D. Create IAM roles. Associate the roles with a permissions boundary that defines the maximum
-permissions
+D. IAM rolleri oluşturun. Rolleri, maksimum izin sınırını tanımlayan bir izin sınırıyla ilişkilendirin.
+izinler
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -2495,12 +2495,12 @@ permissions
 
 ---
 
-Question 477
-A group requires permissions to list an Amazon S3 bucket and delete objects from that bucket.
-An administrator has created the following IAM policy to provide access to the bucket and
-applied that policy to the group. The group is not able to delete objects in the bucket. The
-company follows least-privilege access rules.
-Which statement should a solutions architect add to the policy to correct bucket access?
+Soru 477
+Bir grup, bir Amazon S3 klasörünü listelemek ve bu paketteki nesneleri silmek için izinlere ihtiyaç duyar.
+Bir yönetici, pakete erişim sağlamak için aşağıdaki IAM politikasını oluşturdu ve
+bu politikayı gruba uyguladı. Grup, paketteki nesneleri silemez.
+şirket en az ayrıcalıklı erişim kurallarına uyuyor.
+Bir çözüm mimarı paket erişimini düzeltmek için politikaya hangi ifadeyi eklemelidir?
 
 A.
 
@@ -2523,28 +2523,28 @@ D.
 
 ---
 
-Question 478
-A law firm needs to share information with the public. The information includes hundreds of files
-that must be publicly readable. Modifications or deletions of the files by anyone before a
-designated future date are prohibited.
-Which solution will meet these requirements in the MOST secure way?
+Soru 478
+Bir hukuk firmasının kamuoyuyla bilgi paylaşması gerekir. Bilgiler yüzlerce dosya içeriyor
+herkesin okuyabileceği şekilde olmalıdır. Dosyaların herhangi bir kişi tarafından değiştirilmesi veya silinmesi
+Gelecekteki belirlenmiş tarihler yasaktır.
+Hangi çözüm bu gereksinimleri EN güvenli şekilde karşılayacak?
 
-A. Upload all files to an Amazon S3 bucket that is configured for static website hosting. Grant
-read-only IAM permissions to any AWS principals that access the S3 bucket until the designated
-date.
+A. Tüm dosyaları statik web sitesi barındırma için yapılandırılmış bir Amazon S3 klasörüne yükleyin. Hibe
+belirlenene kadar S3 klasörüne erişen tüm AWS sorumlularına yönelik salt okunur IAM izinleri
+tarih.
 
-B. Create a new Amazon S3 bucket with S3 Versioning enabled. Use S3 Object Lock with a
-retention period in accordance with the designated date. Configure the S3 bucket for static website
-hosting. Set an S3 bucket policy to allow read-only access to the objects.
+B. S3 Sürümü Etkinleştirmenin etkin olduğu yeni bir Amazon S3 klasörü oluşturun. S3 Object Lock'u bir
+belirlenen tarihe göre saklama süresi. Statik web sitesi için S3 paketini yapılandırma
+ev sahipliği yapıyor. Nesnelere salt okunur erişime izin vermek için bir S3 grup ilkesi ayarlayın.
 
-C. Create a new Amazon S3 bucket with S3 Versioning enabled. Configure an event trigger to run
-an AWS Lambda function in case of object modification or deletion. Configure the Lambda
-function to replace the objects with the original versions from a private S3 bucket.
+C. S3 Sürümü Oluşturma etkinleştirilmiş yeni bir Amazon S3 klasörü oluşturun. Çalıştırılacak bir olay tetikleyicisini yapılandırma
+Nesnenin değiştirilmesi veya silinmesi durumunda bir AWS Lambda işlevi. Lambda'yı yapılandırma
+nesneleri özel bir S3 klasöründeki orijinal sürümlerle değiştirme işlevi.
 
-D. Upload all files to an Amazon S3 bucket that is configured for static website hosting. Select the
-folder that contains the files. Use S3 Object Lock with a retention period in accordance with the
-designated date. Grant read-only IAM permissions to any AWS principals that access the S3
-bucket.
+D. Tüm dosyaları statik web sitesi barındırma için yapılandırılmış bir Amazon S3 klasörüne yükleyin. Şunu seçin:
+dosyaları içeren klasör. S3 Object Lock'u saklama süresiyle birlikte kullanın.
+belirlenen tarih. S3'e erişen tüm AWS sorumlularına salt okunur IAM izinleri verin
+kova.
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -2559,25 +2559,25 @@ bucket.
 
 ---
 
-Question 479
-A company is making a prototype of the infrastructure for its new website by manually
-provisioning the necessary infrastructure. This infrastructure includes an Auto Scaling group, an
-Application Load Balancer and an Amazon RDS database. After the configuration has been
-thoroughly validated, the company wants the capability to immediately deploy the infrastructure
-for development and production use in two Availability Zones in an automated fashion.
-What should a solutions architect recommend to meet these requirements?
+Soru 479
+Bir şirket yeni web sitesi için altyapının prototipini manuel olarak yapıyor
+gerekli altyapıyı sağlamak. Bu altyapı bir Otomatik Ölçeklendirme grubunu içerir.
+Application Load Balancer ve Amazon RDS veritabanı. Yapılandırma tamamlandıktan sonra
+Tamamen doğrulanmış olan şirket, altyapıyı hemen devreye alma yeteneği istiyor
+iki Erişilebilirlik Alanında otomatikleştirilmiş bir şekilde geliştirme ve üretim kullanımı için.
+Bir çözüm mimarı bu gereksinimleri karşılamak için ne önermelidir?
 
-A. Use AWS Systems Manager to replicate and provision the prototype infrastructure in two
-Availability Zones
+A. Prototip altyapısını iki adımda çoğaltmak ve tedarik etmek için AWS Systems Manager'ı kullanın.
+Erişilebilirlik Alanları
 
-B. Define the infrastructure as a template by using the prototype infrastructure as a guide. Deploy
-the infrastructure with AWS CloudFormation.
+B. Prototip altyapısını kılavuz olarak kullanarak altyapıyı şablon olarak tanımlayın. Dağıt
+AWS CloudFormation ile altyapı.
 
-C. Use AWS Config to record the inventory of resources that are used in the prototype
-infrastructure. Use AWS Config to deploy the prototype infrastructure into two Availability Zones.
+C. Prototipte kullanılan kaynakların envanterini kaydetmek için AWS Config'i kullanın
+altyapı. Prototip altyapısını iki Erişilebilirlik Alanına dağıtmak için AWS Config'i kullanın.
 
-D. Use AWS Elastic Beanstalk and configure it to use an automated reference to the prototype
-infrastructure to automatically deploy new environments in two Availability Zones.
+D. AWS Elastic Beanstalk'ı kullanın ve prototipe otomatik bir referans kullanacak şekilde yapılandırın
+Yeni ortamların iki Erişilebilirlik Alanında otomatik olarak dağıtılmasına yönelik altyapı.
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -2592,19 +2592,19 @@ infrastructure to automatically deploy new environments in two Availability Zone
 
 ---
 
-Question 480
-A business application is hosted on Amazon EC2 and uses Amazon S3 for encrypted object
-storage. The chief information security officer has directed that no application traffic between the
-two services should traverse the public internet.
-Which capability should the solutions architect use to meet the compliance requirements?
+Soru 480
+Bir iş uygulaması Amazon EC2'de barındırılıyor ve şifrelenmiş nesneler için Amazon S3'ü kullanıyor
+depolama. Baş bilgi güvenliği sorumlusu, kullanıcılar arasında uygulama trafiğinin olmaması talimatını verdi.
+iki hizmetin halka açık internet üzerinden geçmesi gerekir.
+Çözüm mimarı uyumluluk gereksinimlerini karşılamak için hangi yeteneği kullanmalıdır?
 
-A. AWS Key Management Service (AWS KMS)
+A. AWS Anahtar Yönetimi Hizmeti (AWS KMS)
 
-B. VPC endpoint
+B. VPC uç noktası
 
-C. Private subnet
+C. Özel alt ağ
 
-D. Virtual private gateway
+D. Sanal özel ağ geçidi
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -2618,21 +2618,21 @@ D. Virtual private gateway
 
 ---
 
-Question 481
-A company hosts a three-tier web application in the AWS Cloud. A Multi-AZAmazon RDS for
-MySQL server forms the database layer Amazon ElastiCache forms the cache layer. The
-company wants a caching strategy that adds or updates data in the cache when a customer
-adds an item to the database. The data in the cache must always match the data in the
-database.
-Which solution will meet these requirements?
+Soru 481
+Bir şirket, AWS Cloud'da üç katmanlı bir web uygulaması barındırıyor. Çoklu AZAmazon RDS'si
+MySQL sunucusu veritabanı katmanını oluşturur Amazon ElastiCache, önbellek katmanını oluşturur.
+şirket, bir müşteri gerektiğinde önbelleğe veri ekleyen veya güncelleyen bir önbellekleme stratejisi istiyor
+Veritabanına bir öğe ekler. Önbellekteki veriler her zaman önbellekteki verilerle eşleşmelidir.
+veritabanı.
+Bu gereksinimleri hangi çözüm karşılayacak?
 
-A. Implement the lazy loading caching strategy
+A. Tembel yükleme önbelleğe alma stratejisini uygulayın
 
-B. Implement the write-through caching strategy
+B. İçe yazma önbelleğe alma stratejisini uygulama
 
-C. Implement the adding TTL caching strategy
+C. Ekleme TTL önbelleğe alma stratejisini uygulayın
 
-D. Implement the AWS AppConfig caching strategy
+D. AWS AppConfig önbelleğe alma stratejisini uygulayın
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -2646,21 +2646,21 @@ D. Implement the AWS AppConfig caching strategy
 
 ---
 
-Question 482
-A company wants to migrate 100 GB of historical data from an on-premises location to an
-Amazon S3 bucket. The company has a 100 megabits per second (Mbps) internet connection on
-premises. The company needs to encrypt the data in transit to the S3 bucket. The company will
-store new data directly in Amazon S3.
-Which solution will meet these requirements with the LEAST operational overhead?
+Soru 482
+Bir şirket, 100 GB'lık geçmiş verilerini şirket içi bir konumdan başka bir yere taşımak istiyor
+Amazon S3 kovası. Şirketin saniyede 100 megabit (Mbps) internet bağlantısı bulunmaktadır.
+tesisler. Şirketin S3 klasörüne aktarılan verileri şifrelemesi gerekiyor. Şirket
+yeni verileri doğrudan Amazon S3'te depolayın.
+Hangi çözüm bu gereksinimleri EN AZ operasyonel ek yük ile karşılayacak?
 
-A. Use the s3 sync command in the AWS CLI to move the data directly to an S3 bucket
+A. Verileri doğrudan bir S3 klasörüne taşımak için AWS CLI'deki s3 senkronizasyon komutunu kullanın
 
-B. Use AWS DataSync to migrate the data from the on-premises location to an S3 bucket
+B. Verileri şirket içi konumdan bir S3 klasörüne taşımak için AWS DataSync'i kullanın
 
-C. Use AWS Snowball to move the data to an S3 bucket
+C. Verileri bir S3 klasörüne taşımak için AWS Snowball'u kullanın
 
-D. Set up an IPsec VPN from the on-premises location to AWS. Use the s3 cp command in the
-AWS CLI to move the data directly to an S3 bucket
+D. Şirket içi konumdan AWS'ye bir IPsec VPN kurun. s3 cp komutunu kullanın.
+Verileri doğrudan bir S3 klasörüne taşımak için AWS CLI
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -2674,24 +2674,24 @@ AWS CLI to move the data directly to an S3 bucket
 
 ---
 
-Question 483
-A company containerized a Windows job that runs on .NET 6 Framework under a Windows
-container. The company wants to run this job in the AWS Cloud. The job runs every 10 minutes.
-The job’s runtime varies between 1 minute and 3 minutes.
-Which solution will meet these requirements MOST cost-effectively?
+Soru 483
+Bir şirket, Windows altında .NET 6 Framework üzerinde çalışan bir Windows işini kapsayıcıya aldı.
+konteyner. Şirket bu işi AWS Cloud'da yürütmek istiyor. İş her 10 dakikada bir çalışır.
+İşin çalışma süresi 1 dakika ile 3 dakika arasında değişmektedir.
+Hangi çözüm bu gereksinimleri EN uygun maliyetle karşılayacaktır?
 
-A. Create an AWS Lambda function based on the container image of the job. Configure Amazon
-EventBridge to invoke the function every 10 minutes.
+A. İşin kapsayıcı görüntüsünü temel alarak bir AWS Lambda işlevi oluşturun. Amazon'u yapılandırın
+EventBridge işlevi her 10 dakikada bir çağırır.
 
-B. Use AWS Batch to create a job that uses AWS Fargate resources. Configure the job scheduling
-to run every 10 minutes.
+B. AWS Fargate kaynaklarını kullanan bir iş oluşturmak için AWS Batch'i kullanın. İş zamanlamasını yapılandırma
+her 10 dakikada bir çalıştırmak için.
 
-C. Use Amazon Elastic Container Service (Amazon ECS) on AWS Fargate to run the job. Create a
-scheduled task based on the container image of the job to run every 10 minutes.
+C. İşi çalıştırmak için AWS Fargate'te Amazon Elastic Container Service'i (Amazon ECS) kullanın. Bir oluştur
+zamanlanmış görev, işin kapsayıcı görüntüsüne göre her 10 dakikada bir çalıştırılacak.
 
-D. Use Amazon Elastic Container Service (Amazon ECS) on AWS Fargate to run the job. Create a
-standalone task based on the container image of the job. Use Windows task scheduler to run the
-job every10 minutes.
+D. İşi yürütmek için AWS Fargate'te Amazon Elastic Container Service'i (Amazon ECS) kullanın. Bir oluştur
+işin kapsayıcı görüntüsüne dayalı bağımsız görev. Çalıştırmak için Windows görev zamanlayıcısını kullanın
+her 10 dakikada bir iş.
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -2706,28 +2706,28 @@ job every10 minutes.
 
 ---
 
-Question 484
-A company wants to move from many standalone AWS accounts to a consolidated,
-multi-account architecture. The company plans to create many new AWS accounts for different
-business units. The company needs to authenticate access to these AWS accounts by using a
-centralized corporate directory service.
-Which combination of actions should a solutions architect recommend to meet these
-requirements? (Choose two.)
+Soru 484
+Bir şirket birçok bağımsız AWS hesabından birleştirilmiş,
+çoklu hesap mimarisi. Şirket, farklı amaçlar için birçok yeni AWS hesabı oluşturmayı planlıyor
+iş birimleri. Şirketin bu AWS hesaplarına erişimi bir kimlik doğrulaması kullanarak doğrulaması gerekiyor.
+merkezi kurumsal dizin hizmeti.
+Bir çözüm mimarı bunları karşılamak için hangi eylem kombinasyonunu önermelidir?
+gereksinimler? (İki tane seçin.)
 
-A. Create a new organization in AWS Organizations with all features turned on. Create the new
-AWS accounts in the organization.
+A. AWS Organizasyonlarında tüm özelliklerin açık olduğu yeni bir kuruluş oluşturun. Yeniyi oluştur
+Kuruluştaki AWS hesapları.
 
-B. Set up an Amazon Cognito identity pool. Configure AWS IAM Identity Center (AWS Single
-Sign-On) to accept Amazon Cognito authentication.
+B. Bir Amazon Cognito kimlik havuzu oluşturun. AWS IAM Identity Center'ı (AWS Single) Yapılandırma
+Amazon Cognito kimlik doğrulamasını kabul etmek için Oturum Açın).
 
-C. Configure a service control policy (SCP) to manage the AWS accounts. Add AWS IAM Identity
-Center (AWS Single Sign-On) to AWS Directory Service.
+C. AWS hesaplarını yönetmek için bir hizmet kontrol politikası (SCP) yapılandırın. AWS IAM Kimliği Ekle
+(AWS Tek Oturum Açma) AWS Dizin Hizmetine merkezleyin.
 
-D. Create a new organization in AWS Organizations. Configure the organization's authentication
-mechanism to use AWS Directory Service directly.
+D. AWS Organizasyonlarında yeni bir organizasyon oluşturun. Kuruluşun kimlik doğrulamasını yapılandırma
+AWS Directory Service'i doğrudan kullanma mekanizması.
 
-E. Set up AWS IAM Identity Center (AWS Single Sign-On) in the organization. Configure IAM
-Identity Center, and integrate it with the company's corporate directory service.
+E. Kuruluşta AWS IAM Identity Center'ı (AWS Tek Oturum Açma) kurun. IAM'yi yapılandır
+Kimlik Merkezi'ni oluşturun ve bunu şirketin kurumsal dizin hizmetiyle entegre edin.
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -2741,19 +2741,19 @@ Identity Center, and integrate it with the company's corporate directory service
 
 ---
 
-Question 485
-A company is looking for a solution that can store video archives in AWS from old news footage.
-The company needs to minimize costs and will rarely need to restore these files. When the files
-are needed, they must be available in a maximum of five minutes.
-What is the MOST cost-effective solution?
+Soru 485
+Bir şirket, eski haber görüntülerinden video arşivlerini AWS'de depolayabilecek bir çözüm arıyor.
+Şirketin maliyetleri en aza indirmesi gerekiyor ve bu dosyaları nadiren geri yüklemesi gerekecek. Dosyalar ne zaman
+ihtiyaç duyulduğunda en fazla beş dakika içinde hazır olmaları gerekir.
+EN uygun maliyetli çözüm nedir?
 
-A. Store the video archives in Amazon S3 Glacier and use Expedited retrievals.
+A. Video arşivlerini Amazon S3 Glacier'da saklayın ve Hızlandırılmış alımları kullanın.
 
-B. Store the video archives in Amazon S3 Glacier and use Standard retrievals.
+B. Video arşivlerini Amazon S3 Glacier'da saklayın ve Standart alımları kullanın.
 
-C. Store the video archives in Amazon S3 Standard-Infrequent Access (S3 Standard-IA).
+C. Video arşivlerini Amazon S3 Standard-Infrequent Access'te (S3 Standard-IA) saklayın.
 
-D. Store the video archives in Amazon S3 One Zone-Infrequent Access (S3 One Zone-IA).
+D. Video arşivlerini Amazon S3 One Zone-Infrequent Access'te (S3 One Zone-IA) saklayın.
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -2767,25 +2767,25 @@ D. Store the video archives in Amazon S3 One Zone-Infrequent Access (S3 One Zone
 
 ---
 
-Question 486
-A company is building a three-tier application on AWS. The presentation tier will serve a static
-website The logic tier is a containerized application. This application will store data in a relational
-database. The company wants to simplify deployment and to reduce operational costs.
-Which solution will meet these requirements?
+Soru 486
+Bir şirket AWS'de üç katmanlı bir uygulama geliştiriyor. Sunum katmanı statik bir hizmet sunacak
+web sitesi Mantık katmanı kapsayıcıya alınmış bir uygulamadır. Bu uygulama verileri ilişkisel bir biçimde saklayacak
+veritabanı. Şirket, dağıtımı basitleştirmek ve operasyonel maliyetleri azaltmak istiyor.
+Bu gereksinimleri hangi çözüm karşılayacak?
 
-A. Use Amazon S3 to host static content. Use Amazon Elastic Container Service (Amazon ECS)
-with AWS Fargate for compute power. Use a managed Amazon RDS cluster for the database.
+A. Statik içeriği barındırmak için Amazon S3'ü kullanın. Amazon Elastic Container Service'i (Amazon ECS) kullanın
+bilgi işlem gücü için AWS Fargate ile. Veritabanı için yönetilen bir Amazon RDS kümesi kullanın.
 
-B. Use Amazon CloudFront to host static content. Use Amazon Elastic Container Service
-(Amazon ECS) with Amazon EC2 for compute power. Use a managed Amazon RDS cluster for
-the database.
+B. Statik içeriği barındırmak için Amazon CloudFront'u kullanın. Amazon Elastic Container Service'i kullanın
+(Amazon ECS) bilgi işlem gücü için Amazon EC2 ile. Şunlar için yönetilen bir Amazon RDS kümesi kullanın:
+veritabanı.
 
-C. Use Amazon S3 to host static content. Use Amazon Elastic Kubernetes Service (Amazon EKS)
-with AWS Fargate for compute power. Use a managed Amazon RDS cluster for the database.
+C. Statik içeriği barındırmak için Amazon S3'ü kullanın. Amazon Elastic Kubernetes Service'i (Amazon EKS) kullanın
+bilgi işlem gücü için AWS Fargate ile. Veritabanı için yönetilen bir Amazon RDS kümesi kullanın.
 
-D. Use Amazon EC2 Reserved Instances to host static content. Use Amazon Elastic Kubernetes
-Service (Amazon EKS) with Amazon EC2 for compute power. Use a managed Amazon RDS
-cluster for the database.
+D. Statik içeriği barındırmak için Amazon EC2 Rezerve Edilmiş Bulut Sunucularını kullanın. Amazon Elastic Kubernetes'i kullanın
+Bilgi işlem gücü için Amazon EC2 ile hizmet (Amazon EKS). Yönetilen bir Amazon RDS kullanın
+veritabanı için küme.
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -2800,22 +2800,22 @@ cluster for the database.
 
 ---
 
-Question 487
-A company seeks a storage solution for its application. The solution must be highly available and
-scalable. The solution also must function as a file system be mountable by multiple Linux
-instances in AWS and on premises through native protocols, and have no minimum size
-requirements. The company has set up a Site-to-Site VPN for access from its on-premises
-network to its VPC.
-Which storage solution meets these requirements?
+Soru 487
+Bir şirket, uygulaması için bir depolama çözümü arıyor. Çözüm yüksek oranda kullanılabilir olmalı ve
+ölçeklenebilir. Çözüm aynı zamanda birden fazla Linux tarafından bağlanabilen bir dosya sistemi olarak da çalışmalıdır.
+Yerel protokoller aracılığıyla AWS'deki ve şirket içi örneklerdir ve minimum boyuta sahip değildir
+gereksinimleri. Şirket, şirket içinden erişim için Siteden Siteye VPN kurmuştur
+ağ üzerinden VPC'sine bağlanın.
+Hangi depolama çözümü bu gereksinimleri karşılıyor?
 
-A. Amazon FSx Multi-AZ deployments
+A. Amazon FSx Multi-AZ dağıtımları
 
-B. Amazon Elastic Block Store (Amazon EBS) Multi-Attach volumes
+B. Amazon Elastic Block Store (Amazon EBS) Çoklu Ekli birimler
 
-C. Amazon Elastic File System (Amazon EFS) with multiple mount targets
+C. Birden fazla bağlama hedefine sahip Amazon Elastic File System (Amazon EFS)
 
-D. Amazon Elastic File System (Amazon EFS) with a single mount target and multiple access
-points
+D. Tek bir bağlama hedefine ve çoklu erişime sahip Amazon Elastic File System (Amazon EFS)
+puan
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -2830,24 +2830,24 @@ points
 
 ---
 
-Question 488
-A 4-year-old media company is using the AWS Organizations all features feature set to organize
-its AWS accounts. According to the company's finance team, the billing information on the
-member accounts must not be accessible to anyone, including the root user of the member
-accounts.
-Which solution will meet these requirements?
+Soru 488
+4 yaşındaki bir medya şirketi, organizasyon yapmak için AWS Organizasyonlarının tüm özellik setini kullanıyor
+AWS hesapları. Şirketin finans ekibine göre, fatura bilgileri
+Üye hesaplarına, üyenin root kullanıcısı da dahil olmak üzere hiç kimse erişememelidir.
+hesaplar.
+Bu gereksinimleri hangi çözüm karşılayacak?
 
-A. Add all finance team users to an IAM group. Attach an AWS managed policy named Billing to
-the group.
+A. Tüm finans ekibi kullanıcılarını bir IAM grubuna ekleyin. Faturalandırma adlı bir AWS tarafından yönetilen politikayı şu adrese ekleyin:
+grup.
 
-B. Attach an identity-based policy to deny access to the billing information to all users, including
-the root user.
+B. Aşağıdakiler de dahil olmak üzere tüm kullanıcıların fatura bilgilerine erişimini engellemek için kimlik tabanlı bir politika ekleyin:
+kök kullanıcı.
 
-C. Create a service control policy (SCP) to deny access to the billing information. Attach the SCP
-to the root organizational unit (OU).
+C. Faturalama bilgilerine erişimi reddetmek için bir hizmet kontrol ilkesi (SCP) oluşturun. SCP'yi takın
+kök kuruluş birimine (OU).
 
-D. Convert from the Organizations all features feature set to the Organizations consolidated billing
-feature set.
+D. Kuruluşun tüm özelliklerini dönüştürme özelliği, Kuruluşun birleştirilmiş faturalandırmasına ayarlandı
+özellik seti.
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -2861,27 +2861,27 @@ feature set.
 
 ---
 
-Question 489
-An ecommerce company runs an application in the AWS Cloud that is integrated with an
-on-premises warehouse solution. The company uses Amazon Simple Notification Service
-(Amazon SNS) to send order messages to an on-premises HTTPS endpoint so the warehouse
-application can process the orders. The local data center team has detected that some of the
-order messages were not received.
-A solutions architect needs to retain messages that are not delivered and analyze the messages
-for up to 14 days.
-Which solution will meet these requirements with the LEAST development effort?
+Soru 489
+Bir e-ticaret şirketi, AWS Cloud'da bir uygulamayla entegre olan bir uygulamayı çalıştırır.
+şirket içi depo çözümü. Şirket Amazon Basit Bildirim Hizmetini kullanıyor
+(Amazon SNS) sipariş mesajlarını şirket içi bir HTTPS uç noktasına göndererek deponun
+uygulama siparişleri işleyebilir. Yerel veri merkezi ekibi, bazı
+sipariş mesajları gelmedi.
+Bir çözüm mimarının teslim edilmeyen mesajları saklaması ve mesajları analiz etmesi gerekir.
+14 güne kadar.
+Hangi çözüm bu gereksinimleri EN AZ geliştirme çabasıyla karşılayacak?
 
-A. Configure an Amazon SNS dead letter queue that has an Amazon Kinesis Data Stream target
-with a retention period of 14 days.
+A. Amazon Kinesis Data Stream hedefine sahip bir Amazon SNS teslim edilemeyen ileti kuyruğunu yapılandırın
+14 günlük saklama süresi ile.
 
-B. Add an Amazon Simple Queue Service (Amazon SQS) queue with a retention period of 14
-days between the application and Amazon SNS.
+B. Saklama süresi 14 olan bir Amazon Simple Queue Service (Amazon SQS) kuyruğu ekleyin
+uygulama ile Amazon SNS arasındaki günler.
 
-C. Configure an Amazon SNS dead letter queue that has an Amazon Simple Queue Service
-(Amazon SQS) target with a retention period of 14 days.
+C. Amazon Simple Queue Service'e sahip bir Amazon SNS teslim edilemeyen ileti kuyruğunu yapılandırma
+(Amazon SQS) 14 günlük saklama süresine sahip hedef.
 
-D. Configure an Amazon SNS dead letter queue that has an Amazon DynamoDB target with a
-TTL attribute set for a retention period of 14 days.
+D. Amazon DynamoDB hedefine sahip bir Amazon SNS teslim edilemeyen ileti kuyruğunu yapılandırın.
+TTL özelliği 14 günlük bir saklama süresi için ayarlandı.
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -2896,24 +2896,24 @@ TTL attribute set for a retention period of 14 days.
 
 ---
 
-Question 490
-A gaming company uses Amazon DynamoDB to store user information such as geographic
-location, player data, and leaderboards. The company needs to configure continuous backups to
-an Amazon S3 bucket with a minimal amount of coding. The backups must not affect availability
-of the application and must not affect the read capacity units (RCUs) that are defined for the
-table.
-Which solution meets these requirements?
+Soru 490
+Bir oyun şirketi, coğrafi konum gibi kullanıcı bilgilerini depolamak için Amazon DynamoDB'yi kullanıyor
+konum, oyuncu verileri ve skor tabloları. Şirketin sürekli yedeklemeleri yapılandırması gerekiyor
+Minimum miktarda kodlama içeren bir Amazon S3 klasörü. Yedeklemeler kullanılabilirliği etkilememelidir
+uygulama için tanımlanan okuma kapasitesi birimlerini (RCU'lar) etkilememelidir.
+masa.
+Hangi çözüm bu gereksinimleri karşılıyor?
 
-A. Use an Amazon EMR cluster. Create an Apache Hive job to back up the data to Amazon S3.
+A. Amazon EMR kümesini kullanın. Verileri Amazon S3'e yedeklemek için bir Apache Hive işi oluşturun.
 
-B. Export the data directly from DynamoDB to Amazon S3 with continuous backups. Turn on
-point-in-time recovery for the table.
+B. Verileri sürekli yedeklemelerle doğrudan DynamoDB'den Amazon S3'e aktarın. Aç
+tablo için belirli bir noktaya kurtarma.
 
-C. Configure Amazon DynamoDB Streams. Create an AWS Lambda function to consume the
-stream and export the data to an Amazon S3 bucket.
+C. Amazon DynamoDB Akışlarını Yapılandırın. Tüketmek için bir AWS Lambda işlevi oluşturun
+Verileri bir Amazon S3 klasörüne aktarın ve dışarı aktarın.
 
-D. Create an AWS Lambda function to export the data from the database tables to Amazon S3 on
-a regular basis. Turn on point-in-time recovery for the table.
+D. Verileri veritabanı tablolarından Amazon S3'e aktarmak için bir AWS Lambda işlevi oluşturun
+düzenli olarak. Tablo için belirli bir noktaya kurtarmayı açın.
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -2928,27 +2928,27 @@ a regular basis. Turn on point-in-time recovery for the table.
 
 ---
 
-Question 491
-A solutions architect is designing an asynchronous application to process credit card data
-validation requests for a bank. The application must be secure and be able to process each
-request at least once.
-Which solution will meet these requirements MOST cost-effectively?
+Soru 491
+Bir çözüm mimarı, kredi kartı verilerini işlemek için eşzamansız bir uygulama tasarlıyor
+Bir banka için doğrulama talepleri. Uygulama güvenli olmalı ve her birini işleyebilmelidir.
+en az bir kez talep edin.
+Hangi çözüm bu gereksinimleri EN uygun maliyetle karşılayacaktır?
 
-A. Use AWS Lambda event source mapping. Set Amazon Simple Queue Service (Amazon SQS)
-standard queues as the event source. Use AWS Key Management Service (SSE-KMS) for
-encryption. Add the kms:Decrypt permission for the Lambda execution role.
+A. AWS Lambda olay kaynağı eşlemesini kullanın. Amazon Simple Queue Service'i (Amazon SQS) Ayarlama
+olay kaynağı olarak standart kuyruklar. Aşağıdakiler için AWS Key Management Service'i (SSE-KMS) kullanın:
+şifreleme. Lambda yürütme rolü için kms:Decrypt iznini ekleyin.
 
-B. Use AWS Lambda event source mapping. Use Amazon Simple Queue Service (Amazon SQS)
-FIFO queues as the event source. Use SQS managed encryption keys (SSE-SQS) for encryption.
-Add the encryption key invocation permission for the Lambda function.
+B. AWS Lambda olay kaynağı eşlemesini kullanın. Amazon Simple Queue Service'i (Amazon SQS) kullanın
+FIFO, olay kaynağı olarak sıraya girer. Şifreleme için SQS tarafından yönetilen şifreleme anahtarlarını (SSE-SQS) kullanın.
+Lambda işlevi için şifreleme anahtarı çağırma iznini ekleyin.
 
-C. Use the AWS Lambda event source mapping. Set Amazon Simple Queue Service (Amazon
-SQS) FIFO queues as the event source. Use AWS KMS keys (SSE-KMS). Add the kms:Decrypt
-permission for the Lambda execution role.
+C. AWS Lambda olay kaynağı eşlemesini kullanın. Amazon Simple Queue Service'i Ayarlama (Amazon
+SQS) FIFO, olay kaynağı olarak sıraya girer. AWS KMS anahtarlarını (SSE-KMS) kullanın. Km'yi ekleyin:Şifreyi çöz
+Lambda yürütme rolü için izin.
 
-D. Use the AWS Lambda event source mapping. Set Amazon Simple Queue Service (Amazon
-SQS) standard queues as the event source. Use AWS KMS keys (SSE-KMS) for encryption. Add
-the encryption key invocation permission for the Lambda function.
+D. AWS Lambda olay kaynağı eşlemesini kullanın. Amazon Simple Queue Service'i Ayarlama (Amazon
+Olay kaynağı olarak SQS) standart kuyruklar. Şifreleme için AWS KMS anahtarlarını (SSE-KMS) kullanın. Ekle
+Lambda işlevi için şifreleme anahtarı çağırma izni.
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -2963,24 +2963,24 @@ the encryption key invocation permission for the Lambda function.
 
 ---
 
-Question 492
-A company has multiple AWS accounts for development work. Some staff consistently use
-oversized Amazon EC2 instances, which causes the company to exceed the yearly budget for
-the development accounts. The company wants to centrally restrict the creation of AWS
-resources in these accounts.
-Which solution will meet these requirements with the LEAST development effort?
+Soru 492
+Bir şirketin geliştirme çalışmaları için birden fazla AWS hesabı vardır. Bazı personel sürekli olarak kullanıyor
+Amazon EC2 bulut sunucularının büyük boyutu, şirketin yıllık bütçesini aşmasına neden oluyor
+kalkınma hesapları. Şirket, AWS'nin oluşturulmasını merkezi olarak kısıtlamak istiyor
+Bu hesaplardaki kaynaklar.
+Hangi çözüm bu gereksinimleri EN AZ geliştirme çabasıyla karşılayacak?
 
-A. Develop AWS Systems Manager templates that use an approved EC2 creation process. Use
-the approved Systems Manager templates to provision EC2 instances.
+A. Onaylanmış bir EC2 oluşturma sürecini kullanan AWS Systems Manager şablonları geliştirin. Kullanım
+EC2 bulut sunucularını sağlamak için onaylanmış Sistem Yöneticisi şablonları.
 
-B. Use AWS Organizations to organize the accounts into organizational units (OUs). Define and
-attach a service control policy (SCP) to control the usage of EC2 instance types.
+B. Hesapları kuruluş birimleri (OU'lar) halinde düzenlemek için AWS Organizasyonlarını kullanın. Tanımla ve
+EC2 bulut sunucusu türlerinin kullanımını denetlemek için bir hizmet denetim ilkesi (SCP) ekleyin.
 
-C. Configure an Amazon EventBridge rule that invokes an AWS Lambda function when an EC2
-instance is created. Stop disallowed EC2 instance types.
+C. EC2 olduğunda AWS Lambda işlevini çağıran bir Amazon EventBridge kuralı yapılandırın.
+örneği oluşturulur. İzin verilmeyen EC2 bulut sunucusu türlerini durdurun.
 
-D. Set up AWS Service Catalog products for the staff to create the allowed EC2 instance types.
-Ensure that staff can deploy EC2 instances only by using the Service Catalog products.
+D. Personelin izin verilen EC2 bulut sunucusu türlerini oluşturması için AWS Hizmet Kataloğu ürünlerini ayarlayın.
+Personelin EC2 bulut sunucularını yalnızca Hizmet Kataloğu ürünlerini kullanarak dağıtabildiğinden emin olun.
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -2995,26 +2995,26 @@ Ensure that staff can deploy EC2 instances only by using the Service Catalog pro
 
 ---
 
-Question 493
-A company wants to use artificial intelligence (AI) to determine the quality of its customer service
-calls. The company currently manages calls in four different languages, including English. The
-company will offer new languages in the future. The company does not have the resources to
-regularly maintain machine learning (ML) models.
-The company needs to create written sentiment analysis reports from the customer service call
-recordings. The customer service call recording text must be translated into English.
-Which combination of steps will meet these requirements? (Choose three.)
+Soru 493
+Bir şirket, müşteri hizmetlerinin kalitesini belirlemek için yapay zekayı (AI) kullanmak istiyor
+Aramalar. Şirket şu anda aramaları İngilizce dahil dört farklı dilde yönetiyor.
+şirket gelecekte yeni diller sunacak. Şirketin kaynakları yok
+Makine öğrenimi (ML) modellerini düzenli olarak sürdürün.
+Şirketin müşteri hizmetleri çağrısından yazılı duyarlılık analizi raporları oluşturması gerekiyor
+Kayıtlar. Müşteri hizmetleri çağrı kayıt metninin İngilizce'ye çevrilmesi gerekmektedir.
+Hangi adım kombinasyonu bu gereksinimleri karşılayacaktır? (Üç tanesini seçin.)
 
-A. Use Amazon Comprehend to translate the audio recordings into English.
+A. Ses kayıtlarını İngilizceye çevirmek için Amazon Comprehend'i kullanın.
 
-B. Use Amazon Lex to create the written sentiment analysis reports.
+B. Yazılı duyarlılık analizi raporları oluşturmak için Amazon Lex'i kullanın.
 
-C. Use Amazon Polly to convert the audio recordings into text.
+C. Ses kayıtlarını metne dönüştürmek için Amazon Polly'yi kullanın.
 
-D. Use Amazon Transcribe to convert the audio recordings in any language into text.
+D. Herhangi bir dildeki ses kayıtlarını metne dönüştürmek için Amazon Transcribe'ı kullanın.
 
-E. Use Amazon Translate to translate text in any language to English.
+E. Herhangi bir dildeki metni İngilizceye çevirmek için Amazon Translate'i kullanın.
 
-F. Use Amazon Comprehend to create the sentiment analysis reports.
+F. Duygu analizi raporlarını oluşturmak için Amazon Comprehend'i kullanın.
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -3028,21 +3028,21 @@ F. Use Amazon Comprehend to create the sentiment analysis reports.
 
 ---
 
-Question 494
-A company uses Amazon EC2 instances to host its internal systems. As part of a deployment
-operation, an administrator tries to use the AWS CLI to terminate an EC2 instance. However, the
-administrator receives a 403 (Access Denied) error message.
-The administrator is using an IAM role that has the following IAM policy attached:
-What is the cause of the unsuccessful request?
+Soru 494
+Bir şirket, dahili sistemlerini barındırmak için Amazon EC2 bulut sunucularını kullanıyor. Dağıtımın bir parçası olarak
+işleminde bir yönetici, bir EC2 örneğini sonlandırmak için AWS CLI'yi kullanmaya çalışır. Ancak,
+yönetici 403 (Erişim Reddedildi) hata mesajı alıyor.
+Yönetici, aşağıdaki IAM politikasının eklendiği bir IAM rolünü kullanıyor:
+Başarısız talebin nedeni nedir?
 
-A. The EC2 instance has a resource-based policy with a Deny statement.
+C. EC2 bulut sunucusunun Deny deyimine sahip kaynak tabanlı bir politikası vardır.
 
-B. The principal has not been specified in the policy statement.
+B. Poliçe beyanında anapara belirtilmemiş.
 
-C. The "Action" field does not grant the actions that are required to terminate the EC2 instance.
+C. "Eylem" alanı, EC2 örneğini sonlandırmak için gereken eylemleri sağlamaz.
 
-D. The request to terminate the EC2 instance does not originate from the CIDR blocks
-192.0.2.0/24 or 203.0.113.0/24.
+D. EC2 örneğini sonlandırma isteği CIDR bloklarından kaynaklanmıyor
+192.0.2.0/24 veya 203.0.113.0/24.
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -3056,24 +3056,24 @@ D. The request to terminate the EC2 instance does not originate from the CIDR bl
 
 ---
 
-Question 495
-A company is conducting an internal audit. The company wants to ensure that the data in an
-Amazon S3 bucket that is associated with the company’s AWS Lake Formation data lake does
-not contain sensitive customer or employee data. The company wants to discover personally
-identifiable information (PII) or financial information, including passport numbers and credit card
-numbers.
-Which solution will meet these requirements?
+Soru 495
+Bir şirket iç denetim yapıyor. Şirket, verilerin bir
+Şirketin AWS Lake Formation veri gölüyle ilişkili Amazon S3 klasörü,
+hassas müşteri veya çalışan verileri içermemelidir. Şirket kişisel olarak keşfetmek istiyor
+pasaport numaraları ve kredi kartı dahil olmak üzere tanımlanabilir bilgiler (PII) veya mali bilgiler
+sayılar.
+Bu gereksinimleri hangi çözüm karşılayacak?
 
-A. Configure AWS Audit Manager on the account. Select the Payment Card Industry Data Security
-Standards (PCI DSS) for auditing.
+A. Hesapta AWS Audit Manager'ı yapılandırın. Ödeme Kartı Sektörü Veri Güvenliğini Seçin
+Denetim için standartlar (PCI DSS).
 
-B. Configure Amazon S3 Inventory on the S3 bucket Configure Amazon Athena to query the
-inventory.
+B. Amazon S3 Envanterini S3 klasöründe yapılandırın Amazon Athena'yı sorgulamak için yapılandırın
+envanter.
 
-C. Configure Amazon Macie to run a data discovery job that uses managed identifiers for the
-required data types.
+C. Amazon Macie'yi, yönetilen tanımlayıcıları kullanan bir veri bulma işi çalıştıracak şekilde yapılandırın.
+gerekli veri türleri.
 
-D. Use Amazon S3 Select to run a report across the S3 bucket.
+D. S3 klasöründe bir rapor çalıştırmak için Amazon S3 Select'i kullanın.
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -3087,24 +3087,24 @@ D. Use Amazon S3 Select to run a report across the S3 bucket.
 
 ---
 
-Question 496
-A company uses on-premises servers to host its applications. The company is running out of
-storage capacity. The applications use both block storage and NFS storage. The company
-needs a high-performing solution that supports local caching without re-architecting its existing
-applications.
-Which combination of actions should a solutions architect take to meet these requirements?
-(Choose two.)
+Soru 496
+Bir şirket, uygulamalarını barındırmak için şirket içi sunucuları kullanır. Şirket tükeniyor
+depolama kapasitesi. Uygulamalar hem blok depolamayı hem de NFS depolamayı kullanır. şirket
+mevcut mimarisini yeniden tasarlamadan yerel önbelleğe almayı destekleyen yüksek performanslı bir çözüme ihtiyaç duyuyor
+uygulamalar.
+Bir çözüm mimarının bu gereksinimleri karşılamak için hangi eylem kombinasyonunu gerçekleştirmesi gerekir?
+(İki tane seçin.)
 
-A. Mount Amazon S3 as a file system to the on-premises servers.
+A. Amazon S3'ü şirket içi sunuculara dosya sistemi olarak bağlayın.
 
-B. Deploy an AWS Storage Gateway file gateway to replace NFS storage.
+B. NFS depolamayı değiştirmek için bir AWS Storage Gateway dosya ağ geçidi dağıtın.
 
-C. Deploy AWS Snowball Edge to provision NFS mounts to on-premises servers.
+C. Şirket içi sunuculara NFS bağlantıları sağlamak için AWS Snowball Edge'i dağıtın.
 
-D. Deploy an AWS Storage Gateway volume gateway to replace the block storage.
+D. Blok depolamayı değiştirmek için bir AWS Storage Gateway birim ağ geçidi dağıtın.
 
-E. Deploy Amazon Elastic File System (Amazon EFS) volumes and mount them to on-premises
-servers.
+E. Amazon Elastic File System (Amazon EFS) birimlerini dağıtın ve bunları şirket içine bağlayın
+sunucular.
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -3119,26 +3119,26 @@ servers.
 
 ---
 
-Question 497
-A company has a service that reads and writes large amounts of data from an Amazon S3
-bucket in the same AWS Region. The service is deployed on Amazon EC2 instances within the
-private subnet of a VPC. The service communicates with Amazon S3 over a NAT gateway in the
-public subnet. However, the company wants a solution that will reduce the data output costs.
-Which solution will meet these requirements MOST cost-effectively?
+Soru 497
+Bir şirketin Amazon S3'ten büyük miktarda veri okuyup yazan bir hizmeti var
+aynı AWS Bölgesindeki paket. Hizmet, Amazon EC2 bulut sunucularına dağıtılır.
+bir VPC'nin özel alt ağı. Hizmet, Amazon S3 ile bir NAT ağ geçidi üzerinden iletişim kurar.
+genel alt ağ. Ancak şirket veri çıkış maliyetlerini azaltacak bir çözüm istiyor.
+Hangi çözüm bu gereksinimleri EN uygun maliyetle karşılayacaktır?
 
-A. Provision a dedicated EC2 NAT instance in the public subnet. Configure the route table for the
-private subnet to use the elastic network interface of this instance as the destination for all S3
-traffic.
+A. Genel alt ağda özel bir EC2 NAT örneği sağlayın. için rota tablosunu yapılandırın.
+Bu örneğin elastik ağ arayüzünü tüm S3 için hedef olarak kullanmak için özel alt ağ
+trafik.
 
-B. Provision a dedicated EC2 NAT instance in the private subnet. Configure the route table for the
-public subnet to use the elastic network interface of this instance as the destination for all S3
-traffic.
+B. Özel alt ağda özel bir EC2 NAT örneği sağlayın. için rota tablosunu yapılandırın.
+Bu örneğin elastik ağ arayüzünü tüm S3 için hedef olarak kullanacak genel alt ağ
+trafik.
 
-C. Provision a VPC gateway endpoint. Configure the route table for the private subnet to use the
-gateway endpoint as the route for all S3 traffic.
+C. Bir VPC ağ geçidi uç noktası sağlayın. Özel alt ağın yönlendirme tablosunu kullanacak şekilde yapılandırın.
+tüm S3 trafiğinin rotası olarak ağ geçidi uç noktası.
 
-D. Provision a second NAT gateway. Configure the route table for the private subnet to use this
-NAT gateway as the destination for all S3 traffic.
+D. İkinci bir NAT ağ geçidi sağlayın. Özel alt ağın bunu kullanması için yönlendirme tablosunu yapılandırın
+Tüm S3 trafiğinin hedefi olarak NAT ağ geçidi.
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -3152,23 +3152,23 @@ NAT gateway as the destination for all S3 traffic.
 
 ---
 
-Question 498
-A company uses Amazon S3 to store high-resolution pictures in an S3 bucket. To minimize
-application changes, the company stores the pictures as the latest version of an S3 object. The
-company needs to retain only the two most recent versions of the pictures.
-The company wants to reduce costs. The company has identified the S3 bucket as a large
-expense.
-Which solution will reduce the S3 costs with the LEAST operational overhead?
+Soru 498
+Bir şirket, yüksek çözünürlüklü resimleri bir S3 klasöründe depolamak için Amazon S3'ü kullanıyor. En aza indirmek için
+uygulama değişiklikleri, şirket resimleri bir S3 nesnesinin en son sürümü olarak saklar.
+Şirketin resimlerin yalnızca en yeni iki versiyonunu saklaması gerekiyor.
+Şirket maliyetleri düşürmek istiyor. Şirket, S3 kovasını büyük bir parça olarak tanımladı
+masraf.
+Hangi çözüm EN AZ operasyonel ek yük ile S3 maliyetlerini azaltacaktır?
 
-A. Use S3 Lifecycle to delete expired object versions and retain the two most recent versions.
+A. Süresi dolmuş nesne sürümlerini silmek ve en yeni iki sürümü korumak için S3 Yaşam Döngüsü'nü kullanın.
 
-B. Use an AWS Lambda function to check for older versions and delete all but the two most recent
-versions.
+B. Eski sürümleri kontrol etmek ve en yeni ikisi dışında tümünü silmek için bir AWS Lambda işlevini kullanın
+versiyonları.
 
-C. Use S3 Batch Operations to delete noncurrent object versions and retain only the two most
-recent versions.
+C. Güncel olmayan nesne sürümlerini silmek ve yalnızca en çok ikisini korumak için S3 Toplu İşlemlerini kullanın.
+son sürümler.
 
-D. Deactivate versioning on the S3 bucket and retain the two most recent versions.
+D. S3 grubundaki sürüm oluşturmayı devre dışı bırakın ve en yeni iki sürümü koruyun.
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
@@ -3182,22 +3182,22 @@ D. Deactivate versioning on the S3 bucket and retain the two most recent version
 
 ---
 
-Question 499
-A company needs to minimize the cost of its 1 Gbps AWS Direct Connect connection. The
-company's average connection utilization is less than 10%. A solutions architect must
-recommend a solution that will reduce the cost without compromising security.
-Which solution will meet these requirements?
+Soru 499
+Bir şirketin 1 Gbps AWS Direct Connect bağlantısının maliyetini en aza indirmesi gerekiyor.
+Şirketin ortalama bağlantı kullanımı %10'un altındadır. Bir çözüm mimarının yapması gerekenler
+Güvenlikten ödün vermeden maliyeti azaltacak bir çözüm öneriyoruz.
+Bu gereksinimleri hangi çözüm karşılayacak?
 
-A. Set up a new 1 Gbps Direct Connect connection. Share the connection with another AWS
-account.
+A. Yeni bir 1 Gbps Doğrudan Bağlantı bağlantısı kurun. Bağlantıyı başka bir AWS ile paylaşın
+hesap.
 
-B. Set up a new 200 Mbps Direct Connect connection in the AWS Management Console.
+B. AWS Management Console'da yeni bir 200 Mbps Direct Connect bağlantısı kurun.
 
-C. Contact an AWS Direct Connect Partner to order a 1 Gbps connection. Share the connection
-with another AWS account.
+C. 1 Gbps bağlantı siparişi vermek için bir AWS Direct Connect Çözüm Ortağıyla iletişime geçin. Bağlantıyı paylaşın
+başka bir AWS hesabıyla.
 
-D. Contact an AWS Direct Connect Partner to order a 200 Mbps hosted connection for an existing
-AWS account.
+D. Mevcut bir ağ için 200 Mb/sn barındırılan bağlantı sipariş etmek için bir AWS Direct Connect Çözüm Ortağıyla iletişime geçin.
+AWS hesabı.
 
 > [!NOTE]
 > ### 💡 Temel AWS Mimarisi & Çözüm Açıklaması
