@@ -29,15 +29,15 @@ jobs:
           test -d notes/en/01-aws-certified-solutions-architect-associate-saa-c03
           test -d notes/en/02-aws-saa-c03-question-bank-1019
           test -d notes/en/03-caa-exam-questions-explained
-          test -f notes/en/01-aws-certified-solutions-architect-associate-saa-c03/notes.md
-          test -f notes/en/02-aws-saa-c03-question-bank-1019/notes.md
-          test -f notes/en/03-caa-exam-questions-explained/notes.md
+          test -f notes/en/01-aws-certified-solutions-architect-associate-saa-c03/sections/section-01-questions-0001-0100.md
+          test -f notes/en/02-aws-saa-c03-question-bank-1019/sections/section-01-questions-0001-0100.md
+          test -f notes/en/03-caa-exam-questions-explained/sections/section-01-questions-0001-0025.md
           test -d notes/tr/01-aws-certified-solutions-architect-associate-saa-c03
           test -d notes/tr/02-aws-saa-c03-question-bank-1019
           test -d notes/tr/03-caa-exam-questions-explained
-          test -f notes/tr/01-aws-certified-solutions-architect-associate-saa-c03/notes.md
-          test -f notes/tr/02-aws-saa-c03-question-bank-1019/notes.md
-          test -f notes/tr/03-caa-exam-questions-explained/notes.md
+          test -f notes/tr/01-aws-certified-solutions-architect-associate-saa-c03/sections/section-01-questions-0001-0100.md
+          test -f notes/tr/02-aws-saa-c03-question-bank-1019/sections/section-01-questions-0001-0100.md
+          test -f notes/tr/03-caa-exam-questions-explained/sections/section-01-questions-0001-0025.md
 
       - name: Set up Python
         uses: actions/setup-python@v5
