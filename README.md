@@ -39,22 +39,20 @@ To prevent document truncation and rendering lag on mobile clients and GitHub we
 
 ## Repository Structure
 
-The study materials are partitioned into three dedicated modules under `notes/`:
+The study materials are partitioned into dual-language workspaces under `notes/` (`en/` for English and `tr/` for Turkish):
 
 ```mermaid
 flowchart TD
-    Root["notes/"] --> M1["01-aws-certified-solutions-architect-associate-saa-c03/"]
-    Root --> M2["02-aws-saa-c03-question-bank-1019/"]
-    Root --> M3["03-caa-exam-questions-explained/"]
+    Root["notes/"] --> EN["en/ (English)"]
+    Root --> TR["tr/ (Türkçe)"]
 
-    M1 --> M1_Full["notes.md (684 items)"]
-    M1 --> M1_Sec["sections/ (7 section files)"]
+    EN --> M1_EN["01-aws-certified-solutions-architect-associate-saa-c03/ (684 Q)"]
+    EN --> M2_EN["02-aws-saa-c03-question-bank-1019/ (1,019 Q)"]
+    EN --> M3_EN["03-caa-exam-questions-explained/ (63 Q)"]
 
-    M2 --> M2_Full["notes.md (1,019 items)"]
-    M2 --> M2_Sec["sections/ (11 section files)"]
-
-    M3 --> M3_Full["notes.md (63 items)"]
-    M3 --> M3_Sec["sections/ (3 section files)"]
+    TR --> M1_TR["01-aws-certified-solutions-architect-associate-saa-c03/ (684 Soru)"]
+    TR --> M2_TR["02-aws-saa-c03-question-bank-1019/ (1.019 Soru)"]
+    TR --> M3_TR["03-caa-exam-questions-explained/ (63 Soru)"]
 ```
 
 ### File Tree
@@ -64,59 +62,52 @@ aws-saa-c03-notlari/
 ├── .github/
 │   ├── dependabot.yml
 │   └── workflows/
-│       └── ci.yml
+│       ├── ci.yml
+│       └── deploy-pages.yml
 ├── .gitignore
 ├── CONTRIBUTING.md
 ├── LICENSE
 ├── README.md
 ├── SECURITY.md
 └── notes/
-    ├── 01-aws-certified-solutions-architect-associate-saa-c03/
-    │   ├── README.md
-    │   ├── notes.md
-    │   └── sections/
-    │       ├── section-01-questions-0001-0100.md
-    │       ├── section-02-questions-0101-0200.md
-    │       ├── section-03-questions-0201-0300.md
-    │       ├── section-04-questions-0301-0400.md
-    │       ├── section-05-questions-0401-0500.md
-    │       ├── section-06-questions-0501-0600.md
-    │       └── section-07-questions-0601-0684.md
-    │
-    ├── 02-aws-saa-c03-question-bank-1019/
-    │   ├── README.md
-    │   ├── notes.md
-    │   └── sections/
-    │       ├── section-01-questions-0001-0100.md
-    │       ├── section-02-questions-0101-0200.md
-    │       ├── section-03-questions-0201-0300.md
-    │       ├── section-04-questions-0301-0400.md
-    │       ├── section-05-questions-0401-0500.md
-    │       ├── section-06-questions-0501-0600.md
-    │       ├── section-07-questions-0601-0700.md
-    │       ├── section-08-questions-0701-0800.md
-    │       ├── section-09-questions-0801-0900.md
-    │       ├── section-10-questions-0901-1000.md
-    │       └── section-11-questions-1001-1020.md
-    │
-    └── 03-caa-exam-questions-explained/
-        ├── README.md
-        ├── notes.md
-        └── sections/
-            ├── section-01-questions-0001-0025.md
-            ├── section-02-questions-0026-0050.md
-            └── section-03-questions-0051-0063.md
+    ├── README.md
+    ├── en/
+    │   ├── 01-aws-certified-solutions-architect-associate-saa-c03/
+    │   │   ├── README.md
+    │   │   ├── notes.md
+    │   │   └── sections/ (section-01 to section-07)
+    │   ├── 02-aws-saa-c03-question-bank-1019/
+    │   │   ├── README.md
+    │   │   ├── notes.md
+    │   │   └── sections/ (section-01 to section-11)
+    │   └── 03-caa-exam-questions-explained/
+    │       ├── README.md
+    │       ├── notes.md
+    │       └── sections/ (section-01 to section-03)
+    └── tr/
+        ├── 01-aws-certified-solutions-architect-associate-saa-c03/
+        │   ├── README.md
+        │   ├── notes.md
+        │   └── sections/ (section-01 to section-07)
+        ├── 02-aws-saa-c03-question-bank-1019/
+        │   ├── README.md
+        │   ├── notes.md
+        │   └── sections/ (section-01 to section-11)
+        └── 03-caa-exam-questions-explained/
+            ├── README.md
+            ├── notes.md
+            └── sections/ (section-01 to section-03)
 ```
 
 ---
 
 ## Study Modules Matrix
 
-| Module ID | Folder Path | Focus & Content | Scope | Consolidated File |
-| :--- | :--- | :--- | :---: | :---: |
-| **01** | [`notes/01-aws-certified-solutions-architect-associate-saa-c03/`](./notes/01-aws-certified-solutions-architect-associate-saa-c03/) | Architectural scenario breakdowns and practice items with concept notes | 684 Items | [`notes.md`](./notes/01-aws-certified-solutions-architect-associate-saa-c03/notes.md) |
-| **02** | [`notes/02-aws-saa-c03-question-bank-1019/`](./notes/02-aws-saa-c03-question-bank-1019/) | Full question bank with verified answer keys and architectural explanations | 1,019 Items | [`notes.md`](./notes/02-aws-saa-c03-question-bank-1019/notes.md) |
-| **03** | [`notes/03-caa-exam-questions-explained/`](./notes/03-caa-exam-questions-explained/) | Exam scenarios with detailed Turkish explanations and official AWS doc links | 63 Items | [`notes.md`](./notes/03-caa-exam-questions-explained/notes.md) |
+| Module ID | English Track (`notes/en/`) | Turkish Track (`notes/tr/`) | Questions | Focus & Exam Domain |
+| :---: | :--- | :--- | :---: | :--- |
+| **01** | [`notes/en/01-...`](./notes/en/01-aws-certified-solutions-architect-associate-saa-c03/) | [`notes/tr/01-...`](./notes/tr/01-aws-certified-solutions-architect-associate-saa-c03/) | 684 Items | Architectural scenario breakdowns and practice items with concept notes |
+| **02** | [`notes/en/02-...`](./notes/en/02-aws-saa-c03-question-bank-1019/) | [`notes/tr/02-...`](./notes/tr/02-aws-saa-c03-question-bank-1019/) | 1,019 Items | Full question bank with verified answer keys and architectural explanations |
+| **03** | [`notes/en/03-...`](./notes/en/03-caa-exam-questions-explained/) | [`notes/tr/03-...`](./notes/tr/03-caa-exam-questions-explained/) | 63 Items | Exam scenarios with detailed solution rationale and official AWS doc links |
 
 ---
 
@@ -223,7 +214,7 @@ Yes. The repository consists entirely of Markdown files and image-free diagrams.
 
 ### How do I track my study progress?
 
-Navigate to any module folder (such as [`notes/02-aws-saa-c03-question-bank-1019/`](./notes/02-aws-saa-c03-question-bank-1019/)) and view its `README.md`. Mark completed sections by checking the interactive boxes.
+Navigate to any module folder (such as [`notes/en/02-aws-saa-c03-question-bank-1019/`](./notes/en/02-aws-saa-c03-question-bank-1019/) or [`notes/tr/02-aws-saa-c03-question-bank-1019/`](./notes/tr/02-aws-saa-c03-question-bank-1019/)) and view its `README.md`. Mark completed sections by checking the interactive boxes.
 
 ---
 

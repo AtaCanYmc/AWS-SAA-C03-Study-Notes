@@ -15,7 +15,7 @@ __pycache__/
 
 # Content of raw original PDFs (optional/large binary files)
 content/
-
+scripts/
 
 # Node.js & Web PWA
 node_modules/

@@ -23,7 +23,7 @@ body:
     id: question_ref
     attributes:
       label: "Question Number / File Path"
-      description: "e.g., Question #128 or `notes/01-aws-certified-solutions-architect-associate-saa-c03/sections/section-01-questions-0001-0100.md`"
+      description: "e.g., Question #128 or `notes/en/01-aws-certified-solutions-architect-associate-saa-c03/sections/section-01-questions-0001-0100.md`"
       placeholder: "e.g., Question #128"
     validations:
       required: true

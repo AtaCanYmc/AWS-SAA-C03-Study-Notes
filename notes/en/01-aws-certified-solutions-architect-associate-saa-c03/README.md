@@ -1,4 +1,4 @@
-[← Back to Root Repository](../../README.md)
+[← Back to Root Repository](../../../README.md)
 
 # AWS Certified Solutions Architect Associate (SAA-C03) - Scenario and Practice Notes
 

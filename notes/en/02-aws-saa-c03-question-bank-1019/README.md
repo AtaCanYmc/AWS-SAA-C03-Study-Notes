@@ -1,4 +1,4 @@
-[← Back to Root Repository](../../README.md)
+[← Back to Root Repository](../../../README.md)
 
 # AWS SAA-C03 Comprehensive Question Bank (1019 Questions with Answers)
 
