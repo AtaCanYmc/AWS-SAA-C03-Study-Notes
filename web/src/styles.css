@@ -501,6 +501,22 @@ section.scenario-canvas {
   background: oklch(0.72 0.17 145 / 0.15);
 }
 
+.icon-tool-btn.speaking {
+  color: var(--color-focus);
+  border-color: var(--color-focus);
+  background: oklch(0.68 0.18 250 / 0.15);
+  animation: pulseSpeaking 1.5s infinite;
+}
+
+@keyframes pulseSpeaking {
+  0%, 100% {
+    box-shadow: 0 0 0 0 oklch(0.68 0.18 250 / 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 4px oklch(0.68 0.18 250 / 0.15);
+  }
+}
+
 .share-toast {
   position: absolute;
   top: 100%;

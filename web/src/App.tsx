@@ -22,7 +22,9 @@ import {
   FileSpreadsheet,
   FileCode,
   Share2,
-  Check
+  Check,
+  Volume2,
+  VolumeX
 } from 'lucide-react';
 import type { Question, FilterStatus } from './types';
 import questionsEn from './data/questions_en.json';
@@ -346,6 +348,66 @@ export const App: React.FC = () => {
       setIsShareCopied(true);
       setTimeout(() => setIsShareCopied(false), 2200);
     }
+  };
+
+  // Text-to-Speech (TTS) Read Aloud
+  const [isSpeaking, setIsSpeaking] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      setIsSpeaking(false);
+    }
+    return () => {
+      if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+      }
+    };
+  }, [currentQ?.id]);
+
+  const handleToggleSpeech = () => {
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) {
+      alert(t.ttsNotSupported);
+      return;
+    }
+
+    if (isSpeaking) {
+      window.speechSynthesis.cancel();
+      setIsSpeaking(false);
+      return;
+    }
+
+    if (!currentQ) return;
+
+    window.speechSynthesis.cancel();
+
+    // Prepare speech text: scenario prompt + options
+    const optionsText = currentQ.options
+      .map(opt => `${opt.key}: ${opt.text}`)
+      .join('. ');
+    const fullText = `${currentQ.questionText}. ${optionsText}`;
+
+    const utterance = new SpeechSynthesisUtterance(fullText);
+    utterance.lang = lang === 'tr' ? 'tr-TR' : 'en-US';
+    utterance.rate = 1.0;
+    utterance.pitch = 1.0;
+
+    utterance.onstart = () => {
+      setIsSpeaking(true);
+    };
+
+    utterance.onend = () => {
+      setIsSpeaking(false);
+    };
+
+    utterance.onerror = (e) => {
+      if (e.error !== 'canceled') {
+        console.warn('Speech synthesis error:', e);
+      }
+      setIsSpeaking(false);
+    };
+
+    window.speechSynthesis.speak(utterance);
   };
 
   const toggleBookmark = (id: string) => {
@@ -713,6 +775,14 @@ export const App: React.FC = () => {
                         {t.shareCopied}
                       </div>
                     )}
+                    <button
+                      className={`icon-tool-btn ${isSpeaking ? 'speaking' : ''}`}
+                      onClick={handleToggleSpeech}
+                      title={isSpeaking ? t.stopReadAloud : t.readAloud}
+                      aria-label="Read scenario aloud"
+                    >
+                      {isSpeaking ? <VolumeX size={16} color="var(--color-focus)" /> : <Volume2 size={16} />}
+                    </button>
                     {isCurrentRevealed && (
                       <button
                         className="icon-tool-btn"
