@@ -7,7 +7,15 @@ const basePath = process.env.BASE_PATH || '/AWS-SAA-C03-Study-Notes/';
 export default defineConfig({
   base: basePath,
   build: {
-    chunkSizeWarningLimit: 5000
+    chunkSizeWarningLimit: 5000,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'questions-en': ['./src/data/questions_en.json'],
+          'questions-tr': ['./src/data/questions_tr.json'],
+        }
+      }
+    }
   },
   plugins: [
     react(),

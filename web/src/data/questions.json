@@ -62150,7 +62150,7 @@
   {
     "id": "mod3-q1",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 1,
     "questionText": "A company has a critical ecommerce application that uses an Amazon RDS for MySQL DB instance with a Multi-AZ deployment. The company's analytics team has increased the number of queries it uses to generate reports. The increase in usage has resulted in application performance degradation. The analytics team requires near real-time data consistency in its reports. The analytics team must be able to generate reports even if the DB instance is offline. Which solution will meet these requirements?",
     "options": [
@@ -62176,8 +62176,8 @@
     ],
     "explanation": "Doğru cevap D: Okuma replikası birincil örnekten asenkron olarak güncellenir ve yalnızca okuma erişimi sağlar; raporlar bu replikaya yönlendirilirse ana örneğin yükü azalır ve birincil örnek çevrimdışıyken de raporlar üretilebilir. A seçeneğindeki snapshot belirli bir andaki kopya olduğu için gerçek zamana yakın tutarlılık sağlamaz. B seçeneği yalnızca sunucuyu büyütür, raporların ana örnekten bağımsız çalışmasını sağlamaz. C seçeneği yanlıştır çünkü Multi-AZ bekleme örneği okuma trafiğine hizmet edemez.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html",
-      "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html"
+      "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html",
+      "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html"
     ],
     "services": [
       "Amazon RDS"
@@ -62187,7 +62187,7 @@
   {
     "id": "mod3-q2",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 2,
     "questionText": "A company runs Amazon EC2 instances as web servers. Peak traffic load occurs on the web server at two consistent times each day. The web servers are idle for the remainder of the day. A solutions architect needs to manage the web servers and maintain fault tolerance. Which solution will meet these requirements in the MOST cost-effective way?",
     "options": [
@@ -62223,7 +62223,7 @@
   {
     "id": "mod3-q3",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 3,
     "questionText": "A company stores data across 200 Amazon S3 buckets that multiple departments use. Each department has prefix-based tenant isolation for each team in the department. The finance team needs to identify which specific buckets and prefixes are driving the highest S3 costs. The finance team needs bucket-level and prefix-level storage usage and request patterns and the dollar costs attributed to each bucket. Which combination of steps will meet these requirements? (Select TWO.)",
     "options": [
@@ -62264,7 +62264,7 @@
   {
     "id": "mod3-q4",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 4,
     "questionText": "A company runs a critical public application on Amazon EKS clusters. The application has a microservices architecture. The company needs to implement a solution that collects, aggregates, and summarizes metrics and logs from the application in a centralized location. Which solution will meet these requirements in the MOST operationally efficient way?",
     "options": [
@@ -62300,7 +62300,7 @@
   {
     "id": "mod3-q5",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 5,
     "questionText": "A company wants to use AWS Direct Connect to connect the company's on-premises networks to the AWS Cloud. The company runs several VPCs in a single AWS Region. The company plans to expand its VPC fleet to include hundreds of VPCs. A solutions architect needs to simplify and scale the company's network infrastructure to accommodate future VPCs. Which service or resource will meet these requirements?",
     "options": [
@@ -62338,7 +62338,7 @@
   {
     "id": "mod3-q6",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 6,
     "questionText": "A company deploys an application that consists of an Amazon EC2 instance and an Amazon RDS instance in a Single-AZ configuration. The company deploys both instances without public IP addresses. The company wants to minimize the overall data transfer costs for communication between the EC2 instance and the RDS instance. Which solution will meet this requirement?",
     "options": [
@@ -62375,7 +62375,7 @@
   {
     "id": "mod3-q7",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 7,
     "questionText": "A company runs an application on a fleet of Amazon EC2 instances in an Auto Scaling group behind an Application Load Balancer (ALB). The instances use m5 large instance types. The company needs to migrate the fleet to m6i large instances to reduce costs and improve performance without any service interruptions. Which solution will meet these requirements with the LEAST operational overhead?",
     "options": [
@@ -62411,7 +62411,7 @@
   {
     "id": "mod3-q8",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 8,
     "questionText": "A company has a 250 GB Amazon RDS Multi-AZ DB instance. The company's disaster recovery policy requires an RPO of 6 hours in a second AWS Region. Which solution will meet these requirements MOST cost-effectively?",
     "options": [
@@ -62437,8 +62437,8 @@
     ],
     "explanation": "Doğru cevap C: AWS Backup ile her 6 saatte bir RDS snapshot alınıp ikinci Region'a kopyalanması 6 saatlik RPO'yu karşılar ve yönetilen yedekleme planıyla düşük maliyet ve işletme yüküyle çalışır. A seçeneği RDS otomatik snapshot'larına dayanır; bu snapshot'lar 6 saatlik RPO için yeterli sıklıkta alınmaz. B seçeneğinde RDS snapshot'ları S3 Cross-Region Replication ile kopyalanamaz. D seçeneği de çalışır ama ikinci Region'da sürekli çalışan bir okuma replikası gerektirdiği için daha pahalıdır.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/aws-backup/latest/devguide/cross-region-backup.html",
       "https://docs.aws.amazon.com/aws-backup/latest/devguide/creating-a-backup-plan.html",
+      "https://docs.aws.amazon.com/aws-backup/latest/devguide/cross-region-backup.html",
       "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReplicateBackups.html"
     ],
     "services": [
@@ -62450,7 +62450,7 @@
   {
     "id": "mod3-q9",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 9,
     "questionText": "A company runs an application on Amazon EC2 instances in a private subnet. The application needs to store and retrieve data in Amazon S3 buckets. According to regulatory requirements, the data must not travel across the public internet. What should a solutions architect do to meet these requirements MOST cost-effectively?",
     "options": [
@@ -62486,7 +62486,7 @@
   {
     "id": "mod3-q10",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 10,
     "questionText": "A company is building an ecommerce platform that will allow customers to place orders online. Customer traffic varies significantly. An order-processing microservice is running on a group of Amazon EC2 instances. A solutions architect must ensure that the application remains responsive and decoupled from the frontend. The application must also be able to reprocess orders that the application fails to process on the first attempt. Which solution will meet these requirements?",
     "options": [
@@ -62512,8 +62512,8 @@
     ],
     "explanation": "Doğru cevap B: SQS kuyruğu ön uç ile sipariş işleme mikro hizmetini birbirinden ayırır; mesajlar işlenene kadar dayanıklı biçimde kuyrukta kalır ve trafik dalgalanmaları kuyrukta tamponlanır. İşlenemeyen mesajlar dead-letter queue'ya taşınarak incelenebilir ve yeniden işlenebilir. A seçeneği yük dengeleme ve CPU tabanlı ölçekleme sağlar ama bileşenleri ayırmaz ve başarısız işlemleri yeniden işlemez. C seçeneği ön uç ile mikro hizmet arasında sıkı bağlantı kurar. D seçeneği Kinesis ile akış tabanlı bir yapı önerir, ancak istenen ayrıştırma ve başarısız siparişleri yeniden işleme gereksinimini standart SQS ve DLQ yapısı kadar doğrudan karşılamaz.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html",
-      "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html"
+      "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html",
+      "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html"
     ],
     "services": [
       "Amazon EC2",
@@ -62525,7 +62525,7 @@
   {
     "id": "mod3-q11",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 11,
     "questionText": "A company uses Amazon RDS for MySQL as a database engine for its applications. A recent security audit revealed an RDS instance that is not compliant with company policy for encrypting data at rest. A solutions architect at the company needs to ensure that all existing RDS databases are encrypted using server-side encryption and that any future deviations from the policy are detected. Which combination of steps should the solutions architect take to accomplish this? (Select TWO.)",
     "options": [
@@ -62555,8 +62555,8 @@
     ],
     "explanation": "A ve D doğrudur. A, AWS Config kuralıyla şifrelenmemiş RDS veritabanlarını tespit edip uyumluluk durumu değişikliğini EventBridge ve SNS üzerinden bildirir; D, anlık görüntünün şifreli kopyasıyla yeni bir örnek geri yükleyerek mevcut veritabanını şifreler. C yanlıştır, çünkü şifrelenmemiş bir DB örneğinden şifreli okuma kopyası oluşturulamaz. E yanlıştır, çünkü mevcut bir RDS örneğinin şifrelemesi sonradan değiştirilemez; B ise State Manager ile RDS şifreleme sapmasını izlemek için uygun bir yöntem değildir.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html",
-      "https://docs.aws.amazon.com/config/latest/developerguide/monitor-config-with-cloudwatchevents.html"
+      "https://docs.aws.amazon.com/config/latest/developerguide/monitor-config-with-cloudwatchevents.html",
+      "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.Encryption.html"
     ],
     "services": [
       "Amazon RDS",
@@ -62567,7 +62567,7 @@
   {
     "id": "mod3-q12",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 12,
     "questionText": "An ecommerce company stores inventory, order, and user information in multiple Amazon Redshift clusters. The Redshift clusters must comply to the company's security policies. The company must receive notifications about any security configuration violations. Which solution will meet these requirements?",
     "options": [
@@ -62593,19 +62593,19 @@
     ],
     "explanation": "D doğrudur: AWS Config özel kuralı, Redshift küme güvenlik yapılandırması değiştiğinde Lambda fonksiyonunu tetikler; fonksiyon uyumluluk sonucunu Config'e bildirir ve Config ihlallerde bildirim gönderir. A ve B, kümelerin yalnızca belirli olaylarda (örneğin oluşturulma) izlenmesine dayanır ve sürekli yapılandırma uyumluluğunu kapsamaz. C yanlıştır, çünkü Redshift Advisor performans ve maliyet önerileri sunar; güvenlik ihlali bildirimi için tasarlanmamıştır.",
     "officialDocs": [
+      "https://docs.aws.amazon.com/config/latest/developerguide/monitor-config-with-cloudwatchevents.html",
       "https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_develop-rules_lambda-functions.html",
-      "https://docs.aws.amazon.com/redshift/latest/dg/advisor-recommendations.html",
-      "https://docs.aws.amazon.com/config/latest/developerguide/monitor-config-with-cloudwatchevents.html"
+      "https://docs.aws.amazon.com/redshift/latest/dg/advisor-recommendations.html"
     ],
     "services": [
       "AWS Lambda"
     ],
-    "domain": "Domain 2: Design Resilient Architectures"
+    "domain": "Domain 1: Design Secure Architectures"
   },
   {
     "id": "mod3-q13",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 13,
     "questionText": "A healthcare company hosts a patient portal application on Amazon EC2 instances. Amazon Route 53 directs user requests. Users report intermittent failures when accessing application features. The company discovers that Route 53 returns IP addresses of instances with unresponsive application processes. The company requires a solution that verifies application responsiveness and routes requests only to healthy instances. Which solution will meet these requirements?",
     "options": [
@@ -62641,7 +62641,7 @@
   {
     "id": "mod3-q14",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 14,
     "questionText": "A company is using AWS Key Management Service (AWS KMS) keys to encrypt AWS Lambda environment variables. A solutions architect needs to ensure that the required permissions are in place to decrypt and use the environment variables. Which steps must the solutions architect take to implement the correct permissions? (Select TWO.)",
     "options": [
@@ -62681,7 +62681,7 @@
   {
     "id": "mod3-q15",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 15,
     "questionText": "A media company runs a production Node.js application by using Amazon ElastiCache (Redis OSS) on a cache.m7g.large node. Cache demand peaks during business hours but drops significantly overnight. The company wants to scale the cache automatically according to workload demand while minimizing application changes. Which solution will meet these requirements MOST cost-effectively?",
     "options": [
@@ -62707,8 +62707,8 @@
     ],
     "explanation": "A doğrudur: ElastiCache Serverless for Valkey, kapasiteyi talebe göre otomatik ölçekler ve yalnızca kullanılan veri ve istekler için ödeme yapılmasını sağlar; Valkey 7.2 Redis OSS 7.2 özelliklerini içerdiğinden uygulama değişikliği de sınırlı kalır. B ve D, Memcached'e geçişi gerektirir; bu veri modeli ve istemci değişikliği demektir ve talebe göre otomatik ölçekleme sağlamaz. C, betiklerle elle boyutlandırmayı önerir; bu operasyonel yük getirir ve otomatik uyum sağlamaz.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/engine-versions.html",
-      "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/WhatIs.deployment.html"
+      "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/WhatIs.deployment.html",
+      "https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/engine-versions.html"
     ],
     "services": [
       "AWS Lambda"
@@ -62718,7 +62718,7 @@
   {
     "id": "mod3-q16",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 16,
     "questionText": "A company has a stateless public web application that is based on AWS Lambda functions that are invoked by an Amazon API Gateway REST API. To achieve high availability, the company deploys the application to multiple AWS Regions. The company needs a solution to route application traffic to multiple Regions. Which solution will meet this requirement?",
     "options": [
@@ -62754,7 +62754,7 @@
   {
     "id": "mod3-q17",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 17,
     "questionText": "A company is building a new application. The application runs on Amazon EC2 instances and uses an Amazon S3 bucket for document storage. The company needs to ensure that the EC2 instances can access the S3 bucket. Which solution will meet these requirements?",
     "options": [
@@ -62790,7 +62790,7 @@
   {
     "id": "mod3-q18",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 18,
     "questionText": "A company enabled the AWS Systems Manager Default Host Management Configuration setting. The company's Amazon EC2 Linux instances are registered as managed nodes in Systems Manager Fleet Manager. According to a security policy, the EC2 instances must be in private subnets. Security groups must not have the SSH port open. Which solution is the MOST secure way to connect to the EC2 instances?",
     "options": [
@@ -62827,7 +62827,7 @@
   {
     "id": "mod3-q19",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 19,
     "questionText": "A company is building a gaming application that needs to send unique events to multiple leaderboards, player matchmaking systems, and authentication services concurrently. The company requires an AWS based event-driven system that delivers events in order and supports a publish subscribe model. The gaming application must be the publisher, and the leaderboards, matchmaking systems, and authentication services must be the subscribers. Which solution will meet these requirements?",
     "options": [
@@ -62861,7 +62861,7 @@
   {
     "id": "mod3-q20",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 20,
     "questionText": "A company manages multiple AWS accounts for different application teams in an organization in AWS Organizations. The finance team needs to allocate AWS costs by application and owner across the organization. The company wants to prevent teams from creating supported resources unless the teams provide the required cost allocation tags at creation time. The company has defined the required tag keys in Organizations tag policies. Which solution will meet these requirements?",
     "options": [
@@ -62899,7 +62899,7 @@
   {
     "id": "mod3-q21",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 21,
     "questionText": "An ecommerce company wants to collect user clickstream data from the company's website for real-time analysis. The website experiences fluctuating traffic patterns throughout the day. The company needs a scalable solution that can adapt to varying levels of traffic. Which solution will meet these requirements?",
     "options": [
@@ -62934,7 +62934,7 @@
   {
     "id": "mod3-q22",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 22,
     "questionText": "A company is creating a mobile financial app that gives users the ability to sign up and store personal information. The app generates a credit score report by using the data that is stored in DynamoDB. The app uses an Amazon DynamoDB table to store user details and preferences. The app sends credit score reports to users once every month. The company needs to provide users with an option to remove their data and preferences. The app must delete customer data within one month of receiving a request to delete the data. Which solution will meet these requirements with the LEAST operational overhead?",
     "options": [
@@ -62973,7 +62973,7 @@
   {
     "id": "mod3-q23",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 23,
     "questionText": "A company runs several custom applications on Amazon EC2 instances. Each team within the company manages its own set of applications and backups. To comply with regulations, the company must be able to report on the status of backups and ensure that backups are encrypted. Which solution will meet these requirements with the LEAST effort?",
     "options": [
@@ -63011,7 +63011,7 @@
   {
     "id": "mod3-q24",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 24,
     "questionText": "A company's order processing system runs on Amazon EC2 instances. The EC2 instances consume orders from an Amazon SQS queue and remove processed messages from the queue. The EC2 instances verify each order against inventory records, persist fulfillment decisions to an Amazon RDS database. The company reports duplicate approval entries in the RDS database. However, the SQS queue shows no duplicate messages. Which solution will prevent duplicate database entries in the RDS database?",
     "options": [
@@ -63049,7 +63049,7 @@
   {
     "id": "mod3-q25",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 25,
     "questionText": "A company uses AWS Lambda functions in AWS account A. The company manages an Amazon S3 bucket in AWS account B. The Lambda function in account A needs to read objects from the S3 bucket in account B. A solutions architect needs to design a secure solution for cross-account access and maintain the principle of least privilege. Which solution will meet these requirements?",
     "options": [
@@ -63087,7 +63087,7 @@
   {
     "id": "mod3-q26",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 26,
     "questionText": "A company runs containerized applications on Amazon ECS tasks in private subnets. The ECS tasks must retrieve container images from Amazon ECR and write application logs to Amazon CloudWatch Logs. The company needs all traffic between the ECS tasks and Amazon ECR and CloudWatch Logs to remain on the AWS network without using public IP addresses. Which solution will meet these requirements MOST cost-effectively?",
     "options": [
@@ -63126,7 +63126,7 @@
   {
     "id": "mod3-q27",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 27,
     "questionText": "A company is migrating an application to the AWS Cloud. The application runs in an on-premises data center and writes thousands of images into a mounted NFS file system each night. After the company migrates the application, the company will host the application on an Amazon EC2 instance with a mounted Amazon EFS file system. The company has established an AWS Direct Connect connection to AWS. Before the migration cutover, a solutions architect must build a process that will replicate the newly created on-premises images to the EFS file system. What is the MOST operationally efficient way to replicate the images?",
     "options": [
@@ -63152,8 +63152,8 @@
     ],
     "explanation": "Doğru cevap D: DataSync ajanı yerel NFS dosya sistemine erişir, veriyi Direct Connect üzerinden taşır ve zamanlanmış bir DataSync görevi görüntüleri EFS'e düzenli olarak kopyalar; en az ek bileşenle yönetilen çözümdür. A, betik ve Lambda ile iki aşamalı bir S3 süreci gerektirir. B'deki Storage Gateway file gateway EFS'e değil kendi S3 destekli paylaşımına yazar. C de S3 ve Lambda ara adımını ekleyerek yönetim yükünü artırır.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/datasync/latest/userguide/create-efs-location.html",
-      "https://docs.aws.amazon.com/datasync/latest/userguide/datasync-in-vpc.html"
+      "https://docs.aws.amazon.com/datasync/latest/userguide/datasync-in-vpc.html",
+      "https://docs.aws.amazon.com/datasync/latest/userguide/create-efs-location.html"
     ],
     "services": [
       "Amazon S3",
@@ -63166,7 +63166,7 @@
   {
     "id": "mod3-q28",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 28,
     "questionText": "A company's application uses Network Load Balancers, Auto Scaling groups, Amazon EC2 instances, and databases that are deployed in an Amazon VPC. The company wants to capture information about traffic to and from the network interfaces in near real time in its Amazon VPC. The company wants to send the information to Amazon OpenSearch Service for analysis. Which solution will meet these requirements?",
     "options": [
@@ -63202,7 +63202,7 @@
   {
     "id": "mod3-q29",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 29,
     "questionText": "A company is building a new application to process documents that users upload. The application must send processed documents back to users in email messages. The application must include a mechanism to store any documents that fail to process. The application must store uploaded documents durably for up to 18 months. The application must process documents as soon as users upload them. The company wants to use Amazon SQS queues and Amazon SNS topics. Which combination of actions will meet these requirements with the LEAST management overhead? (Select THREE.)",
     "options": [
@@ -63232,9 +63232,9 @@
     ],
     "explanation": "Doğru cevaplar B, C ve D'dir: S3 yeni belge olaylarını SNS konusuna yayınlar (B); SQS kuyruğu SNS konusuna abone olarak mesajları alır ve Lambda kuyruğu tüketir (C); Lambda'nın işleyemediği mesajlar DLQ'da saklanarak hata kaydı tutulur (D). A ve E, EC2 Auto Scaling grubunun yönetimini gerektirdiği için daha fazla operasyonel yük getirir; F ise SQS ve SNS yerine Kinesis kullanır.",
     "officialDocs": [
+      "https://docs.aws.amazon.com/sns/latest/dg/sns-fork-pipeline-as-subscriber.html",
       "https://docs.aws.amazon.com/lambda/latest/dg/services-sqs-configure.html",
       "https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventNotifications.html",
-      "https://docs.aws.amazon.com/sns/latest/dg/sns-fork-pipeline-as-subscriber.html",
       "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html"
     ],
     "services": [
@@ -63249,7 +63249,7 @@
   {
     "id": "mod3-q30",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 30,
     "questionText": "A company uses an organization in AWS Organizations to manage multiple AWS accounts. Multiple teams access each AWS account by assuming IAM roles. Each team has a unique IAM role. Each IAM role has a unique set of permissions. A security team wants to automate some security tasks by deploying AWS Lambda functions within each AWS account. The security team wants to ensure that only members of the security team can modify the Lambda functions directly. Which solution will meet these requirements?",
     "options": [
@@ -63275,8 +63275,8 @@
     ],
     "explanation": "Doğru cevap D: SCP organizasyonun köküne uygulanır ve Lambda fonksiyonlarında değişikliği, Condition içinde belirtilen güvenlik ekibi rolü dışındaki tüm kimlikler için engeller. A'daki Principal öğesi SCP'lerde desteklenmediği için geçersizdir. B, IAM politikasını root kullanıcıya eklediği için çalışmaz ve C, güvenlik ekibi dahil herkes için değişikliği tamamen engeller.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html",
-      "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps_syntax.html"
+      "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps_syntax.html",
+      "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html"
     ],
     "services": [
       "AWS Lambda",
@@ -63287,7 +63287,7 @@
   {
     "id": "mod3-q31",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 31,
     "questionText": "A solutions architect is designing a scalable web application that runs on Amazon EC2. The application users must stay on the same server after login. The application must be protected from common exploits. Which solution will meet these requirements?",
     "options": [
@@ -63313,8 +63313,8 @@
     ],
     "explanation": "Doğru cevap C'dir: ALB, uygulama tabanlı stickiness ile girişten sonra oturumu uygulamanın kendi çerezine göre aynı sunucuda tutar ve ALB'ye bağlanan AWS WAF web ACL ile yaygın web saldırılarına karşı koruma sağlar. B yanlıştır çünkü AWS WAF web ACL'i NLB'ye ilişkilendirilemez. A ve D, koruma için AWS Network Firewall'u bir load balancer'a bağlamayı önerir; bu, uygulama katmanındaki yaygın saldırıları filtrelemek için doğru yaklaşım değildir.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/waf/latest/developerguide/how-aws-waf-works-resources.html",
-      "https://docs.aws.amazon.com/prescriptive-guidance/latest/load-balancer-stickiness/options.html;"
+      "https://docs.aws.amazon.com/prescriptive-guidance/latest/load-balancer-stickiness/options.html;",
+      "https://docs.aws.amazon.com/waf/latest/developerguide/how-aws-waf-works-resources.html"
     ],
     "services": [
       "Amazon EC2",
@@ -63325,7 +63325,7 @@
   {
     "id": "mod3-q32",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 32,
     "questionText": "A company provides a three-tier web application to its customers. Each customer has an AWS account in which the application is deployed, and these accounts are members of the company's organization in AWS Organizations. To protect its customers' AWS accounts and applications, the company wants to monitor them for unusual and unexpected behavior. The company needs to analyze and monitor customer VPC Flow Logs, AWS CloudTrail logs, and DNS logs. What should a solutions architect do to meet these requirements?",
     "options": [
@@ -63365,7 +63365,7 @@
   {
     "id": "mod3-q33",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 33,
     "questionText": "A company is building an ecommerce application that uses a relational database to store customer data and order history. The company also needs a solution to store 100 GB of product images. The company expects the traffic flow for the application to be predictable. Which solution will meet these requirements MOST cost-effectively?",
     "options": [
@@ -63391,8 +63391,8 @@
     ],
     "explanation": "Doğru cevap A'dır: RDS for MySQL müşteri ve sipariş verilerini ilişkisel olarak yönetirken, 100 GB ürün görselleri Amazon S3'te tutularak veritabanı depolama maliyeti düşürülür. B'deki DynamoDB ilişkisel veri modeli için uygun değildir. C görselleri Aurora veritabanında tutarak gereksiz pahalı bir yapı oluşturur; D ise kendi yönettiğiniz EC2 üzerinde MongoDB kullanır ve görselleri RDS'te saklar, bu da hem operasyonel yük hem maliyet açısından kötü bir seçimdir.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
-      "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html;"
+      "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html;",
+      "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html"
     ],
     "services": [
       "Amazon S3",
@@ -63406,7 +63406,7 @@
   {
     "id": "mod3-q34",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 34,
     "questionText": "A healthcare company uses an application to store patient data in an Amazon RDS for PostgreSQL database. The company needs a solution to encrypt the data in transit when the application connects to the database. Which solution will meet these requirements?",
     "options": [
@@ -63443,7 +63443,7 @@
   {
     "id": "mod3-q35",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 35,
     "questionText": "A company plans to store quarterly financial statements in a dedicated Amazon S3 bucket. The financial statements must not be modified or deleted after they are saved to the S3 bucket. Which solution will meet these requirements?",
     "options": [
@@ -63479,7 +63479,7 @@
   {
     "id": "mod3-q36",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 36,
     "questionText": "A company tracks customer satisfaction by using surveys that the company hosts on its website. The surveys sometimes reach thousands of customers every hour. Survey results are currently sent in email messages to the company so company employees can manually review results and assess customer sentiment. The company wants to automate the customer survey process. Survey results must be available for the previous 12 months. Which solution will meet these requirements in the MOST scalable way?",
     "options": [
@@ -63516,7 +63516,7 @@
   {
     "id": "mod3-q37",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 37,
     "questionText": "A company uses AWS Batch to run batch processing jobs that analyze manufacturing sensor data. The jobs read input files from an Amazon S3 bucket and write processed results to an Amazon Aurora MySQL database. The S3 bucket and the Aurora database must be encrypted at rest to meet compliance requirements. The company needs to grant the AWS Batch compute environment secure access to read from Amazon S3 and write to the database. Which solution will meet these requirements?",
     "options": [
@@ -63542,8 +63542,8 @@
     ],
     "explanation": "Doğru cevap A'dır: Müşteri yönetimli KMS anahtarı S3 ve Aurora verisini durağan halde şifreler ve anahtar politikasındaki kms:Decrypt ile kms:GenerateDataKey koşulları ile erişim, Batch iş rolü üzerinden kontrol edilir. B'deki AWS yönetilen anahtarın anahtar politikası değiştirilemez, bu yüzden bu koşullar uygulanamaz. C ve D erişimi ağ veya bucket politikalarıyla kısıtlar ancak verinin durağan halde şifrelenmesini sağlamaz; D yalnızca aktarım sırasındaki TLS'i ele alır.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html",
-      "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html;"
+      "https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html;",
+      "https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html"
     ],
     "services": [
       "Amazon S3",
@@ -63555,7 +63555,7 @@
   {
     "id": "mod3-q38",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 38,
     "questionText": "A media company needs to migrate its Windows-based video editing environment to AWS. The company's current environment processes 4K video files that require sustained throughput of 2 GB per second across multiple concurrent users. The company's storage needs increase by 1 TB each week. The company needs a shared file system that supports SMB protocol and can scale automatically based on storage demands. Which solution will meet these requirements?",
     "options": [
@@ -63593,7 +63593,7 @@
   {
     "id": "mod3-q39",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 39,
     "questionText": "A company has a large data workload that runs for 6 hours each day. The company cannot lose any data while the process is running. A solutions architect is designing an Amazon EMR cluster configuration to support this critical data workload. Which solution will meet these requirements MOST cost-effectively?",
     "options": [
@@ -63627,7 +63627,7 @@
   {
     "id": "mod3-q40",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 40,
     "questionText": "A financial analytics company aggregates historical stock market data in an Amazon S3 bucket. External financial research accounts need access to the data. The company wants to make the data accessible to other AWS accounts while reducing the company's ongoing costs. Which solution will meet these requirements?",
     "options": [
@@ -63665,7 +63665,7 @@
   {
     "id": "mod3-q41",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 41,
     "questionText": "A company wants to optimize Amazon S3 storage costs for the company's video content. The company needs to archive the video content 6 months after the company creates the content. The company must delete the content after 24 months. Which solution will meet these requirements with the LEAST operational effort?",
     "options": [
@@ -63702,7 +63702,7 @@
   {
     "id": "mod3-q42",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 42,
     "questionText": "A company runs several applications across multiple AWS accounts. The networking portion of the company's monthly AWS bill has increased significantly during the past 3 weeks. The company needs to quickly identify which network usage types are driving the cost increase. The company also wants to compare the daily cost trend with the previous month. The company does not want to build a custom reporting solution. Which solution will meet these requirements?",
     "options": [
@@ -63739,7 +63739,7 @@
   {
     "id": "mod3-q43",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 43,
     "questionText": "A solutions architect is managing an application in the us-west-1 Region and wants to set up disaster recovery in the us-east-1 Region. The Amazon Aurora MySQL DB cluster needs an RPO of 1 minute and an RTO of 2 minutes. Which approach meets these requirements with no negative performance impact?",
     "options": [
@@ -63775,7 +63775,7 @@
   {
     "id": "mod3-q44",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 44,
     "questionText": "A company is building a serverless application to process large volumes of sensor data. The application uses an AWS Lambda function and stores data in an Amazon DynamoDB table. The application needs to handle unpredictable traffic patterns with occasional spikes in data ingestion. The company wants to optimize application performance to respond to spikes in demand. Which solution will meet these requirements?",
     "options": [
@@ -63801,9 +63801,9 @@
     ],
     "explanation": "A seçeneği doğru: provisioned concurrency Lambda ortamlarını önceden başlatarak soğuk başlatma gecikmesini azaltır, DynamoDB on-demand modu ise öngörülemeyen trafik artışlarını kapasite planlaması olmadan karşılar. B yanlış çünkü DynamoDB provisioned modu ani artışlar için kapasite planlaması gerektirir ve artışlarda kısıtlamaya yol açabilir. C ve D yanlış çünkü reserved concurrency yalnızca eşzamanlılık üst sınırını ayırır, soğuk başlatmayı azaltmaz.",
     "officialDocs": [
+      "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/on-demand-capacity-mode.html",
       "https://docs.aws.amazon.com/lambda/latest/dg/provisioned-concurrency.html",
-      "https://docs.aws.amazon.com/lambda/latest/dg/configuration-concurrency.html",
-      "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/on-demand-capacity-mode.html"
+      "https://docs.aws.amazon.com/lambda/latest/dg/configuration-concurrency.html"
     ],
     "services": [
       "AWS Lambda",
@@ -63814,7 +63814,7 @@
   {
     "id": "mod3-q45",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 45,
     "questionText": "A company is running a critical workload on an Amazon RDS DB instance. The company needs the DB instance to be highly available. The company requires a recovery time of less than 5 minutes. Which solution will meet these requirements?",
     "options": [
@@ -63850,7 +63850,7 @@
   {
     "id": "mod3-q46",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 46,
     "questionText": "A company runs a fleet of Amazon EC2 On-Demand Instances to support a document processing application that has variable usage patterns. The company wants to optimize compute costs for the application. The company needs a solution that can tolerate occasional disruptions to document processing jobs. Which solution will meet these requirements?",
     "options": [
@@ -63876,8 +63876,8 @@
     ],
     "explanation": "C seçeneği doğru: tek bir Auto Scaling grubunda karışık yapılandırma hem On-Demand hem Spot örnekleri çalıştırır, Spot ile maliyet tasarrufu sağlanır ve kesinti riski Capacity Rebalancing ile yönetilebilir. A maliyet açısından işe yarayabilir, ancak uygulamanın konteynerleştirilmesini ve EKS'e taşınmasını gerektirdiği için mevcut EC2 filosunu optimize eden istenen çözümle uyuşmaz. B yanlış çünkü Spot placement score bölge ve Availability Zone önerir, instance tipi seçmez ve dağıtım yapmaz. D yanlış çünkü Convertible Reserved Instances değişken kullanımda taahhüt maliyeti yaratır ve kesinti toleransı sağlamaz.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-placement-score.html",
-      "https://docs.aws.amazon.com/autoscaling/ec2/userguide/mixed-instances-groups-set-up-overview.html"
+      "https://docs.aws.amazon.com/autoscaling/ec2/userguide/mixed-instances-groups-set-up-overview.html",
+      "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-placement-score.html"
     ],
     "services": [
       "Amazon EC2",
@@ -63888,7 +63888,7 @@
   {
     "id": "mod3-q47",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 47,
     "questionText": "A solutions architect creates a VPC that includes two public subnets and two private subnets. A corporate security mandate requires the solutions architect to launch all Amazon EC2 instances in a private subnet. However, when the solutions architect launches an EC2 instance that runs a web server on ports 80 and 443 in a private subnet, no external internet traffic can connect to the server. What should the solutions architect do to resolve this issue?",
     "options": [
@@ -63917,14 +63917,15 @@
     "services": [
       "Amazon EC2",
       "Amazon VPC",
+      "AWS KMS & Security",
       "Amazon Route 53"
     ],
-    "domain": "Domain 2: Design Resilient Architectures"
+    "domain": "Domain 1: Design Secure Architectures"
   },
   {
     "id": "mod3-q48",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 48,
     "questionText": "A company runs multiple web applications on Amazon EC2 instances behind a single Application Load Balancer (ALB). The application experiences unpredictable traffic spikes throughout each day. The traffic spikes cause high latency. The unpredictable spikes last less than 3 hours. The company needs a solution to resolve the latency issue caused by traffic spikes. Which solution will meet this requirement?",
     "options": [
@@ -63960,7 +63961,7 @@
   {
     "id": "mod3-q49",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 49,
     "questionText": "An ecommerce company is building a near real-time bidding platform on AWS. The company deploys the application as a target of an Application Load Balancer (ALB). The application stores bidding and catalog information in an Amazon DynamoDB table. The DynamoDB table receives heavy read loads. The company wants to add a feature to the application that allows customers to view the items that have received the most bids in the previous 24 hours. The company needs a solution to ensure that the bid prices are updated in near real time. The solution must not affect the performance of the DynamoDB table. Which solution will meet these requirements with the LEAST operational overhead?",
     "options": [
@@ -63986,8 +63987,8 @@
     ],
     "explanation": "D seçeneği en uygun: DAX, DynamoDB'nin yoğun okuma yükünü önbellekle karşılar, böylece tablo performansı etkilenmez; uygulama yalnızca DAX endpoint'ine yönlendirildiği için operasyonel yük düşüktür. A seçeneği gerçek zamanlıdır ve okuma yükünü artırmaz, ancak Kinesis, Flink uygulaması ve geri yazma akışı en yüksek operasyonel yükü getirir. B seçeneği saatlik aktarım öngörüyor, oysa Zero-ETL belgelerinde artımlı replikasyon 15-30 dakikada bir yapılır; bu gerçek zamanlı değildir. C seçeneği snapshot tabanlı olduğu için gerçek zamanlı değildir ve Glue ile Lambda yönetimi gerektirir.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.consistency.html",
       "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/RedshiftforDynamoDB-zero-etl.html",
+      "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.consistency.html",
       "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/kds.html"
     ],
     "services": [
@@ -64000,7 +64001,7 @@
   {
     "id": "mod3-q50",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 50,
     "questionText": "An ecommerce company runs an application on Amazon EC2 instances that store order data in attached Amazon EBS volumes. The instances maintain active database connections that cannot be interrupted. The company needs an automatic recovery solution for when the underlying hardware fails. The solution must preserve the instance IP address and attached storage. Which solution will meet these requirements?",
     "options": [
@@ -64026,8 +64027,8 @@
     ],
     "explanation": "B seçeneği doğru: StatusCheckFailed_System metriği için recover eylemi, donanım sorununda örneği sağlıklı bir ana makineye taşır ve instance ID, private IP, Elastic IP ile bağlı EBS birimlerini korur. A yanlış çünkü recover eylemi yalnızca StatusCheckFailed_System ile kullanılabilir, Instance kontrolü ile kullanılamaz. C yanlış çünkü Auto Scaling yeni bir örnek başlatır, IP adresi ve bağlı EBS birimleri korunmaz. D yanlış çünkü yeni bir örnek başlatmak IP adresini ve depolamayı korumaz.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UsingAlarmActions.html",
-      "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-recover.html"
+      "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-recover.html",
+      "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UsingAlarmActions.html"
     ],
     "services": [
       "Amazon EC2",
@@ -64038,7 +64039,7 @@
   {
     "id": "mod3-q51",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 51,
     "questionText": "A company currently stores 500 documents in an Amazon S3 bucket that is in one AWS Region. The company will generate new documents in the future. The new documents will be between 5 KB and 4 GB in size. The company must ensure that all existing and future documents are stored in multiple Regions at all times. Which combination of solutions will meet these requirements with the LEAST operational effort? (Select TWO.)",
     "options": [
@@ -64079,7 +64080,7 @@
   {
     "id": "mod3-q52",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 52,
     "questionText": "A law firm stores client case files on Amazon EFS. The law firm must retain file system backups for 7 years to comply with legal requirements. Which solution will meet these requirements with the LEAST operational overhead?",
     "options": [
@@ -64117,7 +64118,7 @@
   {
     "id": "mod3-q53",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 53,
     "questionText": "A company is building a serverless application to process clickstream data from its website. The clickstream data is sent to an Amazon Kinesis Data Streams data stream from the application web servers. The company wants to enrich the clickstream data by joining the clickstream data with customer profile data from an Amazon Aurora Multi-AZ database. The company wants to use Amazon Redshift to analyze the enriched data. The solution must be highly available. Which solution will meet these requirements?",
     "options": [
@@ -64159,7 +64160,7 @@
   {
     "id": "mod3-q54",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 54,
     "questionText": "A company recently migrated its web application to the AWS Cloud. The company uses an Amazon EC2 instance to run multiple processes to host the application. The processes include an Apache web server that serves static content. The Apache web server makes requests to a PHP application that uses a local Redis server for user sessions. The company wants to redesign the architecture to be highly available and to use AWS managed solutions. Which solution will meet these requirements?",
     "options": [
@@ -64198,7 +64199,7 @@
   {
     "id": "mod3-q55",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 55,
     "questionText": "A company runs batch processing and reporting microservices on Amazon EKS. Users access the microservices through web-based HTTP endpoints. The company wants to distribute traffic to multiple backend services based on URL patterns. Which solution will route incoming requests to the appropriate microservices MOST cost-effectively?",
     "options": [
@@ -64233,7 +64234,7 @@
   {
     "id": "mod3-q56",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 56,
     "questionText": "An analytics company wants to deploy a custom extract, transform, and load (ETL) solution as a containerized application on AWS. The application requires high-performance access to files that are in a centralized repository. File processing can take up to 1 hour to finish. Which solution will meet these requirements?",
     "options": [
@@ -64273,7 +64274,7 @@
   {
     "id": "mod3-q57",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 57,
     "questionText": "A company is launching a new application that will be hosted on Amazon EC2 instances. A solutions architect needs to design a solution that does not allow public IPv4 access that originates from the internet. However, the solution must allow the EC2 instances to make outbound IPv4 internet requests. The initial design proposal shows that the EC2 instances would be located in two private subnets across two Availability Zones. The entire architecture must be highly available. How should the solutions architect change the architecture to meet these requirements?",
     "options": [
@@ -64310,7 +64311,7 @@
   {
     "id": "mod3-q58",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 58,
     "questionText": "A company operates a content management system for thousands of concurrent users on Amazon EC2 instances in a VPC. The company needs to deploy additional EC2 instances to handle increased application tier workloads from new users. The VPC lacks sufficient IP addresses for the new instances. Which solution provides the required capacity with the LEAST operational overhead?",
     "options": [
@@ -64348,7 +64349,7 @@
   {
     "id": "mod3-q59",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 59,
     "questionText": "A company needs to use container images for a new project. A development team requires full access to a new Amazon ECR repository. A solutions architect creates a second ECR repository by using an existing repository as a template. A solutions architect creates a new IAM role that has the AmazonEC2ContainerRegistryFullAccess policy attached. The [?] When a developer tries to push a docker image to the second repository by using the new IAM role, the command fails with an authorization error. What is the likely cause of the error?",
     "options": [
@@ -64374,9 +64375,9 @@
     ],
     "explanation": "Doğru cevap D: Yeni depo, mevcut bir deponun repository policy'si kopyalanarak oluşturulmuş ve bu politika push işlemini reddediyor. IAM politikası ile kaynak politikası arasında bir taraf açıkça reddederse işlem engellenir; bu yüzden rolde AmazonEC2ContainerRegistryFullAccess bulunsa bile push başarısız olur. A yanlıştır çünkü ECR giriş token'ı 12 saat geçerlidir; B yanlıştır çünkü hata push sırasında oluşur ve rol zaten tam erişime sahiptir; C yanlıştır çünkü ECR kimlik doğrulaması MFA'ya bağlı değildir.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html",
+      "https://docs.aws.amazon.com/AmazonECR/latest/userguide/registry_auth.html",
       "https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-policies.html",
-      "https://docs.aws.amazon.com/AmazonECR/latest/userguide/registry_auth.html"
+      "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html"
     ],
     "services": [
       "Amazon ECS/EKS",
@@ -64387,7 +64388,7 @@
   {
     "id": "mod3-q60",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 60,
     "questionText": "A company is designing a serverless application to process a large number of events within an AWS account. The application saves the events to a data warehouse for further analysis. The application sends incoming events to an Amazon SQS queue. Traffic between the application and the SQS queue must not use public IP addresses. Which solution will meet these requirements?",
     "options": [
@@ -64413,8 +64414,8 @@
     ],
     "explanation": "Doğru cevap A: SQS için bir arayüz VPC endpoint'i kullanıldığında trafik public internete çıkmadan AWS ağı üzerinden gider. Kuyruk politikasında aws:SourceVpce koşulu ile erişim yalnızca bu endpoint'e kısıtlanabilir. B yalnızca veriyi depolamadayken şifreler, ağ yolunu değiştirmez; C geçici kimlik bilgisi üretir ama trafiğin public IP üzerinden gitmesini engellemez; D trafiği yalnızca izler, engellemez.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-internetwork-traffic-privacy.html",
-      "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-creating-custom-policies-access-p"
+      "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-creating-custom-policies-access-p",
+      "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-internetwork-traffic-privacy.html"
     ],
     "services": [
       "AWS Lambda",
@@ -64426,7 +64427,7 @@
   {
     "id": "mod3-q61",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 61,
     "questionText": "A healthcare company needs a storage solution for electronic health records (EHRs). The company must store the EHRs for at least 10 years to comply with regulations. The company rarely accesses the records. The records must be secure, immutable, and retrievable within a few hours when needed. Which solution will meet these requirements in the MOST cost-effective way?",
     "options": [
@@ -64452,9 +64453,9 @@
     ],
     "explanation": "Doğru cevap B: S3 Glacier Flexible Retrieval düşük saklama maliyeti sunar ve Standard geri getirme 3-5 saat sürer, bu da 'birkaç saat içinde' gereksinimini karşılar. S3 Object Lock, compliance modunda 10 yıllık saklama süresi boyunca kayıtların silinmesini veya üzerine yazılmasını engelleyerek değişmezlik sağlar. A pahalı S3 Standard kullanır ve sürümleme değişmezlik sağlamaz; C tek AZ'de tutar ve süre sonunda kayıt silen bir kurala dayanır; D'de Object Lock olmadığı için değişmezlik gereksinimi karşılanmaz.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/AmazonS3/latest/userguide/glacier-storage-classes.html",
       "https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html",
-      "https://docs.aws.amazon.com/AmazonS3/latest/userguide/restoring-objects-retrieval-options.html"
+      "https://docs.aws.amazon.com/AmazonS3/latest/userguide/restoring-objects-retrieval-options.html",
+      "https://docs.aws.amazon.com/AmazonS3/latest/userguide/glacier-storage-classes.html"
     ],
     "services": [
       "Amazon S3"
@@ -64464,7 +64465,7 @@
   {
     "id": "mod3-q62",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 62,
     "questionText": "A research laboratory needs to process a multi-terabyte dataset multiple times each day. The laboratory requires sub-millisecond latency while processing the data. Hundreds of Amazon EC2 Linux instances will process the data from the source and store the data in a different location. Which solution will meet these requirements?",
     "options": [
@@ -64490,9 +64491,9 @@
     ],
     "explanation": "Doğru cevap B: FSx for Lustre'ün persistent SSD seçeneği alt milisaniye gecikme sunar, Linux EC2 örnekleri Lustre istemcisiyle bağlanabilir ve S3 bağlantısı ham verinin içe aktarılmasını ve sonuçların dışa aktarılmasını sağlar. A yanlıştır çünkü ALL tiering politikası verinin çoğunu kapasite havuzuna taşır ve performansı düşürür; C'deki HDD tek haneli milisaniye gecikme sunar; D Windows ve SMB içindir, HDD kullanır ve Linux iş yükü için uygun değildir.",
     "officialDocs": [
+      "https://docs.aws.amazon.com/fsx/latest/LustreGuide/create-dra-linked-data-repo.html",
       "https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/volume-storage-capacity.html",
       "https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html",
-      "https://docs.aws.amazon.com/fsx/latest/LustreGuide/create-dra-linked-data-repo.html",
       "https://docs.aws.amazon.com/fsx/latest/LustreGuide/ssd-storage.html"
     ],
     "services": [
@@ -64505,7 +64506,7 @@
   {
     "id": "mod3-q63",
     "module": "03",
-    "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+    "moduleTitle": "CAA Detailed Explained Questions (63 Q)",
     "questionNumber": 63,
     "questionText": "A company wants to use Amazon EC2 instances to provide a static website to users all over the world. The company needs to minimize latency for the users. Which solution meets these requirements?",
     "options": [
@@ -64538,6 +64539,6 @@
       "Amazon EC2",
       "Amazon CloudFront"
     ],
-    "domain": "Domain 3: Design High-Performing Architectures"
+    "domain": "Domain 2: Design Resilient Architectures"
   }
 ]

@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
 """
-AWS SAA-C03 Questions Exporter
-Extracts structured question records from markdown notes into JSON format
-for the interactive quiz PWA.
+AWS SAA-C03 Dual-Language Questions Exporter
+Extracts structured question records from both English (notes/en) and
+Turkish (notes/tr) markdown notes into JSON format for the interactive quiz PWA.
+Generates:
+- web/src/data/questions_en.json
+- web/src/data/questions_tr.json
+- web/src/data/questions.json (default English reference)
 """
 
 import json
@@ -10,26 +14,28 @@ import re
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-NOTES_DIR = BASE_DIR / "notes"
-OUTPUT_FILE = BASE_DIR / "web" / "src" / "data" / "questions.json"
+EN_DIR = BASE_DIR / "notes" / "en"
+TR_DIR = BASE_DIR / "notes" / "tr"
+DATA_DIR = BASE_DIR / "web" / "src" / "data"
 
 AWS_SERVICES = [
-    ("Amazon S3", [r"\bS3\b", r"\bGlacier\b", r"\bTransfer Acceleration\b", r"\bBucket\b"]),
-    ("Amazon EC2", [r"\bEC2\b", r"\bSpot Instance", r"\bPlacement Group\b", r"\bAuto Scaling\b"]),
-    ("AWS Lambda", [r"\bLambda\b", r"\bServerless\b"]),
-    ("Amazon ECS/EKS", [r"\bECS\b", r"\bFargate\b", r"\bEKS\b", r"\bContainer\b"]),
-    ("Amazon RDS", [r"\bRDS\b", r"\bMulti-AZ\b", r"\bRead Replica\b"]),
+    ("Amazon S3", [r"\bS3\b", r"\bGlacier\b", r"\bTransfer Acceleration\b", r"\bBucket\b", r"\bkovası\b", r"\bklasöründe\b"]),
+    ("Amazon EC2", [r"\bEC2\b", r"\bSpot Instance", r"\bPlacement Group\b", r"\bAuto Scaling\b", r"\bbulut sunucusu\b", r"\bbulut sunucuları\b"]),
+    ("AWS Lambda", [r"\bLambda\b", r"\bServerless\b", r"\bSunucusuz\b"]),
+    ("Amazon ECS/EKS", [r"\bECS\b", r"\bFargate\b", r"\bEKS\b", r"\bContainer\b", r"\bKonteyner\b"]),
+    ("Amazon RDS", [r"\bRDS\b", r"\bMulti-AZ\b", r"\bRead Replica\b", r"\bOkuma replikası\b", r"\bokuma kopyası\b"]),
     ("Amazon Aurora", [r"\bAurora\b", r"\bAurora Serverless\b", r"\bGlobal Database\b"]),
     ("Amazon DynamoDB", [r"\bDynamoDB\b", r"\bDAX\b"]),
-    ("Amazon VPC", [r"\bVPC\b", r"\bSubnet\b", r"\bNAT Gateway\b", r"\bTransit Gateway\b", r"\bInternet Gateway\b"]),
-    ("AWS IAM", [r"\bIAM\b", r"\bRole\b", r"\bSCP\b", r"\bOrganizations\b"]),
-    ("AWS KMS & Security", [r"\bKMS\b", r"\bSecrets Manager\b", r"\bWAF\b", r"\bShield\b", r"\bSecurity Group\b"]),
+    ("Amazon VPC", [r"\bVPC\b", r"\bSubnet\b", r"\balt ağ\b", r"\bNAT Gateway\b", r"\bTransit Gateway\b", r"\bInternet Gateway\b"]),
+    ("AWS IAM", [r"\bIAM\b", r"\bRole\b", r"\bRol\b", r"\bSCP\b", r"\bOrganizations\b"]),
+    ("AWS KMS & Security", [r"\bKMS\b", r"\bSecrets Manager\b", r"\bWAF\b", r"\bShield\b", r"\bSecurity Group\b", r"\bGüvenlik Grubu\b"]),
     ("Amazon Route 53", [r"\bRoute 53\b", r"\bDNS\b", r"\bLatency routing\b", r"\bFailover routing\b"]),
-    ("Amazon CloudFront", [r"\bCloudFront\b", r"\bEdge Location\b", r"\bCDN\b", r"\bOAI\b", r"\bOAC\b"]),
-    ("Messaging (SQS/SNS)", [r"\bSQS\b", r"\bSNS\b", r"\bEventBridge\b", r"\bStep Functions\b"]),
+    ("Amazon CloudFront", [r"\bCloudFront\b", r"\bEdge Location\b", r"\bCDN\b", r"\bOAI\b", r"\bOAC\b", r"\bUç Konum\b"]),
+    ("Messaging (SQS/SNS)", [r"\bSQS\b", r"\bSNS\b", r"\bEventBridge\b", r"\bStep Functions\b", r"\bkuyruk\b"]),
     ("Storage (EFS/FSx/EBS)", [r"\bEFS\b", r"\bFSx\b", r"\bEBS\b", r"\bStorage Gateway\b"]),
     ("Analytics & Monitoring", [r"\bCloudWatch\b", r"\bCloudTrail\b", r"\bAthena\b", r"\bKinesis\b", r"\bQuickSight\b"]),
 ]
+
 
 def detect_services(text: str):
     found = []
@@ -38,27 +44,32 @@ def detect_services(text: str):
             found.append(svc_name)
     return found or ["General Architecture"]
 
-def detect_domain(text: str):
-    t = text.lower()
-    if any(k in t for k in ["iam", "kms", "waf", "shield", "secrets manager", "security group", "compliance", "encrypt"]):
-        return "Domain 1: Design Secure Architectures"
-    if any(k in t for k in ["multi-az", "auto scaling", "sqs", "sns", "failover", "disaster recovery", "backup", "resilient"]):
-        return "Domain 2: Design Resilient Architectures"
-    if any(k in t for k in ["elasticache", "dax", "cloudfront", "transfer acceleration", "performance", "throughput", "latency"]):
-        return "Domain 3: Design High-Performing Architectures"
-    if any(k in t for k in ["lifecycle", "glacier", "spot", "savings plan", "cost-effective", "least expensive", "cost"]):
-        return "Domain 4: Design Cost-Optimized Architectures"
-    return "Domain 2: Design Resilient Architectures"
 
-def parse_module_01():
-    module_dir = NOTES_DIR / "01-aws-certified-solutions-architect-associate-saa-c03" / "sections"
+def detect_domain(text: str, is_turkish: bool = False):
+    t = text.lower()
+    if any(k in t for k in ["iam", "kms", "waf", "shield", "secrets manager", "security group", "compliance", "encrypt", "şifreleme", "güvenlik", "yetki"]):
+        return "Domain 1: Güvenli Mimari Tasarımı" if is_turkish else "Domain 1: Design Secure Architectures"
+    if any(k in t for k in ["multi-az", "auto scaling", "sqs", "sns", "failover", "disaster recovery", "backup", "resilient", "felaket", "yedek", "dayanıklı"]):
+        return "Domain 2: Dayanıklı Mimari Tasarımı" if is_turkish else "Domain 2: Design Resilient Architectures"
+    if any(k in t for k in ["elasticache", "dax", "cloudfront", "transfer acceleration", "performance", "throughput", "latency", "performans", "gecikme", "hızlandırma"]):
+        return "Domain 3: Yüksek Performanslı Mimari Tasarımı" if is_turkish else "Domain 3: Design High-Performing Architectures"
+    if any(k in t for k in ["lifecycle", "glacier", "spot", "savings plan", "cost-effective", "least expensive", "cost", "maliyet", "uygun maliyet"]):
+        return "Domain 4: Maliyet Optimizasyonlu Mimari Tasarımı" if is_turkish else "Domain 4: Design Cost-Optimized Architectures"
+    return "Domain 2: Dayanıklı Mimari Tasarımı" if is_turkish else "Domain 2: Design Resilient Architectures"
+
+
+def parse_module_01(base_dir: Path, is_turkish: bool = False):
+    module_dir = base_dir / "01-aws-certified-solutions-architect-associate-saa-c03" / "sections"
     questions = []
+    split_pattern = r"(?=^Soru #\d+)" if is_turkish else r"(?=^Question #\d+)"
+    num_pattern = r"^Soru #(\d+)" if is_turkish else r"^Question #(\d+)"
+
     for path in sorted(module_dir.glob("section-*.md")):
         with open(path, "r", encoding="utf-8", errors="ignore") as f:
             content = f.read()
-        raw_items = re.split(r"(?=^Question #\d+)", content, flags=re.MULTILINE)
+        raw_items = re.split(split_pattern, content, flags=re.MULTILINE)
         for item in raw_items[1:]:
-            m_num = re.search(r"^Question #(\d+)", item)
+            m_num = re.search(num_pattern, item)
             if not m_num:
                 continue
             q_num = int(m_num.group(1))
@@ -73,16 +84,24 @@ def parse_module_01():
                 })
 
             # extract question text
-            q_text_match = re.search(r"^Question #\d+\s+(?:Topic \d+\s+)?(.*?)(?=\n[A-E]\.|\n>|\Z)", item, re.DOTALL)
+            if is_turkish:
+                q_text_match = re.search(r"^Soru #\d+\s+(.*?)(?=\n[A-E]\.|\n>|\Z)", item, re.DOTALL)
+            else:
+                q_text_match = re.search(r"^Question #\d+\s+(?:Topic \d+\s+)?(.*?)(?=\n[A-E]\.|\n>|\Z)", item, re.DOTALL)
             q_text = re.sub(r"\s+", " ", q_text_match.group(1).strip()) if q_text_match else ""
 
             # extract correct answer
-            ans_m = re.search(r"\*\*Correct Answer:\*\*\s*`?([A-E,\s]+)`?", item)
+            if is_turkish:
+                ans_m = re.search(r"\*\*Doğru Seçenek:\*\*\s*`?([A-E,\s]+)`?", item)
+                rec_m = re.search(r"\*\*Önerilen Çözüm:\*\*\s*(.*?)(?=\n>|\Z)", item, re.DOTALL)
+                summary_m = re.search(r"\*\*Sınav Konu Özeti:\*\*(.*?)(?=\n---|\Z)", item, re.DOTALL)
+            else:
+                ans_m = re.search(r"\*\*Correct Answer:\*\*\s*`?([A-E,\s]+)`?", item)
+                rec_m = re.search(r"\*\*Recommended Solution:\*\*\s*(.*?)(?=\n>|\Z)", item, re.DOTALL)
+                summary_m = re.search(r"\*\*Exam Concept Summary:\*\*(.*?)(?=\n---|\Z)", item, re.DOTALL)
+
             correct_answers = [c.strip() for c in re.split(r"[,/ ]+", ans_m.group(1).strip()) if c.strip()] if ans_m else []
 
-            # explanation
-            rec_m = re.search(r"\*\*Recommended Solution:\*\*\s*(.*?)(?=\n>|\Z)", item, re.DOTALL)
-            summary_m = re.search(r"\*\*Exam Concept Summary:\*\*(.*?)(?=\n---|\Z)", item, re.DOTALL)
             expl = ""
             if rec_m:
                 expl += rec_m.group(1).strip() + "\n\n"
@@ -90,10 +109,11 @@ def parse_module_01():
                 expl += summary_m.group(1).replace(">", "").strip()
 
             all_context = f"{q_text} {expl}"
+            title = "SAA-C03 Mimari Senaryolar (684 Soru)" if is_turkish else "SAA-C03 Architectural Scenarios (684 Q)"
             questions.append({
                 "id": f"mod1-q{q_num}",
                 "module": "01",
-                "moduleTitle": "SAA-C03 Architectural Scenarios (684 Q)",
+                "moduleTitle": title,
                 "questionNumber": q_num,
                 "questionText": q_text,
                 "options": options,
@@ -101,19 +121,23 @@ def parse_module_01():
                 "explanation": expl.strip(),
                 "officialDocs": [],
                 "services": detect_services(all_context),
-                "domain": detect_domain(all_context)
+                "domain": detect_domain(all_context, is_turkish)
             })
     return questions
 
-def parse_module_02():
-    module_dir = NOTES_DIR / "02-aws-saa-c03-question-bank-1019" / "sections"
+
+def parse_module_02(base_dir: Path, is_turkish: bool = False):
+    module_dir = base_dir / "02-aws-saa-c03-question-bank-1019" / "sections"
     questions = []
+    split_pattern = r"(?=^Soru #?\d+\b)" if is_turkish else r"(?=^Question \d+\b)"
+    num_pattern = r"^Soru #?(\d+)\b" if is_turkish else r"^Question (\d+)\b"
+
     for path in sorted(module_dir.glob("section-*.md")):
         with open(path, "r", encoding="utf-8", errors="ignore") as f:
             content = f.read()
-        raw_items = re.split(r"(?=^Question \d+\b)", content, flags=re.MULTILINE)
+        raw_items = re.split(split_pattern, content, flags=re.MULTILINE)
         for item in raw_items[1:]:
-            m_num = re.search(r"^Question (\d+)\b", item)
+            m_num = re.search(num_pattern, item)
             if not m_num:
                 continue
             q_num = int(m_num.group(1))
@@ -126,14 +150,20 @@ def parse_module_02():
                     "text": re.sub(r"\s+", " ", om.group(2).strip())
                 })
 
-            q_text_match = re.search(r"^Question \d+\b\s*(.*?)(?=\n[A-E]\.|\n>|\Z)", item, re.DOTALL)
-            q_text = re.sub(r"\s+", " ", q_text_match.group(1).strip()) if q_text_match else ""
+            if is_turkish:
+                q_text_match = re.search(r"^Soru #?\d+\b\s*(.*?)(?=\n[A-E]\.|\n>|\Z)", item, re.DOTALL)
+                ans_m = re.search(r"\*\*Doğru Seçenek:\*\*\s*`?([A-E,\s]+)`?", item)
+                rec_m = re.search(r"\*\*Önerilen Çözüm:\*\*\s*(.*?)(?=\n>|\Z)", item, re.DOTALL)
+                summary_m = re.search(r"\*\*Sınav Konu Özeti:\*\*(.*?)(?=\n---|\Z)", item, re.DOTALL)
+            else:
+                q_text_match = re.search(r"^Question \d+\b\s*(.*?)(?=\n[A-E]\.|\n>|\Z)", item, re.DOTALL)
+                ans_m = re.search(r"\*\*Correct Answer:\*\*\s*`?([A-E,\s]+)`?", item)
+                rec_m = re.search(r"\*\*Recommended Solution:\*\*\s*(.*?)(?=\n>|\Z)", item, re.DOTALL)
+                summary_m = re.search(r"\*\*Exam Concept Summary:\*\*(.*?)(?=\n---|\Z)", item, re.DOTALL)
 
-            ans_m = re.search(r"\*\*Correct Answer:\*\*\s*`?([A-E,\s]+)`?", item)
+            q_text = re.sub(r"\s+", " ", q_text_match.group(1).strip()) if q_text_match else ""
             correct_answers = [c.strip() for c in re.split(r"[,/ ]+", ans_m.group(1).strip()) if c.strip()] if ans_m else []
 
-            rec_m = re.search(r"\*\*Recommended Solution:\*\*\s*(.*?)(?=\n>|\Z)", item, re.DOTALL)
-            summary_m = re.search(r"\*\*Exam Concept Summary:\*\*(.*?)(?=\n---|\Z)", item, re.DOTALL)
             expl = ""
             if rec_m:
                 expl += rec_m.group(1).strip() + "\n\n"
@@ -141,10 +171,11 @@ def parse_module_02():
                 expl += summary_m.group(1).replace(">", "").strip()
 
             all_context = f"{q_text} {expl}"
+            title = "SAA-C03 Kapsamlı Soru Bankası (1019 Soru)" if is_turkish else "SAA-C03 Comprehensive Question Bank (1019 Q)"
             questions.append({
                 "id": f"mod2-q{q_num}",
                 "module": "02",
-                "moduleTitle": "SAA-C03 Comprehensive Question Bank (1019 Q)",
+                "moduleTitle": title,
                 "questionNumber": q_num,
                 "questionText": q_text,
                 "options": options,
@@ -152,12 +183,13 @@ def parse_module_02():
                 "explanation": expl.strip(),
                 "officialDocs": [],
                 "services": detect_services(all_context),
-                "domain": detect_domain(all_context)
+                "domain": detect_domain(all_context, is_turkish)
             })
     return questions
 
-def parse_module_03():
-    module_dir = NOTES_DIR / "03-caa-exam-questions-explained" / "sections"
+
+def parse_module_03(base_dir: Path, is_turkish: bool = False):
+    module_dir = base_dir / "03-caa-exam-questions-explained" / "sections"
     questions = []
     for path in sorted(module_dir.glob("section-*.md")):
         with open(path, "r", encoding="utf-8", errors="ignore") as f:
@@ -189,10 +221,11 @@ def parse_module_03():
             docs = re.findall(r"\[(https://docs\.aws\.amazon\.com/[^\]]+)\]", item)
 
             all_context = f"{q_text} {expl}"
+            title = "CAA Detaylı Açıklamalı Sorular (63 Soru)" if is_turkish else "CAA Detailed Explained Questions (63 Q)"
             questions.append({
                 "id": f"mod3-q{q_num}",
                 "module": "03",
-                "moduleTitle": "CAA Detailed Turkish Explanations (63 Q)",
+                "moduleTitle": title,
                 "questionNumber": q_num,
                 "questionText": q_text,
                 "options": options,
@@ -200,31 +233,49 @@ def parse_module_03():
                 "explanation": expl,
                 "officialDocs": list(set(docs)),
                 "services": detect_services(all_context),
-                "domain": detect_domain(all_context)
+                "domain": detect_domain(all_context, is_turkish)
             })
     return questions
 
-def main():
-    OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
-    print("Parsing module 01...")
-    q1 = parse_module_01()
-    print(f"Module 01 parsed: {len(q1)} questions")
 
-    print("Parsing module 02...")
-    q2 = parse_module_02()
-    print(f"Module 02 parsed: {len(q2)} questions")
+def export_track(base_dir: Path, output_file: Path, is_turkish: bool = False):
+    print(f"\n--- Exporting {'Turkish (TR)' if is_turkish else 'English (EN)'} Track ---")
+    q1 = parse_module_01(base_dir, is_turkish)
+    print(f"  Module 01: {len(q1)} questions")
 
-    print("Parsing module 03...")
-    q3 = parse_module_03()
-    print(f"Module 03 parsed: {len(q3)} questions")
+    q2 = parse_module_02(base_dir, is_turkish)
+    print(f"  Module 02: {len(q2)} questions")
+
+    q3 = parse_module_03(base_dir, is_turkish)
+    print(f"  Module 03: {len(q3)} questions")
 
     all_questions = q1 + q2 + q3
-    print(f"Total structured questions: {len(all_questions)}")
+    print(f"  Total: {len(all_questions)} questions")
 
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+    with open(output_file, "w", encoding="utf-8") as f:
         json.dump(all_questions, f, ensure_ascii=False, indent=2)
+    print(f"  Saved to: {output_file}")
+    return all_questions
 
-    print(f"Successfully generated structured dataset at: {OUTPUT_FILE}")
+
+def main():
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+
+    # 1. English
+    en_questions = export_track(EN_DIR, DATA_DIR / "questions_en.json", is_turkish=False)
+
+    # 2. Turkish
+    tr_questions = export_track(TR_DIR, DATA_DIR / "questions_tr.json", is_turkish=True)
+
+    # 3. Default questions.json (compatibility link/copy)
+    with open(DATA_DIR / "questions.json", "w", encoding="utf-8") as f:
+        json.dump(en_questions, f, ensure_ascii=False, indent=2)
+
+    print("\n✅ Successfully generated dual-language datasets:")
+    print(f"   - {DATA_DIR / 'questions_en.json'} ({len(en_questions)} items)")
+    print(f"   - {DATA_DIR / 'questions_tr.json'} ({len(tr_questions)} items)")
+    print(f"   - {DATA_DIR / 'questions.json'} ({len(en_questions)} items)")
+
 
 if __name__ == "__main__":
     main()

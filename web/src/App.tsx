@@ -23,7 +23,8 @@ import {
   FileCode
 } from 'lucide-react';
 import type { Question, FilterStatus } from './types';
-import rawQuestions from './data/questions.json';
+import questionsEn from './data/questions_en.json';
+import questionsTr from './data/questions_tr.json';
 import { translations, Language } from './i18n';
 import {
   exportQuestionsMarkdown,
@@ -31,7 +32,10 @@ import {
   exportProgressCsv
 } from './export';
 
-const questionsData: Question[] = rawQuestions as Question[];
+const questionsDataset: Record<Language, Question[]> = {
+  en: questionsEn as Question[],
+  tr: questionsTr as Question[],
+};
 
 export const App: React.FC = () => {
   // Theme State
@@ -71,6 +75,10 @@ export const App: React.FC = () => {
     } catch (e) {
       console.error(e);
     }
+  }, [lang]);
+
+  const questionsData = useMemo(() => {
+    return questionsDataset[lang] || questionsEn;
   }, [lang]);
 
   const t = translations[lang];
@@ -132,7 +140,7 @@ export const App: React.FC = () => {
       q.services.forEach(item => s.add(item));
     });
     return Array.from(s).sort();
-  }, []);
+  }, [questionsData]);
 
   // Filter questions
   const filteredQuestions = useMemo(() => {
@@ -170,7 +178,7 @@ export const App: React.FC = () => {
       }
       return true;
     });
-  }, [selectedModule, selectedService, filterStatus, searchQuery, bookmarks, history]);
+  }, [questionsData, selectedModule, selectedService, filterStatus, searchQuery, bookmarks, history]);
 
   // Clamp current index when filter changes
   useEffect(() => {
