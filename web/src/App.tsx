@@ -22,7 +22,10 @@ import {
   Share2,
   Check,
   Volume2,
-  VolumeX
+  VolumeX,
+  Filter,
+  ChevronDown,
+  ChevronUp
 } from 'lucide-react';
 import type { Question, FilterStatus } from './types';
 import questionsEn from './data/questions_en.json';
@@ -147,6 +150,16 @@ export const App: React.FC = () => {
   const [selectedModule, setSelectedModule] = useState('all');
   const [selectedService, setSelectedService] = useState('all');
   const [filterStatus, setFilterStatus] = useState<FilterStatus>('all');
+  const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
+
+  const activeFilterCount = useMemo(() => {
+    let count = 0;
+    if (searchQuery.trim()) count++;
+    if (selectedModule !== 'all') count++;
+    if (selectedService !== 'all') count++;
+    if (filterStatus !== 'all') count++;
+    return count;
+  }, [searchQuery, selectedModule, selectedService, filterStatus]);
 
   // Navigation & Answers
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -612,8 +625,36 @@ export const App: React.FC = () => {
 
       {/* Main Workbench Body */}
       <main className="workbench-body">
+        {/* Mobile Filter Toggle Bar (visible <= 860px via CSS) */}
+        <div className="mobile-filter-bar">
+          <button
+            type="button"
+            className={`mobile-filter-toggle-btn ${isMobileFilterOpen ? 'active' : ''}`}
+            onClick={() => setIsMobileFilterOpen(prev => !prev)}
+            aria-expanded={isMobileFilterOpen}
+            aria-controls="filter-rail-panel"
+          >
+            <div className="mobile-filter-btn-left">
+              <Filter size={15} />
+              <span>{isMobileFilterOpen ? t.hideFilters : t.mobileFilters}</span>
+              {activeFilterCount > 0 && (
+                <span className="mobile-filter-count-badge">
+                  {t.activeFiltersCount(activeFilterCount)}
+                </span>
+              )}
+            </div>
+            <div className="mobile-filter-btn-right">
+              <span className="mobile-filter-match-count">{filteredQuestions.length} {t.scenario}</span>
+              {isMobileFilterOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+            </div>
+          </button>
+        </div>
+
         {/* Left Filter Rail */}
-        <aside className="filter-rail">
+        <aside
+          id="filter-rail-panel"
+          className={`filter-rail ${isMobileFilterOpen ? 'mobile-open' : 'mobile-collapsed'}`}
+        >
           {/* Quick Search */}
           <div className="rail-section">
             <label className="rail-label" htmlFor="workbench-search">{t.searchLabel}</label>
@@ -698,6 +739,16 @@ export const App: React.FC = () => {
               </button>
             </div>
           </div>
+
+          {/* Mobile Apply & Close Rail Button */}
+          <button
+            type="button"
+            className="mobile-rail-close-btn"
+            onClick={() => setIsMobileFilterOpen(false)}
+          >
+            <Check size={14} />
+            <span>{t.applyFilters}</span>
+          </button>
 
           {/* Keyboard Cheatsheet */}
           <div className="cheatsheet-box">
@@ -891,7 +942,7 @@ export const App: React.FC = () => {
                 </div>
 
                 {/* Action Controls */}
-                <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '0.25rem' }}>
+                <div className="scenario-action-bar">
                   {!isCurrentRevealed ? (
                     <button
                       className="nav-tool-btn btn-primary-action"
