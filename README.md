@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.svg" alt="AWS Certified Solutions Architect Associate (SAA-C03) Study Notes" width="100%">
+</p>
+
 # AWS SAA-C03 Study Notes
 
 Structured study repository for the AWS Certified Solutions Architect - Associate (SAA-C03) examination. Contains curated scenario reviews, comprehensive question banks with verified answer keys, and architectural concept callouts formatted in GitHub Flavored Markdown.
