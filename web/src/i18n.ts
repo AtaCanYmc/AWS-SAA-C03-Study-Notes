@@ -70,7 +70,20 @@ export const translations = {
     exportProgressCsvDesc: 'Download spreadsheet with Question IDs, user choices, correctness, and timestamps.',
     close: 'Close',
     noBookmarks: 'No bookmarked questions to export yet.',
-    noWrongs: 'Great job! No incorrect questions recorded yet.'
+    noWrongs: 'Great job! No incorrect questions recorded yet.',
+    pwaModalTitle: 'Install AWS SAA-C03 Study App',
+    pwaModalSubtitle: 'Install on your home screen for full offline study with all 1,766 scenarios and zero browser bars.',
+    pwaFeatureOffline: '100% Offline Access',
+    pwaFeatureScreen: 'Distraction-free Fullscreen',
+    pwaFeatureFast: 'Instant Launch & Fast Study',
+    pwaIosStep1: 'Tap the Share icon in Safari’s bottom navigation bar.',
+    pwaIosStep2: 'Scroll down and tap "Add to Home Screen".',
+    pwaIosStep3: 'Tap "Add" in the top-right corner.',
+    pwaAndroidStep: 'Tap your browser menu (⋮) and choose "Install app" or "Add to Home screen".',
+    pwaInstallBtn: 'Install App',
+    pwaGotItBtn: 'Got It',
+    pwaLaterBtn: 'Maybe Later',
+    pwaDontShowAgain: "Don't show again"
   },
   tr: {
     brandSubtitle: 'Özenle Seçilmiş Sınav Konsolu • 1.766 Senaryo',
@@ -141,6 +154,19 @@ export const translations = {
     exportProgressCsvDesc: 'Soru kimlikleri, seçilen şıklar, doğruluk durumu ve modülleri içeren tablo verisi indirin.',
     close: 'Kapat',
     noBookmarks: 'Henüz yıldızlanmış bir soru bulunmuyor.',
-    noWrongs: 'Tebrikler! Henüz kaydedilmiş yanlış bir soru yok.'
+    noWrongs: 'Tebrikler! Henüz kaydedilmiş yanlış bir soru yok.',
+    pwaModalTitle: 'AWS SAA-C03 Çalışma Uygulamasını Yükleyin',
+    pwaModalSubtitle: '1.766 sorunun tamamına internet olmadan, tam ekran ve kesintisiz mobil deneyimle erişmek için ana ekranınıza ekleyin.',
+    pwaFeatureOffline: '%100 Çevrimdışı Çalışır',
+    pwaFeatureScreen: 'Tam Ekran Çalışma Modu',
+    pwaFeatureFast: 'Anında Açılış & Hızlı Çalışma',
+    pwaIosStep1: 'Safari alt menüsündeki Paylaş simgesine (oklu kare) dokunun.',
+    pwaIosStep2: 'Aşağı kaydırıp "Ana Ekrana Ekle" seçeneğine dokunun.',
+    pwaIosStep3: 'Sağ üst köşedeki "Ekle" butonuna dokunarak kurulumu tamamlayın.',
+    pwaAndroidStep: 'Tarayıcı menüsünü (⋮) açın ve "Uygulamayı yükle" veya "Ana ekrana ekle"ye dokunun.',
+    pwaInstallBtn: 'Uygulamayı Yükle',
+    pwaGotItBtn: 'Anladım',
+    pwaLaterBtn: 'Daha Sonra',
+    pwaDontShowAgain: 'Bir daha gösterme'
   }
 };

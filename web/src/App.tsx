@@ -89,6 +89,57 @@ export const App: React.FC = () => {
   const [isExportOpen, setIsExportOpen] = useState(false);
   const [exportFeedback, setExportFeedback] = useState<string | null>(null);
 
+  // Mobile PWA Install Guidance Modal
+  const [showPwaModal, setShowPwaModal] = useState(false);
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  const isIOS = useMemo(() => typeof navigator !== 'undefined' && /iPhone|iPad|iPod/i.test(navigator.userAgent), []);
+
+  useEffect(() => {
+    const handleBeforeInstall = (e: Event) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+    };
+    window.addEventListener('beforeinstallprompt', handleBeforeInstall);
+
+    const isMobileDevice = window.matchMedia('(max-width: 768px)').matches || /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || (navigator as any).standalone === true;
+    const isDismissed = localStorage.getItem('aws_pwa_prompt_dismissed') === 'true';
+
+    if (isMobileDevice && !isStandalone && !isDismissed) {
+      const timer = setTimeout(() => {
+        setShowPwaModal(true);
+      }, 700);
+      return () => clearTimeout(timer);
+    }
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstall);
+    };
+  }, []);
+
+  const handleInstallPwa = async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      try {
+        const choice = await deferredPrompt.userChoice;
+        if (choice && choice.outcome === 'accepted') {
+          localStorage.setItem('aws_pwa_prompt_dismissed', 'true');
+        }
+      } catch {
+        // ignore
+      }
+      setDeferredPrompt(null);
+    }
+    setShowPwaModal(false);
+  };
+
+  const dismissPwaModal = (dontShowAgain: boolean) => {
+    setShowPwaModal(false);
+    if (dontShowAgain) {
+      localStorage.setItem('aws_pwa_prompt_dismissed', 'true');
+    }
+  };
+
   // Filters
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedModule, setSelectedModule] = useState('all');
@@ -336,6 +387,7 @@ export const App: React.FC = () => {
       }
       if (e.key === 'Escape') {
         if (isExportOpen) setIsExportOpen(false);
+        if (showPwaModal) setShowPwaModal(false);
       } else if (e.key === 'ArrowRight') {
         if (currentIndex < filteredQuestions.length - 1) {
           setCurrentIndex(i => i + 1);
@@ -887,6 +939,77 @@ export const App: React.FC = () => {
               <button className="nav-tool-btn" onClick={() => setIsExportOpen(false)}>
                 {t.close}
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Mobile PWA Install Guidance Modal */}
+      {showPwaModal && (
+        <div className="modal-backdrop" onClick={() => dismissPwaModal(false)}>
+          <div className="pwa-modal" onClick={e => e.stopPropagation()}>
+            <div className="pwa-modal-header">
+              <div className="pwa-modal-icon">
+                <img src="./apple-touch-icon.png" alt="AWS SAA-C03 Study App" />
+              </div>
+              <div className="pwa-modal-title-wrap">
+                <h2 className="pwa-modal-title">{t.pwaModalTitle}</h2>
+                <p className="pwa-modal-subtitle">{t.pwaModalSubtitle}</p>
+              </div>
+              <button
+                className="pwa-modal-close"
+                onClick={() => dismissPwaModal(false)}
+                aria-label={t.close}
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            <div className="pwa-modal-body">
+              <div className="pwa-features-grid">
+                <span className="pwa-feature-pill">⚡ {t.pwaFeatureOffline}</span>
+                <span className="pwa-feature-pill">📱 {t.pwaFeatureScreen}</span>
+                <span className="pwa-feature-pill">🚀 {t.pwaFeatureFast}</span>
+              </div>
+
+              <div className="pwa-instructions-box">
+                {isIOS ? (
+                  <>
+                    <div className="pwa-instruction-step">
+                      <span className="pwa-step-badge">1</span>
+                      <span>{t.pwaIosStep1}</span>
+                    </div>
+                    <div className="pwa-instruction-step">
+                      <span className="pwa-step-badge">2</span>
+                      <span>{t.pwaIosStep2}</span>
+                    </div>
+                    <div className="pwa-instruction-step">
+                      <span className="pwa-step-badge">3</span>
+                      <span>{t.pwaIosStep3}</span>
+                    </div>
+                  </>
+                ) : (
+                  <div className="pwa-instruction-step">
+                    <span className="pwa-step-badge">👉</span>
+                    <span>{t.pwaAndroidStep}</span>
+                  </div>
+                )}
+              </div>
+
+              <div className="pwa-modal-actions">
+                {deferredPrompt ? (
+                  <button className="pwa-btn-install" onClick={handleInstallPwa}>
+                    <Download size={15} /> {t.pwaInstallBtn}
+                  </button>
+                ) : (
+                  <button className="pwa-btn-install" onClick={() => dismissPwaModal(false)}>
+                    <CheckCircle2 size={15} /> {t.pwaGotItBtn}
+                  </button>
+                )}
+                <button className="pwa-btn-secondary" onClick={() => dismissPwaModal(true)}>
+                  {t.pwaDontShowAgain}
+                </button>
+              </div>
             </div>
           </div>
         </div>
