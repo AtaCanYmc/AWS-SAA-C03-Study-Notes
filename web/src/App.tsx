@@ -18,8 +18,6 @@ import {
   Globe,
   Download,
   X,
-  FileText,
-  FileSpreadsheet,
   FileCode,
   Share2,
   Check,
@@ -31,7 +29,9 @@ import questionsEn from './data/questions_en.json';
 import questionsTr from './data/questions_tr.json';
 import { translations, Language } from './i18n';
 import {
+  exportQuestionsPdf,
   exportQuestionsMarkdown,
+  exportAllQuestionsJson,
   exportProgressJson,
   exportProgressCsv
 } from './export';
@@ -474,6 +474,42 @@ export const App: React.FC = () => {
   }, [currentIndex, filteredQuestions.length, currentQ, userSelections, isExportOpen]);
 
   // Export actions
+  const onExportAllPdf = () => {
+    const docTitle = lang === 'tr' ? 'Tüm Soru Havuzu (1766 Soru)' : 'Complete Question Bank (1766 Questions)';
+    exportQuestionsPdf(docTitle, questionsData, lang);
+  };
+
+  const onExportBookmarksPdf = () => {
+    const bookmarkedList = questionsData.filter(q => bookmarks.has(q.id));
+    if (bookmarkedList.length === 0) {
+      setExportFeedback(t.noBookmarks);
+      setTimeout(() => setExportFeedback(null), 3000);
+      return;
+    }
+    const docTitle = lang === 'tr' ? 'Yıldızlı Sorular' : 'Saved Questions';
+    exportQuestionsPdf(docTitle, bookmarkedList, lang);
+  };
+
+  const onExportIncorrectPdf = () => {
+    const incorrectList = questionsData.filter(q => history[q.id] && !history[q.id].isCorrect);
+    if (incorrectList.length === 0) {
+      setExportFeedback(t.noWrongs);
+      setTimeout(() => setExportFeedback(null), 3000);
+      return;
+    }
+    const docTitle = lang === 'tr' ? 'Hatalı Sorular İnceleme' : 'Incorrect Questions Review';
+    exportQuestionsPdf(docTitle, incorrectList, lang);
+  };
+
+  const onExportAllMd = () => {
+    const docTitle = lang === 'tr' ? 'Tum-Soru-Havuzu' : 'Complete-Question-Bank';
+    exportQuestionsMarkdown(docTitle, questionsData);
+  };
+
+  const onExportAllJson = () => {
+    exportAllQuestionsJson(questionsData);
+  };
+
   const onExportBookmarksMd = () => {
     const bookmarkedList = questionsData.filter(q => bookmarks.has(q.id));
     if (bookmarkedList.length === 0) {
@@ -948,35 +984,67 @@ export const App: React.FC = () => {
                 </div>
               )}
 
-              {/* Option 1: Bookmarks Markdown */}
+              {/* Option 1: Complete Question Bank (PDF, MD, JSON) */}
               <div className="export-item-card">
                 <div className="export-item-info">
                   <div className="export-item-title">
-                    <FileText size={15} color="var(--color-focus)" />
-                    <span>{t.exportBookmarksMdTitle}</span>
+                    <BookOpen size={15} color="var(--color-focus)" />
+                    <span>{t.exportAllPdfTitle}</span>
                   </div>
-                  <p className="export-item-desc">{t.exportBookmarksMdDesc}</p>
+                  <p className="export-item-desc">{t.exportAllPdfDesc}</p>
                 </div>
-                <button className="nav-tool-btn" onClick={onExportBookmarksMd}>
-                  <Download size={13} /> .md ({bookmarks.size})
-                </button>
+                <div className="export-card-actions">
+                  <button className="nav-tool-btn btn-primary-action" onClick={onExportAllPdf}>
+                    <Download size={13} /> PDF ({questionsData.length})
+                  </button>
+                  <button className="nav-tool-btn" onClick={onExportAllMd} title={t.exportAllMdTitle}>
+                    <Download size={13} /> .md
+                  </button>
+                  <button className="nav-tool-btn" onClick={onExportAllJson} title={t.exportAllJsonTitle}>
+                    <Download size={13} /> .json
+                  </button>
+                </div>
               </div>
 
-              {/* Option 2: Incorrect Questions Markdown */}
+              {/* Option 2: Saved Questions (PDF & MD) */}
               <div className="export-item-card">
                 <div className="export-item-info">
                   <div className="export-item-title">
-                    <FileText size={15} color="var(--color-wrong)" />
-                    <span>{t.exportWrongMdTitle}</span>
+                    <Bookmark size={15} color="oklch(0.78 0.18 70)" />
+                    <span>{t.exportBookmarksPdfTitle}</span>
                   </div>
-                  <p className="export-item-desc">{t.exportWrongMdDesc}</p>
+                  <p className="export-item-desc">{t.exportBookmarksPdfDesc}</p>
                 </div>
-                <button className="nav-tool-btn" onClick={onExportIncorrectMd}>
-                  <Download size={13} /> .md ({totalAnswered - correctCount})
-                </button>
+                <div className="export-card-actions">
+                  <button className="nav-tool-btn btn-primary-action" onClick={onExportBookmarksPdf}>
+                    <Download size={13} /> PDF ({bookmarks.size})
+                  </button>
+                  <button className="nav-tool-btn" onClick={onExportBookmarksMd}>
+                    <Download size={13} /> .md
+                  </button>
+                </div>
               </div>
 
-              {/* Option 3: Full JSON Progress Backup */}
+              {/* Option 3: Incorrect Questions Review (PDF & MD) */}
+              <div className="export-item-card">
+                <div className="export-item-info">
+                  <div className="export-item-title">
+                    <XCircle size={15} color="var(--color-wrong)" />
+                    <span>{t.exportWrongPdfTitle}</span>
+                  </div>
+                  <p className="export-item-desc">{t.exportWrongPdfDesc}</p>
+                </div>
+                <div className="export-card-actions">
+                  <button className="nav-tool-btn btn-primary-action" onClick={onExportIncorrectPdf}>
+                    <Download size={13} /> PDF ({totalAnswered - correctCount})
+                  </button>
+                  <button className="nav-tool-btn" onClick={onExportIncorrectMd}>
+                    <Download size={13} /> .md
+                  </button>
+                </div>
+              </div>
+
+              {/* Option 4: Study Progress Backup & Log */}
               <div className="export-item-card">
                 <div className="export-item-info">
                   <div className="export-item-title">
@@ -985,23 +1053,14 @@ export const App: React.FC = () => {
                   </div>
                   <p className="export-item-desc">{t.exportProgressJsonDesc}</p>
                 </div>
-                <button className="nav-tool-btn" onClick={onExportProgressJson}>
-                  <Download size={13} /> .json
-                </button>
-              </div>
-
-              {/* Option 4: Study Log CSV */}
-              <div className="export-item-card">
-                <div className="export-item-info">
-                  <div className="export-item-title">
-                    <FileSpreadsheet size={15} color="var(--color-correct)" />
-                    <span>{t.exportProgressCsvTitle}</span>
-                  </div>
-                  <p className="export-item-desc">{t.exportProgressCsvDesc}</p>
+                <div className="export-card-actions">
+                  <button className="nav-tool-btn" onClick={onExportProgressJson}>
+                    <Download size={13} /> .json
+                  </button>
+                  <button className="nav-tool-btn" onClick={onExportProgressCsv}>
+                    <Download size={13} /> .csv
+                  </button>
                 </div>
-                <button className="nav-tool-btn" onClick={onExportProgressCsv}>
-                  <Download size={13} /> .csv
-                </button>
               </div>
             </div>
 
