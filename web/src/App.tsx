@@ -20,7 +20,9 @@ import {
   X,
   FileText,
   FileSpreadsheet,
-  FileCode
+  FileCode,
+  Share2,
+  Check
 } from 'lucide-react';
 import type { Question, FilterStatus } from './types';
 import questionsEn from './data/questions_en.json';
@@ -233,6 +235,66 @@ export const App: React.FC = () => {
       ...prev,
       [currentQ.id]: { selected, isCorrect }
     }));
+  };
+
+  const [isShareCopied, setIsShareCopied] = useState(false);
+
+  // Deep-linking via ?q=id or #id on initial load
+  const [initialQId] = useState<string | null>(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const qFromQuery = params.get('q');
+      if (qFromQuery) return qFromQuery.trim();
+      const hash = window.location.hash.replace('#', '').trim();
+      if (hash) return hash;
+      return null;
+    } catch {
+      return null;
+    }
+  });
+
+  useEffect(() => {
+    if (initialQId && filteredQuestions.length > 0) {
+      const targetIdx = filteredQuestions.findIndex(q => q.id.toLowerCase() === initialQId.toLowerCase());
+      if (targetIdx !== -1) {
+        setCurrentIndex(targetIdx);
+      }
+    }
+  }, [initialQId, filteredQuestions]);
+
+  const handleShareQuestion = async () => {
+    if (!currentQ) return;
+    const shareUrl = `${window.location.origin}${window.location.pathname}?q=${encodeURIComponent(currentQ.id)}`;
+    const shareTitle = `AWS SAA-C03 Scenario [${currentQ.id}]`;
+    const shareText = `[AWS SAA-C03] Scenario ${currentQ.id}:\n${currentQ.questionText.slice(0, 150)}...`;
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: shareTitle,
+          text: shareText,
+          url: shareUrl,
+        });
+        return;
+      } catch (e: any) {
+        if (e.name === 'AbortError') return;
+      }
+    }
+
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      setIsShareCopied(true);
+      setTimeout(() => setIsShareCopied(false), 2200);
+    } catch {
+      const input = document.createElement('input');
+      input.value = shareUrl;
+      document.body.appendChild(input);
+      input.select();
+      document.execCommand('copy');
+      document.body.removeChild(input);
+      setIsShareCopied(true);
+      setTimeout(() => setIsShareCopied(false), 2200);
+    }
   };
 
   const toggleBookmark = (id: string) => {
@@ -586,6 +648,19 @@ export const App: React.FC = () => {
                     >
                       {bookmarks.has(currentQ.id) ? <BookmarkCheck size={16} /> : <Bookmark size={16} />}
                     </button>
+                    <button
+                      className={`icon-tool-btn ${isShareCopied ? 'shared' : ''}`}
+                      onClick={handleShareQuestion}
+                      title={isShareCopied ? t.shareCopied : t.shareQuestion}
+                      aria-label="Share scenario"
+                    >
+                      {isShareCopied ? <Check size={16} color="var(--color-correct)" /> : <Share2 size={16} />}
+                    </button>
+                    {isShareCopied && (
+                      <div className="share-toast">
+                        {t.shareCopied}
+                      </div>
+                    )}
                     {isCurrentRevealed && (
                       <button
                         className="icon-tool-btn"

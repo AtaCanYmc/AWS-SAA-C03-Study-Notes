@@ -467,6 +467,7 @@ section.scenario-canvas {
   display: flex;
   align-items: center;
   gap: 0.4rem;
+  position: relative;
 }
 
 .icon-tool-btn {
@@ -492,6 +493,31 @@ section.scenario-canvas {
   color: oklch(0.78 0.18 70);
   border-color: oklch(0.78 0.18 70);
   background: oklch(0.78 0.18 70 / 0.15);
+}
+
+.icon-tool-btn.shared {
+  color: var(--color-correct);
+  border-color: var(--color-correct);
+  background: oklch(0.72 0.17 145 / 0.15);
+}
+
+.share-toast {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.45rem;
+  background: var(--color-paper-card);
+  border: 1px solid var(--color-correct);
+  color: var(--color-ink);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 0.3rem 0.6rem;
+  border-radius: var(--radius-xs);
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+  z-index: 20;
+  pointer-events: none;
 }
 
 /* Question Scenario Typography */
