@@ -27,9 +27,11 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Generate structured questions JSON
+      - name: Generate structured questions JSON (if scripts present)
         run: |
-          python3 scripts/export_questions.py
+          if [ -f "scripts/export_questions.py" ]; then
+            python3 scripts/export_questions.py
+          fi
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
