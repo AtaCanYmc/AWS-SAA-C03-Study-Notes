@@ -567,37 +567,38 @@ export const App: React.FC = () => {
           <div className="masthead-brand">
             <img src={`${import.meta.env.BASE_URL}logo.svg`} alt="AWS SAA-C03 Logo" className="brand-logo-img" />
             <div className="brand-details">
-              <h1>Solutions Architect Associate (SAA-C03)</h1>
-              <span>{t.brandSubtitle}</span>
+              <h1 className="brand-title-full">Solutions Architect Associate (SAA-C03)</h1>
+              <h1 className="brand-title-short">AWS SAA-C03</h1>
+              <span className="brand-subtitle">{t.brandSubtitle}</span>
             </div>
           </div>
 
           <div className="masthead-tools-group">
             <div className="masthead-hud">
-              <div className="hud-cell">
+              <div className="hud-cell" title={`${t.progress}: ${totalAnswered} / ${questionsData.length}`}>
                 <Award size={14} color="var(--color-focus)" />
-                <span>{t.progress}: <strong>{totalAnswered}</strong> / {questionsData.length}</span>
+                <span><span className="hud-cell-label">{t.progress}: </span><strong>{totalAnswered}</strong> / {questionsData.length}</span>
               </div>
-              <div className="hud-cell">
+              <div className="hud-cell" title={`${t.accuracy}: ${accuracy}%`}>
                 <CheckCircle2 size={14} color="var(--color-correct)" />
-                <span>{t.accuracy}: <strong>{accuracy}%</strong></span>
+                <span><span className="hud-cell-label">{t.accuracy}: </span><strong>{accuracy}%</strong></span>
               </div>
-              <div className="hud-cell">
+              <div className="hud-cell" title={`${t.saved}: ${bookmarks.size}`}>
                 <Bookmark size={14} color="oklch(0.78 0.18 70)" />
-                <span>{t.saved}: <strong>{bookmarks.size}</strong></span>
+                <span><span className="hud-cell-label">{t.saved}: </span><strong>{bookmarks.size}</strong></span>
               </div>
             </div>
 
             {/* Quick Controls: Export, Theme, Language */}
             <div className="masthead-controls">
               <button
-                className="tool-badge-btn"
+                className="tool-badge-btn tool-export-btn"
                 onClick={() => setIsExportOpen(true)}
                 title={t.exportBtn}
                 aria-label={t.exportBtn}
               >
                 <Download size={13} />
-                <span>{t.exportBtn}</span>
+                <span className="tool-btn-label">{t.exportBtn}</span>
               </button>
 
               <button
