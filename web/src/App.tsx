@@ -156,11 +156,15 @@ export const App: React.FC = () => {
         return false;
       }
       if (searchQuery.trim()) {
-        const query = searchQuery.toLowerCase();
+        const query = searchQuery.trim().toLowerCase();
+        const numQuery = query.replace(/^[#q\s]+/i, '');
+        const inId = q.id.toLowerCase().includes(query) || (numQuery && String(q.questionNumber) === numQuery);
         const inText = q.questionText.toLowerCase().includes(query);
         const inExpl = q.explanation.toLowerCase().includes(query);
         const inOpts = q.options.some(o => o.text.toLowerCase().includes(query));
-        if (!inText && !inExpl && !inOpts) {
+        const inServices = q.services.some(s => s.toLowerCase().includes(query));
+        const inDomain = q.domain.toLowerCase().includes(query);
+        if (!inId && !inText && !inExpl && !inOpts && !inServices && !inDomain) {
           return false;
         }
       }
@@ -488,11 +492,31 @@ export const App: React.FC = () => {
           {filteredQuestions.length === 0 ? (
             <div className="empty-canvas">
               <Layers size={36} color="var(--color-ink-dim)" />
-              <h3>{t.emptyTitle}</h3>
-              <p>{t.emptyDesc}</p>
+              <h3>
+                {filterStatus === 'bookmarked'
+                  ? t.emptyBookmarksTitle
+                  : filterStatus === 'incorrect'
+                  ? t.emptyWrongTitle
+                  : filterStatus === 'correct'
+                  ? t.emptyCorrectTitle
+                  : searchQuery.trim()
+                  ? t.emptySearchTitle
+                  : t.emptyTitle}
+              </h3>
+              <p>
+                {filterStatus === 'bookmarked'
+                  ? t.emptyBookmarksDesc
+                  : filterStatus === 'incorrect'
+                  ? t.emptyWrongDesc
+                  : filterStatus === 'correct'
+                  ? t.emptyCorrectDesc
+                  : searchQuery.trim()
+                  ? t.emptySearchDesc(searchQuery.trim())
+                  : t.emptyDesc}
+              </p>
               <button
                 className="nav-tool-btn btn-primary-action"
-                style={{ marginTop: '0.5rem' }}
+                style={{ marginTop: '0.75rem' }}
                 onClick={() => {
                   setSearchQuery('');
                   setSelectedModule('all');
