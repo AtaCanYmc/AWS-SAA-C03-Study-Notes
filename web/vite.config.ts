@@ -13,7 +13,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.svg', 'apple-touch-icon.png', 'masked-icon.svg'],
+      includeAssets: ['favicon.svg', 'favicon.ico', 'apple-touch-icon.png', 'logo.svg'],
       manifest: {
         name: 'AWS SAA-C03 Interactive Quiz & Study App',
         short_name: 'AWS Quiz',

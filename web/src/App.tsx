@@ -328,7 +328,7 @@ export const App: React.FC = () => {
       <header className="broadsheet-masthead">
         <div className="masthead-inner">
           <div className="masthead-brand">
-            <div className="brand-monogram">AWS</div>
+            <img src={`${import.meta.env.BASE_URL}logo.svg`} alt="AWS SAA-C03 Logo" className="brand-logo-img" />
             <div className="brand-details">
               <h1>Solutions Architect Associate (SAA-C03)</h1>
               <span>{t.brandSubtitle}</span>

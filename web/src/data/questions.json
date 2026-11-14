@@ -62176,8 +62176,8 @@
     ],
     "explanation": "Doğru cevap D: Okuma replikası birincil örnekten asenkron olarak güncellenir ve yalnızca okuma erişimi sağlar; raporlar bu replikaya yönlendirilirse ana örneğin yükü azalır ve birincil örnek çevrimdışıyken de raporlar üretilebilir. A seçeneğindeki snapshot belirli bir andaki kopya olduğu için gerçek zamana yakın tutarlılık sağlamaz. B seçeneği yalnızca sunucuyu büyütür, raporların ana örnekten bağımsız çalışmasını sağlamaz. C seçeneği yanlıştır çünkü Multi-AZ bekleme örneği okuma trafiğine hizmet edemez.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html",
-      "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html"
+      "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html",
+      "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html"
     ],
     "services": [
       "Amazon RDS"
@@ -62253,8 +62253,8 @@
     ],
     "explanation": "Doğru cevaplar A ve C: Storage Lens gelişmiş metrikleri, önek bazlı toplama ile bucket ve önek düzeyinde etkinlik (istek) metriklerini sağlar. Cost and Usage Reports, kaynak kimliklerini (resource IDs) dahil ederek maliyeti kaynak düzeyinde, yani her bucket için kullanım türüne göre ayrıştırır. B seçeneği ücretsiz katmanda önek düzeyi ve istek metriklerinin bulunmadığı için yetersizdir. D seçeneği her bucket'a etiket uygulanmasını gerektirir ve önek düzeyinde maliyet vermez; E seçeneği erişim günlüklerinden doğrudan dolar maliyeti üretmez.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/cur/latest/userguide/cur-create.html",
-      "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_basics_metrics_recommendations.html"
+      "https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_basics_metrics_recommendations.html",
+      "https://docs.aws.amazon.com/cur/latest/userguide/cur-create.html"
     ],
     "services": [
       "Amazon S3"
@@ -62438,8 +62438,8 @@
     "explanation": "Doğru cevap C: AWS Backup ile her 6 saatte bir RDS snapshot alınıp ikinci Region'a kopyalanması 6 saatlik RPO'yu karşılar ve yönetilen yedekleme planıyla düşük maliyet ve işletme yüküyle çalışır. A seçeneği RDS otomatik snapshot'larına dayanır; bu snapshot'lar 6 saatlik RPO için yeterli sıklıkta alınmaz. B seçeneğinde RDS snapshot'ları S3 Cross-Region Replication ile kopyalanamaz. D seçeneği de çalışır ama ikinci Region'da sürekli çalışan bir okuma replikası gerektirdiği için daha pahalıdır.",
     "officialDocs": [
       "https://docs.aws.amazon.com/aws-backup/latest/devguide/cross-region-backup.html",
-      "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReplicateBackups.html",
-      "https://docs.aws.amazon.com/aws-backup/latest/devguide/creating-a-backup-plan.html"
+      "https://docs.aws.amazon.com/aws-backup/latest/devguide/creating-a-backup-plan.html",
+      "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReplicateBackups.html"
     ],
     "services": [
       "Amazon S3",
@@ -62512,8 +62512,8 @@
     ],
     "explanation": "Doğru cevap B: SQS kuyruğu ön uç ile sipariş işleme mikro hizmetini birbirinden ayırır; mesajlar işlenene kadar dayanıklı biçimde kuyrukta kalır ve trafik dalgalanmaları kuyrukta tamponlanır. İşlenemeyen mesajlar dead-letter queue'ya taşınarak incelenebilir ve yeniden işlenebilir. A seçeneği yük dengeleme ve CPU tabanlı ölçekleme sağlar ama bileşenleri ayırmaz ve başarısız işlemleri yeniden işlemez. C seçeneği ön uç ile mikro hizmet arasında sıkı bağlantı kurar. D seçeneği Kinesis ile akış tabanlı bir yapı önerir, ancak istenen ayrıştırma ve başarısız siparişleri yeniden işleme gereksinimini standart SQS ve DLQ yapısı kadar doğrudan karşılamaz.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html",
-      "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html"
+      "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/welcome.html",
+      "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html"
     ],
     "services": [
       "Amazon EC2",
@@ -62593,8 +62593,8 @@
     ],
     "explanation": "D doğrudur: AWS Config özel kuralı, Redshift küme güvenlik yapılandırması değiştiğinde Lambda fonksiyonunu tetikler; fonksiyon uyumluluk sonucunu Config'e bildirir ve Config ihlallerde bildirim gönderir. A ve B, kümelerin yalnızca belirli olaylarda (örneğin oluşturulma) izlenmesine dayanır ve sürekli yapılandırma uyumluluğunu kapsamaz. C yanlıştır, çünkü Redshift Advisor performans ve maliyet önerileri sunar; güvenlik ihlali bildirimi için tasarlanmamıştır.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/redshift/latest/dg/advisor-recommendations.html",
       "https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_develop-rules_lambda-functions.html",
+      "https://docs.aws.amazon.com/redshift/latest/dg/advisor-recommendations.html",
       "https://docs.aws.amazon.com/config/latest/developerguide/monitor-config-with-cloudwatchevents.html"
     ],
     "services": [
@@ -62888,8 +62888,8 @@
     "explanation": "D doğrudur: Organizations tag politikaları tag değerlerini denetler ancak eksik tag anahtarı içeren kaynağın oluşturulmasını engellemez; bunu SCP'de aws:RequestTag koşullarıyla sağlamak gerekir. Tag'lerin faturalama raporlarında görünmesi için etkinleştirilmeleri gerekir ve Cost Explorer'da tag'e göre gruplanabilir. A tag'leri etkinleştirir ama oluşturmayı engellemez; B, bütçeler kaynak oluşturmayı kısıtlamaz; C, AWS Config yalnızca oluşturma sonrasında tespit eder.",
     "officialDocs": [
       "https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/activating-tags.html",
-      "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies-enforcement.html",
-      "https://docs.aws.amazon.com/whitepapers/latest/tagging-best-practices/implementing-and-enforcing-tagging.html"
+      "https://docs.aws.amazon.com/whitepapers/latest/tagging-best-practices/implementing-and-enforcing-tagging.html",
+      "https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies-enforcement.html"
     ],
     "services": [
       "AWS IAM"
@@ -62960,8 +62960,8 @@
     ],
     "explanation": "Doğru cevap C: TTL özniteliği kullanıcı silme talebi geldiğinde Lambda ile ayarlanır ve DynamoDB süresi dolan kayıtları birkaç gün içinde otomatik siler; bu, bir aylık süre sınırını karşılar ve en az operasyonel yük getirir. A ve B, ek EventBridge kuralı ya da Stream ve ikinci bir Lambda tüketicisi gibi fazladan bileşen ekler. D'deki AWS Config, DynamoDB TTL süre dolumunu algılamak için uygun bir mekanizma değildir.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html",
-      "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/time-to-live-ttl-streams.html"
+      "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/time-to-live-ttl-streams.html",
+      "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html"
     ],
     "services": [
       "AWS Lambda",
@@ -62999,8 +62999,8 @@
     ],
     "explanation": "Doğru cevap D: AWS Backup Audit Manager, 'Recovery points are encrypted' gibi kontrolleri içeren çerçevelerle günlük uyumluluk raporları üretir ve en az çaba gerektirir. A ve C, kendi Lambda kodunu yazmayı ve bakımını yapmayı gerektirir. B ise her gün elle inceleme yapılmasını istediği için en fazla çabayı gerektirir.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/aws-backup/latest/devguide/choosing-report-template.html",
-      "https://docs.aws.amazon.com/aws-backup/latest/devguide/controls-and-remediation.html"
+      "https://docs.aws.amazon.com/aws-backup/latest/devguide/controls-and-remediation.html",
+      "https://docs.aws.amazon.com/aws-backup/latest/devguide/choosing-report-template.html"
     ],
     "services": [
       "Amazon EC2",
@@ -63113,8 +63113,8 @@
     ],
     "explanation": "Doğru cevap A: ECR ve CloudWatch Logs için arayüz VPC endpoint'leri, ECS görevlerinin trafiğini AWS ağında tutar ve genel IP gerektirmez. B'deki NAT gateway trafiği Elastic IP üzerinden internete çıkarır ve ek ücret doğurur. C'deki internet gateway genel IP gerektirir ve gereksinimi ihlal eder. D'deki Direct Connect, AWS servislerine erişim için gereksiz ve pahalı bir çözümdür.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/vpc-endpoints.html",
-      "https://docs.aws.amazon.com/AmazonECR/latest/userguide/vpc-endpoints.html"
+      "https://docs.aws.amazon.com/AmazonECR/latest/userguide/vpc-endpoints.html",
+      "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/vpc-endpoints.html"
     ],
     "services": [
       "Amazon ECS/EKS",
@@ -63152,8 +63152,8 @@
     ],
     "explanation": "Doğru cevap D: DataSync ajanı yerel NFS dosya sistemine erişir, veriyi Direct Connect üzerinden taşır ve zamanlanmış bir DataSync görevi görüntüleri EFS'e düzenli olarak kopyalar; en az ek bileşenle yönetilen çözümdür. A, betik ve Lambda ile iki aşamalı bir S3 süreci gerektirir. B'deki Storage Gateway file gateway EFS'e değil kendi S3 destekli paylaşımına yazar. C de S3 ve Lambda ara adımını ekleyerek yönetim yükünü artırır.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/datasync/latest/userguide/datasync-in-vpc.html",
-      "https://docs.aws.amazon.com/datasync/latest/userguide/create-efs-location.html"
+      "https://docs.aws.amazon.com/datasync/latest/userguide/create-efs-location.html",
+      "https://docs.aws.amazon.com/datasync/latest/userguide/datasync-in-vpc.html"
     ],
     "services": [
       "Amazon S3",
@@ -63232,9 +63232,9 @@
     ],
     "explanation": "Doğru cevaplar B, C ve D'dir: S3 yeni belge olaylarını SNS konusuna yayınlar (B); SQS kuyruğu SNS konusuna abone olarak mesajları alır ve Lambda kuyruğu tüketir (C); Lambda'nın işleyemediği mesajlar DLQ'da saklanarak hata kaydı tutulur (D). A ve E, EC2 Auto Scaling grubunun yönetimini gerektirdiği için daha fazla operasyonel yük getirir; F ise SQS ve SNS yerine Kinesis kullanır.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/sns/latest/dg/sns-fork-pipeline-as-subscriber.html",
       "https://docs.aws.amazon.com/lambda/latest/dg/services-sqs-configure.html",
       "https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventNotifications.html",
+      "https://docs.aws.amazon.com/sns/latest/dg/sns-fork-pipeline-as-subscriber.html",
       "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html"
     ],
     "services": [
@@ -63313,8 +63313,8 @@
     ],
     "explanation": "Doğru cevap C'dir: ALB, uygulama tabanlı stickiness ile girişten sonra oturumu uygulamanın kendi çerezine göre aynı sunucuda tutar ve ALB'ye bağlanan AWS WAF web ACL ile yaygın web saldırılarına karşı koruma sağlar. B yanlıştır çünkü AWS WAF web ACL'i NLB'ye ilişkilendirilemez. A ve D, koruma için AWS Network Firewall'u bir load balancer'a bağlamayı önerir; bu, uygulama katmanındaki yaygın saldırıları filtrelemek için doğru yaklaşım değildir.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/prescriptive-guidance/latest/load-balancer-stickiness/options.html;",
-      "https://docs.aws.amazon.com/waf/latest/developerguide/how-aws-waf-works-resources.html"
+      "https://docs.aws.amazon.com/waf/latest/developerguide/how-aws-waf-works-resources.html",
+      "https://docs.aws.amazon.com/prescriptive-guidance/latest/load-balancer-stickiness/options.html;"
     ],
     "services": [
       "Amazon EC2",
@@ -63391,8 +63391,8 @@
     ],
     "explanation": "Doğru cevap A'dır: RDS for MySQL müşteri ve sipariş verilerini ilişkisel olarak yönetirken, 100 GB ürün görselleri Amazon S3'te tutularak veritabanı depolama maliyeti düşürülür. B'deki DynamoDB ilişkisel veri modeli için uygun değildir. C görselleri Aurora veritabanında tutarak gereksiz pahalı bir yapı oluşturur; D ise kendi yönettiğiniz EC2 üzerinde MongoDB kullanır ve görselleri RDS'te saklar, bu da hem operasyonel yük hem maliyet açısından kötü bir seçimdir.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html;",
-      "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html"
+      "https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html",
+      "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html;"
     ],
     "services": [
       "Amazon S3",
@@ -63801,9 +63801,9 @@
     ],
     "explanation": "A seçeneği doğru: provisioned concurrency Lambda ortamlarını önceden başlatarak soğuk başlatma gecikmesini azaltır, DynamoDB on-demand modu ise öngörülemeyen trafik artışlarını kapasite planlaması olmadan karşılar. B yanlış çünkü DynamoDB provisioned modu ani artışlar için kapasite planlaması gerektirir ve artışlarda kısıtlamaya yol açabilir. C ve D yanlış çünkü reserved concurrency yalnızca eşzamanlılık üst sınırını ayırır, soğuk başlatmayı azaltmaz.",
     "officialDocs": [
+      "https://docs.aws.amazon.com/lambda/latest/dg/provisioned-concurrency.html",
       "https://docs.aws.amazon.com/lambda/latest/dg/configuration-concurrency.html",
-      "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/on-demand-capacity-mode.html",
-      "https://docs.aws.amazon.com/lambda/latest/dg/provisioned-concurrency.html"
+      "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/on-demand-capacity-mode.html"
     ],
     "services": [
       "AWS Lambda",
@@ -63876,8 +63876,8 @@
     ],
     "explanation": "C seçeneği doğru: tek bir Auto Scaling grubunda karışık yapılandırma hem On-Demand hem Spot örnekleri çalıştırır, Spot ile maliyet tasarrufu sağlanır ve kesinti riski Capacity Rebalancing ile yönetilebilir. A maliyet açısından işe yarayabilir, ancak uygulamanın konteynerleştirilmesini ve EKS'e taşınmasını gerektirdiği için mevcut EC2 filosunu optimize eden istenen çözümle uyuşmaz. B yanlış çünkü Spot placement score bölge ve Availability Zone önerir, instance tipi seçmez ve dağıtım yapmaz. D yanlış çünkü Convertible Reserved Instances değişken kullanımda taahhüt maliyeti yaratır ve kesinti toleransı sağlamaz.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/autoscaling/ec2/userguide/mixed-instances-groups-set-up-overview.html",
-      "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-placement-score.html"
+      "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-placement-score.html",
+      "https://docs.aws.amazon.com/autoscaling/ec2/userguide/mixed-instances-groups-set-up-overview.html"
     ],
     "services": [
       "Amazon EC2",
@@ -63986,9 +63986,9 @@
     ],
     "explanation": "D seçeneği en uygun: DAX, DynamoDB'nin yoğun okuma yükünü önbellekle karşılar, böylece tablo performansı etkilenmez; uygulama yalnızca DAX endpoint'ine yönlendirildiği için operasyonel yük düşüktür. A seçeneği gerçek zamanlıdır ve okuma yükünü artırmaz, ancak Kinesis, Flink uygulaması ve geri yazma akışı en yüksek operasyonel yükü getirir. B seçeneği saatlik aktarım öngörüyor, oysa Zero-ETL belgelerinde artımlı replikasyon 15-30 dakikada bir yapılır; bu gerçek zamanlı değildir. C seçeneği snapshot tabanlı olduğu için gerçek zamanlı değildir ve Glue ile Lambda yönetimi gerektirir.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/kds.html",
+      "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.consistency.html",
       "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/RedshiftforDynamoDB-zero-etl.html",
-      "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DAX.consistency.html"
+      "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/kds.html"
     ],
     "services": [
       "AWS Lambda",
@@ -64259,8 +64259,8 @@
     ],
     "explanation": "C dogrudur: Fargate uzerindeki ECS gorevleri 1 saate kadar suren isleme icin uygundur ve merkezi depodaki dosyalara paylasilan, yuksek performansli erisim icin Amazon EFS baglanabilir; EFS, Fargate gorevlerinde Linux platform surum 1.4.0 ve sonrasinda desteklenir. A ve D, Lambda'nin en fazla 15 dakika (900 saniye) calisabilmesi nedeniyle 1 saatlik isleme suresini karsilayamaz. B, EC2 instance store kullanir; bu, instance'a yerel ve gecici depolamadir ve merkezi depoya paylasilan erisim saglamaz.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/efs-volumes.html",
-      "https://docs.aws.amazon.com/lambda/latest/dg/configuration-timeout.html"
+      "https://docs.aws.amazon.com/lambda/latest/dg/configuration-timeout.html",
+      "https://docs.aws.amazon.com/AmazonECS/latest/developerguide/efs-volumes.html"
     ],
     "services": [
       "Amazon EC2",
@@ -64336,8 +64336,8 @@
     ],
     "explanation": "Doğru cevap A: Mevcut VPC'ye ikincil bir IPv4 CIDR bloğu eklenebilir ve bu blok üzerinde oluşturulan yeni subnet'lere EC2 örnekleri aynı VPC içinde başlatılabilir. B ve C yeni bir VPC ile peering veya transit gateway gibi ek bağlantı katmanları gerektirir. D ise gereksiz bir VPN altyapısı ekler; bu nedenle yalnızca A en az operasyonel yükle kapasiteyi sağlar.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/vpc/latest/userguide/add-ipv4-cidr.html",
-      "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-cidr-blocks.html"
+      "https://docs.aws.amazon.com/vpc/latest/userguide/vpc-cidr-blocks.html",
+      "https://docs.aws.amazon.com/vpc/latest/userguide/add-ipv4-cidr.html"
     ],
     "services": [
       "Amazon EC2",
@@ -64374,9 +64374,9 @@
     ],
     "explanation": "Doğru cevap D: Yeni depo, mevcut bir deponun repository policy'si kopyalanarak oluşturulmuş ve bu politika push işlemini reddediyor. IAM politikası ile kaynak politikası arasında bir taraf açıkça reddederse işlem engellenir; bu yüzden rolde AmazonEC2ContainerRegistryFullAccess bulunsa bile push başarısız olur. A yanlıştır çünkü ECR giriş token'ı 12 saat geçerlidir; B yanlıştır çünkü hata push sırasında oluşur ve rol zaten tam erişime sahiptir; C yanlıştır çünkü ECR kimlik doğrulaması MFA'ya bağlı değildir.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/AmazonECR/latest/userguide/registry_auth.html",
       "https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html",
-      "https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-policies.html"
+      "https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-policies.html",
+      "https://docs.aws.amazon.com/AmazonECR/latest/userguide/registry_auth.html"
     ],
     "services": [
       "Amazon ECS/EKS",
@@ -64413,8 +64413,8 @@
     ],
     "explanation": "Doğru cevap A: SQS için bir arayüz VPC endpoint'i kullanıldığında trafik public internete çıkmadan AWS ağı üzerinden gider. Kuyruk politikasında aws:SourceVpce koşulu ile erişim yalnızca bu endpoint'e kısıtlanabilir. B yalnızca veriyi depolamadayken şifreler, ağ yolunu değiştirmez; C geçici kimlik bilgisi üretir ama trafiğin public IP üzerinden gitmesini engellemez; D trafiği yalnızca izler, engellemez.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-creating-custom-policies-access-p",
-      "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-internetwork-traffic-privacy.html"
+      "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-internetwork-traffic-privacy.html",
+      "https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-creating-custom-policies-access-p"
     ],
     "services": [
       "AWS Lambda",
@@ -64490,10 +64490,10 @@
     ],
     "explanation": "Doğru cevap B: FSx for Lustre'ün persistent SSD seçeneği alt milisaniye gecikme sunar, Linux EC2 örnekleri Lustre istemcisiyle bağlanabilir ve S3 bağlantısı ham verinin içe aktarılmasını ve sonuçların dışa aktarılmasını sağlar. A yanlıştır çünkü ALL tiering politikası verinin çoğunu kapasite havuzuna taşır ve performansı düşürür; C'deki HDD tek haneli milisaniye gecikme sunar; D Windows ve SMB içindir, HDD kullanır ve Linux iş yükü için uygun değildir.",
     "officialDocs": [
-      "https://docs.aws.amazon.com/fsx/latest/LustreGuide/ssd-storage.html",
-      "https://docs.aws.amazon.com/fsx/latest/LustreGuide/create-dra-linked-data-repo.html",
+      "https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/volume-storage-capacity.html",
       "https://docs.aws.amazon.com/fsx/latest/LustreGuide/what-is.html",
-      "https://docs.aws.amazon.com/fsx/latest/ONTAPGuide/volume-storage-capacity.html"
+      "https://docs.aws.amazon.com/fsx/latest/LustreGuide/create-dra-linked-data-repo.html",
+      "https://docs.aws.amazon.com/fsx/latest/LustreGuide/ssd-storage.html"
     ],
     "services": [
       "Amazon S3",
